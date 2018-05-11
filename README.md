@@ -1,5 +1,5 @@
 # pausappranzo
-A starting point for Node.js Express Angular apps with TypeScript
+A Progressive Web App made with: MongoDB Express Angular 6 Node.js
 
 # Pre-reqs
 - Install [Node.js](https://nodejs.org/en/)
@@ -16,19 +16,17 @@ git clone --depth=1 https://github.com/Cirou/pausappranzo.git <project_name>
 cd <project_name>
 npm install
 ```
-- Start your mongoDB server (you'll probably want another command prompt)
+- Start your mongoDB server (this needs that the \bin path in mongoDB is set in the system enviroment variables)
 ```
-mongod
+start-mongodb.bat
 ```
 - Build and run the project
 ```
-npm run build
-npm start
+start-server.bat
 ```
 Navigate to `http://localhost:3000`
 
 # Credits
-I created this project for personal needs to have a mean starter project based on typescript.
 
 A majority of this quick start's content was inspired by:
 
