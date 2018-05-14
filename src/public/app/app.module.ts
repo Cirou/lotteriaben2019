@@ -33,7 +33,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatTreeModule,
+  MatTreeModule
 } from '@angular/material';
 
 import { CdkTableModule } from '@angular/cdk/table';
@@ -45,8 +45,8 @@ import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
+
   exports: [
     CdkTableModule,
     MatAutocompleteModule,
@@ -83,16 +83,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
-    MatTreeModule,
+    MatTreeModule
   ]
 })
-export class MaterialDesignModule {}
+export class MaterialDesignModule { }
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    MatIconModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
