@@ -24,7 +24,8 @@
             "styles": [
               "node_modules/tether/dist/css/tether.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/public/assets/css/styles.css"
+              "src/public/assets/css/styles.scss",
+              "src/public/assets/css/theme.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.js",
@@ -88,7 +89,8 @@
             "styles": [
               "node_modules/tether/dist/css/tether.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/public/assets/css/styles.css"
+              "src/public/assets/css/styles.scss",
+              "src/public/assets/css/theme.scss"
             ],
             "assets": [
               "src/public/assets",
