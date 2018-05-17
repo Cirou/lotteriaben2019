@@ -12,6 +12,7 @@ import { RouterModule } from '@angular/router';
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { ProfilepageComponent } from './pages/profilepage/profilepage.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { SettingspageComponent } from './pages/settingspage/settingspage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -19,13 +20,16 @@ import { MaterialDesignModule } from './material-design.module';
 
 // CUSTOM COMPONENTS
 import { DrawerComponent } from './components/drawer/drawer.component';
+import { ListviewComponent } from './components/listview/listview.component';
 
 @NgModule({
   declarations: [
     MainpageComponent,
     ProfilepageComponent,
     HomepageComponent,
-    DrawerComponent
+    DrawerComponent,
+    ListviewComponent,
+    SettingspageComponent
   ],
   imports: [
     RoutingModule,
