@@ -24,7 +24,10 @@ export class DrawerComponent implements OnInit {
       "nome": "profilo",
       "descrizione": "Profilo",
       "routerLink" :"/profile"
-    },
+    }
+  ];
+
+  navUtilsMenu = [
     {
       "id": 3,
       "nome": "settings",

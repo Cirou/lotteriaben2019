@@ -9,6 +9,10 @@
       <mat-nav-list>
         <a mat-list-item routerLink={{nav.routerLink}} *ngFor="let nav of navMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
       </mat-nav-list>
+      <hr>
+      <mat-nav-list>
+          <a mat-list-item routerLink={{nav.routerLink}} *ngFor="let nav of navUtilsMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
+        </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
