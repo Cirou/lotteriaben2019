@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'app', component: HomepageComponent, children:
       [
-        { path: '', redirectTo: 'home', pathMatch: 'prefix'},
+        { path: '', component: GroupspageComponent, outlet: 'sub' },
         { path: 'home', component: GroupspageComponent, outlet: 'sub' },
         { path: 'profile', component: ProfilepageComponent, outlet: 'sub' },
         { path: 'settings', component: SettingspageComponent, outlet: 'sub' },
