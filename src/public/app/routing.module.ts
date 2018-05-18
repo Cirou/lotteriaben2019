@@ -10,16 +10,21 @@ import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginpageComponent },
+  { path: 'signin', component: LoginpageComponent },
+  { path: 'logout', redirectTo: '/login', pathMatch: 'full'},
   {
     path: 'app', component: HomepageComponent, children:
       [
-        { path: '', component: GroupspageComponent, outlet: 'sub' },
+        { path: '', redirectTo: 'home', pathMatch: 'prefix'},
+        { path: 'home', component: GroupspageComponent, outlet: 'sub' },
         { path: 'profile', component: ProfilepageComponent, outlet: 'sub' },
-        { path: 'settings', component: SettingspageComponent, outlet: 'sub' }
+        { path: 'settings', component: SettingspageComponent, outlet: 'sub' },
+
       ]
   },
-
+  { path: '**', redirectTo: 'home', pathMatch: 'full'},
 ];
 
 @NgModule({

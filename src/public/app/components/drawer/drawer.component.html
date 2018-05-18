@@ -12,6 +12,8 @@
       <hr>
       <mat-nav-list>
           <a mat-list-item [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]" *ngFor="let nav of navUtilsMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
+          <a mat-list-item [routerLink]="['/logout']" (click)="snav.toggle()">Esci</a>
+
         </mat-nav-list>
     </mat-sidenav>
 

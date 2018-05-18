@@ -17,7 +17,7 @@ export class DrawerComponent implements OnInit {
       "id": 1,
       "nome": "home",
       "descrizione": "I miei gruppi",
-      "routerLink" :""
+      "routerLink" :"home"
     },
     {
       "id": 2,
@@ -33,12 +33,6 @@ export class DrawerComponent implements OnInit {
       "nome": "settings",
       "descrizione": "Impostazioni",
       "routerLink" :"settings"
-    },
-    {
-      "id": 4,
-      "nome": "Logout",
-      "descrizione": "Esci",
-      "routerLink" :"/logout"
     }
   ];
 
