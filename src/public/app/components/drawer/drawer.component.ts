@@ -17,13 +17,13 @@ export class DrawerComponent implements OnInit {
       "id": 1,
       "nome": "home",
       "descrizione": "I miei gruppi",
-      "routerLink" :"/"
+      "routerLink" :""
     },
     {
       "id": 2,
       "nome": "profilo",
       "descrizione": "Profilo",
-      "routerLink" :"/profile"
+      "routerLink" :"profile"
     }
   ];
 
@@ -32,7 +32,7 @@ export class DrawerComponent implements OnInit {
       "id": 3,
       "nome": "settings",
       "descrizione": "Impostazioni",
-      "routerLink" :"/settings"
+      "routerLink" :"settings"
     },
     {
       "id": 4,

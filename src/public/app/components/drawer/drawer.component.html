@@ -7,17 +7,17 @@
   <mat-sidenav-container class="app-sidenav-container">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
       <mat-nav-list>
-        <a mat-list-item routerLink={{nav.routerLink}} *ngFor="let nav of navMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
+        <a mat-list-item [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]" *ngFor="let nav of navMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
       </mat-nav-list>
       <hr>
       <mat-nav-list>
-          <a mat-list-item routerLink={{nav.routerLink}} *ngFor="let nav of navUtilsMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
+          <a mat-list-item [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]" *ngFor="let nav of navUtilsMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
         </mat-nav-list>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <div class="container-fluid app-main-content">
-          <router-outlet></router-outlet>
+          <router-outlet name="sub"></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
