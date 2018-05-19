@@ -1,17 +1,8 @@
-<mat-list>
-  <mat-list-item>
-    <button class="app-long-button" mat-raised-button color="primary">Fuori Orario
+<mat-nav-list>
+  <a mat-list-item *ngFor="let nav of navGroupMenu">
+    <button class="app-long-button" mat-raised-button color="primary">
+      {{nav.descrizione}}
       <mat-icon>keyboard_arrow_right</mat-icon>
     </button>
-  </mat-list-item>
-  <mat-list-item>
-    <button class="app-long-button" mat-raised-button color="primary">Genialloyd
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
-  </mat-list-item>
-  <mat-list-item>
-    <button class="app-long-button" mat-raised-button color="primary">Fantacalcio
-      <mat-icon>keyboard_arrow_right</mat-icon>
-    </button>
-  </mat-list-item>
-</mat-list>
+  </a>
+</mat-nav-list>
