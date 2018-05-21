@@ -36,6 +36,18 @@ hr {
   text-align: left !important;
 }
 
+.app-long-button-left  mat-icon.group-icon {
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
+}
+
+.app-long-button-left  mat-icon.arrow-icon {
+  float: right;
+  position: relative;
+  top: 5px;
+}
+
 .app-long-button-right {
   width: 100%;
   text-align: right !important;
