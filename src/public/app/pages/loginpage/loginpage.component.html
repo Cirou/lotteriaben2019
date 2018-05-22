@@ -1,43 +1,40 @@
-
 <div class="container app-full-height">
   <div class="row app-85-height align-items-center">
-    <div class="col-12">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-6">
-            <img class="img-fluid" src="../../../../assets/icons/icon-512x512.png" />
+    <form (ngSubmit)="onSubmit()" class="login-form">
+      <div class="col-12">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <img class="img-fluid" src="../../../../assets/icons/icon-512x512.png" />
+            </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center">
-          <div class="col-10">
-            <h5 class="app-full-width-center">Pausappranzo</h5>
+          <div class="row justify-content-center">
+            <div class="col-10">
+              <h5 class="app-full-width-center">Pausappranzo</h5>
+            </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center">
-          <div class="col-10">
-            <form class="login-form">
+          <div class="row justify-content-center">
+            <div class="col-10">
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="E-Mail" value="">
+                <input matInput placeholder="E-Mail" (ngBlur)="validateEmail" [(ngModel)]="email" name="email">
               </mat-form-field>
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="Password" value="">
+                <input matInput placeholder="Password" (ngBlur)="validatePwd" [(ngModel)]="pwd" name="pwd">
               </mat-form-field>
-            </form>
+            </div>
           </div>
-        </div>
 
-        <div class="row justify-content-center">
-          <div class="col-6">
-            <button routerLink="/app" class="app-long-button-center" mat-raised-button color="primary">
-              Login
-            </button>
+          <div class="row justify-content-center">
+            <div class="col-6">
+              <button type="submit" class="app-long-button-center" mat-raised-button color="primary">
+                Login
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
+    </form>
   </div>
-
 </div>

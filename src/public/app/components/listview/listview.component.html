@@ -1,7 +1,7 @@
 
 <mat-nav-list>
   <a mat-list-item *ngFor="let nav of navGroupMenu">
-    <button class="app-long-button-left" mat-raised-button color="primary">
+    <button [routerLink]="['/app', { outlets: { sub: ['groupdetail', nav.id] }}]" class="app-long-button-left" mat-raised-button color="primary">
       <mat-icon class="group-icon">group</mat-icon> 
       {{nav.descrizione}}
       <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>

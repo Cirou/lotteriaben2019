@@ -8,6 +8,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
+
+// FIREBASE
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
 // PAGES
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { ProfilepageComponent } from './pages/profilepage/profilepage.component';
@@ -15,6 +21,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SettingspageComponent } from './pages/settingspage/settingspage.component';
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
+import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -23,6 +30,9 @@ import { MaterialDesignModule } from './material-design.module';
 // CUSTOM COMPONENTS
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { ListviewComponent } from './components/listview/listview.component';
+
+// CUSTOM SERVICES
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +43,8 @@ import { ListviewComponent } from './components/listview/listview.component';
     ListviewComponent,
     SettingspageComponent,
     LoginpageComponent,
-    GroupspageComponent
+    GroupspageComponent,
+    GroupdetailpageComponent
   ],
   imports: [
     RoutingModule,
@@ -43,9 +54,12 @@ import { ListviewComponent } from './components/listview/listview.component';
     HttpClientModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    AngularFireModule.initializeApp(environment.config),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   exports: [RouterModule],
   bootstrap: [MainpageComponent]
 })

@@ -8,6 +8,7 @@ import { SettingspageComponent } from './pages/settingspage/settingspage.compone
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
+import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -21,6 +22,7 @@ const routes: Routes = [
         { path: 'home', component: GroupspageComponent, outlet: 'sub' },
         { path: 'profile', component: ProfilepageComponent, outlet: 'sub' },
         { path: 'settings', component: SettingspageComponent, outlet: 'sub' },
+        { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'}
 
       ]
   },
