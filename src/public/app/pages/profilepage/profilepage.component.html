@@ -4,7 +4,7 @@
       <div class="col-12 margin-top-50">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-6 text-aling-center">
               <img class="img-fluid" src="../../../../assets/icons/icon-192x192.png" />
             </div>
           </div>
@@ -15,18 +15,49 @@
             </div>
           </div>
 
+          <div class="row justify-content-center margin-top-10">
+            <div class="col-6 text-aling-center" *ngIf="disabledField == 'true'" (click)="disabledField = 'false'">
+                <mat-icon class="border-color">border-color</mat-icon>
+                Modifica informazioni
+            </div>
+            <div class="col-6 text-aling-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
+                <mat-icon class="border-color">border-color</mat-icon>
+                Salva modifiche
+            </div>
+          </div>
+         
+
           <div class="row justify-content-center">
             <div class="col-10">
               <mat-form-field class="app-full-width">
-                    <input matInput placeholder="Username" (ngBlur)="validatePwd" [(ngModel)]="myprofile.username" name="username" disabled="true" [disabled]="disabledField">
+                    <input matInput placeholder="Username" (ngBlur)="validatePwd" [(ngModel)]="user.username" name="username" disabled="true" [disabled]="disabledField">
                   </mat-form-field>
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="E-Mail"  [(ngModel)]="myprofile.email" name="email" [disabled]="disabledField">
+                    <input matInput placeholder="Nome" (ngBlur)="validatePwd" [(ngModel)]="user.nome" name="nome" disabled="true" [disabled]="disabledField">
+              </mat-form-field>
+              <mat-form-field class="app-full-width">
+                <input matInput placeholder="Cognome" (ngBlur)="validatePwd" [(ngModel)]="user.cognome" name="cognome" disabled="true" [disabled]="disabledField">
+              </mat-form-field>
+              <mat-form-field class="app-full-width">
+                <input matInput placeholder="E-Mail"  [(ngModel)]="user.email" name="email" [disabled]="disabledField">
               </mat-form-field>
             </div>
           </div>
 
+          <hr>
+
           <div class="row justify-content-center">
+            <div class="col-10">
+              <mat-form-field class="app-full-width">
+                    <input matInput placeholder="Gruppi" [(ngModel)]="gruppi" name="gruppi" disabled="true">
+              </mat-form-field>
+              <mat-form-field class="app-full-width">
+                    <input matInput placeholder="Cibi Preferiti" (ngBlur)="validatePwd" [(ngModel)]="cibi" name="cibi" [disabled]="disabledField">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <!--<div class="row justify-content-center">
             <div class="col-6" *ngIf="disabledField == 'true'">
               <button type="submit" class="app-long-button-center" mat-raised-button color="primary">
                 Modifica
@@ -37,7 +68,7 @@
                   Salva
                 </button>
               </div>
-          </div>
+          </div>-->
         </div>
       </div>
       </form>
