@@ -2,12 +2,12 @@
     "id":"",
     "email": "ciroaiello@live.com",
     "password": "scemoChiLegge",
-    "profile": {
-        "name": "Ciro",
-        "surname": "Aiello",
-        "gender": "M",
-        "location": "Napoli",
-        "picture": "http://thumbnail.accenture.com/875976.jpg"
+    "profilo": {
+        "nome": "Ciro",
+        "cognome": "Aiello",
+        "sesso": "M",
+        "citta": "Napoli",
+        "immagine": "http://thumbnail.accenture.com/875976.jpg"
     },
     "elencoGruppi":[
         {
@@ -22,7 +22,7 @@
         },
         {
             "id":"3",
-            "nome":"Fantacalcio",
+            "nome":"Fantacalciolo",
             "descrizione":"Gruppo del fantacalcio"
         }
     ],

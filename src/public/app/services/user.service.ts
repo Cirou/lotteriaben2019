@@ -11,7 +11,7 @@ export class UserService {
   constructor(private http: Http) { }
 
   private user: User;
-  private userUrl: string = '/app/services/mock/getUserProfile.json'
+  private userUrl: string = 'public/assets/mock/getUserProfile.json'
 
   postUserProfile() {
     return '{result: "OK"}';

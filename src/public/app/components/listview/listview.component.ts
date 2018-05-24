@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Gruppi } from '../../../../models/gruppi';
 
 @Component({
   selector: 'app-listview',
@@ -7,32 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListviewComponent implements OnInit {
 
-  navGroupMenu = [
-    {
-      "id": 1,
-      "nome": "fuoriorario",
-      "descrizione": "Fuori Orario",
-      "routerLink" :"fuoriorario"
-    },
-    {
-      "id": 2,
-      "nome": "genialloyd",
-      "descrizione": "Genialloyd",
-      "routerLink" :"genialloyd"
-    },
-    {
-      "id": 3,
-      "nome": "fantacalcio",
-      "descrizione": "Fantacalcio",
-      "routerLink" :"fantacalcio"
-    }
-  ];
+  @Input()
+  elencoGruppi: Gruppi[];
+
   constructor() { }
 
   ngOnInit() {
   }
 
- 
-    
-  
 }

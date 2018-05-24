@@ -1,7 +1,7 @@
 <div class="row">
     <div class="content col-12">
       <h4>Ciao
-        <b>Ciro!</b>
+        <b>{{user.profilo.nome}}!</b>
       </h4>
     </div>
   </div>
@@ -18,6 +18,6 @@
   </div>
   <div class="row">
     <div class="content col-12">
-      <app-listview></app-listview>
+      <app-listview [elencoGruppi]="user.elencoGruppi"></app-listview>
     </div>
   </div>
