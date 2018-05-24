@@ -1,4 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import { UserService } from "../../services/user.service";
+import { User } from "../../../../models/User";
+import { Gruppo } from "../../../../models/Gruppo";
+import { GroupService } from "../../services/group.service";
 
 @Component({
   selector: "app-profilepage",
@@ -41,23 +45,54 @@ export class ProfilepageComponent implements OnInit {
   private gruppi = "";
   private cibi  = "";
   public disabledField = "true";
-  constructor() { }
+
+  constructor(private userService: UserService, private groupService: GroupService) { }
+
+  private userProfile: User = new User;
+  private elencoGruppi: Gruppo[] = new Array;
 
   ngOnInit() {
    // this.user = UserService.getUserProfile(userId);
-   if (this.user.elencoGruppi !== null && this.user.elencoGruppi !== undefined && this.user.elencoGruppi.length > 0) {
-     this.gruppi = this.user.elencoGruppi[0].nome;
-    for (let i = 1; i < this.user.elencoGruppi.length; i++) {
-      this.gruppi = this.gruppi + "," + this.user.elencoGruppi[i].nome;
-    }
-   }
+   this.userService.getUserProfile()
+    .subscribe(
+      userInfo => {
+        this.userProfile = userInfo;
+        this.userProfile.elencoGruppi.forEach(element => {
+          this.groupService.getGroupDetails(element).subscribe(
+            groupInfo => {
+              this.elencoGruppi.push(groupInfo);
+              if (this.gruppi === "") {
+                this.gruppi = groupInfo.nome;
+              } else {
+                this.gruppi = this.gruppi + "," + groupInfo.nome;
+              }
+            }
+          );
+        });
+        console.log(this.user);
+        /*if (this.elencoGruppi !== null && this.elencoGruppi !== undefined && this.elencoGruppi.length > 0) {
+          this.gruppi = this.elencoGruppi[0].nome;
+         for (let i = 1; i < this.elencoGruppi.length; i++) {
+           this.gruppi = this.gruppi + "," + this.elencoGruppi[i].nome;
+         }
+        }*/
+        /*if (this.user.elencoGruppi !== null && this.user.elencoGruppi !== undefined && this.user.elencoGruppi.length > 0) {
+          this.gruppi = this.user.elencoGruppi[0].nome;
+         for (let i = 1; i < this.user.elencoGruppi.length; i++) {
+           this.gruppi = this.gruppi + "," + this.user.elencoGruppi[i].nome;
+         }
+        }*/
 
-   if (this.user.elencoCibi !== null && this.user.elencoCibi !== undefined && this.user.elencoCibi.length > 0) {
-    this.cibi = this.user.elencoCibi[0].nome;
-   for (let i = 1; i < this.user.elencoCibi.length; i++) {
-     this.cibi = this.cibi + "," + this.user.elencoCibi[i].nome;
-    }
-   }
+        if (this.user.elencoCibi !== null && this.user.elencoCibi !== undefined && this.user.elencoCibi.length > 0) {
+         this.cibi = this.user.elencoCibi[0].nome;
+        for (let i = 1; i < this.user.elencoCibi.length; i++) {
+          this.cibi = this.cibi + "," + this.user.elencoCibi[i].nome;
+         }
+        }
+      },
+      err => {
+        console.log(err);
+      });
   }
 
   onSubmit() {

@@ -20,7 +20,7 @@
                 <mat-icon class="edit_icon">edit</mat-icon>
                 Modifica informazioni
             </div>
-            <div class="col-6 text-aling-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
+            <div class="col-10 text-aling-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
                 <mat-icon class="done_icon">done</mat-icon>
                 Salva modifiche
             </div>
@@ -30,16 +30,16 @@
           <div class="row justify-content-center">
             <div class="col-10">
               <mat-form-field class="app-full-width">
-                    <input matInput placeholder="Username" (ngBlur)="validatePwd" [(ngModel)]="user.username" name="username" disabled="true" [disabled]="disabledField">
+                    <input matInput placeholder="Username" (ngBlur)="validatePwd" [(ngModel)]="userProfile.profilo.username" name="username" disabled="true" [disabled]="disabledField">
                   </mat-form-field>
               <mat-form-field class="app-full-width">
-                    <input matInput placeholder="Nome" (ngBlur)="validatePwd" [(ngModel)]="user.nome" name="nome" disabled="true" [disabled]="disabledField">
+                    <input matInput placeholder="Nome" (ngBlur)="validatePwd" [(ngModel)]="userProfile.profilo.nome" name="nome" disabled="true" [disabled]="disabledField">
               </mat-form-field>
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="Cognome" (ngBlur)="validatePwd" [(ngModel)]="user.cognome" name="cognome" disabled="true" [disabled]="disabledField">
+                <input matInput placeholder="Cognome" (ngBlur)="validatePwd" [(ngModel)]="userProfile.profilo.cognome" name="cognome" disabled="true" [disabled]="disabledField">
               </mat-form-field>
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="E-Mail"  [(ngModel)]="user.email" name="email" [disabled]="disabledField">
+                <input matInput placeholder="E-Mail"  [(ngModel)]="userProfile.email" name="email" [disabled]="disabledField">
               </mat-form-field>
             </div>
           </div>
