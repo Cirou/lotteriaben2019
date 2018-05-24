@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Gruppi } from '../../../../models/gruppi';
+import { Gruppo } from '../../../../models/gruppo';
 
 @Component({
   selector: 'app-listview',
@@ -9,7 +9,7 @@ import { Gruppi } from '../../../../models/gruppi';
 export class ListviewComponent implements OnInit {
 
   @Input()
-  elencoGruppi: Gruppi[];
+  elencoGruppi: Gruppo[];
 
   constructor() { }
 

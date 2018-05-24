@@ -30,18 +30,25 @@ import { MaterialDesignModule } from './material-design.module';
 // CUSTOM COMPONENTS
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { ListviewComponent } from './components/listview/listview.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { GroupService } from './services/group.service';
 
 @NgModule({
   declarations: [
+    // COMPONENTS
+    ChatComponent,
+    SearchbarComponent,
+    DrawerComponent,
+    ListviewComponent,
+    // PAGES
     MainpageComponent,
     ProfilepageComponent,
     HomepageComponent,
-    DrawerComponent,
-    ListviewComponent,
     SettingspageComponent,
     LoginpageComponent,
     GroupspageComponent,
@@ -62,7 +69,8 @@ import { UserService } from './services/user.service';
   ],
   providers: [
     AuthService,
-    UserService
+    UserService,
+    GroupService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent]

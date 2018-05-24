@@ -1,6 +1,6 @@
-import { Gruppi } from './Gruppi';
+import { Gruppo } from './Gruppo';
 import { Profilo } from './Profilo';
-import { Cibi } from './Cibi';
+import { Cibo } from './Cibo';
 
 export class User {
 
@@ -8,7 +8,7 @@ export class User {
   password: string
   id: string
   profilo: Profilo
-  elencoGruppi: Gruppi[]
-  elencoCibi: Cibi[]
+  elencoGruppi: string[]
+  elencoCibi: string[]
 
 }

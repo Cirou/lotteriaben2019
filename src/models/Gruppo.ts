@@ -1,4 +1,4 @@
-export class Gruppi {
+export class Gruppo {
 
   nome: string
   descrizione: string

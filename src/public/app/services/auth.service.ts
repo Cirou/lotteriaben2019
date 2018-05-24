@@ -10,44 +10,20 @@ export class AuthService {
   private user: Observable<firebase.User>;
   public userDetails: firebase.User = null;
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
-    this.user = _firebaseAuth.authState;
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+    this.user = firebaseAuth.authState;
   }
 
-  async createUserWithEmailAndPassword(email:string, password:string) {
-    await firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(error.code, error.message)
-    });
+  signup(email: string, password: string) {
+    return this.firebaseAuth.auth.createUserWithEmailAndPassword(email, password);
   }
 
-  async signInWithEmailAndPassword(email: string, password: string) {
-    await firebase.auth().signInWithEmailAndPassword(email, password).then(function (firebaseUser) {
-      this.userDetails = firebaseUser;
-      return firebaseUser;
-    }).catch(function (error) {
-      var errorCode = error.code;
-      var errorMessage = error.message;
-      console.log(error.code, error.message)
-      return null;
-    });
+  login(email: string, password: string) {
+    return this.firebaseAuth.auth.signInWithEmailAndPassword(email, password);
   }
 
-  async isLoggedIn() {
-    if (this.userDetails == null) {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  async signout() {
-    await firebase.auth().signOut().then(function () {
-      // Sign-out successful.
-    }).catch(function (error) {
-      // An error happened.
-    });
+  logout() {
+    return this.firebaseAuth.auth.signOut();
   }
 
 }

@@ -1,4 +1,4 @@
-export class Cibi {
+export class Cibo {
 
   nome: string
   descrizione: string
