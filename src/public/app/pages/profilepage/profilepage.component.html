@@ -16,12 +16,12 @@
           </div>
 
           <div class="row justify-content-center margin-top-10">
-            <div class="col-6 text-aling-center" *ngIf="disabledField == 'true'" (click)="disabledField = 'false'">
-                <mat-icon class="border-color">border-color</mat-icon>
+            <div class="col-10 text-aling-center" *ngIf="disabledField == 'true'" (click)="disabledField = 'false'">
+                <mat-icon class="edit_icon">edit</mat-icon>
                 Modifica informazioni
             </div>
             <div class="col-6 text-aling-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
-                <mat-icon class="border-color">border-color</mat-icon>
+                <mat-icon class="done_icon">done</mat-icon>
                 Salva modifiche
             </div>
           </div>
