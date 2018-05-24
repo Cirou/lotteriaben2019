@@ -1,6 +1,6 @@
 <div class="container app-full-height">
   <div class="row app-85-height align-items-center">
-    <form (ngSubmit)="onSubmit()" class="login-form">
+    <form (ngSubmit)="login()" class="login-form">
       <div class="col-12">
         <div class="container">
           <div class="row justify-content-center">
@@ -18,17 +18,25 @@
           <div class="row justify-content-center">
             <div class="col-10">
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="E-Mail" (ngBlur)="validateEmail" [(ngModel)]="email" name="email">
+                <input matInput placeholder="E-Mail" name="email" [formControl]="email">
+                <mat-error *ngIf="email.invalid">E-mail non valida</mat-error>
               </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-10">
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="Password" (ngBlur)="validatePwd" [(ngModel)]="pwd" name="pwd">
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="pwd" name="pwd">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="pwd.invalid">Password non valida</mat-error>
               </mat-form-field>
             </div>
           </div>
 
           <div class="row justify-content-center">
             <div class="col-6">
-              <button type="submit" class="app-long-button-center" mat-raised-button color="primary">
+              <button type="submit" [disabled]="pwd.invalid && email.invalid" class="app-long-button-center" mat-raised-button color="primary">
                 Login
               </button>
             </div>

@@ -1,0 +1,21 @@
+{
+    "id": "",
+    "email": "ciroaiello@live.com",
+    "password": "scemoChiLegge",
+    "profilo": {
+        "nome": "Ciro",
+        "cognome": "Aiello",
+        "sesso": "M",
+        "citta": "Napoli",
+        "immagine": "http://thumbnail.accenture.com/875976.jpg"
+    },
+    "elencoGruppi": [
+        "1",
+        "2",
+        "3"
+    ],
+    "elencoCibi": [
+        "1",
+        "2"
+    ]
+}

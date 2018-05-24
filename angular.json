@@ -19,9 +19,9 @@
             "assets": [
               "src/assets",
               "src/public/assets",
+              "src/public/assets/mock",
               "src/public/favicon.ico",
-              "src/manifest.json"
-            ],
+              "src/manifest.json"            ],
             "styles": [
               "node_modules/tether/dist/css/tether.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",

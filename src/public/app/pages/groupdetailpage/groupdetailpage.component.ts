@@ -9,14 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 export class GroupdetailpageComponent implements OnInit {
 
   id: string;
+  private sub: any;
   jsonGroupDetail:any;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
    });
+   
    this.jsonGroupDetail = 
     {
       "id": 1,
@@ -26,6 +28,10 @@ export class GroupdetailpageComponent implements OnInit {
     }
   ;
 
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
 }

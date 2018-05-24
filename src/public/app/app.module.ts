@@ -4,7 +4,7 @@ import { environment } from '../environments/environment';
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule, Injector } from "@angular/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -30,17 +30,25 @@ import { MaterialDesignModule } from './material-design.module';
 // CUSTOM COMPONENTS
 import { DrawerComponent } from './components/drawer/drawer.component';
 import { ListviewComponent } from './components/listview/listview.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { SearchbarComponent } from './components/searchbar/searchbar.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { GroupService } from './services/group.service';
 
 @NgModule({
   declarations: [
+    // COMPONENTS
+    ChatComponent,
+    SearchbarComponent,
+    DrawerComponent,
+    ListviewComponent,
+    // PAGES
     MainpageComponent,
     ProfilepageComponent,
     HomepageComponent,
-    DrawerComponent,
-    ListviewComponent,
     SettingspageComponent,
     LoginpageComponent,
     GroupspageComponent,
@@ -51,7 +59,7 @@ import { AuthService } from './services/auth.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule,
+    HttpModule,
     MaterialDesignModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
@@ -59,7 +67,11 @@ import { AuthService } from './services/auth.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    UserService,
+    GroupService
+  ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent]
 })
