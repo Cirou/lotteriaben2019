@@ -1,0 +1,42 @@
+{
+    "id":"",
+    "email": "ciroaiello@live.com",
+    "password": "scemoChiLegge",
+    "profile": {
+        "name": "Ciro",
+        "surname": "Aiello",
+        "gender": "M",
+        "location": "Napoli",
+        "picture": "http://thumbnail.accenture.com/875976.jpg"
+    },
+    "elencoGruppi":[
+        {
+            "id":"1",
+            "nome":"Fuori Orario",
+            "descrizione":"Gruppo del progetto Fuori Orario"
+        },
+        {
+            "id":"2",
+            "nome":"Pausappranzo",
+            "descrizione":"Gruppo del progetto Pausappranzo"
+        },
+        {
+            "id":"3",
+            "nome":"Fantacalcio",
+            "descrizione":"Gruppo del fantacalcio"
+        }
+    ],
+    "elencoCibi":[
+        {
+            "id":"1",
+            "nome":"pizza",
+            "descrizione":"Pizza"
+        },
+        {
+            "id":"2",
+            "nome":"panino",
+            "descrizione":"Panino"
+        }
+    ]
+
+}

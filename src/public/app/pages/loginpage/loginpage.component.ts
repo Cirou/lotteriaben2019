@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-loginpage',
@@ -9,30 +10,26 @@ import { AuthService } from '../../services/auth.service';
 })
 export class LoginpageComponent implements OnInit {
 
-  public email: string;
-  public pwd: string;
-  private user: any;
+  public email = new FormControl('', [Validators.required, Validators.email]);
+  public pwd = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  public user = {};
+  public hide = true;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
   }
 
-  validateEmail(): boolean {
-    return true;
-  }
-
-  validatePwd(): boolean {
-    return true;
-  }
-
   onSubmit() {
-    // if (this.validateEmail && this.validatePwd) {
-      // this.user = await this.authService.signInWithEmailAndPassword(this.email, this.pwd);
-      // if (this.user != null) {
+    // this.authService.signInWithEmailAndPassword(this.email.value, this.pwd.value)
+    // .then(function(res){
+    //   this.authService.userDetails != null
+    //   if (res != null) {
         this.router.navigate(['/app']);
     //   }
-    // }
+    // }).catch(function(){
+    //   //OPEN POPUP
+    // });
   }
 
 }

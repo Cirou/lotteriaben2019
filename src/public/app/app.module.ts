@@ -33,6 +33,7 @@ import { ListviewComponent } from './components/listview/listview.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,10 @@ import { AuthService } from './services/auth.service';
     AngularFireDatabaseModule,
     AngularFireAuthModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    UserService
+  ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent]
 })
