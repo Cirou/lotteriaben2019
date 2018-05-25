@@ -37,6 +37,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { GroupService } from './services/group.service';
+import { FoodService } from './services/food.service';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { GroupService } from './services/group.service';
   providers: [
     AuthService,
     UserService,
-    GroupService
+    GroupService,
+    FoodService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent]
