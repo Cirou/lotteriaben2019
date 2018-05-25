@@ -5,7 +5,8 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-6 text-aling-center">
-              <img class="img-fluid" src="../../../../assets/icons/icon-192x192.png" />
+              <img  class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine === null || userProfile.profilo.immagine === undefined || userProfile.profilo.immagine === ''" src="../../../../assets/icons/icon-192x192.png" />
+              <img  class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine !== null && userProfile.profilo.immagine !== undefined && userProfile.profilo.immagine !== ''" src={{userProfile.profilo.immagine}} />
             </div>
           </div>
 
