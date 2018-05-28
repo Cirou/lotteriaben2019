@@ -1,10 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit , Inject } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { User } from "../../../../models/User";
 import { Gruppo } from "../../../../models/Gruppo";
 import { GroupService } from "../../services/group.service";
 import { Cibo } from "../../../../models/Cibo";
 import { FoodService } from "../../services/food.service";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 
 @Component({
   selector: "app-profilepage",
@@ -48,7 +49,7 @@ export class ProfilepageComponent implements OnInit {
   private cibi  = "";
   public disabledField = "true";
 
-  constructor(private userService: UserService, private groupService: GroupService, private foodService: FoodService) { }
+  constructor(private userService: UserService, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog) { }
 
   private userProfile: User = new User;
   private elencoGruppi: Gruppo[] = new Array;
@@ -125,4 +126,36 @@ export class ProfilepageComponent implements OnInit {
     // UserService.postUserProfile(user)
   }
 
+  openDialog(): void {
+    if (this.disabledField === "false") {
+     /* const dialogRef = this.dialog.open(ProfilepageCibiDialogComponent, {
+        // height: "400px",
+        // width: "600px",
+        data: {
+          animal: "panda"
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log("The dialog was closed");
+      });*/
+    }
+  }
 }
+
+@Component({
+  selector: "app-profile-cibi-dialog",
+  templateUrl: "profile-cibi-dialog.html",
+})
+export class ProfilepageCibiDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<ProfilepageCibiDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}
+
