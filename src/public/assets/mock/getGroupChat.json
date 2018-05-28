@@ -1,0 +1,42 @@
+{
+    "id": "1",
+    "idGruppo": "1",
+    "messaggi": [
+        {
+            "id": "1",
+            "timestamp": "12123415500",
+            "autore": "1",
+            "messaggio": "ciao"
+        },
+        {
+            "id": "2",
+            "timestamp": "12123415500",
+            "autore": "2",
+            "messaggio": "ciao a tutti"
+        },
+        {
+            "id": "3",
+            "timestamp": "12123415500",
+            "autore": "2",
+            "messaggio": "dove si mangia oggi?"
+        },
+        {
+            "id": "4",
+            "timestamp": "12123415500",
+            "autore": "1",
+            "messaggio": "boh, vediamo"
+        },
+        {
+            "id": "5",
+            "timestamp": "12123415500",
+            "autore": "3",
+            "messaggio": "creo il sondaggio"
+        },
+        {
+            "id": "6",
+            "timestamp": "12123415500",
+            "autore": "1",
+            "messaggio": "ok"
+        }
+    ]
+}

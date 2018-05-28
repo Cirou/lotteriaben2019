@@ -3,6 +3,8 @@ import { UserService } from "../../services/user.service";
 import { User } from "../../../../models/User";
 import { Gruppo } from "../../../../models/Gruppo";
 import { GroupService } from "../../services/group.service";
+import { Cibo } from "../../../../models/Cibo";
+import { FoodService } from "../../services/food.service";
 
 @Component({
   selector: "app-profilepage",
@@ -46,10 +48,11 @@ export class ProfilepageComponent implements OnInit {
   private cibi  = "";
   public disabledField = "true";
 
-  constructor(private userService: UserService, private groupService: GroupService) { }
+  constructor(private userService: UserService, private groupService: GroupService, private foodService: FoodService) { }
 
   private userProfile: User = new User;
   private elencoGruppi: Gruppo[] = new Array;
+  private elencoCibi: Cibo[] = new Array;
 
   ngOnInit() {
    // this.user = UserService.getUserProfile(userId);
@@ -69,6 +72,18 @@ export class ProfilepageComponent implements OnInit {
             }
           );
         });
+        this.userProfile.elencoCibi.forEach(element => {
+          this.foodService.getFoodDetails(element).subscribe(
+            foodInfo => {
+              this.elencoCibi.push(foodInfo);
+              if (this.cibi === "") {
+                this.cibi = foodInfo.nome;
+              } else {
+                this.cibi = this.cibi + "," + foodInfo.nome;
+              }
+            }
+          );
+        });
         console.log(this.user);
         /*if (this.elencoGruppi !== null && this.elencoGruppi !== undefined && this.elencoGruppi.length > 0) {
           this.gruppi = this.elencoGruppi[0].nome;
@@ -83,12 +98,12 @@ export class ProfilepageComponent implements OnInit {
          }
         }*/
 
-        if (this.user.elencoCibi !== null && this.user.elencoCibi !== undefined && this.user.elencoCibi.length > 0) {
+        /*if (this.user.elencoCibi !== null && this.user.elencoCibi !== undefined && this.user.elencoCibi.length > 0) {
          this.cibi = this.user.elencoCibi[0].nome;
         for (let i = 1; i < this.user.elencoCibi.length; i++) {
           this.cibi = this.cibi + "," + this.user.elencoCibi[i].nome;
          }
-        }
+        }*/
       },
       err => {
         console.log(err);
