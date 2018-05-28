@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { GroupService } from '../../services/group.service';
+import { Chat } from '../../../../models/Chat';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -10,23 +12,37 @@ export class GroupdetailpageComponent implements OnInit {
 
   id: string;
   private sub: any;
-  jsonGroupDetail:any;
+  groupDetails: any;
+  groupChat: Chat;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
-   });
-   
-   this.jsonGroupDetail = 
-    {
-      "id": 1,
-      "nome": "fuoriorario",
-      "descrizione": "Fuori Orario",
-      "routerLink" :"fuoriorario"
-    }
-  ;
+    });
+
+    this.groupDetails = this.groupService.getGroupDetails(this.id)
+      .subscribe(
+        groupDetails => {
+          this.groupDetails = groupDetails;
+          ;
+          console.log(this.groupDetails);
+        },
+        err => {
+          console.log(err);
+        });
+
+    this.groupService.getGroupChat(this.id)
+      .subscribe(
+        groupChat => {
+          this.groupChat = groupChat;
+          ;
+          console.log(this.groupDetails);
+        },
+        err => {
+          console.log(err);
+        });
 
   }
 
