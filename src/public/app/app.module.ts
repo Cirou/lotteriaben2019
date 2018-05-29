@@ -32,6 +32,7 @@ import { DrawerComponent } from './components/drawer/drawer.component';
 import { ListviewComponent } from './components/listview/listview.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
+import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -46,6 +47,7 @@ import { FoodService } from './services/food.service';
     SearchbarComponent,
     DrawerComponent,
     ListviewComponent,
+    CibiDialogComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -75,7 +77,8 @@ import { FoodService } from './services/food.service';
     FoodService
   ],
   exports: [RouterModule],
-  bootstrap: [MainpageComponent]
+  bootstrap: [MainpageComponent],
+  entryComponents: [CibiDialogComponent]
 })
 export class AppModule {
 

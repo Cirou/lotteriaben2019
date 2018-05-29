@@ -1,7 +1,7 @@
 export class Gruppo {
 
-  nome: string
-  descrizione: string
-  id: string
+  nome: string;
+  descrizione: string;
+  id: string;
   
 }

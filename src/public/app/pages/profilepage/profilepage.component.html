@@ -1,35 +1,38 @@
 <div class="container app-full-height"> 
-  <div class="row app-85-height align-items-center">
+  <div class="row align-items-center">
       <form (ngSubmit)="onSubmit()" class="profile-form">
-      <div class="col-12 margin-top-50">
+      <div class="col-12">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-6 text-aling-center">
-              <img  class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine === null || userProfile.profilo.immagine === undefined || userProfile.profilo.immagine === ''" src="../../../../assets/icons/icon-192x192.png" />
-              <img  class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine !== null && userProfile.profilo.immagine !== undefined && userProfile.profilo.immagine !== ''" src={{userProfile.profilo.immagine}} />
+            <div class="col-8 text-align-center">
+              <img  class="img-fluid rounded-circle" *ngIf="!userProfile || !userProfile.profilo || !userProfile.profilo.immagine" src="../../../../assets/icons/icon-192x192.png" />
+              <img  class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine" src={{userProfile.profilo.immagine}} />
             </div>
           </div>
 
           <div class="row justify-content-center margin-top-10">
+            <div class="col-12">
+              <h5 class="app-full-width-center">Il tuo profilo</h5>
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
             <div class="col-10">
-              <h5 class="app-full-width-center">Profilo</h5>
-            </div>
-          </div>
-
-          <div class="row justify-content-center margin-top-10">
-            <div class="col-10 text-aling-center" *ngIf="disabledField == 'true'" (click)="disabledField = 'false'">
-                <mat-icon class="edit_icon">edit</mat-icon>
-                Modifica informazioni
-            </div>
-            <div class="col-10 text-aling-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
-                <mat-icon class="done_icon">done</mat-icon>
-                Salva modifiche
+              <button mat-raised-button color="primary" class="app-long-button-center" *ngIf="disabledField == 'true'" (click)="disabledField = 'false'">
+                Modifica
+                <!-- <mat-icon class="edit_icon">edit</mat-icon> -->
+              </button>
+              <button mat-raised-button color="accent" class="app-long-button-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
+                Salva
+                <!-- <mat-icon class="edit_icon">done</mat-icon> -->
+              </button>
             </div>
           </div>
          
+          <h6 class="margin-top-20">Informazioni personali:</h6>
 
-          <div class="row justify-content-center">
-            <div class="col-10">
+          <div class="row justify-content-center margin-top-10">
+            <div class="col-12">
               <mat-form-field class="app-full-width">
                     <input matInput placeholder="Nickname" type="text" (ngBlur)="validatePwd" [(ngModel)]="userProfile.profilo.nickname" name="username" disabled="true" [disabled]="disabledField">
                   </mat-form-field>
@@ -44,10 +47,11 @@
               </mat-form-field>
             </div>
           </div>
-          <hr>
 
-          <div class="row justify-content-center">
-            <div class="col-10">
+          <h6>Preferenze:</h6>
+
+          <div class="row justify-content-center margin-top-10">
+            <div class="col-12">
               <mat-form-field class="app-full-width">
                     <input matInput placeholder="Gruppi" [(ngModel)]="gruppi" name="gruppi" disabled="true">
               </mat-form-field>
@@ -74,18 +78,18 @@
       </div>
       </form>
   </div>
+  <!-- <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
+    </div>
+  </ng-template> -->
 </div>
-<ng-template #content let-c="close" let-d="dismiss">
-  <div class="modal-header">
-    <h4 class="modal-title">Modal title</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>One fine body&hellip;</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="c('Close click')">Close</button>
-  </div>
-</ng-template>

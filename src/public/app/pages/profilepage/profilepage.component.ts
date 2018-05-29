@@ -6,6 +6,7 @@ import { GroupService } from "../../services/group.service";
 import { Cibo } from "../../../../models/Cibo";
 import { FoodService } from "../../services/food.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { CibiDialogComponent } from "../../components/cibi-dialog/cibi-dialog.component";
 
 @Component({
   selector: "app-profilepage",
@@ -13,38 +14,38 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
   styleUrls: ["./profilepage.component.css"]
 })
 export class ProfilepageComponent implements OnInit {
-  private user  = {
-      "id": 1,
-      "username": "luisa",
-      "email": "luisa.somma@accenture.com",
-      "nome": "luisa",
-      "cognome": "somma",
-      "img": "",
-      "elencoGruppi": [
-        {
-          "id": 1,
-          "nome": "fuoriorario",
-          "descrizione": "Fuori Orario",
-          "routerLink" : "fuoriorario"
-        },
-        {
-          "id": 2,
-          "nome": "genialloyd",
-          "descrizione": "Genialloyd",
-          "routerLink" : "genialloyd"
-        }
-      ],
-      "elencoCibi" : [
-        {
-          "id": 1,
-          "nome": "Pizza"
-        },
-        {
-          "id": 2,
-          "nome": "carne"
-        }
-      ]
-    };
+  // private user  = {
+  //     "id": 1,
+  //     "username": "luisa",
+  //     "email": "luisa.somma@accenture.com",
+  //     "nome": "luisa",
+  //     "cognome": "somma",
+  //     "img": "",
+  //     "elencoGruppi": [
+  //       {
+  //         "id": 1,
+  //         "nome": "fuoriorario",
+  //         "descrizione": "Fuori Orario",
+  //         "routerLink" : "fuoriorario"
+  //       },
+  //       {
+  //         "id": 2,
+  //         "nome": "genialloyd",
+  //         "descrizione": "Genialloyd",
+  //         "routerLink" : "genialloyd"
+  //       }
+  //     ],
+  //     "elencoCibi" : [
+  //       {
+  //         "id": 1,
+  //         "nome": "Pizza"
+  //       },
+  //       {
+  //         "id": 2,
+  //         "nome": "carne"
+  //       }
+  //     ]
+  //   };
   private gruppi = "";
   private cibi  = "";
   public disabledField = "true";
@@ -85,7 +86,7 @@ export class ProfilepageComponent implements OnInit {
             }
           );
         });
-        console.log(this.user);
+        console.log(this.userProfile);
         /*if (this.elencoGruppi !== null && this.elencoGruppi !== undefined && this.elencoGruppi.length > 0) {
           this.gruppi = this.elencoGruppi[0].nome;
          for (let i = 1; i < this.elencoGruppi.length; i++) {
@@ -128,9 +129,9 @@ export class ProfilepageComponent implements OnInit {
 
   openDialog(): void {
     if (this.disabledField === "false") {
-     /* const dialogRef = this.dialog.open(ProfilepageCibiDialogComponent, {
-        // height: "400px",
-        // width: "600px",
+     const dialogRef = this.dialog.open(CibiDialogComponent, {
+        height: "400px",
+        width: "600px",
         data: {
           animal: "panda"
         }
@@ -138,24 +139,9 @@ export class ProfilepageComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         console.log("The dialog was closed");
-      });*/
+      });
     }
   }
 }
 
-@Component({
-  selector: "app-profile-cibi-dialog",
-  templateUrl: "profile-cibi-dialog.html",
-})
-export class ProfilepageCibiDialogComponent {
-
-  constructor(
-    public dialogRef: MatDialogRef<ProfilepageCibiDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
 
