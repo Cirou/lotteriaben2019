@@ -1,6 +1,23 @@
-<h1 mat-dialog-title>Favorite Animal</h1>
+<h1 mat-dialog-title>Cibi Preferiti</h1>
 <div mat-dialog-content>
-  My favorite animal is:
+  Seleziona i tuoi cibi preferiti:
+  <mat-selection-list #cibi>
+    <mat-list-option (click)="onAreaListControlChanged(cibi)" [selected]="cibo.selected" [value]="cibo" *ngFor="let cibo of data.elencoCompleto">
+      {{cibo.nome}}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annulla</button>
+    <button mat-button color="accent" [disabled]="cibi.selectedOptions.selected.length == 0" [mat-dialog-close]="dataSelected" cdkFocusInitial>Salva</button>
+  </div>
+
+  <!--<mat-nav-list>
+    <a mat-list-item *ngFor="let cibo of data.elencoCompleto">
+      <mat-checkbox>{{cibo.nome}}</mat-checkbox>
+    </a>
+  </mat-nav-list>
+
   <ul>
     <li>
       <span *ngIf="data.animal === 'panda'">&#10003;</span> Panda
@@ -11,5 +28,5 @@
     <li>
       <span *ngIf="data.animal === 'lion'">&#10003;</span> Lion
     </li>
-  </ul>
+  </ul>-->
 </div>
