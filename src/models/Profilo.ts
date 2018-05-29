@@ -3,7 +3,8 @@ export class Profilo {
   nome: string;
   cognome: string;
   sesso: string;
-  location: string;
+  citta: string;
+  nickname: string;
   immagine: string;
   
 }
