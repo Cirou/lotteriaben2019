@@ -33,12 +33,14 @@ import { ListviewComponent } from './components/listview/listview.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
+import { LoaderComponent } from './components/loader/loader.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { GroupService } from './services/group.service';
 import { FoodService } from './services/food.service';
+import { LoaderService } from './services/loader.service';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { FoodService } from './services/food.service';
     DrawerComponent,
     ListviewComponent,
     CibiDialogComponent,
+    LoaderComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -74,7 +77,8 @@ import { FoodService } from './services/food.service';
     AuthService,
     UserService,
     GroupService,
-    FoodService
+    FoodService,
+    LoaderService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],

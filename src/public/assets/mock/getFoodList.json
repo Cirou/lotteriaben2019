@@ -1,0 +1,52 @@
+[
+    {
+        "id": "1",
+        "nome": "pizza",
+        "descrizione": "Pizza"
+    },
+    {
+        "id": "2",
+        "nome": "panino",
+        "descrizione": "Panino"
+    },
+    {
+        "id": "3",
+        "nome": "carne",
+        "descrizione": "Carne"
+    },
+    {
+        "id": "4",
+        "nome": "pizza",
+        "descrizione": "Pesce"
+    },
+    {
+        "id": "5",
+        "nome": "fastfood",
+        "descrizione": "Fast Food"
+    },
+    {
+        "id": "6",
+        "nome": "vegtariana",
+        "descrizione": "Vegetariana"
+    },
+    {
+        "id": "7",
+        "nome": "vegana",
+        "descrizione": "Vegana"
+    },
+    {
+        "id": "8",
+        "nome": "vegana",
+        "descrizione": "Cinese"
+    },
+    {
+        "id": "9",
+        "nome": "vegana",
+        "descrizione": "Giapponese"
+    },
+    {
+        "id": "10",
+        "nome": "vegana",
+        "descrizione": "Americana"
+    }
+]

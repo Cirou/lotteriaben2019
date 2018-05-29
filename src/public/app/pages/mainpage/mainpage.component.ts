@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-mainpage',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainpageComponent implements OnInit {
 
-  constructor() { }
+  public isLoading:boolean;
+
+  constructor(private loader:LoaderService) { }
 
   ngOnInit() {
+    // this.loader.loading.subscribe(current => this.isLoading = current)
   }
 
 }

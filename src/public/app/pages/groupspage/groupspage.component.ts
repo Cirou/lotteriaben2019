@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../../../models/User';
 import { Gruppo } from '../../../../models/Gruppo';
 import { GroupService } from '../../services/group.service';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-groupspage',
@@ -11,12 +12,16 @@ import { GroupService } from '../../services/group.service';
 })
 export class GroupspageComponent implements OnInit {
 
-  constructor(private userService: UserService, private groupService: GroupService) { }
+  @Output() showLoader = new EventEmitter<boolean>();
+
+  constructor(private userService: UserService, private groupService: GroupService,  private loader: LoaderService) { }
 
   private user:User = new User;
   private elencoGruppi:Gruppo[] = new Array;
 
   ngOnInit() {
+
+    this.loader.showLoader(true);
 
     this.userService.getUserProfile()
     .subscribe(
@@ -36,6 +41,10 @@ export class GroupspageComponent implements OnInit {
         console.log(err);
       });
 
+  }
+
+  ngAfterContentInit(){
+    this.loader.showLoader(false);
   }
 
 }

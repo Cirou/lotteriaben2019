@@ -1,23 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
 import { Chat } from '../../../../models/Chat';
+import { LoaderService } from '../../services/loader.service';
 
 @Component({
   selector: 'app-groupdetailpage',
   templateUrl: './groupdetailpage.component.html',
   styleUrls: ['./groupdetailpage.component.css']
 })
-export class GroupdetailpageComponent implements OnInit {
+export class GroupdetailpageComponent implements OnInit, AfterContentInit {
 
   id: string;
   private sub: any;
   groupDetails: any;
   groupChat: Chat;
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private loader: LoaderService) { }
 
   ngOnInit() {
+
+    this.loader.showLoader(true);
+
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
@@ -48,6 +52,10 @@ export class GroupdetailpageComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  ngAfterContentInit(){
+    this.loader.showLoader(false);
   }
 
 }
