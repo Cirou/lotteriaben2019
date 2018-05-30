@@ -143,15 +143,17 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
       });
 
       dialogRef.afterClosed().subscribe(result => {
-        let selectedCibi = result[0].nome;
-        const listSelected: string[] = new Array;
-        listSelected.push(result[0].id);
-        for (let i = 1; i < result.length; i++) {
-          selectedCibi = selectedCibi + "," + result[i].nome;
-          listSelected.push(result[i].id);
-         }
-         this.cibi = selectedCibi;
-         this.userProfile.elencoCibi = listSelected;
+        if (result !== null && result !== undefined) {
+          let selectedCibi = result[0].nome;
+          const listSelected: string[] = new Array;
+          listSelected.push(result[0].id);
+          for (let i = 1; i < result.length; i++) {
+            selectedCibi = selectedCibi + "," + result[i].nome;
+            listSelected.push(result[i].id);
+           }
+           this.cibi = selectedCibi;
+           this.userProfile.elencoCibi = listSelected;
+        }
         console.log("The dialog was closed");
 
       });
