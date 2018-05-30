@@ -23,7 +23,7 @@ const routes: Routes = [
         { path: 'home', component: GroupspageComponent, outlet: 'sub' },
         { path: 'profile', component: ProfilepageComponent, outlet: 'sub' },
         { path: 'settings', component: SettingspageComponent, outlet: 'sub' },
-        { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'}
+        { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'},
         { path: 'poll', component: PollpageComponent, outlet: 'sub'}
 
       ]
