@@ -9,6 +9,7 @@ import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
+import { PollpageComponent } from  './pages/pollpage/pollpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const routes: Routes = [
         { path: 'profile', component: ProfilepageComponent, outlet: 'sub' },
         { path: 'settings', component: SettingspageComponent, outlet: 'sub' },
         { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'}
+        { path: 'poll', component: PollpageComponent, outlet: 'sub'}
 
       ]
   },

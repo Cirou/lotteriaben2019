@@ -9,7 +9,7 @@
 <hr>
 <div class="row">
   <div class="content col-12">
-    <button class="app-long-button-left" mat-raised-button color="primary">Sondaggio del giorno</button>
+    <button [routerLink]="['/app', { outlets: { sub: ['poll'] }}]" class="app-long-button-left" mat-raised-button color="primary">Sondaggio del giorno</button>
   </div>
 </div>
 

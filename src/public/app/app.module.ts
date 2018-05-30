@@ -22,6 +22,7 @@ import { SettingspageComponent } from './pages/settingspage/settingspage.compone
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
+import { PollpageComponent } from  './pages/pollpage/pollpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -58,7 +59,8 @@ import { LoaderService } from './services/loader.service';
     SettingspageComponent,
     LoginpageComponent,
     GroupspageComponent,
-    GroupdetailpageComponent
+    GroupdetailpageComponent,
+    PollpageComponent
   ],
   imports: [
     RoutingModule,
