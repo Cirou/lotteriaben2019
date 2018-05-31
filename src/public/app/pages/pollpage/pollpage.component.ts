@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { GroupService } from '../../services/group.service';
 
 @Component({
   selector: 'app-pollpage',
@@ -8,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PollpageComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  private sub: any;
+  pollOfTheDay: any;
+
+  constructor(private route: ActivatedRoute, private groupService: GroupService) { }
 
   ngOnInit() {
+
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    this.pollOfTheDay = this.groupService.getPollOfTheDay(this.id)
+    .subscribe(
+      pollOfTheDay => {
+        this.pollOfTheDay = pollOfTheDay;
+        ;
+        console.log(this.pollOfTheDay);
+      },
+      err => {
+        console.log(err);
+      });
   }
 
 }
