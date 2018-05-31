@@ -25,12 +25,18 @@ export class PollpageComponent implements OnInit {
     .subscribe(
       pollOfTheDay => {
         this.pollOfTheDay = pollOfTheDay;
+        for (let i = 0; i < this.pollOfTheDay.location.length; i++) {
+          this.pollOfTheDay.location[i].percentVoti = (100/6)*this.pollOfTheDay.location[i].voti;
+        }
         ;
         console.log(this.pollOfTheDay);
       },
       err => {
         console.log(err);
       });
+
+      
+
   }
 
 }

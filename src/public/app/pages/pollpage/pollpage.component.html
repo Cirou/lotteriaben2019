@@ -3,10 +3,21 @@
     <h4>
       <b>{{pollOfTheDay.nomeGruppo}}</b>
     </h4>
+    <hr>
+    <p>Sondaggio del {{pollOfTheDay.data}}</p>
   </div>
 </div>
 
-<p>
-  pollpage works!
-</p>
-<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<br>
+<a *ngFor="let item of pollOfTheDay.location; let i = index">
+  <div class="row">
+    <div class="content col-5">
+      <p class="primary">{{item.nome}}</p>
+      <mat-progress-bar value="{{item.percentVoti}}" type="success"></mat-progress-bar>
+    </div>
+    <div class="content col-2 margin-top-20">
+      <p class="primary"> {{item.voti}} voti</p>
+    </div>
+  </div>
+  <br>
+</a>
