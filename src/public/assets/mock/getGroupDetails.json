@@ -1,5 +1,8 @@
 {
     "id": "1",
     "nome": "Fuori Orario",
-    "descrizione": "Gruppo del progetto Fuori Orario"
+    "descrizione": "Gruppo del progetto Fuori Orario",
+    "membri":[
+        "1", "2", "3", "4", "5", "6", "7", "8", "9"
+    ]
 }

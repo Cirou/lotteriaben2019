@@ -12,6 +12,8 @@ export class PollpageComponent implements OnInit {
   id: string;
   private sub: any;
   pollOfTheDay: any;
+  groupDetails: any;
+  totaleMembri: number;
 
   constructor(private route: ActivatedRoute, private groupService: GroupService) { }
 
@@ -21,21 +23,30 @@ export class PollpageComponent implements OnInit {
       this.id = params['id'];
     });
 
-    this.pollOfTheDay = this.groupService.getPollOfTheDay(this.id)
+    this.groupDetails = this.groupService.getGroupDetails(this.id)
     .subscribe(
-      pollOfTheDay => {
-        this.pollOfTheDay = pollOfTheDay;
-        for (let i = 0; i < this.pollOfTheDay.location.length; i++) {
-          this.pollOfTheDay.location[i].percentVoti = (100/6)*this.pollOfTheDay.location[i].voti;
-        }
-        ;
-        console.log(this.pollOfTheDay);
+      groupDetails => {
+        this.groupDetails = groupDetails;
+        this.totaleMembri = groupDetails.membri.length;
+        console.log(this.groupDetails);
+
+        this.pollOfTheDay = this.groupService.getPollOfTheDay(this.id)
+        .subscribe(
+          pollOfTheDay => {
+            this.pollOfTheDay = pollOfTheDay;
+            for (let i = 0; i < this.pollOfTheDay.location.length; i++) {
+              this.pollOfTheDay.location[i].percentVoti = (100/this.totaleMembri)*this.pollOfTheDay.location[i].voti;
+            }
+            console.log(this.pollOfTheDay);
+          },
+          err => {
+            console.log(err);
+          });
+
       },
       err => {
         console.log(err);
       });
-
-      
 
   }
 
