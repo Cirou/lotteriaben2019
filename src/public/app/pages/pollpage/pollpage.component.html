@@ -8,16 +8,19 @@
   </div>
 </div>
 
-<br>
 <a *ngFor="let item of pollOfTheDay.location; let i = index">
   <div class="row">
-    <div class="content col-5">
-      <p class="primary">{{item.nome}}</p>
+    <div class="content col-6">
+      <p class="primary">{{item.nome}}
       <mat-progress-bar value="{{item.percentVoti}}" type="success"></mat-progress-bar>
+    </p>
     </div>
-    <div class="content col-2 margin-top-20">
+    <div class="content col-5 margin-top-20">
       <p class="primary"> {{item.voti}} voti</p>
     </div>
   </div>
-  <br>
 </a>
+
+<mat-form-field class="app-full-width" (click)="openDialog()">
+    <input matInput placeholder=" + Aggiungi location" [(ngModel)]="locali" >
+</mat-form-field>

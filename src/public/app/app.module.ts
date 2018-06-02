@@ -35,6 +35,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
 import { LoaderComponent } from './components/loader/loader.component';
+import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -52,6 +53,7 @@ import { LoaderService } from './services/loader.service';
     ListviewComponent,
     CibiDialogComponent,
     LoaderComponent,
+    LocationDialogComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -84,7 +86,7 @@ import { LoaderService } from './services/loader.service';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent]
 })
 export class AppModule {
 

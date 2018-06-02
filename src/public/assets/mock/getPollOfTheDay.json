@@ -6,7 +6,7 @@
         {
             "id": "1",
             "nome": "ICHEF",
-            "voti": "3"
+            "voti": "5"
         },
         {
             "id": "2",
@@ -16,7 +16,7 @@
         {
             "id": "3",
             "nome": "AMABILE",
-            "voti": "2"
+            "voti": "3"
         }
     ]
 }
