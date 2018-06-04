@@ -138,7 +138,8 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
         width: "600px",
         data: {
           animal: "panda",
-          elencoCompleto: this.elencoCibiCompleto
+          elencoCompleto: this.elencoCibiCompleto,
+          cibi: this.userProfile.elencoCibi
         }
       });
 

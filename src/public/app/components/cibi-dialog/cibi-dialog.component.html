@@ -1,5 +1,5 @@
 <h1 mat-dialog-title>Cibi Preferiti</h1>
-<div mat-dialog-content>
+<div mat-dialog-content class="listibi">
   Seleziona i tuoi cibi preferiti:
   <mat-selection-list #cibi>
     <mat-list-option (click)="onAreaListControlChanged(cibi)" [selected]="cibo.selected" [value]="cibo" *ngFor="let cibo of data.elencoCompleto">

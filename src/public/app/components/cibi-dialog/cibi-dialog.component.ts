@@ -34,6 +34,14 @@ export class CibiDialogComponent implements OnInit {
   }*/
 
   ngOnInit() {
+    for (let i = 0 ; i < this.data.elencoCompleto.length; i++) {
+        for (let j = 0 ; j < this.data.cibi.length; j++) {
+          if (this.data.cibi[j] === this.data.elencoCompleto[i].id) {
+            this.data.elencoCompleto[i].selected = true;
+            break;
+          }
+        }
+    }
 
   }
 
