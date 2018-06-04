@@ -15,6 +15,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   private sub: any;
   groupDetails: any;
   groupChat: Chat;
+  numeroMembri: number;
 
   constructor(private route: ActivatedRoute, private groupService: GroupService, private loader: LoaderService) { }
 
@@ -30,7 +31,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
       .subscribe(
         groupDetails => {
           this.groupDetails = groupDetails;
-          ;
+          this.numeroMembri = groupDetails.membri.length;
           console.log(this.groupDetails);
         },
         err => {

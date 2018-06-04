@@ -1,3 +1,26 @@
-<p>
-  pollpage works!
-</p>
+<div class="row">
+  <div class="content col-12">
+    <h4>
+      <b>{{pollOfTheDay.nomeGruppo}}</b>
+    </h4>
+    <hr>
+    <p>Sondaggio del {{pollOfTheDay.data}}</p>
+  </div>
+</div>
+
+<a *ngFor="let item of pollOfTheDay.location; let i = index">
+  <div class="row">
+    <div class="content col-6">
+      <p class="primary">{{item.nome}}
+      <mat-progress-bar value="{{item.percentVoti}}" type="success"></mat-progress-bar>
+    </p>
+    </div>
+    <div class="content col-5 margin-top-20">
+      <p class="primary"> {{item.voti}} voti</p>
+    </div>
+  </div>
+</a>
+
+<mat-form-field class="app-full-width" (click)="openDialog()">
+    <input matInput placeholder=" + Aggiungi location" [(ngModel)]="locali" >
+</mat-form-field>

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Gruppo } from '../../../models/Gruppo';
 import { Chat } from '../../../models/Chat';
+import { Poll } from '../../../models/Poll';
+import { Location } from '../../../models/Location';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -12,6 +14,8 @@ export class GroupService {
   private gruppo: Gruppo;
   private gruppoUrl: string = 'public/assets/mock/getGroupDetails.json'
   private chatGruppoUrl: string = 'public/assets/mock/getGroupChat.json'
+  private pollUrl: string = 'public/assets/mock/getPollOfTheDay.json'
+  private locationUrl: string = 'public/assets/mock/getLocationList.json'
 
   constructor(private http: Http) { }
 
@@ -26,6 +30,22 @@ export class GroupService {
   getGroupChat(idGruppo:string): Observable<Chat> {
     return this.http
       .get(this.chatGruppoUrl)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  getPollOfTheDay(idGruppo:string): Observable<Poll> {
+    return this.http
+      .get(this.pollUrl)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  getLocationList(idGruppo:string): Observable<Poll> {
+    return this.http
+      .get(this.locationUrl)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Locali Preferiti</h1>
+<div mat-dialog-content>
+  Seleziona il locale preferito:
+  <mat-selection-list #locali>
+    <mat-list-option (click)="onAreaListControlChanged(locali)" [selected]="locale.selected" [value]="locale" *ngFor="let locale of data.elencoCompleto">
+      {{locale.nome}}
+    </mat-list-option>
+  </mat-selection-list>
+
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annulla</button>
+    <button mat-button color="accent" [disabled]="location.selectedOptions.selected.length == 0" [mat-dialog-close]="dataSelected" cdkFocusInitial>Salva</button>
+  </div>
+</div>
