@@ -5,7 +5,10 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-8 text-align-center">
-              <img  class="img-fluid rounded-circle" *ngIf="!userProfile || !userProfile.profilo || !userProfile.profilo.immagine" src="../../../../assets/icons/icon-192x192.png" />
+              <img  class="img-fluid rounded-circle profile-icon" *ngIf="!userProfile || !userProfile.profilo || !userProfile.profilo.immagine" src="../../../../assets/icons/profile-icon-9.png" /><!-- *ngIf="!userProfile || !userProfile.profilo || !userProfile.profilo.immagine"-->
+              <!--<div>
+                  <mat-icon class="edit_icon">edit</mat-icon>
+              </div>-->
               <img  class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine" src={{userProfile.profilo.immagine}} />
             </div>
           </div>
