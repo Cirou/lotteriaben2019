@@ -1,25 +1,67 @@
 <div class="app-container" [class.example-is-mobile]="mobileQuery.matches">
   <mat-toolbar color="primary" class="app-toolbar">
-    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
     <h1 class="app-name">Pausappranzo</h1>
   </mat-toolbar>
 
   <mat-sidenav-container class="app-sidenav-container">
-    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-      <mat-nav-list>
-        <a mat-list-item [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]" *ngFor="let nav of navMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
-      </mat-nav-list>
-      <hr>
-      <mat-nav-list>
-          <a mat-list-item [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]" *ngFor="let nav of navUtilsMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
-          <a mat-list-item [routerLink]="['/logout']" (click)="snav.toggle()">Esci</a>
 
-        </mat-nav-list>
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <div class="container-fluid">
+        <div class="row align-items-center margin-top-10">
+          <div class="col-4">
+            <img class="img-fluid rounded-circle profile-icon" *ngIf="!userProfile || !userProfile.profilo || !userProfile.profilo.immagine"
+              src="../../../../assets/icons/profile-icon-9.png" />
+            <img class="img-fluid rounded-circle" *ngIf="userProfile.profilo.immagine" src={{userProfile.profilo.immagine}} />
+          </div>
+        </div>
+        <div class="row align-items-center margin-top-10">
+          <div class="col-8">
+            <b>{{userProfile.profilo.nome}} {{userProfile.profilo.cognome}}</b>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <mat-nav-list>
+            <mat-list-item *ngFor="let nav of navMenu">
+              <mat-icon class="menu-icon">{{nav.icon}}</mat-icon>
+              <a [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]"  (click)="snav.toggle()">{{nav.descrizione}}</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </div>
+
+        <div class="row">
+          <div class="col-10">
+            <hr>
+          </div>
+        </div>
+
+        <div class="row">
+          <mat-nav-list>
+            <mat-list-item>
+              <mat-icon class="menu-icon">settings</mat-icon>
+              <a [routerLink]="['/app', { outlets: { sub: [nav.routerLink] } }]" *ngFor="let nav of navUtilsMenu" (click)="snav.toggle()">{{nav.descrizione}}</a>
+            </mat-list-item>
+            <mat-list-item>
+              <mat-icon class="menu-icon">exit_to_app</mat-icon>
+              <a [routerLink]="['/logout']" (click)="snav.toggle()">Esci</a>
+            </mat-list-item>
+          </mat-nav-list>
+        </div>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <div class="container-fluid app-main-content">
-          <router-outlet name="sub"></router-outlet>
+        <router-outlet name="sub"></router-outlet>
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>
