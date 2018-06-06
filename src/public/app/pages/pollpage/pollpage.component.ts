@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
+import { FoodService } from '../../services/food.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { LocationDialogComponent } from "../../components/location-dialog/location-dialog.component";
-import { Location } from "../../../../models/Location";
+import { Ristorante } from "../../../../models/Ristorante";
 
 @Component({
   selector: 'app-pollpage',
@@ -20,11 +21,9 @@ export class PollpageComponent implements OnInit {
   elencoLocaliCompleto: any;
   locali: string;
 
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog) { }
 
-
-  constructor(private route: ActivatedRoute, private groupService: GroupService, public dialog: MatDialog) { }
-
-  private elencoLocation: Location[] = new Array;
+  private elencoLocation: Ristorante[] = new Array;
 
   ngOnInit() {
 
@@ -57,7 +56,7 @@ export class PollpageComponent implements OnInit {
           console.log(err);
         });
 
-    this.elencoLocaliCompleto = this.groupService.getLocationList(this.id)
+    this.elencoLocaliCompleto = this.foodService.getFoodPlaces()
       .subscribe(
         elencoLocaliCompleto => {
           this.elencoLocaliCompleto = elencoLocaliCompleto;
@@ -70,8 +69,6 @@ export class PollpageComponent implements OnInit {
 
    openDialog(): void {
       const dialogRef = this.dialog.open(LocationDialogComponent, {
-        height: "400px",
-        width: "600px",
        data: {
           elencoCompleto: this.elencoLocaliCompleto
         } 
