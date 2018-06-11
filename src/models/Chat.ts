@@ -1,9 +1,9 @@
-import { Messaggi } from './Messaggi';
+import { Messaggio } from './Messaggio';
 
 export class Chat {
 
   id: string;
   idGruppo: string;
-  messaggi: Messaggi[];
+  messaggi: Messaggio[];
 
 }

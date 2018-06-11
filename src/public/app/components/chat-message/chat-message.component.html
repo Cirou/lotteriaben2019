@@ -1,0 +1,21 @@
+<div class="row chat-message-box" [ngClass]="{'justify-content-end': message.autore.id == loggedUser.id}">
+  <div class="col-9">
+    <div class="row align-items-center">
+      <div *ngIf="!(message.autore.id == loggedUser.id)" class="col-2 chat-image">
+        <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.autore.profilo || !message.autore.profilo.immagine"
+          src="../../../../assets/icons/profile-icon-9.png" />
+        <img class="img-fluid rounded-circle" *ngIf="message.autore.profilo.immagine" src={{message.autore.profilo.immagine}} />
+      </div>
+      <div class="col-10">
+        <div class="chat-message" [ngClass]="{'float-right': message.autore.id == loggedUser.id}">
+          <b>{{message.autore.profilo.nome}}</b><br>
+          {{message.messaggio}}</div>
+      </div>
+      <div *ngIf="message.autore.id == loggedUser.id" class="col-2 chat-image">
+        <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.autore.profilo || !message.autore.profilo.immagine"
+          src="../../../../assets/icons/profile-icon-9.png" />
+        <img class="img-fluid rounded-circle" *ngIf="message.autore.profilo.immagine" src={{message.autore.profilo.immagine}} />
+      </div>
+    </div>
+  </div>
+</div>

@@ -38,6 +38,7 @@ import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.compon
 import { LoaderComponent } from './components/loader/loader.component';
 import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
+import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -66,7 +67,8 @@ import { LoaderService } from './services/loader.service';
     GroupspageComponent,
     GroupdetailpageComponent,
     PollpageComponent,
-    GroupsearchpageComponent
+    GroupsearchpageComponent,
+    ChatMessageComponent
   ],
   imports: [
     RoutingModule,
