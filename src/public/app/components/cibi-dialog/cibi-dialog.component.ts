@@ -9,7 +9,7 @@ import { Cibo } from "../../../../models/Cibo";
 })
 export class CibiDialogComponent implements OnInit {
 
-  private dataSelected: Cibo[] = new Array;
+  dataSelected: Cibo[] = new Array;
   /*private cibiSelected = {
     selectedCibi : ""
   };*/

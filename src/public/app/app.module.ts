@@ -36,6 +36,7 @@ import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
+import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -54,6 +55,7 @@ import { LoaderService } from './services/loader.service';
     CibiDialogComponent,
     LoaderComponent,
     LocationDialogComponent,
+    AlertpopupComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,

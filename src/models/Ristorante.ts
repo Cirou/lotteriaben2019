@@ -7,10 +7,10 @@ export class Ristorante {
   contatti: {
     email: string;
     telefono: string;
-  }
+  };
   posizione: {
     x: string;
     y: string;
-  }
+  };
 
 }

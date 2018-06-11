@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 
-import * as async from "async";
-import * as request from "request";
-import { Response, Request, NextFunction } from "express";
+import * as async from 'async';
+import * as request from 'request';
+import { Response, Request, NextFunction } from 'express';
 
 
 /**
@@ -10,5 +10,5 @@ import { Response, Request, NextFunction } from "express";
  * List of API examples.
  */
 export let getApi = (req: Request, res: Response) => {
-  res.send({"response": "OK"});
+  res.send({'response': 'OK'});
 };

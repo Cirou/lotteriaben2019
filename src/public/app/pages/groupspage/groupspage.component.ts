@@ -16,8 +16,8 @@ export class GroupspageComponent implements OnInit {
 
   constructor(private userService: UserService, private groupService: GroupService,  private loader: LoaderService) { }
 
-  private user:User = new User;
-  private elencoGruppi:Gruppo[] = new Array;
+  user:User = new User;
+  elencoGruppi:Gruppo[] = new Array;
 
   ngOnInit() {
 

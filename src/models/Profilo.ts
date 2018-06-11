@@ -6,5 +6,5 @@ export class Profilo {
   citta: string;
   nickname: string;
   immagine: string;
-  
+
 }

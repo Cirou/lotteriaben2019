@@ -15,48 +15,17 @@ import { LoaderService } from "../../services/loader.service";
   styleUrls: ["./profilepage.component.css"]
 })
 export class ProfilepageComponent implements OnInit, AfterContentInit {
-  // private user  = {
-  //     "id": 1,
-  //     "username": "luisa",
-  //     "email": "luisa.somma@accenture.com",
-  //     "nome": "luisa",
-  //     "cognome": "somma",
-  //     "img": "",
-  //     "elencoGruppi": [
-  //       {
-  //         "id": 1,
-  //         "nome": "fuoriorario",
-  //         "descrizione": "Fuori Orario",
-  //         "routerLink" : "fuoriorario"
-  //       },
-  //       {
-  //         "id": 2,
-  //         "nome": "genialloyd",
-  //         "descrizione": "Genialloyd",
-  //         "routerLink" : "genialloyd"
-  //       }
-  //     ],
-  //     "elencoCibi" : [
-  //       {
-  //         "id": 1,
-  //         "nome": "Pizza"
-  //       },
-  //       {
-  //         "id": 2,
-  //         "nome": "carne"
-  //       }
-  //     ]
-  //   };
-  private gruppi = "";
-  private cibi = "";
-  public disabledField = "true";
+  
+  gruppi = "";
+  cibi = "";
+  disabledField = "true";
+  
+  userProfile: User = new User;
+  elencoGruppi: Gruppo[] = new Array;
+  elencoCibiUtente: Cibo[] = new Array;
+  elencoCibiCompleto: Cibo[] = new Array;
 
   constructor(private userService: UserService, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog, private loader: LoaderService) { }
-
-  private userProfile: User = new User;
-  private elencoGruppi: Gruppo[] = new Array;
-  private elencoCibiUtente: Cibo[] = new Array;
-  private elencoCibiCompleto: Cibo[] = new Array;
 
   ngOnInit() {
     // this.user = UserService.getUserProfile(userId);

@@ -11,7 +11,7 @@ import { UserService } from "../../services/user.service";
 export class DrawerComponent implements OnInit {
 
   title = "app";
-  private userProfile: User = new User;
+  userProfile: User = new User;
   mobileQuery: MediaQueryList;
 
   navMenu = [

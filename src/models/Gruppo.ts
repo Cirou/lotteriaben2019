@@ -4,5 +4,5 @@ export class Gruppo {
   descrizione: string;
   id: string;
   membri: string[];
-  
+
 }
