@@ -69,6 +69,7 @@ export class PollpageComponent implements OnInit {
 
    openDialog(): void {
       const dialogRef = this.dialog.open(LocationDialogComponent, {
+       height: '70%',
        data: {
           elencoCompleto: this.elencoLocaliCompleto
         } 
