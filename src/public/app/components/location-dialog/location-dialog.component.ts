@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { Location } from "../../../../models/Location";
+import { Ristorante } from "../../../../models/Ristorante";
 
 @Component({
   selector: 'app-location-dialog',
@@ -9,17 +9,17 @@ import { Location } from "../../../../models/Location";
 })
 export class LocationDialogComponent implements OnInit {
 
-  private dataSelected: Location[] = new Array;
+  private dataSelected: Ristorante[] = new Array;
 
-  constructor( public dialogRef: MatDialogRef<LocationDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
+  constructor(public dialogRef: MatDialogRef<LocationDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
-    onNoClick(): void {
+    onAnnulla(): void {
       this.dialogRef.close();
     }
 
     onAreaListControlChanged(list: any) {
       this.dataSelected = list.selectedOptions.selected.map((item: any) => item.value);
+      console.log(this.dataSelected);
     }
 
 

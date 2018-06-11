@@ -36,3 +36,7 @@
     display: block;
     min-height: 100%;
   }
+
+  .menu-icon {
+    margin-right: 5px;
+  }

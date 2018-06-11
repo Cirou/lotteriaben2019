@@ -1,5 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { User } from "../../../../models/User";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-drawer',
@@ -9,7 +11,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 export class DrawerComponent implements OnInit {
 
   title = "app";
-
+  private userProfile: User = new User;
   mobileQuery: MediaQueryList;
 
   navMenu = [
@@ -17,19 +19,28 @@ export class DrawerComponent implements OnInit {
       "id": 1,
       "nome": "home",
       "descrizione": "I miei gruppi",
-      "routerLink" :"home"
+      "routerLink" :"home",
+      "icon":"groups"
     },
     {
       "id": 2,
       "nome": "profilo",
       "descrizione": "Profilo",
-      "routerLink" :"profile"
+      "routerLink" :"profile",
+      "icon":"person"
+    },
+    {
+      "id": 3,
+      "nome": "search",
+      "descrizione": "Cerca",
+      "routerLink" :"search",
+      "icon":"search"
     }
   ];
 
   navUtilsMenu = [
     {
-      "id": 3,
+      "id": 4,
       "nome": "settings",
       "descrizione": "Impostazioni",
       "routerLink" :"settings"
@@ -38,7 +49,7 @@ export class DrawerComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private userService: UserService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -48,8 +59,15 @@ export class DrawerComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  ngOnInit(): void {
-
+  ngOnInit() {
+    this.userService.getUserProfile()
+      .subscribe(
+        userInfo => {
+          this.userProfile = userInfo;
+        },
+        err => {
+          console.log(err);
+        });
   }
 
 }
