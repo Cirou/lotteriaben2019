@@ -23,6 +23,7 @@ import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
 import { PollpageComponent } from  './pages/pollpage/pollpage.component';
+import { GroupsearchpageComponent } from  './pages/groupsearchpage/groupsearchpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -64,7 +65,8 @@ import { LoaderService } from './services/loader.service';
     LoginpageComponent,
     GroupspageComponent,
     GroupdetailpageComponent,
-    PollpageComponent
+    PollpageComponent,
+    GroupsearchpageComponent
   ],
   imports: [
     RoutingModule,
