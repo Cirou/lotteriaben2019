@@ -23,7 +23,7 @@ import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
 import { PollpageComponent } from  './pages/pollpage/pollpage.component';
-import { GroupsearchpageComponent } from  './pages/groupsearchpage/groupsearchpage.component';
+import { SearchpageComponent } from  './pages/searchpage/searchpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -46,6 +46,7 @@ import { UserService } from './services/user.service';
 import { GroupService } from './services/group.service';
 import { FoodService } from './services/food.service';
 import { LoaderService } from './services/loader.service';
+import { SearchService } from './services/search.service';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,7 @@ import { LoaderService } from './services/loader.service';
     GroupspageComponent,
     GroupdetailpageComponent,
     PollpageComponent,
-    GroupsearchpageComponent,
+    SearchpageComponent,
     ChatMessageComponent
   ],
   imports: [
@@ -88,7 +89,8 @@ import { LoaderService } from './services/loader.service';
     UserService,
     GroupService,
     FoodService,
-    LoaderService
+    LoaderService,
+    SearchService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],

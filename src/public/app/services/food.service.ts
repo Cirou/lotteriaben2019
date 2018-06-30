@@ -5,7 +5,6 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { map, catchError } from 'rxjs/operators';
-import { RiskExceptionConfigurationType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
 
 @Injectable()
 export class FoodService {
