@@ -17,7 +17,7 @@ export class SearchbarComponent implements OnInit {
   ngOnInit() {
   }
 
-  onUserInput(story: string) {
+  onUserInput() {
     if(!this.searchField.invalid){
       this.searchString.emit(this.searchField.value);
     }
