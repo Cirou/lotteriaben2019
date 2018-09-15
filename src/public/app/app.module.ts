@@ -35,6 +35,7 @@ import { ListviewComponent } from './components/listview/listview.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { SearchbarComponent } from './components/searchbar/searchbar.component';
 import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
+import { TipDialogComponent } from './components/tip-dialog/tip-dialog.component';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
@@ -56,6 +57,7 @@ import { SearchService } from './services/search.service';
     DrawerComponent,
     ListviewComponent,
     CibiDialogComponent,
+    TipDialogComponent,
     LoaderComponent,
     LocationDialogComponent,
     AlertpopupComponent,
@@ -94,7 +96,7 @@ import { SearchService } from './services/search.service';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent]
 })
 export class AppModule {
 
