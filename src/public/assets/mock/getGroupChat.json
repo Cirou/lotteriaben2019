@@ -1,194 +1,51 @@
 {
     "id": "1",
-    "idGruppo": "1",
+    "nome": "Fuori Orario",
+    "descrizione": "Gruppo del progetto Fuori Orario",
+    "membri":[
+        "1", "2", "3", "4", "5", "6", "7", "8", "9"
+    ],
     "messaggi": [
         {
             "id": "1",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "1",
-                "email": "ciroaiello@live.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "Cirou",
-                    "nome": "Ciro",
-                    "cognome": "Aiello",
-                    "sesso": "M",
-                    "citta": "Napoli",
-                    "immagine": "http://thumbnail.accenture.com/875976.jpg"
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
+            "autore": "1",
             "messaggio": "ciao"
         },
         {
             "id": "2",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "2",
-                "email": "maria.aiello@accenture.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "Mariaie",
-                    "nome": "Maria",
-                    "cognome": "Aiello",
-                    "sesso": "F",
-                    "citta": "Napoli",
-                    "immagine": ""
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
+            "autore": "2",
             "messaggio": "buongiorno"
         },
         {
             "id": "2",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "2",
-                "email": "luisa.somma@accenture.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "LuisaS",
-                    "nome": "Luisa",
-                    "cognome": "Somma",
-                    "sesso": "F",
-                    "citta": "Napoli",
-                    "immagine": ""
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
+            "autore": "2",               
             "messaggio": "ciao a tutti"
         },
         {
             "id": "3",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "1",
-                "email": "ciroaiello@live.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "Cirou",
-                    "nome": "Ciro",
-                    "cognome": "Aiello",
-                    "sesso": "M",
-                    "citta": "Napoli",
-                    "immagine": "http://thumbnail.accenture.com/875976.jpg"
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
+            "autore": "1", 
             "messaggio": "dove si mangia oggi?"
         },
         {
             "id": "4",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "2",
-                "email": "luisa.somma@accenture.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "LuisaS",
-                    "nome": "Luisa",
-                    "cognome": "Somma",
-                    "sesso": "F",
-                    "citta": "Napoli",
-                    "immagine": ""
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
+            "autore": "2",
             "messaggio": "boh, vediamo"
         },
         {
             "id": "5",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "1",
-                "email": "ciroaiello@live.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "Cirou",
-                    "nome": "Ciro",
-                    "cognome": "Aiello",
-                    "sesso": "M",
-                    "citta": "Napoli",
-                    "immagine": "http://thumbnail.accenture.com/875976.jpg"
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
-            "messaggio": "creo il sondaggio"
+            "autore": "1",
+            "messaggio": "rispondiamo al sondaggio"
         },
         {
             "id": "6",
             "timestamp": "12123415500",
-            "autore": {
-                "id": "2",
-                "email": "luisa.somma@accenture.com",
-                "password": "scemoChiLegge",
-                "profilo": {
-                    "nickname": "LuisaS",
-                    "nome": "Luisa",
-                    "cognome": "Somma",
-                    "sesso": "F",
-                    "citta": "Napoli",
-                    "immagine": ""
-                },
-                "elencoGruppi": [
-                    "1",
-                    "2",
-                    "3"
-                ],
-                "elencoCibi": [
-                    "1",
-                    "2"
-                ]
-            },
+            "autore": "2",  
             "messaggio": "ok"
         }
     ]
