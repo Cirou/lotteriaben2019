@@ -5,8 +5,9 @@ import { UserTip } from '../../../../models/UserTip';
 import { Gruppo } from '../../../../models/Gruppo';
 import { GroupService } from '../../services/group.service';
 import { LoaderService } from '../../services/loader.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { TipDialogComponent } from "../../components/tip-dialog/tip-dialog.component";
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { TipDialogComponent } from '../../components/tip-dialog/tip-dialog.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-groupspage',
@@ -17,7 +18,7 @@ export class GroupspageComponent implements OnInit {
 
   @Output() showLoader = new EventEmitter<boolean>();
 
-  constructor(private userService: UserService, private groupService: GroupService,  private loader: LoaderService, public dialog: MatDialog) { }
+  constructor(private userService: UserService, private groupService: GroupService,  private loader: LoaderService, public dialog: MatDialog, private cookieService: CookieService) { }
 
   user:User = new User;
   elencoGruppi:Gruppo[] = new Array;
@@ -50,7 +51,7 @@ export class GroupspageComponent implements OnInit {
         userTip => {
           this.tip = userTip;
           console.log(this.tip);
-          if(this.tip.id != null){
+          if(this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true'){
             this.openTipPopup();
           }
         },
@@ -66,6 +67,7 @@ export class GroupspageComponent implements OnInit {
   }
 
   openTipPopup(){
+    this.cookieService.set('pausappranzo_daily_login_done', 'true', 1);
     const dialogRef = this.dialog.open(TipDialogComponent, {
       height: "400px",
       width: "600px",
