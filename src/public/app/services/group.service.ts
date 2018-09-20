@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Gruppo } from '../../../models/Gruppo';
-import { Chat } from '../../../models/Chat';
-import { Poll } from '../../../models/Poll';
+import { Group } from '../../../models/Group';
+import { Message } from '../../../models/Message';
+import { Votation } from '../../../models/Votation';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -10,14 +10,14 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class GroupService {
 
-  private gruppo: Gruppo;
+  private gruppo: Group;
   private gruppoUrl: string = 'public/assets/mock/getGroupDetails.json'
   private chatGruppoUrl: string = 'public/assets/mock/getGroupChat.json'
   private pollUrl: string = 'public/assets/mock/getPollOfTheDay.json'
 
   constructor(private http: Http) { }
 
-  getGroupDetails(idGruppo:string): Observable<Gruppo> {
+  getGroupDetails(idGruppo:number): Observable<Group> {
     return this.http
       .get(this.gruppoUrl)
       .pipe(
@@ -25,7 +25,7 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getGroupChat(idGruppo:string): Observable<Chat> {
+  getGroupMessages(idGruppo:number): Observable<Message[]> {
     return this.http
       .get(this.chatGruppoUrl)
       .pipe(
@@ -33,7 +33,7 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getPollOfTheDay(idGruppo:string): Observable<Poll> {
+  getPollOfTheDay(idGruppo:number): Observable<Votation> {
     return this.http
       .get(this.pollUrl)
       .pipe(

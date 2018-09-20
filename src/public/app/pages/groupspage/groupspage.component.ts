@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../../../models/User';
-import { UserTip } from '../../../../models/UserTip';
-import { Gruppo } from '../../../../models/Gruppo';
+import { Tip } from '../../../../models/Tip';
+import { Group } from '../../../../models/Group';
 import { GroupService } from '../../services/group.service';
 import { LoaderService } from '../../services/loader.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
@@ -21,8 +21,8 @@ export class GroupspageComponent implements OnInit {
   constructor(private userService: UserService, private groupService: GroupService,  private loader: LoaderService, public dialog: MatDialog, private cookieService: CookieService) { }
 
   user:User = new User;
-  elencoGruppi:Gruppo[] = new Array;
-  tip:UserTip = new UserTip;
+  elencoGruppi:Group[] = new Array;
+  tip:Tip = new Tip;
 
   ngOnInit() {
 
@@ -32,13 +32,11 @@ export class GroupspageComponent implements OnInit {
     .subscribe(
       userInfo => {
         this.user = userInfo;
-        this.user.elencoGruppi.forEach(element => {
-          this.groupService.getGroupDetails(element).subscribe(
+          this.groupService.getGroupDetails(this.user.id).subscribe(
             groupInfo => {
               this.elencoGruppi.push(groupInfo)
             }
           );
-        });
         ;
         console.log(this.user);
       },
@@ -48,8 +46,8 @@ export class GroupspageComponent implements OnInit {
 
       this.userService.getUserLoginTip()
       .subscribe(
-        userTip => {
-          this.tip = userTip;
+        Tip => {
+          this.tip = Tip;
           console.log(this.tip);
           if(this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true'){
             this.openTipPopup();

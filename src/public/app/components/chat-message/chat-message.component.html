@@ -1,20 +1,20 @@
-<div class="row chat-message-box" [ngClass]="{'justify-content-end': message.autore.id == loggedUser.id}">
+<div class="row chat-message-box" [ngClass]="{'justify-content-end': message.user_id.id == loggedUser.id}">
   <div class="col-9">
     <div class="row align-items-center">
-      <div *ngIf="!(message.autore.id == loggedUser.id)" class="col-2 chat-image">
-        <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.autore.profilo || !message.autore.profilo.immagine"
+      <div *ngIf="!(message.user_id.id == loggedUser.id)" class="col-2 chat-image">
+        <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.user_id.profilo || !message.user_id.immagine"
           src="../../../../assets/icons/profile-icon-9.png" />
-        <img class="img-fluid rounded-circle" *ngIf="message.autore.profilo.immagine" src={{message.autore.profilo.immagine}} />
+        <img class="img-fluid rounded-circle" *ngIf="message.user_id.immagine" src={{message.user_id.immagine}} />
       </div>
       <div class="col-10">
-        <div class="chat-message" [ngClass]="{'float-right': message.autore.id == loggedUser.id}">
-          <b>{{message.autore.profilo.nome}}</b><br>
-          {{message.messaggio}}</div>
+        <div class="chat-message" [ngClass]="{'float-right': message.user_id.id == loggedUser.id}">
+          <b>{{message.user_id.nome}}</b><br>
+          {{message.text}}</div>
       </div>
-      <div *ngIf="message.autore.id == loggedUser.id" class="col-2 chat-image">
-        <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.autore.profilo || !message.autore.profilo.immagine"
+      <div *ngIf="message.user_id.id == loggedUser.id" class="col-2 chat-image">
+        <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.user_id.profilo || !message.user_id.immagine"
           src="../../../../assets/icons/profile-icon-9.png" />
-        <img class="img-fluid rounded-circle" *ngIf="message.autore.profilo.immagine" src={{message.autore.profilo.immagine}} />
+        <img class="img-fluid rounded-circle" *ngIf="message.user_id.immagine" src={{message.user_id.immagine}} />
       </div>
     </div>
   </div>

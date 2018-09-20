@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject, AfterContentInit } from "@angular/core";
 import { UserService } from "../../services/user.service";
 import { User } from "../../../../models/User";
-import { Gruppo } from "../../../../models/Gruppo";
+import { Group } from "../../../../models/Group";
 import { GroupService } from "../../services/group.service";
-import { Cibo } from "../../../../models/Cibo";
+import { Food } from "../../../../models/Food";
 import { FoodService } from "../../services/food.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { CibiDialogComponent } from "../../components/cibi-dialog/cibi-dialog.component";
@@ -15,15 +15,15 @@ import { LoaderService } from "../../services/loader.service";
   styleUrls: ["./profilepage.component.css"]
 })
 export class ProfilepageComponent implements OnInit, AfterContentInit {
-  
+
   gruppi = "";
   cibi = "";
   disabledField = "true";
-  
+
   userProfile: User = new User;
-  elencoGruppi: Gruppo[] = new Array;
-  elencoCibiUtente: Cibo[] = new Array;
-  elencoCibiCompleto: Cibo[] = new Array;
+  elencoGruppi: Group[] = new Array;
+  elencoCibiUtente: Food[] = new Array;
+  elencoCibiCompleto: Food[] = new Array;
 
   constructor(private userService: UserService, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog, private loader: LoaderService) { }
 
@@ -35,50 +35,31 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
       .subscribe(
         userInfo => {
           this.userProfile = userInfo;
-          this.userProfile.elencoGruppi.forEach(element => {
-            this.groupService.getGroupDetails(element).subscribe(
-              groupInfo => {
-                this.elencoGruppi.push(groupInfo);
-                if (this.gruppi === "") {
-                  this.gruppi = groupInfo.nome;
-                } else {
-                  this.gruppi = this.gruppi + "," + groupInfo.nome;
-                }
-              }
-            );
-          });
-          this.userProfile.elencoCibi.forEach(element => {
-            this.foodService.getFoodDetails(element).subscribe(
-              foodInfo => {
-                this.elencoCibiUtente.push(foodInfo);
-                if (this.cibi === "") {
-                  this.cibi = foodInfo.nome;
-                } else {
-                  this.cibi = this.cibi + "," + foodInfo.nome;
-                }
-              }
-            );
-          });
-          console.log(this.userProfile);
-          /*if (this.elencoGruppi !== null && this.elencoGruppi !== undefined && this.elencoGruppi.length > 0) {
-            this.gruppi = this.elencoGruppi[0].nome;
-           for (let i = 1; i < this.elencoGruppi.length; i++) {
-             this.gruppi = this.gruppi + "," + this.elencoGruppi[i].nome;
-           }
-          }*/
-          /*if (this.user.elencoGruppi !== null && this.user.elencoGruppi !== undefined && this.user.elencoGruppi.length > 0) {
-            this.gruppi = this.user.elencoGruppi[0].nome;
-           for (let i = 1; i < this.user.elencoGruppi.length; i++) {
-             this.gruppi = this.gruppi + "," + this.user.elencoGruppi[i].nome;
-           }
-          }*/
 
-          /*if (this.user.elencoCibi !== null && this.user.elencoCibi !== undefined && this.user.elencoCibi.length > 0) {
-           this.cibi = this.user.elencoCibi[0].nome;
-          for (let i = 1; i < this.user.elencoCibi.length; i++) {
-            this.cibi = this.cibi + "," + this.user.elencoCibi[i].nome;
-           }
-          }*/
+          this.groupService.getGroupDetails(this.userProfile.id).subscribe(
+            groupInfo => {
+              this.elencoGruppi.push(groupInfo);
+              if (this.gruppi === "") {
+                this.gruppi = groupInfo.nome;
+              } else {
+                this.gruppi = this.gruppi + "," + groupInfo.nome;
+              }
+            }
+          );
+
+          this.foodService.getFoodDetails(this.userProfile.id).subscribe(
+            foodInfo => {
+              this.elencoCibiUtente.push(foodInfo);
+              if (this.cibi === "") {
+                this.cibi = foodInfo.nome;
+              } else {
+                this.cibi = this.cibi + "," + foodInfo.nome;
+              }
+            }
+          );
+
+          console.log(this.userProfile);
+
         },
         err => {
           console.log(err);
@@ -108,7 +89,7 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
         data: {
           animal: "panda",
           elencoCompleto: this.elencoCibiCompleto,
-          cibi: this.userProfile.elencoCibi
+          cibi: this.userProfile.foods
         }
       });
 
@@ -120,9 +101,9 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
           for (let i = 1; i < result.length; i++) {
             selectedCibi = selectedCibi + "," + result[i].nome;
             listSelected.push(result[i].id);
-           }
-           this.cibi = selectedCibi;
-           this.userProfile.elencoCibi = listSelected;
+          }
+          this.cibi = selectedCibi;
+          //this.userProfile.foods = listSelected;
         }
         console.log("The dialog was closed");
 

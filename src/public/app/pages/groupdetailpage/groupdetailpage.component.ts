@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
-import { Chat } from '../../../../models/Chat';
+import { Message } from '../../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
 
 @Component({
@@ -11,10 +11,10 @@ import { LoaderService } from '../../services/loader.service';
 })
 export class GroupdetailpageComponent implements OnInit, AfterContentInit {
 
-  id: string;
+  id: number;
   private sub: any;
   groupDetails: any;
-  groupChat: Chat;
+  groupMessages: Message[];
   numeroMembri: number;
 
   constructor(private route: ActivatedRoute, private groupService: GroupService, private loader: LoaderService) { }
@@ -31,17 +31,17 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
       .subscribe(
         groupDetails => {
           this.groupDetails = groupDetails;
-          this.numeroMembri = groupDetails.membri.length;
+          this.numeroMembri = groupDetails.users.length;
           console.log(this.groupDetails);
         },
         err => {
           console.log(err);
         });
 
-    this.groupService.getGroupChat(this.id)
+    this.groupService.getGroupMessages(this.id)
       .subscribe(
-        groupChat => {
-          this.groupChat = groupChat;
+        groupMessages => {
+          this.groupMessages = groupMessages;
           ;
           console.log(this.groupDetails);
         },

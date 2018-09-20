@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../../../models/User';
-import { UserTip } from '../../../models/UserTip';
+import { Tip } from '../../../models/Tip';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -27,7 +27,7 @@ export class UserService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getUserLoginTip(): Observable<UserTip>{
+  getUserLoginTip(): Observable<Tip>{
     return this.http
       .get(this.userTipUrl)
       .pipe(

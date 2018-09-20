@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { UserTip } from "../../../../models/UserTip";
+import { Tip } from "../../../../models/Tip";
 
 @Component({
   selector: 'app-tip-dialog',
@@ -9,7 +9,7 @@ import { UserTip } from "../../../../models/UserTip";
 })
 export class TipDialogComponent implements OnInit {
 
-  tip: UserTip = new UserTip;
+  tip: Tip = new Tip;
 
   constructor(
     public dialogRef: MatDialogRef<TipDialogComponent>,

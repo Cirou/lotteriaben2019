@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { Cibo } from "../../../../models/Cibo";
+import { Food } from "../../../../models/Food";
 
 @Component({
   selector: "app-cibi-dialog",
@@ -9,7 +9,7 @@ import { Cibo } from "../../../../models/Cibo";
 })
 export class CibiDialogComponent implements OnInit {
 
-  dataSelected: Cibo[] = new Array;
+  dataSelected: Food[] = new Array;
   /*private cibiSelected = {
     selectedCibi : ""
   };*/

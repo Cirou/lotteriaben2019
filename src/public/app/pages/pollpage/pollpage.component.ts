@@ -4,7 +4,7 @@ import { GroupService } from '../../services/group.service';
 import { FoodService } from '../../services/food.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { LocationDialogComponent } from "../../components/location-dialog/location-dialog.component";
-import { Ristorante } from "../../../../models/Ristorante";
+import { Location } from "../../../../models/Location";
 
 @Component({
   selector: 'app-pollpage',
@@ -13,7 +13,7 @@ import { Ristorante } from "../../../../models/Ristorante";
 })
 export class PollpageComponent implements OnInit {
 
-  id: string;
+  id: number;
   private sub: any;
   pollOfTheDay: any;
   groupDetails: any;
@@ -23,7 +23,7 @@ export class PollpageComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog) { }
 
-  private elencoLocation: Ristorante[] = new Array;
+  private elencoLocation: Location[] = new Array;
 
   ngOnInit() {
 
@@ -35,7 +35,7 @@ export class PollpageComponent implements OnInit {
       .subscribe(
         groupDetails => {
           this.groupDetails = groupDetails;
-          this.totaleMembri = groupDetails.membri.length;
+          this.totaleMembri = groupDetails.users.length;
           console.log(this.groupDetails);
 
           this.pollOfTheDay = this.groupService.getPollOfTheDay(this.id)

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { Ristorante } from "../../../../models/Ristorante";
+import { Location } from "../../../../models/Location";
 
 @Component({
   selector: 'app-location-dialog',
@@ -9,7 +9,7 @@ import { Ristorante } from "../../../../models/Ristorante";
 })
 export class LocationDialogComponent implements OnInit {
 
-  private dataSelected: Ristorante[] = new Array;
+  private dataSelected: Location[] = new Array;
 
   constructor(public dialogRef: MatDialogRef<LocationDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 

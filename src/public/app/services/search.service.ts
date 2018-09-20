@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Gruppo } from '../../../models/Gruppo';
+import { Group } from '../../../models/Group';
 import { User } from '../../../models/User';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
@@ -10,7 +10,7 @@ import { map, catchError } from 'rxjs/operators';
 export class SearchService {
 
   private searchUserUrl: string = 'public/assets/mock/getGroupDetails.json'
-  private searchGruppoUrl: string = 'public/assets/mock/getGroupDetails.json'
+  private searchGroupUrl: string = 'public/assets/mock/getGroupDetails.json'
 
   constructor(private http: Http) { }
 
@@ -22,9 +22,9 @@ export class SearchService {
       catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getGroupsByName(name:string): Observable<Gruppo[]> {
+  getGroupsByName(name:string): Observable<Group[]> {
     return this.http
-      .get(this.searchGruppoUrl)
+      .get(this.searchGroupUrl)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

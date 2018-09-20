@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import { Gruppo } from '../../../../models/Gruppo';
+import { Group } from '../../../../models/Group';
 import { User } from '../../../../models/User';
 
 @Component({
@@ -13,7 +13,7 @@ export class SearchpageComponent implements OnInit {
   constructor(private searchService: SearchService) { }
 
   searchString: string = '';
-  groupList: Gruppo[];
+  groupList: Group[];
   userList: User[];
   
 

@@ -10,7 +10,7 @@ import * as flash from 'express-flash';
 import * as path from 'path';
 import * as passport from 'passport';
 import * as expressValidator from 'express-validator';
-import { createConnection } from 'typeorm';
+import { getConnectionManager } from 'typeorm';
 
 const MongoStore = mongo(session);
 
@@ -26,27 +26,17 @@ import * as contactController from './controllers/contact';
 const app = express();
 const rootPath = path.normalize(__dirname + '/../');
 
-// Connect to SQlite
-createConnection({
-  // configurazione del nostro DB
-  driver: {
-    type: 'sqlite',
-    storage: './db/pausappranzo.db',
-    username: '',
-    password: '',
-    database: 'pausappranzo'
-  },
-
-  // mapping modelli nella directory './models'
+const connectionManager = getConnectionManager();
+const connection = connectionManager.create({
+  type: 'sqlite',
+  database: './db/pausappranzo.db',
+  name : 'pausappranzo',
   entities: [
     __dirname + './models/*.js'
-  ],
+  ]
+});
 
-  // sincronizza i modelli TypeScript con il DB ad ogni avvio.
-  autoSchemaSync: false,
-
-  // ... c'e' un errore
-}).catch(error => console.log(error));
+connection.connect(); // performs connection
 
 // Express configuration
 app.set('port', process.env.PORT || 3000);
@@ -76,7 +66,7 @@ app.post('/contact', contactController.postContact);
  * Primary app routes for Angular will catch all route
  * Keep this one as the last one
  */
-app.get('*', function(req, res) {
+app.get('*', function (req, res) {
   res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
 });
 
