@@ -1,9 +1,9 @@
 import { Component, OnInit, Inject, AfterContentInit } from "@angular/core";
 import { UserService } from "../../services/user.service";
-import { User } from "../../../../models/User";
-import { Group } from "../../../../models/Group";
+import { User } from "../../../models/User";
+import { Group } from "../../../models/Group";
 import { GroupService } from "../../services/group.service";
-import { Food } from "../../../../models/Food";
+import { Food } from "../../../models/Food";
 import { FoodService } from "../../services/food.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { CibiDialogComponent } from "../../components/cibi-dialog/cibi-dialog.component";

@@ -1,6 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { User } from "../../../../models/User";
+import { User } from "../../../models/User";
 import { UserService } from "../../services/user.service";
 
 @Component({

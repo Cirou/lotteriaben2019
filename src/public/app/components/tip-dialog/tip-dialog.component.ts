@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { Tip } from "../../../../models/Tip";
+import { Tip } from "../../../models/Tip";
 
 @Component({
   selector: 'app-tip-dialog',

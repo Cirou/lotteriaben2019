@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../../../models/User';
-import { Tip } from '../../../../models/Tip';
-import { Group } from '../../../../models/Group';
+import { User } from '../../../models/User';
+import { Tip } from '../../../models/Tip';
+import { Group } from '../../../models/Group';
 import { GroupService } from '../../services/group.service';
 import { LoaderService } from '../../services/loader.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';

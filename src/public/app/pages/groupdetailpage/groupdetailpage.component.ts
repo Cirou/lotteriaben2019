@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
-import { Message } from '../../../../models/Message';
+import { Message } from '../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
 
 @Component({

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../../models/User';
-import { Tip } from '../../../models/Tip';
+import { User } from '../../models/User';
+import { Tip } from '../../models/Tip';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 

@@ -4,7 +4,7 @@ import { GroupService } from '../../services/group.service';
 import { FoodService } from '../../services/food.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { LocationDialogComponent } from "../../components/location-dialog/location-dialog.component";
-import { Location } from "../../../../models/Location";
+import { Location } from "../../../models/Location";
 
 @Component({
   selector: 'app-pollpage',

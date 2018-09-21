@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Food } from '../../../models/Food';
-import { Location } from '../../../models/Location';
+import { Food } from '../../models/Food';
+import { Location } from '../../models/Location';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 

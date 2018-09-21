@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import { Group } from '../../../../models/Group';
-import { User } from '../../../../models/User';
+import { Group } from '../../../models/Group';
+import { User } from '../../../models/User';
 
 @Component({
   selector: 'app-searchpage',

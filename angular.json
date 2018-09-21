@@ -17,7 +17,6 @@
             "tsConfig": "src/public//tsconfig.app.json",
             "polyfills": "src/public//polyfills.ts",
             "assets": [
-              "src/assets",
               "src/public/assets",
               "src/public/assets/mock",
               "src/public/favicon.ico",

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { Food } from "../../../../models/Food";
+import { Food } from "../../../models/Food";
 
 @Component({
   selector: "app-cibi-dialog",

@@ -18,9 +18,9 @@ const MongoStore = mongo(session);
 dotenv.config({ path: __dirname + '/../dev.env.example' });
 
 // Controllers (route handlers)
-import * as apiController from './controllers/api';
-import * as userController from './controllers/user';
-import * as contactController from './controllers/contact';
+import * as apiController from './server/controllers/api';
+import * as userController from './server/controllers/user';
+import * as contactController from './server/controllers/contact';
 
 // Create Express server
 const app = express();

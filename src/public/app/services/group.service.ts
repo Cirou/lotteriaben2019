@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Group } from '../../../models/Group';
-import { Message } from '../../../models/Message';
-import { Votation } from '../../../models/Votation';
+import { Group } from '../../models/Group';
+import { Message } from '../../models/Message';
+import { Votation } from '../../models/Votation';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 

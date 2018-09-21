@@ -2,7 +2,7 @@
 	"compileOnSave":true,
     "compilerOptions": {
         "module": "commonjs",
-        "noImplicitAny": true,
+        "noImplicitAny": false,
         "declaration": false,
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Group } from '../../../../models/Group';
+import { Group } from '../../../models/Group';
 
 @Component({
   selector: 'app-listview',
