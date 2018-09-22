@@ -29,11 +29,10 @@ const rootPath = path.normalize(__dirname + '/../');
 const connectionManager = getConnectionManager();
 const connection = connectionManager.create({
   type: 'sqlite',
-  database: './db/pausappranzo.db',
+  database: './server/db/pausappranzo.db',
   name : 'pausappranzo',
-  entities: [
-    __dirname + './models/*.js'
-  ]
+  entities: ['./server/models/*.js'],
+  logging: true
 });
 
 connection.connect(); // performs connection

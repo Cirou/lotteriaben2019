@@ -10,6 +10,7 @@
   "license": "MIT",
   "scripts": {
     "exec": "npm run build && cd dist && node .\\server.js",
+    "exec-be": "npm run build-ts && npm run tslint && cd dist && node .\\server.js",
     "start": "npm run serve",
     "build": "npm run build-ts && npm run tslint && npm run build-ng && npm run copy-assets",
     "serve": "node dist/server.js",
@@ -75,6 +76,7 @@
     "reflect-metadata": "^0.1.9",
     "request": "^2.83.0",
     "rxjs": "^6.1.0",
+    "sqlite3": "^4.0.2",
     "tether": "^1.4.3",
     "typeorm": "^0.2.7",
     "web-animations-js": "^2.3.1",
