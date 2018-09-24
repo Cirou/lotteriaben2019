@@ -24,7 +24,7 @@ dotenv.config({ path: __dirname + '/../dev.env.example' });
 createConnection({
   'type': 'sqlite',
   'database': './server/db/pausappranzo.db',
-  'synchronize': true,
+  'synchronize': false,
   'logging': true,
   'entities': [
     './server/models/*.js'
