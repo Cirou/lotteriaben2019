@@ -13,8 +13,4 @@ export class Group {
   @Column({ name: 'description', type: 'varchar', nullable: true })
   descrizione: string;
 
-  @ManyToMany(type => User, user => user.groups)
-  @JoinTable()
-  users: User[];
-
 }

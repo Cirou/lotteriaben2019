@@ -1,12 +1,6 @@
-import * as async from 'async';
-import * as crypto from 'crypto';
-import * as nodemailer from 'nodemailer';
-import * as passport from 'passport';
 import { User } from '../models/User';
 import { Request, Response, NextFunction } from 'express';
-import { IVerifyOptions } from 'passport-local';
-import { WriteError } from 'mongodb';
-const request = require('express-validator');
+import { getRepository } from 'typeorm';
 
 
 /**
@@ -14,5 +8,7 @@ const request = require('express-validator');
  * Login page.
  */
 export let getUser = (req: Request, res: Response) => {
-  res.send({'response': 'OK'});
+  getRepository(User).findOne().then(user => {
+    res.send({ 'response': 'OK', 'user': user });
+  }).catch(err => { console.log(err); });
 };

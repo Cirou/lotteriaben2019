@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
+import { Location } from './Location';
 
 @Entity('foods')
 export class Food {
@@ -11,5 +12,11 @@ export class Food {
 
   @Column({ name: 'description', type: 'varchar', nullable: true })
   descrizione: string;
+
+  @ManyToMany(type => Location)
+  @JoinTable({
+    name: 'locations_foods'
+  })
+  locations: Location[];
 
 }

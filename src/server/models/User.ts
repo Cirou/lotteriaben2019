@@ -30,11 +30,15 @@ export class User {
   immagine: string;
 
   @ManyToMany(type => Food)
-  @JoinTable()
+  @JoinTable({
+    name: 'users_foods'
+  })
   foods: Food[];
 
-  @ManyToMany(type => Group, groups => groups.users)
-  @JoinTable()
+  @ManyToMany(type => Group)
+  @JoinTable({
+    name: 'users_groups'
+  })
   groups: Group[];
 
 }
