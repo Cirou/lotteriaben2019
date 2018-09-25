@@ -29,13 +29,17 @@ export class User {
   @Column({ name: 'image', type: 'varchar', nullable: true })
   immagine: string;
 
-  @ManyToMany(type => Food)
+  @ManyToMany(type => Food, {
+    eager: true
+  })
   @JoinTable({
     name: 'users_foods'
   })
   foods: Food[];
 
-  @ManyToMany(type => Group)
+  @ManyToMany(type => Group, {
+    eager: true
+  })
   @JoinTable({
     name: 'users_groups'
   })

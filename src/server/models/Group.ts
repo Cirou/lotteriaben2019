@@ -13,4 +13,7 @@ export class Group {
   @Column({ name: 'description', type: 'varchar', nullable: true })
   descrizione: string;
 
+  @ManyToMany(type => User)
+  users: Promise<User[]>;
+
 }

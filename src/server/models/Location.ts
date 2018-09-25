@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Food } from './Food';
 
 @Entity('locations')
 export class Location {
@@ -29,5 +30,10 @@ export class Location {
 
   @Column({ name: 'position_y', type: 'double', nullable: true })
   posizione_y: number;
+
+  @ManyToMany(type => Food, {
+    eager: true
+  })
+  foods: Food[];
 
 }
