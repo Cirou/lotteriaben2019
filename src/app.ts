@@ -23,7 +23,7 @@ dotenv.config({ path: __dirname + '/../dev.env.example' });
 // TypeORM creates connection pools and uses them for your requests
 createConnection({
   'type': 'sqlite',
-  'database': './server/db/pausappranzo.db',
+  'database': '../db/pausappranzo.db',
   'synchronize': false,
   'logging': true,
   'entities': [
