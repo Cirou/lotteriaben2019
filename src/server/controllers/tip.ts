@@ -18,7 +18,7 @@ export let getTip = (req: Request, res: Response) => {
  * retrieves the tip using the given id
  */
 export let getTipMaxId = (req: Request, res: Response) => {
-  getRepository(Tip).createQueryBuilder('tip').select("MAX(tip.id)", "tip").getRawOne().then(tip => {
+  getRepository(Tip).createQueryBuilder('tip').select('MAX(tip.id)', 'tip').getRawOne().then(tip => {
     res.send(tip);
   }).catch(err => { console.log(err); });
 };
