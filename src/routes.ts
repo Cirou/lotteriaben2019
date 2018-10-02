@@ -44,7 +44,7 @@ export const AppRoutes = [
         action: getTip
     },
     {
-        path: '/tip/maxId',
+        path: '/tipmaxid',
         method: 'get',
         action: getTipMaxId
     },
