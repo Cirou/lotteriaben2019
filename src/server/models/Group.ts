@@ -14,6 +14,7 @@ export class Group {
   descrizione: string;
 
   @ManyToMany(type => User)
+  @JoinTable({name: 'users_groups'})
   users: User[];
 
 }

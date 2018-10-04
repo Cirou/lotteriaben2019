@@ -8,7 +8,12 @@ import { getRepository } from 'typeorm';
  * retrieves the group using the given id
  */
 export let getGroup = (req: Request, res: Response) => {
-  getRepository(Group).findByIds(req.params.id).then(group => {
+
+  getRepository(Group)
+  .createQueryBuilder('groups')
+  .leftJoinAndSelect('groups.users', 'users')
+  .where('groups.id = :id', { id: req.params.id })
+  .getMany().then(group => {
     res.send(group);
   }).catch(err => { console.log(err); });
 };
