@@ -13,6 +13,19 @@ export let getGroup = (req: Request, res: Response) => {
   }).catch(err => { console.log(err); });
 };
 
+/**
+ * GET /search/group/:name
+ * retrieves the group using the given name
+ */
+export let getGroupByName = (req: Request, res: Response) => {
+  getRepository(Group).createQueryBuilder()
+    .select()
+    .where('name = :name', { name: req.param.name })
+    .getMany().then(tip => {
+      res.send(tip);
+    }).catch(err => { console.log(err); });
+};
+
 
 /**
  * POST /group
@@ -29,7 +42,7 @@ export let postGroup = (req: Request, res: Response) => {
  * updates the group using the given model and id
  */
 export let putGroup = (req: Request, res: Response) => {
-  getRepository(Group).update({'id' : req.body.id}, req.body).then(updatedUser => {
+  getRepository(Group).update({ 'id': req.body.id }, req.body).then(updatedUser => {
 
     getRepository(Group).findByIds(req.body.id).then(group => {
       res.send(group);

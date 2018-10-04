@@ -8,8 +8,11 @@ import { getRepository } from 'typeorm';
  * retrieves the votation using the given id
  */
 export let getVotation = (req: Request, res: Response) => {
-  getRepository(Votation).findByIds(req.params.id).then(votation => {
-    res.send(votation);
+  getRepository(Votation).createQueryBuilder()
+    .select()
+    .where('group_id = :id', { name: req.params.id })
+    .getMany().then(votation => {
+      res.send(votation);
   }).catch(err => { console.log(err); });
 };
 

@@ -5,9 +5,9 @@ export class Message {
 
   id: number;
 
-  group_id: number;
+  group: Group;
 
-  user_id: User;
+  user: User;
 
   text: string;
 

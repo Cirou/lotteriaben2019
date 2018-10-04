@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 import { Group } from './Group';
 import { User } from './User';
 
@@ -8,13 +8,11 @@ export class Message {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(type => Group)
-  @JoinColumn()
-  group_id: number;
+  @ManyToOne(type => Group)
+  group: Group;
 
-  @OneToOne(type => User)
-  @JoinColumn()
-  user_id: User;
+  @ManyToOne(type => User)
+  user: User;
 
   @Column({ name: 'text', type: 'varchar', nullable: true })
   text: string;

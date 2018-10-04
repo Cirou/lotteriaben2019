@@ -14,6 +14,6 @@ export class Group {
   descrizione: string;
 
   @ManyToMany(type => User)
-  users: Promise<User[]>;
+  users: User[];
 
 }

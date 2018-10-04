@@ -13,6 +13,32 @@ export let getUser = (req: Request, res: Response) => {
   }).catch(err => { console.log(err); });
 };
 
+/**
+ * GET /search/user/:name
+ * retrieves the user using the given name
+ */
+export let getUserByName = (req: Request, res: Response) => {
+  getRepository(User).createQueryBuilder()
+    .select()
+    .where('name = :name', { name: req.params.name })
+    .getMany().then(user => {
+      res.send(user);
+    }).catch(err => { console.log(err); });
+};
+
+/**
+ * GET /search/user/:id
+ * retrieves the user using the given name
+ */
+export let getUserByGroupId = (req: Request, res: Response) => {
+  getRepository(User).createQueryBuilder()
+    .select()
+    .where('name = :name', { name: req.params.id })
+    .getMany().then(user => {
+      res.send(user);
+    }).catch(err => { console.log(err); });
+};
+
 
 /**
  * POST /user
@@ -29,7 +55,7 @@ export let postUser = (req: Request, res: Response) => {
  * updates the user using the given model and id
  */
 export let putUser = (req: Request, res: Response) => {
-  getRepository(User).update({'id' : req.body.id}, req.body).then(updatedUser => {
+  getRepository(User).update({ 'id': req.body.id }, req.body).then(updatedUser => {
 
     getRepository(User).findByIds(req.body.id).then(user => {
       res.send(user);

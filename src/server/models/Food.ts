@@ -13,12 +13,12 @@ export class Food {
   @Column({ name: 'description', type: 'varchar', nullable: true })
   descrizione: string;
 
-  @ManyToMany(type => Location, {
-    eager: true
-  })
-  @JoinTable({
-    name: 'locations_foods'
-  })
-  locations: Location[];
+  // @ManyToMany(type => Location, {
+  //   eager: true
+  // })
+  // @JoinTable({
+  //   name: 'locations_foods'
+  // })
+  // locations: Location[];
 
 }

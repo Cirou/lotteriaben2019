@@ -1,8 +1,8 @@
-import { getGroup, postGroup, putGroup } from './server/controllers/group';
-import { getUser, postUser, putUser } from './server/controllers/user';
-import { getTip, getTipMaxId } from './server/controllers/tip';
-import { getMessage, postMessage } from './server/controllers/message';
-import { getVotation, postVotation, putVotation } from './server/controllers/votation';
+import { getGroup, postGroup, putGroup, getGroupByName } from './server/controllers/GroupController';
+import { getUser, postUser, putUser, getUserByName } from './server/controllers/UserController';
+import { getTip, getTipMaxId } from './server/controllers/TipController';
+import { getMessage, postMessage } from './server/controllers/MessageController';
+import { getVotation, postVotation, putVotation } from './server/controllers/VotationController';
 
 /**
  * All application routes.
@@ -12,6 +12,11 @@ export const AppRoutes = [
         path: '/user/:id',
         method: 'get',
         action: getUser
+    },
+    {
+        path: '/search/user/:name',
+        method: 'get',
+        action: getUserByName
     },
     {
         path: '/user',
@@ -27,6 +32,11 @@ export const AppRoutes = [
         path: '/group/:id',
         method: 'get',
         action: getGroup
+    },
+    {
+        path: '/search/group/:name',
+        method: 'get',
+        action: getGroupByName
     },
     {
         path: '/group',

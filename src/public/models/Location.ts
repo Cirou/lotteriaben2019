@@ -1,3 +1,4 @@
+import { Food } from './Food';
 
 export class Location {
 
@@ -18,5 +19,7 @@ export class Location {
   posizione_x: number;
 
   posizione_y: number;
+
+  foods: Food[];
 
 }
