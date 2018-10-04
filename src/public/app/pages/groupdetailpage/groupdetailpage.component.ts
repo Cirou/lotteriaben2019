@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
 import { Message } from '../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
+import { User } from '../../../models/User';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -31,7 +32,10 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
       .subscribe(
         groupDetails => {
           this.groupDetails = groupDetails;
-          this.numeroMembri = groupDetails.users.length;
+          Promise.resolve(groupDetails.users).then(users => {
+            this.numeroMembri = users.length;
+            console.log(this.groupDetails);
+          });
           console.log(this.groupDetails);
         },
         err => {

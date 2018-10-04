@@ -11,25 +11,24 @@ export class UserService {
 
   constructor(private http: Http) { }
 
-  private user: User;
-  private userUrl: string = 'public/assets/mock/getUserProfile.json'
-  private userTipUrl: string = 'public/assets/mock/getUserTip.json'
+  private userUrl: string = '/user/'
+  private userTipUrl: string = '/tip/'
 
   postUserProfile() {
     return '{result: "OK"}';
   }
 
-  getUserProfile(): Observable<User> {
+  getUserProfile(id:string): Observable<User> {
     return this.http
-      .get(this.userUrl)
+      .get(this.userUrl + id)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getUserLoginTip(): Observable<Tip>{
+  getUserLoginTip(id:string): Observable<Tip>{
     return this.http
-      .get(this.userTipUrl)
+      .get(this.userTipUrl + id)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

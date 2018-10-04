@@ -9,10 +9,9 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class FoodService {
 
-  private cibo: Food;
-  private ciboUrl: string = 'public/assets/mock/getFoodDetails.json'
-  private elencoCiboUrl: string = 'public/assets/mock/getFoodList.json'
-  private elencoRistorantiUrl: string = 'public/assets/mock/getFoodPlaces.json'
+  private ciboUrl: string = '/food/1'
+  private elencoCiboUrl: string = '/foods/'
+  private elencoRistorantiUrl: string = '/locations/'
 
   constructor(private http: Http) { }
 

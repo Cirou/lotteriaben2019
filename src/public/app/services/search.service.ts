@@ -9,14 +9,14 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class SearchService {
 
-  private searchUserUrl: string = 'public/assets/mock/getGroupDetails.json'
-  private searchGroupUrl: string = 'public/assets/mock/getGroupDetails.json'
+  private searchUserUrl: string = '/search/user/'
+  private searchGroupUrl: string = '/search/group/'
 
   constructor(private http: Http) { }
 
   getUsersByName(name:string): Observable<User[]> {
     return this.http
-    .get(this.searchUserUrl)
+    .get(this.searchUserUrl + name)
     .pipe(
       map((response: Response) => response.json()),
       catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
@@ -24,7 +24,15 @@ export class SearchService {
 
   getGroupsByName(name:string): Observable<Group[]> {
     return this.http
-      .get(this.searchGroupUrl)
+      .get(this.searchGroupUrl  + name)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  geByName(name:string): Observable<Group[]> {
+    return this.http
+      .get(this.searchGroupUrl  + name)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

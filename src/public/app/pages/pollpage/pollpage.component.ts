@@ -35,7 +35,9 @@ export class PollpageComponent implements OnInit {
       .subscribe(
         groupDetails => {
           this.groupDetails = groupDetails;
-          this.totaleMembri = groupDetails.users.length;
+          Promise.resolve(groupDetails.users).then(users => {
+            this.totaleMembri = users.length;
+          });
           console.log(this.groupDetails);
 
           this.pollOfTheDay = this.groupService.getPollOfTheDay(this.id)

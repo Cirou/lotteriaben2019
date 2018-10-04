@@ -10,16 +10,15 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable()
 export class GroupService {
 
-  private gruppo: Group;
-  private gruppoUrl: string = 'public/assets/mock/getGroupDetails.json'
-  private chatGruppoUrl: string = 'public/assets/mock/getGroupChat.json'
-  private pollUrl: string = 'public/assets/mock/getPollOfTheDay.json'
+  private gruppoUrl: string = '/group/'
+  private chatGruppoUrl: string = '/message/'
+  private pollUrl: string = '/votation/'
 
   constructor(private http: Http) { }
 
   getGroupDetails(idGruppo:number): Observable<Group> {
     return this.http
-      .get(this.gruppoUrl)
+      .get(this.gruppoUrl + idGruppo)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
@@ -27,7 +26,7 @@ export class GroupService {
 
   getGroupMessages(idGruppo:number): Observable<Message[]> {
     return this.http
-      .get(this.chatGruppoUrl)
+      .get(this.chatGruppoUrl + idGruppo)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
@@ -35,7 +34,7 @@ export class GroupService {
 
   getPollOfTheDay(idGruppo:number): Observable<Votation> {
     return this.http
-      .get(this.pollUrl)
+      .get(this.pollUrl + idGruppo)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

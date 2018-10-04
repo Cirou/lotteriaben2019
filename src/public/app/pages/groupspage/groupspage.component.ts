@@ -28,26 +28,20 @@ export class GroupspageComponent implements OnInit {
 
     this.loader.showLoader(true);
 
-    this.userService.getUserProfile()
+    this.userService.getUserProfile('1')
     .subscribe(
       userInfo => {
-        this.user = userInfo;
-          this.groupService.getGroupDetails(this.user.id).subscribe(
-            groupInfo => {
-              this.elencoGruppi.push(groupInfo)
-            }
-          );
-        ;
+        this.user = userInfo[0];
         console.log(this.user);
       },
       err => {
         console.log(err);
       });
 
-      this.userService.getUserLoginTip()
+      this.userService.getUserLoginTip('1')
       .subscribe(
-        Tip => {
-          this.tip = Tip;
+        tip => {
+          this.tip = tip[0];
           console.log(this.tip);
           if(this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true'){
             this.openTipPopup();

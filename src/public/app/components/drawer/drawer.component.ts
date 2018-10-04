@@ -60,7 +60,7 @@ export class DrawerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserProfile()
+    this.userService.getUserProfile('1')
       .subscribe(
         userInfo => {
           this.userProfile = userInfo;

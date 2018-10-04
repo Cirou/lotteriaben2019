@@ -31,7 +31,7 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
     // this.user = UserService.getUserProfile(userId);
     this.loader.showLoader(true);
     this.foodService.getFoodList().subscribe(foodList => this.elencoCibiCompleto = foodList);
-    this.userService.getUserProfile()
+    this.userService.getUserProfile('1')
       .subscribe(
         userInfo => {
           this.userProfile = userInfo;
