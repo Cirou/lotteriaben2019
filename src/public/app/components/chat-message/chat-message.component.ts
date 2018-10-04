@@ -10,7 +10,8 @@ export class ChatMessageComponent implements OnInit {
 
   @Input()
   message: Message;
-  loggedUser = {id:1};
+  @Input()
+  loggedUserId: number;
 
   constructor() { }
 

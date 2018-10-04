@@ -8,12 +8,15 @@ import { getRepository } from 'typeorm';
  * retrieves the message using the given group id
  */
 export let getMessage = (req: Request, res: Response) => {
-  getRepository(Message).createQueryBuilder()
-    .select()
-    .where('groupId = :id', { id: req.params.id })
-    .getMany().then(messages => {
-      res.send(messages);
-    }).catch(err => { console.log(err); });
+
+  getRepository(Message)
+  .createQueryBuilder('messages')
+  .leftJoinAndSelect('messages.user', 'user')
+  .where('groupId = :id', { id: req.params.id })
+  .getMany().then(messages => {
+    res.send(messages);
+  }).catch(err => { console.log(err); });
+
 };
 
 

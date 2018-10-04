@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Message } from '../../../models/Message';
+import { RootService } from '../../services/root.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,10 +11,12 @@ export class ChatComponent implements OnInit {
 
   @Input()
   messages: Message[];
+  loggedUserId: number;
 
-  constructor() { }
+  constructor(private rootService: RootService) { }
 
   ngOnInit() {
+    this.loggedUserId = Number(this.rootService.loggedUserId);
   }
 
   sendMessage(){

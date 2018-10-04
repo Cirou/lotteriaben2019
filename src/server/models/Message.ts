@@ -11,7 +11,7 @@ export class Message {
   @ManyToOne(type => Group)
   group: Group;
 
-  @ManyToOne(type => User)
+  @ManyToOne(type => User, {eager: true})
   user: User;
 
   @Column({ name: 'text', type: 'varchar', nullable: true })

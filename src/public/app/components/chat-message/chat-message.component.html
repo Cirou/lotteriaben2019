@@ -1,17 +1,17 @@
-<div class="row chat-message-box" [ngClass]="{'justify-content-end': message.user.id == loggedUser.id}">
+<div class="row chat-message-box" [ngClass]="{'justify-content-end': message.user.id == loggedUserId}">
   <div class="col-9">
     <div class="row align-items-center">
-      <div *ngIf="!(message.user.id == loggedUser.id)" class="col-2 chat-image">
+      <div *ngIf="!(message.user.id == loggedUserId)" class="col-2 chat-image">
         <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.user.profilo || !message.user.immagine"
           src="../../../../assets/icons/profile-icon-9.png" />
         <img class="img-fluid rounded-circle" *ngIf="message.user.immagine" src={{message.user.immagine}} />
       </div>
       <div class="col-10">
-        <div class="chat-message" [ngClass]="{'float-right': message.user.id == loggedUser.id}">
+        <div class="chat-message" [ngClass]="{'float-right': message.user.id == loggedUserId}">
           <b>{{message.user.nome}}</b><br>
           {{message.text}}</div>
       </div>
-      <div *ngIf="message.user.id == loggedUser.id" class="col-2 chat-image">
+      <div *ngIf="message.user.id == loggedUserId" class="col-2 chat-image">
         <img class="img-fluid rounded-circle profile-icon" *ngIf="!message.autore || !message.user.profilo || !message.user.immagine"
           src="../../../../assets/icons/profile-icon-9.png" />
         <img class="img-fluid rounded-circle" *ngIf="message.user.immagine" src={{message.user.immagine}} />

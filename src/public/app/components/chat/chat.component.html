@@ -2,7 +2,7 @@
   <div class="content">
     <div class="col-12">
       <div *ngFor="let messaggio of messages">
-        <app-chat-message [message]="messaggio"></app-chat-message>
+        <app-chat-message [loggedUserId]="loggedUserId" [message]="messaggio"></app-chat-message>
       </div>
     </div>
   </div>

@@ -43,8 +43,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
       .subscribe(
         groupMessages => {
           this.groupMessages = groupMessages;
-          ;
-          console.log(this.groupDetails);
+          console.log(this.groupMessages);
         },
         err => {
           console.log(err);
