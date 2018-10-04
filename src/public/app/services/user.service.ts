@@ -13,6 +13,7 @@ export class UserService {
 
   private userUrl: string = '/user/'
   private userTipUrl: string = '/tip/'
+  private userTipMaxIdUrl: string = '/tipmaxid'
 
   postUserProfile() {
     return '{result: "OK"}';
@@ -29,6 +30,14 @@ export class UserService {
   getUserLoginTip(id:string): Observable<Tip>{
     return this.http
       .get(this.userTipUrl + id)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  getTipMaxId(): Observable<Tip>{
+    return this.http
+      .get(this.userTipMaxIdUrl)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

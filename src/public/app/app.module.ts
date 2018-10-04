@@ -48,6 +48,7 @@ import { GroupService } from './services/group.service';
 import { FoodService } from './services/food.service';
 import { LoaderService } from './services/loader.service';
 import { SearchService } from './services/search.service';
+import { RootService } from './services/root.service';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
@@ -94,7 +95,8 @@ import { CookieService } from 'ngx-cookie-service';
     FoodService,
     LoaderService,
     SearchService,
-    CookieService
+    CookieService,
+    RootService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],

@@ -8,6 +8,6 @@ export class Group {
 
   descrizione: string;
 
-  users: Promise<User[]>;
+  users: User[];
 
 }

@@ -3,6 +3,8 @@ import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
 import { User } from 'firebase/app';
+import { CookieService } from 'ngx-cookie-service';
+import { RootService } from '../../services/root.service';
 
 @Component({
   selector: 'app-loginpage',
@@ -16,14 +18,18 @@ export class LoginpageComponent implements OnInit {
   public user: User;
   public hide: boolean = true;
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private cookieService: CookieService, private rootService: RootService) { }
 
   ngOnInit() {
+    
   }
 
   login() {
+
+    this.rootService.loggedUserId = this.email.value;
     this.router.navigate(['/app']);
 
+    // login reale
     // this.authService
     //   .login(this.email.value, this.pwd.value)
     //   .then(data => {

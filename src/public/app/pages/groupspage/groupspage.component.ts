@@ -8,6 +8,8 @@ import { LoaderService } from '../../services/loader.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { TipDialogComponent } from '../../components/tip-dialog/tip-dialog.component';
 import { CookieService } from 'ngx-cookie-service';
+import { RootService } from '../../services/root.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-groupspage',
@@ -18,50 +20,74 @@ export class GroupspageComponent implements OnInit {
 
   @Output() showLoader = new EventEmitter<boolean>();
 
-  constructor(private userService: UserService, private groupService: GroupService,  private loader: LoaderService, public dialog: MatDialog, private cookieService: CookieService) { }
+  constructor(private userService: UserService, 
+    private groupService: GroupService, 
+    private loader: LoaderService, 
+    public dialog: MatDialog, 
+    private cookieService: CookieService, 
+    private rootService: RootService,
+    private router:Router) { }
 
-  user:User = new User;
-  elencoGruppi:Group[] = new Array;
-  tip:Tip = new Tip;
+  user: User = new User;
+  elencoGruppi: Group[] = new Array;
+  tip: Tip = new Tip;
+  tipMaxId: number = 1;
 
   ngOnInit() {
 
     this.loader.showLoader(true);
 
-    this.userService.getUserProfile('1')
-    .subscribe(
-      userInfo => {
-        this.user = userInfo[0];
-        console.log(this.user);
-      },
-      err => {
-        console.log(err);
-      });
+    if(!this.rootService.loggedUserId) {
+      this.router.navigate(['/login']);
+      return;
+    }
 
-      this.userService.getUserLoginTip('1')
+    this.userService.getUserProfile(this.rootService.loggedUserId)
       .subscribe(
-        tip => {
-          this.tip = tip[0];
-          console.log(this.tip);
-          if(this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true'){
-            this.openTipPopup();
-          }
+        userInfo => {
+          this.user = userInfo[0];
+          this.rootService.loggedUser = userInfo[0];
+          console.log(this.user);
         },
         err => {
           console.log(err);
-        }
-      );
+        });
+
+    this.userService.getTipMaxId().subscribe(
+      tipMaxId => {
+
+        this.tipMaxId = Number(tipMaxId.id);
+        const randId = String(Math.floor(Math.random() * this.tipMaxId - 1) + 1);
+        console.log(this.tipMaxId);
+        console.log(randId);
+
+        this.userService.getUserLoginTip(randId)
+          .subscribe(
+            tip => {
+              this.tip = tip[0];
+              console.log(this.tip);
+              if (this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true') {
+                this.openTipPopup();
+              }
+            },
+            err => {
+              console.log(err);
+            }
+          );
+
+      }
+    );
 
   }
 
-  ngAfterContentInit(){
+  ngAfterContentInit() {
     this.loader.showLoader(false);
   }
 
-  openTipPopup(){
+  openTipPopup() {
     this.cookieService.set('pausappranzo_daily_login_done', 'true', 1);
     const dialogRef = this.dialog.open(TipDialogComponent, {
-      height: "400px",
+      height: "80%",
       width: "600px",
       data: {
         tip: this.tip

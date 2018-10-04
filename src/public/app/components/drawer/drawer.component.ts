@@ -2,6 +2,7 @@ import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { User } from "../../../models/User";
 import { UserService } from "../../services/user.service";
+import { RootService } from '../../services/root.service';
 
 @Component({
   selector: 'app-drawer',
@@ -49,7 +50,7 @@ export class DrawerComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private userService: UserService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  constructor(private userService: UserService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rootService: RootService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -60,10 +61,12 @@ export class DrawerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserProfile('1')
+    this.userService.getUserProfile(this.rootService.loggedUserId)
       .subscribe(
         userInfo => {
-          this.userProfile = userInfo;
+          this.userProfile = userInfo[0];
+          this.rootService.loggedUser = userInfo[0];
+          console.log(this.userProfile);
         },
         err => {
           console.log(err);

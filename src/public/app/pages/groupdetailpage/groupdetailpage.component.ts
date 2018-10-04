@@ -31,11 +31,8 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     this.groupDetails = this.groupService.getGroupDetails(this.id)
       .subscribe(
         groupDetails => {
-          this.groupDetails = groupDetails;
-          Promise.resolve(groupDetails.users).then(users => {
-            this.numeroMembri = users.length;
-            console.log(this.groupDetails);
-          });
+          this.groupDetails = groupDetails[0];
+          this.numeroMembri = groupDetails[0].users.length;
           console.log(this.groupDetails);
         },
         err => {
@@ -59,7 +56,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     this.sub.unsubscribe();
   }
 
-  ngAfterContentInit(){
+  ngAfterContentInit() {
     this.loader.showLoader(false);
   }
 
