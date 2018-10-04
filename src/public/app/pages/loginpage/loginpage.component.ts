@@ -18,10 +18,12 @@ export class LoginpageComponent implements OnInit {
   public user: User;
   public hide: boolean = true;
 
+
   constructor(private authService: AuthService, private router: Router, private cookieService: CookieService, private rootService: RootService) { }
 
   ngOnInit() {
-    
+    this.cookieService.delete('pausappranzo_daily_login_done');
+
   }
 
   login() {
