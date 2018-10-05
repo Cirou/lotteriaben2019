@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Message } from '../../../models/Message';
 import { RootService } from '../../services/root.service';
 import { FormControl, Validators } from '@angular/forms';
@@ -12,10 +12,15 @@ import { Group } from '../../../models/Group';
 })
 export class ChatComponent implements OnInit {
 
+  @ViewChild('chatcomponent')
+  private chatContainer: ElementRef;
+
   @Input()
   messages: Message[];
+
   @Input()
   group: Group;
+
   loggedUserId: number;
   public messageToSend: FormControl = new FormControl('', [Validators.required]);
 
@@ -23,6 +28,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUserId = Number(this.rootService.loggedUserId);
+    this.scrollToBottom();
   }
 
   sendMessage() {
@@ -42,7 +48,16 @@ export class ChatComponent implements OnInit {
         console.log('Invio messaggio KO');
       }
     );
-    this.messageToSend.setValue("");
+    this.messageToSend.setValue('');
+  }
+
+  scrollToBottom(): void {
+    try {
+      this.chatContainer.nativeElement.scrollToBottom();
+      console.log('scrolling container');
+    } catch (err) {
+      console.log(err);
+    }
   }
 
 }

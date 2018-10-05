@@ -13,6 +13,10 @@ body {
   background-color: #E3F2FD;
 }
 
+.bg-white { 
+  background-color: #FFFFFF;
+}
+
 .basic-container {
   padding: 30px;  
 }
@@ -25,6 +29,13 @@ body {
 .no-padding {
   padding: 0;
 }
+
+.my-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  z-index: 1030;
+}
+
 
 .app-long-button-center, .app-full-width-center {
   width: 100%;
