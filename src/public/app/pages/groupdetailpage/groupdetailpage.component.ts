@@ -17,6 +17,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   groupDetails: any;
   groupMessages: Message[];
   numeroMembri: number;
+  chatTimer: NodeJS.Timer;
 
   constructor(private route: ActivatedRoute, private groupService: GroupService, private loader: LoaderService) { }
 
@@ -53,10 +54,24 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+    clearTimeout(this.chatTimer);
   }
 
   ngAfterContentInit() {
     this.loader.showLoader(false);
+
+    this.chatTimer = setInterval(() => {
+      this.groupService.getGroupMessages(this.id)
+        .subscribe(
+          groupMessages => {
+            this.groupMessages = groupMessages;
+            console.log(this.groupMessages);
+          },
+          err => {
+            console.log(err);
+          });
+    }, 1 * 1000);
+
   }
 
 }
