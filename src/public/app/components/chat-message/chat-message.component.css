@@ -1,5 +1,14 @@
+.chat-message-box-outer {
+    padding: 5px;
+}
+
 .chat-message-box {
-    padding: 15px 0 0 0;  
+    background-color: lightgreen;
+    border-radius: 10px;  
+}
+
+.chat-message-box-self {
+    background-color: lightskyblue;
 }
 
 .chat-image {
@@ -8,4 +17,5 @@
 
 .chat-message {
     line-height: 1.2;
+    padding: 5px 0 5px 0;
 }

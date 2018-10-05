@@ -12,10 +12,13 @@ export class ChatMessageComponent implements OnInit {
   message: Message;
   @Input()
   loggedUserId: number;
+  isSelfMessage: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.isSelfMessage = (this.message.user.id == this.loggedUserId);
+    console.log(this.isSelfMessage);
   }
 
 }
