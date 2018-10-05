@@ -7,7 +7,7 @@
         <img class="img-fluid rounded-circle" *ngIf="message.user.immagine" src={{message.user.immagine}} />
       </div>
       <div class="col-10">
-        <div class="chat-message" [ngClass]="{'float-right': isSelfMessage}">
+        <div class="chat-message" [ngClass]="{'float-right text-align-right': isSelfMessage}">
           <b>{{message.user.nome}}</b><br>
           {{message.text}}
         </div>

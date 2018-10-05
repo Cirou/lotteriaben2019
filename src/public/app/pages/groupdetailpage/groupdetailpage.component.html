@@ -17,8 +17,9 @@
 </div>
 <hr>
 <div class="content">
-  <div class="col-12">
-    <button [routerLink]="['/app', { outlets: { sub: ['poll', id] }}]" class="app-long-button-left" mat-raised-button color="primary">
+  <div class="col-12 no-padding">
+    <button [routerLink]="['/app', { outlets: { sub: ['poll', id] }}]" class="app-long-button-left" mat-raised-button
+      color="primary">
       <mat-icon aria-label="Visualizza sondaggio">list</mat-icon>
       Visualizza il sondaggio del giorno
     </button>
@@ -26,7 +27,7 @@
 </div>
 
 <div class="content">
-  <div class="col-12">
+  <div class="col-12 no-padding">
     <app-chat [messages]="groupMessages"></app-chat>
   </div>
 </div>

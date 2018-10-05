@@ -18,7 +18,6 @@ export class ChatMessageComponent implements OnInit {
 
   ngOnInit() {
     this.isSelfMessage = (this.message.user.id == this.loggedUserId);
-    console.log(this.isSelfMessage);
   }
 
 }
