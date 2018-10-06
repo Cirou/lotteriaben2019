@@ -1,27 +1,39 @@
-<div class="row">
-  <div class="content col-12">
-    <h4>
-      <b>{{pollOfTheDay.nomeGruppo}}</b>
-    </h4>
-    <hr>
-    <p>Sondaggio del {{pollOfTheDay.data}}</p>
-  </div>
-</div>
+<div class="container">
 
-<a *ngFor="let item of pollOfTheDay.location; let i = index">
   <div class="row">
-    <div class="content col-6">
-      <p class="primary">{{item.nome}}
-      <mat-progress-bar value="{{item.percentVoti}}" type="success"></mat-progress-bar>
-    </p>
-    </div>
-    <div class="content col-5 margin-top-20">
-      <p class="primary"> {{item.voti}} voti</p>
+    <div class="content col-12">
+      <h4>
+        <b>{{pollOfTheDay.nomeGruppo}}</b>
+      </h4>
+      <h6>
+        Il locale che il Dottor L.T. Diet consiglia oggi al vostro gruppo è:
+      </h6>
+      <p><b>Vattelappesca</b></p>
     </div>
   </div>
-</a>
 
+  <hr>
 
-  <button mat-raised-button color="primary" class="app-long-button-left" (click)="openDialog()">+ Aggiungi Ristorante</button> 
-  <!-- <input matInput placeholder="Cibi Preferiti" [(ngModel)]="locali">  -->
+  <div class="row">
+    <div class="content col-12">
 
+      <h6>
+        Cosa preferisci mangiare oggi?
+      </h6>
+
+      <a *ngFor="let item of pollOfTheDay.location; let i = index">
+        <div class="row">
+          <div class="content col-6">
+            <p class="primary">{{item.nome}}
+              <mat-progress-bar value="{{item.percentVoti}}" type="success"></mat-progress-bar>
+            </p>
+          </div>
+          <div class="content col-5 margin-top-20">
+            <p class="primary"> {{item.voti}} voti</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+</div>

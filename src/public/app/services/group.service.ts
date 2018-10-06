@@ -6,16 +6,17 @@ import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { map, catchError } from 'rxjs/operators';
+import { RootService } from './root.service';
 
 @Injectable()
 export class GroupService {
 
-  private gruppoUrl: string = '/group/'
-  private chatGruppoUrl: string = '/message/'
-  private pollUrl: string = '/votation/'
-  private sendMessageUrl: string = '/message'
+  private gruppoUrl: string = !this.rootService.mocked ? '/group/' : '/public/assets/mock/getGroupDetails.json?ref=';
+  private chatGruppoUrl: string = !this.rootService.mocked ? '/message/' : '/public/assets/mock/getGroupChat.json?ref=';
+  private pollUrl: string = !this.rootService.mocked ? '/votation/' : '/';
+  private sendMessageUrl: string = !this.rootService.mocked ? '/message' : '/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private rootService: RootService) { }
 
   getGroupDetails(idGruppo: number): Observable<Group> {
     return this.http

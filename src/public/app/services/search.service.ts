@@ -3,16 +3,17 @@ import { Group } from '../../models/Group';
 import { User } from '../../models/User';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
+import { RootService } from './root.service';
 
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable()
 export class SearchService {
 
-  private searchUserUrl: string = '/search/user/'
-  private searchGroupUrl: string = '/search/group/'
+  private searchUserUrl: string = !this.rootService.mocked ? '/search/user/' : '/';
+  private searchGroupUrl: string = !this.rootService.mocked ? '/search/group/' : '/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private rootService: RootService) { }
 
   getUsersByName(name:string): Observable<User[]> {
     return this.http

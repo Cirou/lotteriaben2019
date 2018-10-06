@@ -5,15 +5,16 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { map, catchError } from 'rxjs/operators';
+import { RootService } from './root.service';
 
 @Injectable()
 export class FoodService {
 
-  private ciboUrl: string = '/food/1'
-  private elencoCiboUrl: string = '/foods/'
-  private elencoRistorantiUrl: string = '/locations/'
+  private ciboUrl: string = !this.rootService.mocked ? '/food/1' : '/';
+  private elencoCiboUrl: string = !this.rootService.mocked ? '/foods/' : '/';
+  private elencoRistorantiUrl: string = !this.rootService.mocked ? '/locations/' : '/';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private rootService: RootService) { }
 
   getFoodList(): Observable<Food[]> {
     return this.http

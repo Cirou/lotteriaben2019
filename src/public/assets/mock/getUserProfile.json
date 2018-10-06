@@ -1,22 +1,25 @@
-{
-    "id": "1",
-    "email": "ciroaiello@live.com",
-    "password": "scemoChiLegge",
-    "profilo": {
-        "nickname":"Cirou",
+[
+    {
+        "id": 1,
         "nome": "Ciro",
         "cognome": "Aiello",
+        "email": "ciro.aiello@accenture.com",
         "sesso": "M",
-        "citta": "Napoli",
-        "immagine": "http://thumbnail.accenture.com/875976.jpg"
-    },
-    "elencoGruppi": [
-        "1",
-        "2",
-        "3"
-    ],
-    "elencoCibi": [
-        "1",
-        "2"
-    ]
-}
+        "citta": "Cardito",
+        "nickname": "Cirou85",
+        "immagine": "",
+        "foods": [],
+        "groups": [
+            {
+                "id": 1,
+                "nome": "Pausappranzo",
+                "descrizione": "Gruppo della bestapp"
+            },
+            {
+                "id": 2,
+                "nome": "Fantacalcio",
+                "descrizione": "Gruppo del fantacalcio"
+            }
+        ]
+    }
+]

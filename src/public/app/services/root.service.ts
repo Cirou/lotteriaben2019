@@ -6,6 +6,7 @@ export class RootService {
 
   private _loggedUserId: string;
   private _loggedUser: User;
+  private _mocked: boolean = true;
 
   constructor() { }
 
@@ -21,6 +22,13 @@ export class RootService {
   }
   public set loggedUserId(value: string) {
     this._loggedUserId = value;
+  }
+
+  public get mocked(): boolean {
+    return this._mocked;
+  }
+  public set mocked(value: boolean) {
+    this._mocked = value;
   }
 
 }

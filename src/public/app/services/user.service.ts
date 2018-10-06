@@ -5,15 +5,16 @@ import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { map, catchError } from 'rxjs/operators';
+import { RootService } from './root.service';
 
 @Injectable()
 export class UserService {
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private rootService: RootService) { }
 
-  private userUrl: string = '/user/'
-  private userTipUrl: string = '/tip/'
-  private userTipMaxIdUrl: string = '/tipmaxid'
+  private userUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getUserProfile.json?ref=';
+  private userTipUrl: string = !this.rootService.mocked ? '/tip/' : '/public/assets/mock/getUserTip.json?ref=';
+  private userTipMaxIdUrl: string = !this.rootService.mocked ? '/tipmaxid' : '/public/assets/mock/getUserUserMaxTip.json?ref=';
 
   postUserProfile() {
     return '{result: "OK"}';

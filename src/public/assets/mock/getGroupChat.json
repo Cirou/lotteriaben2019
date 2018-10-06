@@ -1,52 +1,152 @@
-{
-    "id": "1",
-    "nome": "Fuori Orario",
-    "descrizione": "Gruppo del progetto Fuori Orario",
-    "membri":[
-        "1", "2", "3", "4", "5", "6", "7", "8", "9"
-    ],
-    "messaggi": [
-        {
-            "id": "1",
-            "timestamp": "12123415500",
-            "autore": "1",
-            "messaggio": "ciao"
-        },
-        {
-            "id": "2",
-            "timestamp": "12123415500",
-            "autore": "2",
-            "messaggio": "buongiorno"
-        },
-        {
-            "id": "2",
-            "timestamp": "12123415500",
-            "autore": "2",               
-            "messaggio": "ciao a tutti"
-        },
-        {
-            "id": "3",
-            "timestamp": "12123415500",
-            "autore": "1", 
-            "messaggio": "dove si mangia oggi?"
-        },
-        {
-            "id": "4",
-            "timestamp": "12123415500",
-            "autore": "2",
-            "messaggio": "boh, vediamo"
-        },
-        {
-            "id": "5",
-            "timestamp": "12123415500",
-            "autore": "1",
-            "messaggio": "rispondiamo al sondaggio"
-        },
-        {
-            "id": "6",
-            "timestamp": "12123415500",
-            "autore": "2",  
-            "messaggio": "ok"
+[
+    {
+        "id": 1,
+        "text": "Ciao!",
+        "data": "2018-09-19 11:50:18",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "immagine": ""
         }
-    ]
-}
+    },
+    {
+        "id": 2,
+        "text": "Ciao a tutti",
+        "data": "2018-09-19 11:51:18",
+        "user": {
+            "id": 2,
+            "nome": "Maria",
+            "cognome": "Aiello",
+            "email": "maria.aiello@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Maria",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 3,
+        "text": "Buongiorno",
+        "data": "2018-09-19 11:52:18",
+        "user": {
+            "id": 3,
+            "nome": "Luisa",
+            "cognome": "Somma",
+            "email": "luisa.somma@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Luisa",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 4,
+        "text": "Ciao a tutti, che si fa oggi?",
+        "data": "2018-09-19 11:53:18",
+        "user": {
+            "id": 4,
+            "nome": "Danilo",
+            "cognome": "Coppola",
+            "email": "danilo.coppola@accenture.com",
+            "sesso": "M",
+            "citta": "Napoli",
+            "nickname": "Danilo",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 5,
+        "text": "Non so, rispondete al sondaggio e vediamo, dai!",
+        "data": "2018-09-19 11:54:18",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 6,
+        "text": "Ok!",
+        "data": "2018-10-05 14:04:38",
+        "user": {
+            "id": 2,
+            "nome": "Maria",
+            "cognome": "Aiello",
+            "email": "maria.aiello@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Maria",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 7,
+        "text": "Va bene",
+        "data": "2018-10-05 14:05:25",
+        "user": {
+            "id": 3,
+            "nome": "Luisa",
+            "cognome": "Somma",
+            "email": "luisa.somma@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Luisa",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 9,
+        "text": "andiamo",
+        "data": "2018-10-05T14:43:48.264Z",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 10,
+        "text": "Scendo",
+        "data": "2018-09-19 11:50:18",
+        "user": {
+            "id": 2,
+            "nome": "Maria",
+            "cognome": "Aiello",
+            "email": "maria.aiello@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Maria",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 11,
+        "text": "Ok",
+        "data": "2018-10-05T16:53:21.300Z",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "immagine": ""
+        }
+    }
+]
