@@ -4,6 +4,7 @@ import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
 import { getVotation, postVotation, putVotation } from './server/controllers/VotationController';
 import { getFoodAll } from './server/controllers/FoodController';
+import { getSuggestion } from './server/controllers/SuggestionController';
 
 /**
  * All application routes.
@@ -93,5 +94,10 @@ export const AppRoutes = [
         path: '/foods/',
         method: 'get',
         action: getFoodAll
+    },
+    {
+        path: '/suggestion/:id',
+        method: 'get',
+        action: getSuggestion
     }
 ];

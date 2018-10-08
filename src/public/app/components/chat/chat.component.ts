@@ -4,6 +4,7 @@ import { RootService } from '../../services/root.service';
 import { FormControl, Validators } from '@angular/forms';
 import { GroupService } from '../../services/group.service';
 import { Group } from '../../../models/Group';
+import { formatDateTime } from '../../../../shared/utils/DateUtils';
 
 @Component({
   selector: 'app-chat',
@@ -37,7 +38,7 @@ export class ChatComponent implements OnInit {
     message.text = this.messageToSend.value;
     message.user = this.rootService.loggedUser;
     message.group = this.group;
-    message.data = new Date();
+    message.data = formatDateTime(new Date);
     console.log(message);
 
     this.groupService.postGroupMessage(message).subscribe(
@@ -45,7 +46,7 @@ export class ChatComponent implements OnInit {
         console.log('Messaggio inviato');
       },
       err => {
-        console.log('Invio messaggio KO');
+        console.log('Invio messaggio KO', err);
       }
     );
     this.messageToSend.setValue('');
@@ -53,7 +54,7 @@ export class ChatComponent implements OnInit {
 
   scrollToBottom(): void {
     try {
-      this.chatContainer.nativeElement.scrollToBottom();
+      this.chatContainer.nativeElement.scrollToBottom;
       console.log('scrolling container');
     } catch (err) {
       console.log(err);

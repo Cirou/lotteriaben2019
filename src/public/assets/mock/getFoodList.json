@@ -1,52 +1,67 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "nome": "pizza",
         "descrizione": "Pizza"
     },
     {
-        "id": "2",
+        "id": 2,
         "nome": "panino",
         "descrizione": "Panino"
     },
     {
-        "id": "3",
-        "nome": "carne",
-        "descrizione": "Carne"
+        "id": 3,
+        "nome": "carnebianca",
+        "descrizione": "Carne Bianca"
     },
     {
-        "id": "4",
-        "nome": "pizza",
+        "id": 4,
+        "nome": "pesce",
         "descrizione": "Pesce"
     },
     {
-        "id": "5",
-        "nome": "fastfood",
-        "descrizione": "Fast Food"
+        "id": 5,
+        "nome": "pasta",
+        "descrizione": "Pasta"
     },
     {
-        "id": "6",
-        "nome": "vegtariana",
-        "descrizione": "Vegetariana"
+        "id": 6,
+        "nome": "insalata",
+        "descrizione": "Insalata"
     },
     {
-        "id": "7",
-        "nome": "vegana",
-        "descrizione": "Vegana"
+        "id": 7,
+        "nome": "patatine",
+        "descrizione": "Patatine"
     },
     {
-        "id": "8",
-        "nome": "vegana",
-        "descrizione": "Cinese"
+        "id": 10,
+        "nome": "carnerossa",
+        "descrizione": "Carne Rossa"
     },
     {
-        "id": "9",
-        "nome": "vegana",
-        "descrizione": "Giapponese"
+        "id": 11,
+        "nome": "frutta",
+        "descrizione": "Frutta"
     },
     {
-        "id": "10",
-        "nome": "vegana",
-        "descrizione": "Americana"
+        "id": 18,
+        "nome": "zuppa",
+        "descrizione": "Zuppa"
+    },
+    {
+        "id": 19,
+        "nome": "hotdog",
+        "descrizione": "Hot Dog"
+    },
+    {
+        "id": 20,
+        "nome": "sandwich",
+        "descrizione": "Sandwich"
+    },
+    {
+        "id": 21,
+        "nome": "gelato",
+        "descrizione": "Gelato"
     }
 ]

@@ -60,17 +60,15 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   ngAfterContentInit() {
     this.loader.showLoader(false);
 
-    // this.chatTimer = setInterval(() => {
-    //   this.groupService.getGroupMessages(this.id)
-    //     .subscribe(
-    //       groupMessages => {
-    //         this.groupMessages = groupMessages;
-    //         console.log(this.groupMessages);
-    //       },
-    //       err => {
-    //         console.log(err);
-    //       });
-    // }, 1 * 1000);
+    this.chatTimer = setInterval(() => {
+      this.groupService.getGroupMessages(this.id)
+        .subscribe(
+          groupMessages => {
+            this.groupMessages = groupMessages;
+          },
+          err => {
+          });
+    }, 1 * 1000);
 
   }
 

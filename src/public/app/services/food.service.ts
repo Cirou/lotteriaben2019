@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Food } from '../../models/Food';
 import { Location } from '../../models/Location';
-import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs';
 
 import { map, catchError } from 'rxjs/operators';
@@ -10,8 +10,8 @@ import { RootService } from './root.service';
 @Injectable()
 export class FoodService {
 
-  private ciboUrl: string = !this.rootService.mocked ? '/food/1' : '/';
-  private elencoCiboUrl: string = !this.rootService.mocked ? '/foods/' : '/';
+  private ciboUrl: string = !this.rootService.mocked ? '/food/1' : '/public/assets/mock/getFoodDetail.json?ref=';
+  private elencoCiboUrl: string = !this.rootService.mocked ? '/foods/' : '/public/assets/mock/getFoodList.json?ref=';
   private elencoRistorantiUrl: string = !this.rootService.mocked ? '/locations/' : '/';
 
   constructor(private http: Http, private rootService: RootService) { }
