@@ -8,6 +8,7 @@ import { FoodService } from "../../services/food.service";
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { CibiDialogComponent } from "../../components/cibi-dialog/cibi-dialog.component";
 import { LoaderService } from "../../services/loader.service";
+import { RootService } from "../../services/root.service";
 
 @Component({
   selector: "app-profilepage",
@@ -25,45 +26,20 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
   elencoCibiUtente: Food[] = new Array;
   elencoCibiCompleto: Food[] = new Array;
 
-  constructor(private userService: UserService, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog, private loader: LoaderService) { }
+  constructor(private userService: UserService, 
+    private groupService: GroupService, 
+    private foodService: FoodService, 
+    private rootService: RootService, 
+    public dialog: MatDialog, 
+    private loader: LoaderService) { }
 
   ngOnInit() {
     // this.user = UserService.getUserProfile(userId);
     this.loader.showLoader(true);
     this.foodService.getFoodList().subscribe(foodList => this.elencoCibiCompleto = foodList);
-    this.userService.getUserProfile('1')
-      .subscribe(
-        userInfo => {
-          this.userProfile = userInfo;
 
-          this.groupService.getGroupDetails(this.userProfile.id).subscribe(
-            groupInfo => {
-              this.elencoGruppi.push(groupInfo);
-              if (this.gruppi === "") {
-                this.gruppi = groupInfo.nome;
-              } else {
-                this.gruppi = this.gruppi + "," + groupInfo.nome;
-              }
-            }
-          );
+    this.userProfile = this.rootService.loggedUser;
 
-          this.foodService.getFoodDetails(this.userProfile.id).subscribe(
-            foodInfo => {
-              this.elencoCibiUtente.push(foodInfo);
-              if (this.cibi === "") {
-                this.cibi = foodInfo.nome;
-              } else {
-                this.cibi = this.cibi + "," + foodInfo.nome;
-              }
-            }
-          );
-
-          console.log(this.userProfile);
-
-        },
-        err => {
-          console.log(err);
-        });
   }
 
   onSubmit() {

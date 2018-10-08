@@ -10,7 +10,7 @@ import { RootService } from './root.service';
 @Injectable()
 export class FoodService {
 
-  private ciboUrl: string = !this.rootService.mocked ? '/food/1' : '/public/assets/mock/getFoodDetail.json?ref=';
+  private ciboUrl: string = !this.rootService.mocked ? '/food/1' : '/public/assets/mock/getFoodDetails.json?ref=';
   private elencoCiboUrl: string = !this.rootService.mocked ? '/foods/' : '/public/assets/mock/getFoodList.json?ref=';
   private elencoRistorantiUrl: string = !this.rootService.mocked ? '/locations/' : '/';
 
