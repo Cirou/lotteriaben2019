@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
       <div class="col-12 text-align-center">
         <h5>
-          <b>Ciao amici di {{groupDetails.nomeGruppo}}!</b>
+          <b>Ciao amici di {{groupDetails.nome}}!</b>
         </h5>
       </div>
       <div class="col-12 text-align-center">
@@ -24,27 +24,4 @@
         </div>
     </div>
   </div>
-
-  <div class="row">
-    <div class="content col-12">
-
-      <h6>
-        <!-- Cosa preferisci mangiare oggi? -->
-      </h6>
-
-      <a *ngFor="let item of pollOfTheDay.location; let i = index">
-        <div class="row">
-          <div class="content col-6">
-            <p class="primary">{{item.nome}}
-              <mat-progress-bar value="{{item.percentVoti}}" type="success"></mat-progress-bar>
-            </p>
-          </div>
-          <div class="content col-5 margin-top-20">
-            <p class="primary"> {{item.voti}} voti</p>
-          </div>
-        </div>
-      </a>
-    </div>
-  </div>
-
 </div>

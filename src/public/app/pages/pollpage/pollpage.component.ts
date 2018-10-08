@@ -1,11 +1,7 @@
 import { Component, OnInit, AfterContentInit, EventEmitter, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GroupService } from '../../services/group.service';
-import { FoodService } from '../../services/food.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-import { LocationDialogComponent } from "../../components/location-dialog/location-dialog.component";
-import { Location } from "../../../models/Location";
-import { Food } from '../../../models/Food';
+import { Suggestion } from '../../../models/Suggestion';
 
 @Component({
   selector: 'app-pollpage',
@@ -15,15 +11,15 @@ import { Food } from '../../../models/Food';
 export class PollpageComponent implements OnInit {
 
   id: number;
-  private sub: any;
+  sub: any;
   pollOfTheDay: any;
   groupDetails: any;
   totaleMembri: number;
+  suggestion: Suggestion;
   hasSuggestion: boolean = false;
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog) { }
-
-  private elencoCibi: Food[] = new Array;
+  constructor(private route: ActivatedRoute,
+    private groupService: GroupService) { }
 
   ngOnInit() {
 
@@ -31,26 +27,29 @@ export class PollpageComponent implements OnInit {
       this.id = params['id'];
     });
 
-    this.groupDetails = this.groupService.getGroupDetails(this.id)
+    this.groupService.getGroupDetails(this.id)
       .subscribe(
         groupDetails => {
-          this.groupDetails = groupDetails;
-          Promise.resolve(groupDetails.users).then(users => {
-            this.totaleMembri = users.length;
-          });
+          this.groupDetails = groupDetails[0];
+          this.totaleMembri = groupDetails[0].users.length;
           console.log(this.groupDetails);
-
-
         },
         err => {
           console.log(err);
         });
 
-    this.foodService.getFoodList().subscribe(cibi =>{
+    this.groupService.getSuggestion(this.id).subscribe(
+      suggestion => {
+        if(suggestion && suggestion[0]){
+          this.hasSuggestion = true;
+          this.suggestion = suggestion[0];
+        }
+        console.log(this.suggestion);
+      },
+      err => {
+        console.log(err);
+      });
 
-      this.elencoCibi = cibi;
-
-    });
   }
 
-  }  
+}  

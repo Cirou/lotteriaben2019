@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../../models/Group';
 import { Message } from '../../models/Message';
-import { Votation } from '../../models/Votation';
+import { Suggestion } from '../../models/Suggestion';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class GroupService {
 
   private gruppoUrl: string = !this.rootService.mocked ? '/group/' : '/public/assets/mock/getGroupDetails.json?ref=';
   private chatGruppoUrl: string = !this.rootService.mocked ? '/message/' : '/public/assets/mock/getGroupChat.json?ref=';
-  private pollUrl: string = !this.rootService.mocked ? '/votation/' : '/';
+  private suggestionUrl: string = !this.rootService.mocked ? '/suggestion/' : '/';
   private sendMessageUrl: string = !this.rootService.mocked ? '/message' : '/';
 
   constructor(private http: Http, private rootService: RootService) { }
@@ -34,9 +34,9 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getPollOfTheDay(idGruppo: number): Observable<Votation> {
+  getSuggestion(idGruppo: number): Observable<Suggestion> {
     return this.http
-      .get(this.pollUrl + idGruppo)
+      .get(this.suggestionUrl + idGruppo)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
