@@ -1,4 +1,4 @@
-import { Entity, Column, OneToOne, JoinColumn, PrimaryColumn } from 'typeorm';
+import { Entity, Column, OneToOne, JoinColumn, PrimaryColumn, ManyToOne } from 'typeorm';
 import { Group } from './Group';
 import { Food } from './Food';
 import { User } from './User';
@@ -7,19 +7,16 @@ import { User } from './User';
 export class Votation {
 
   @PrimaryColumn()
-  @OneToOne(type => Group, { eager: true })
-  @JoinColumn()
-  group_id: Group;
+  @ManyToOne(type => Group, { eager: true })
+  group_id: Number;
 
   @PrimaryColumn()
-  @OneToOne(type => Food, { eager: true })
-  @JoinColumn()
-  food_id: Food;
+  @ManyToOne(type => Food, { eager: true })
+  food_id: Number;
 
   @PrimaryColumn()
-  @OneToOne(type => User, { eager: true })
-  @JoinColumn()
-  user_id: User;
+  @ManyToOne(type => User, { eager: true })
+  user_id: Number;
 
   @Column({ name: 'date', type: 'date', nullable: true })
   data: Date;
