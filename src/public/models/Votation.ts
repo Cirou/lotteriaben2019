@@ -1,13 +1,14 @@
 import { Group } from './Group';
-import { Location } from './Location';
+import { Food } from './Food';
+import { User } from './User';
 
 export class Votation {
 
-  group_id: number;
+  group_id: Group;
 
-  location_id: number;
-
-  voti: number;
+  food_id: Food;
+  
+  user_id: User;
 
   data: Date;
 
