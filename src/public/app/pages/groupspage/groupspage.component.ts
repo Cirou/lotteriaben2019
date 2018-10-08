@@ -32,6 +32,7 @@ export class GroupspageComponent implements OnInit {
   elencoGruppi: Group[] = new Array;
   tip: Tip = new Tip;
   tipMaxId: number = 1;
+  alreadyVoted: boolean = false;
 
   ngOnInit() {
 

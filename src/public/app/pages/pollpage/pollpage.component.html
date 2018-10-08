@@ -1,24 +1,35 @@
 <div class="container">
 
-  <div class="row">
-    <div class="content col-12">
-      <h4>
-        <b>{{pollOfTheDay.nomeGruppo}}</b>
-      </h4>
-      <h6>
-        Il locale che il Dottor L.T. Diet consiglia oggi al vostro gruppo è:
-      </h6>
-      <p><b>Vattelappesca</b></p>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 text-align-center">
+        <h5>
+          <b>Ciao amici di {{groupDetails.nomeGruppo}}!</b>
+        </h5>
+      </div>
+      <div class="col-12 text-align-center">
+        <img class="img-fluid rounded-circle profile-icon" src="../../../public/assets/img/doctor.png" />
+      </div>
+      <div class="col-12 text-align-center margin-top-10" *ngIf="hasSuggestion">
+        <h6>
+          Il posto che il <b>Dottor L.T. Diet</b> consiglia oggi al vostro gruppo è:
+        </h6>
+        <h2><b>Vattelappesca</b></h2>
+      </div>
+      <div class="col-12 text-align-center" *ngIf="!hasSuggestion">
+          <h6>
+            Il <b>Dottor L.T. Diet</b> non ha ancora un consiglio per voi purtroppo
+          </h6>
+          <h6 class="margin-top-10">Ma <b>niente paura!</b> Appena tutte le persone del vostro gruppo avranno espresso la <b>loro preferenza</b>, il Dottore saprà come <b>consigliarvi!</b></h6>
+        </div>
     </div>
   </div>
 
-  <hr>
-
   <div class="row">
     <div class="content col-12">
 
       <h6>
-        Cosa preferisci mangiare oggi?
+        <!-- Cosa preferisci mangiare oggi? -->
       </h6>
 
       <a *ngFor="let item of pollOfTheDay.location; let i = index">

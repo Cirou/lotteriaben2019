@@ -26,7 +26,8 @@ const routes: Routes = [
         { path: 'settings', component: SettingspageComponent, outlet: 'sub' },
         { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'},
         { path: 'poll/:id', component: PollpageComponent, outlet: 'sub'},
-        { path: 'search', component: SearchpageComponent, outlet: 'sub'}
+        { path: 'search', component: SearchpageComponent, outlet: 'sub'},
+        { path: 'preferences', component: GroupspageComponent, outlet: 'sub' },
 
       ]
   },

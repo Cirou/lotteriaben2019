@@ -8,6 +8,20 @@
   </div>
   <hr>
   <div class="row">
+    <div class="content col-12">
+      <div>
+        <button [routerLink]="['/app', { outlets: { sub: ['groupdetail', 1] }}]" class="app-long-button-left"
+          mat-raised-button [color]="alreadyVoted ? 'secondary' : 'primary'">
+          <mat-icon class="group-icon">fastfood</mat-icon>
+          <span *ngIf="alreadyVoted">Visualizza le tue scelte di oggi</span>
+          <span *ngIf="!alreadyVoted">Esprimi le tue preferenze!</span>
+          <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
     <div class="content col-10">
       <h5 class="groups-title">I tuoi gruppi</h5>
     </div>
