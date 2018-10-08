@@ -26,8 +26,20 @@ export let getGroupByName = (req: Request, res: Response) => {
   getRepository(Group).createQueryBuilder()
     .select()
     .where('name = :name', { name: req.param.name })
-    .getMany().then(tip => {
-      res.send(tip);
+    .getMany().then(group => {
+      res.send(group);
+    }).catch(err => { console.log(err); });
+};
+
+/**
+ * GET /groups/
+ * retrieves the group using the given name
+ */
+export let getAllGroups = (req: Request, res: Response) => {
+  getRepository(Group).createQueryBuilder()
+    .select()
+    .getMany().then(group => {
+      res.send(group);
     }).catch(err => { console.log(err); });
 };
 

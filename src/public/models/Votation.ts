@@ -1,14 +1,10 @@
-import { Group } from './Group';
-import { Food } from './Food';
-import { User } from './User';
-
 export class Votation {
 
-  group_id: Group;
+  group_id: Number;
 
-  food_id: Food;
-  
-  user_id: User;
+  food_id: Number;
+
+  user_id: Number;
 
   data: Date;
 

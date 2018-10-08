@@ -12,6 +12,7 @@ import * as expressValidator from 'express-validator';
 import { createConnection, getConnectionOptions } from 'typeorm';
 import { Request, Response } from 'express';
 import { AppRoutes } from './routes';
+import { startLTDietDaemon } from './server/services/LTDiet';
 
 const rootPath = path.normalize(__dirname + '/../');
 
@@ -71,5 +72,7 @@ createConnection({
   // run app
   app.listen(4200);
   console.log('Express application is up and running on port 4200');
+
+  startLTDietDaemon();
 
 }).catch(error => console.log('TypeORM connection error: ', error));

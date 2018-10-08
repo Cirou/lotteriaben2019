@@ -1,4 +1,4 @@
-import { getGroup, postGroup, putGroup, getGroupByName } from './server/controllers/GroupController';
+import { getGroup, postGroup, putGroup, getGroupByName, getAllGroups } from './server/controllers/GroupController';
 import { getUser, postUser, putUser, getUserByName } from './server/controllers/UserController';
 import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
@@ -38,6 +38,11 @@ export const AppRoutes = [
         path: '/search/group/:name',
         method: 'get',
         action: getGroupByName
+    },
+    {
+        path: '/groups/',
+        method: 'get',
+        action: getAllGroups
     },
     {
         path: '/group',
