@@ -13,7 +13,7 @@ export let getVotation = (req: Request, res: Response) => {
     .where('group_id = :id', { name: req.params.id })
     .getMany().then(votation => {
       res.send(votation);
-  }).catch(err => { console.log(err); });
+    }).catch(err => { console.log(err); });
 };
 
 
@@ -22,9 +22,16 @@ export let getVotation = (req: Request, res: Response) => {
  * saves the votation using the given model
  */
 export let postVotation = (req: Request, res: Response) => {
-  getRepository(Votation).save(req.body).then(votation => {
-    res.send(votation);
-  }).catch(err => { console.log(err); });
+
+  getRepository(Votation)
+    .createQueryBuilder()
+    .insert()
+    .into(Votation)
+    .values(req.body)
+    .execute().then(votation => {
+      res.send(votation);
+    }).catch(err => { console.log(err); });
+
 };
 
 /**
@@ -32,7 +39,7 @@ export let postVotation = (req: Request, res: Response) => {
  * updates the votation using the given model and id
  */
 export let putVotation = (req: Request, res: Response) => {
-  getRepository(Votation).update({'group_id' : req.body.id, 'food_id' : req.body.id}, req.body).then(updatedUser => {
+  getRepository(Votation).update({ 'group_id': req.body.id, 'food_id': req.body.id }, req.body).then(updatedUser => {
 
     getRepository(Votation).findByIds(req.body.id).then(votation => {
       res.send(votation);

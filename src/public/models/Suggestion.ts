@@ -4,8 +4,8 @@ import { Location } from './Location';
 export class Suggestion {
 
   id: number;
-  user_id: Number;
-  food_id: Number;
+  group_id: Number;
+  location_id: Number;
   data: Date;
 
 }
