@@ -24,6 +24,7 @@ import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
 import { PollpageComponent } from  './pages/pollpage/pollpage.component';
 import { SearchpageComponent } from  './pages/searchpage/searchpage.component';
+import { PreferencespageComponent } from  './pages/preferencespage/preferencespage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -73,7 +74,8 @@ import { CookieService } from 'ngx-cookie-service';
     GroupdetailpageComponent,
     PollpageComponent,
     SearchpageComponent,
-    ChatMessageComponent
+    ChatMessageComponent,
+    PreferencespageComponent
   ],
   imports: [
     RoutingModule,
