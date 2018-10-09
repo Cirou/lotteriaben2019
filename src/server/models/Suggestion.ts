@@ -9,12 +9,12 @@ export class Suggestion {
   id: number;
 
   @ManyToOne(type => Group, { eager: true })
-  @JoinColumn({ name: 'group_id' })
-  group_id: Number;
+  @JoinColumn({ name: 'user_id' })
+  user_id: Number;
 
   @ManyToOne(type => Location, { eager: true })
-  @JoinColumn({ name: 'location_id' })
-  location_id: Number;
+  @JoinColumn({ name: 'food_id' })
+  food_id: Number;
 
   @Column({ name: 'date', type: 'date', nullable: true })
   data: Date;
