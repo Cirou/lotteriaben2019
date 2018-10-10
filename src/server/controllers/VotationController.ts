@@ -39,7 +39,7 @@ export let postVotation = (req: Request, res: Response) => {
  * updates the votation using the given model and id
  */
 export let putVotation = (req: Request, res: Response) => {
-  getRepository(Votation).update({ 'group_id': req.body.id, 'food_id': req.body.id }, req.body).then(updatedUser => {
+  getRepository(Votation).update({ 'id': req.body.id, 'food_id': req.body.id }, req.body).then(updatedUser => {
 
     getRepository(Votation).findByIds(req.body.id).then(votation => {
       res.send(votation);
