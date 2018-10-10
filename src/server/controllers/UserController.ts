@@ -55,11 +55,15 @@ export let postUser = (req: Request, res: Response) => {
  * updates the user using the given model and id
  */
 export let putUser = (req: Request, res: Response) => {
-  getRepository(User).update({ 'id': req.body.id }, req.body).then(updatedUser => {
-
-    getRepository(User).findByIds(req.body.id).then(user => {
-      res.send(user);
+  getRepository(User)
+    .createQueryBuilder()
+    .update()
+    .set(req.body)
+    .where('id = :id', { id: req.body.id })
+    .execute()
+    .then(updatedUser => {
+      getRepository(User).findByIds(req.body.id).then(user => {
+        res.send(user);
+      }).catch(err => { console.log(err); });
     }).catch(err => { console.log(err); });
-
-  }).catch(err => { console.log(err); });
 };

@@ -5,7 +5,7 @@ import { Group } from './Group';
 @Entity('users')
 export class User {
 
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({name: 'id'})
   id: number;
 
   @Column({ name: 'name', type: 'varchar', nullable: true })
