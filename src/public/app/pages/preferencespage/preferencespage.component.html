@@ -1,4 +1,4 @@
-<div class="container" style="height: 485px; overflow-y: scroll;">  
+<div class="container" style="height: 485px; overflow-y: scroll;">
   <div class="col-12">
     <mat-selection-list #cibi>
       <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo'>
@@ -15,22 +15,16 @@
   </div>
 </div>
 <div class="container fixed-bottom">
-  <div class="col-12">
-    <p>
-      Options selected: {{cibi.selectedOptions.selected.length}}
-    </p>
-
-    <div class="row">
-      <div class="col-7">
-        <button mat-button (click)="onNoClick()" mat-raised-button color="primary">
-          Annulla
-        </button>
-      </div>
-      <div class="col-3">
-        <button mat-button (click)="savePreferences()" mat-raised-button color="primary">
-          Salva
-        </button>
-      </div>
+  <div class="row justify-content-around ">
+    <div class="col-4 margin-bottom-10">
+      <button mat-button (click)="cancelPreferences()" mat-raised-button color="primary" >
+        Annulla
+      </button>
+    </div>
+    <div class="col-4 margin-bottom-10">
+      <button mat-button (click)="savePreferences()" mat-raised-button color="primary">
+        Salva
+      </button>
     </div>
   </div>
 </div>
