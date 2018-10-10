@@ -1,29 +1,36 @@
-<mat-selection-list #cibi>
-  <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo'>
-    <div class="row no-gutters align-items-center">
-      <div class="col-3">
-        <img src="../../../public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">
+<div class="container" style="height: 485px; overflow-y: scroll;">  
+  <div class="col-12">
+    <mat-selection-list #cibi>
+      <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo'>
+        <div class="row no-gutters align-items-center">
+          <div class="col-3">
+            <img src="../../../public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">
+          </div>
+          <div class="col-9">
+            {{cibo.descrizione}}
+          </div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>
+<div class="container fixed-bottom">
+  <div class="col-12">
+    <p>
+      Options selected: {{cibo.selectedOptions.selected.length}}
+    </p>
+
+    <div class="row">
+      <div class="col-7">
+        <button mat-button (click)="onNoClick()" mat-raised-button color="primary">
+          Annulla
+        </button>
       </div>
-      <div class="col-9">
-        {{cibo.descrizione}}
+      <div class="col-3">
+        <button mat-button (click)="savePreferences()" mat-raised-button color="primary">
+          Salva
+        </button>
       </div>
     </div>
-  </mat-list-option>
-</mat-selection-list>
-
-<p>
-  Options selected: {{cibi.selectedOptions.selected.length}}
-</p>
-
-<div class="row">
-    <div class="col-3">
-<button mat-button (click)="onNoClick()" mat-raised-button color="primary" >
-  Annulla    
-</button>
-</div>
-<div class="col-9">
-<button mat-button (click)="savePreferences()" mat-raised-button color="primary" >
-    Salva    
-  </button>
-</div>
+  </div>
 </div>
