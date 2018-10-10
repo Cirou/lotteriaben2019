@@ -15,8 +15,8 @@ import { formatDate } from '../../../../shared/utils/DateUtils'
 export class PreferencespageComponent implements OnInit {
 
   elencoCibi: Food[];
-  preferenze: Votation[];
-  @ViewChild(MatSelectionList) cibo: MatSelectionList;
+  preferenze: Votation[] = new Array;
+  @ViewChild(MatSelectionList) cibi: MatSelectionList;
 
   constructor(private foodService: FoodService,
     private userService: UserService,
@@ -35,7 +35,7 @@ export class PreferencespageComponent implements OnInit {
 
   savePreferences() {
     
-    this.cibo.selectedOptions.selected.forEach(element => {
+    this.cibi.selectedOptions.selected.forEach(element => {
       let preferenza:Votation = new Votation;
       preferenza.data = formatDate(new Date);
       preferenza.food_id = element.value.id;
