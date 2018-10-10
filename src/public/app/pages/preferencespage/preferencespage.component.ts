@@ -6,6 +6,7 @@ import { MatSelectionList, MatSelectionListChange, MatListOption } from '@angula
 import { Votation } from '../../../models/Votation';
 import { RootService } from '../../services/root.service';
 import { formatDate } from '../../../../shared/utils/DateUtils'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-preferencespage',
@@ -20,7 +21,8 @@ export class PreferencespageComponent implements OnInit {
 
   constructor(private foodService: FoodService,
     private userService: UserService,
-    private rootService: RootService) { }
+    private rootService: RootService,
+    private router: Router) { }
 
   ngOnInit() {
 
@@ -53,5 +55,9 @@ export class PreferencespageComponent implements OnInit {
         console.log(err);
       });
   }
+
+  cancelPreferences(): void {
+    this.router.navigate(['/app'])
+  }  
 
 }
