@@ -10,9 +10,11 @@ export class Votation {
   id: Number;
 
   @ManyToOne(type => Food, { eager: true })
+  @JoinColumn({name: 'food_id'})
   food_id: Number;
 
   @ManyToOne(type => User, { eager: true })
+  @JoinColumn({name: 'user_id'})
   user_id: Number;
 
   @Column({ name: 'date', type: 'date', nullable: true })

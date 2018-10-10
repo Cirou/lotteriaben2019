@@ -16,7 +16,9 @@ export class UserService {
   private userUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getUserProfile.json?ref=';
   private userTipUrl: string = !this.rootService.mocked ? '/tip/' : '/public/assets/mock/getUserTip.json?ref=';
   private userTipMaxIdUrl: string = !this.rootService.mocked ? '/tipmaxid' : '/public/assets/mock/getUserMaxTip.json?ref=';
-  private sendUserVotationUrl: string = !this.rootService.mocked ? '/userpreferences' : '/public/assets/mock/postUserPreferences.json?ref=';
+  private sendUserVotationUrl: string = !this.rootService.mocked ? '/votation' : '/public/assets/mock/postUserVotation.json?ref=';
+  private getUserVotationUrl: string = !this.rootService.mocked ? '/votation/' : '/public/assets/mock/getUserVotation.json?ref=';
+
 
   postUserProfile() {
     return '{result: "OK"}';
@@ -46,7 +48,7 @@ export class UserService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  postUserPreferences(preferences: Votation[]): Observable<Votation[]> {
+  postUserVotation(preferences: Votation[]): Observable<Votation[]> {
 
     const httpOptions = {
       headers: new Headers({
@@ -56,6 +58,14 @@ export class UserService {
 
     return this.http
       .post(this.sendUserVotationUrl, preferences, httpOptions)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  getUserVotation(id:string): Observable<Votation[]>{
+    return this.http
+      .get(this.getUserVotationUrl + id)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

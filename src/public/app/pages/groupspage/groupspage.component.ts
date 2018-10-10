@@ -20,13 +20,13 @@ export class GroupspageComponent implements OnInit {
 
   @Output() showLoader = new EventEmitter<boolean>();
 
-  constructor(private userService: UserService, 
-    private groupService: GroupService, 
-    private loader: LoaderService, 
-    public dialog: MatDialog, 
-    private cookieService: CookieService, 
+  constructor(private userService: UserService,
+    private groupService: GroupService,
+    private loader: LoaderService,
+    public dialog: MatDialog,
+    private cookieService: CookieService,
     private rootService: RootService,
-    private router:Router) { }
+    private router: Router) { }
 
   user: User = new User;
   elencoGruppi: Group[] = new Array;
@@ -38,7 +38,7 @@ export class GroupspageComponent implements OnInit {
 
     this.loader.showLoader(true);
 
-    if(!this.rootService.loggedUserId) {
+    if (!this.rootService.loggedUserId) {
       this.router.navigate(['/login']);
       return;
     }
@@ -54,30 +54,43 @@ export class GroupspageComponent implements OnInit {
           console.log(err);
         });
 
-    this.userService.getTipMaxId().subscribe(
-      tipMaxId => {
+    this.userService.getUserVotation(this.rootService.loggedUserId)
+      .subscribe(
+        votations => {
+          if (votations) {
+            this.alreadyVoted = true;
+            this.rootService.votations = votations;
+          }
+          console.log(this.user);
+        },
+        err => {
+          console.log(err);
+        });
 
-        this.tipMaxId = Number(tipMaxId.id);
-        const randId = String(Math.floor(Math.random() * this.tipMaxId - 1) + 1);
-        console.log(this.tipMaxId);
-        console.log(randId);
 
-        this.userService.getUserLoginTip(randId)
-          .subscribe(
-            tip => {
-              this.tip = tip[0];
-              console.log(this.tip);
-              if (this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true') {
-                this.openTipPopup();
+    this.userService.getTipMaxId()
+      .subscribe(
+        tipMaxId => {
+          this.tipMaxId = Number(tipMaxId.id);
+          const randId = String(Math.floor(Math.random() * this.tipMaxId - 1) + 1);
+          console.log(this.tipMaxId);
+          console.log(randId);
+
+          this.userService.getUserLoginTip(randId)
+            .subscribe(
+              tip => {
+                this.tip = tip[0];
+                console.log(this.tip);
+                if (this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true') {
+                  this.openTipPopup();
+                }
+              },
+              err => {
+                console.log(err);
               }
-            },
-            err => {
-              console.log(err);
-            }
-          );
-
-      }
-    );
+            );
+        }
+      );
 
   }
 
