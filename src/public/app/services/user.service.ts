@@ -16,7 +16,7 @@ export class UserService {
   private userUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getUserProfile.json?ref=';
   private userTipUrl: string = !this.rootService.mocked ? '/tip/' : '/public/assets/mock/getUserTip.json?ref=';
   private userTipMaxIdUrl: string = !this.rootService.mocked ? '/tipmaxid' : '/public/assets/mock/getUserMaxTip.json?ref=';
-  private sendUserVotationUrl: string = !this.rootService.mocked ? '/userpreferences' : '/public/assets/mock/getUserMaxTip.json?ref=';
+  private sendUserVotationUrl: string = !this.rootService.mocked ? '/userpreferences' : '/public/assets/mock/postUserPreferences.json?ref=';
 
   postUserProfile() {
     return '{result: "OK"}';

@@ -1,5 +1,5 @@
-<mat-selection-list #cibo>
-  <mat-list-option *ngFor="let cibo of elencoCibi">
+<mat-selection-list #cibi>
+  <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo'>
     <div class="row no-gutters align-items-center">
       <div class="col-3">
         <img src="../../../public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">
@@ -22,7 +22,7 @@
 </button>
 </div>
 <div class="col-9">
-<button mat-button (click)="onNoClick()" mat-raised-button color="primary" >
+<button mat-button (click)="savePreferences()" mat-raised-button color="primary" >
     Salva    
   </button>
 </div>

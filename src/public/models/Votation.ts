@@ -1,7 +1,7 @@
 export class Votation {
 
-  group_id: Number;
-
+  id: Number;
+  
   food_id: Number;
 
   user_id: Number;

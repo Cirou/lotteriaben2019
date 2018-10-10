@@ -6,7 +6,7 @@ export class RootService {
 
   private _loggedUserId: string;
   private _loggedUser: User;
-  private _mocked: boolean = false;
+  private _mocked: boolean = true;
 
   constructor() { }
 

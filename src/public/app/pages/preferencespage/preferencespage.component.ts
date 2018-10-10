@@ -3,6 +3,9 @@ import { FoodService } from '../../services/food.service';
 import { UserService } from '../../services/user.service';
 import { Food } from '../../../models/Food';
 import { MatSelectionList, MatSelectionListChange, MatListOption } from '@angular/material';
+import { Votation } from '../../../models/Votation';
+import { RootService } from '../../services/root.service';
+import { formatDate } from '../../../../shared/utils/DateUtils'
 
 @Component({
   selector: 'app-preferencespage',
@@ -12,10 +15,12 @@ import { MatSelectionList, MatSelectionListChange, MatListOption } from '@angula
 export class PreferencespageComponent implements OnInit {
 
   elencoCibi: Food[];
+  preferenze: Votation[];
   @ViewChild(MatSelectionList) cibo: MatSelectionList;
 
   constructor(private foodService: FoodService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private rootService: RootService) { }
 
   ngOnInit() {
 
@@ -29,16 +34,24 @@ export class PreferencespageComponent implements OnInit {
   }
 
   savePreferences() {
-    console.log(this.cibo.selectedOptions.selected.values);
+    
+    this.cibo.selectedOptions.selected.forEach(element => {
+      let preferenza:Votation = new Votation;
+      preferenza.data = formatDate(new Date);
+      preferenza.food_id = element.value.id;
+      preferenza.user_id = Number(this.rootService.loggedUserId);
+      this.preferenze.push(preferenza);
+    });
+    
+    console.log(this.preferenze);
 
-    this.userService.postUserPreferences(null).subscribe(
-      cibi => {
+    this.userService.postUserPreferences(this.preferenze).subscribe(
+      preferenze => {
+        console.log(preferenze);
       },
       err => {
         console.log(err);
       });
-
-
   }
 
 }
