@@ -47,7 +47,7 @@ export class PreferencespageComponent implements OnInit {
     
     console.log(this.preferenze);
 
-    this.userService.postUserPreferences(this.preferenze).subscribe(
+    this.userService.postUserVotation(this.preferenze).subscribe(
       preferenze => {
         console.log(preferenze);
       },
