@@ -19,6 +19,7 @@ export class PollpageComponent implements OnInit {
   pollOfTheDay: any;
   groupDetails: any;
   totaleMembri: number;
+  hasSuggestion: boolean = false;
 
   constructor(private route: ActivatedRoute, private groupService: GroupService, private foodService: FoodService, public dialog: MatDialog) { }
 

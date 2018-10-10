@@ -1,6 +1,7 @@
 import { Votation } from '../models/Votation';
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
+import { formatDate } from '../../shared/utils/DateUtils';
 
 
 /**
@@ -10,7 +11,7 @@ import { getRepository } from 'typeorm';
 export let getVotation = (req: Request, res: Response) => {
   getRepository(Votation).createQueryBuilder()
     .select()
-    .where('group_id = :id', { name: req.params.id })
+    .where('user_id = :id AND date = :date' , { name: req.params.id, date: formatDate(new Date()) })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });
