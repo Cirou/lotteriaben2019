@@ -27,6 +27,10 @@ export class PreferencespageComponent implements OnInit {
 
   ngOnInit() {
 
+    if(this.rootService.votations){
+      this.alreadyVoted = true;
+    }
+
     this.foodService.getFoodList().subscribe(cibi => {
       this.elencoCibi = cibi;
       console.log(this.elencoCibi);
