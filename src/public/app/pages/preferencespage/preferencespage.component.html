@@ -1,6 +1,6 @@
 <div class="container" style="height: 485px; overflow-y: scroll;">
   <div class="col-12">
-    <mat-selection-list #cibi>
+    <mat-selection-list>
       <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo'>
         <div class="row no-gutters align-items-center">
           <div class="col-3">
@@ -14,7 +14,7 @@
     </mat-selection-list>
   </div>
 </div>
-<div class="container fixed-bottom">
+<div *ngIf="!alreadyVoted" class="container fixed-bottom">
   <div class="row justify-content-around ">
     <div class="col-4 margin-bottom-10">
       <button mat-button (click)="cancelPreferences()" mat-raised-button color="primary" >

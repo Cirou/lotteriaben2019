@@ -4,6 +4,7 @@ import { GroupService } from '../../services/group.service';
 import { Message } from '../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
 import { User } from '../../../models/User';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -19,7 +20,8 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   numeroMembri: number;
   chatTimer: NodeJS.Timer;
 
-  constructor(private route: ActivatedRoute, private groupService: GroupService, private loader: LoaderService) { }
+
+  constructor(private route: ActivatedRoute, private groupService: GroupService, private loader: LoaderService, private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -72,4 +74,13 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
 
   }
 
-}
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(GroupdetailpageComponent, {
+      data: {
+
+      }
+    });
+  }
+
+} 
