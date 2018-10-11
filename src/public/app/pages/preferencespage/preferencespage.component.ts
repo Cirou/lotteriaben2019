@@ -17,6 +17,7 @@ export class PreferencespageComponent implements OnInit {
 
   elencoCibi: Food[];
   preferenze: Votation[] = new Array;
+  alreadyVoted: boolean = false;
   @ViewChild(MatSelectionList) cibi: MatSelectionList;
 
   constructor(private foodService: FoodService,
