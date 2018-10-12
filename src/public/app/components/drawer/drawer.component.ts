@@ -29,13 +29,6 @@ export class DrawerComponent implements OnInit {
       "descrizione": "Profilo",
       "routerLink" :"profile",
       "icon":"person"
-    },
-    {
-      "id": 3,
-      "nome": "search",
-      "descrizione": "Cerca",
-      "routerLink" :"search",
-      "icon":"search"
     }
   ];
 

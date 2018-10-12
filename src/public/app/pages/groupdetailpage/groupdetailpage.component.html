@@ -9,7 +9,7 @@
       <button mat-icon-button (click)="openGroup()" color="accent" class="float-right">
         <mat-icon aria-label="Visualizza membri">group</mat-icon>
       </button>
-      <button mat-icon-button (click)="openAddMember()" color="accent" class="float-right">
+      <button mat-icon-button [routerLink]="['/app', { outlets: { sub: ['search', groupDetails.id] }}]" color="accent" class="float-right">
         <mat-icon aria-label="Aggiungi membro">person_add</mat-icon>
       </button>
     </div>

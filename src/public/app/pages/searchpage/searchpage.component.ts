@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../../services/search.service';
-import { Group } from '../../../models/Group';
 import { User } from '../../../models/User';
+import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../services/user.service';
+import { UserGroup } from '../../../models/UserGroup';
 
 @Component({
   selector: 'app-searchpage',
@@ -10,30 +12,48 @@ import { User } from '../../../models/User';
 })
 export class SearchpageComponent implements OnInit {
 
-  constructor(private searchService: SearchService) { }
-
+  id: number;
+  private sub: any;
   searchString: string = '';
-  groupList: Group[];
   userList: User[];
-  
+
+
+  constructor(private searchService: SearchService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService) { }
+
+  ngOnInit() {
+    this.sub = this.route.params.subscribe(params => {
+      this.id = params['id'];
+    });
+
+    this.userService.getAllUsers().subscribe(
+      users => {
+        this.userList = users;
+      },
+      err => {
+        console.log(err);
+      });
+  }
 
   getSearchString(searchString: string) {
     this.searchString = searchString;
-    this.search();
   }
 
-  ngOnInit() {
-  }
+  addUser(userId: number) {
 
-  search() {
-    this.searchService.getGroupsByName(this.searchString).subscribe(
-      gropus => {
-        this.groupList = gropus;
+    let userGroup: UserGroup = new UserGroup;
+    userGroup.groupId = this.id;
+    userGroup.userId = userId;
+
+    this.userService.postUserGroup(userGroup).subscribe(user => {
+      this.router.navigate(['/app', { outlets: { sub: ['groupdetail', this.id] } }])
+    },
+      err => {
+        console.log(err);
       });
-    this.searchService.getUsersByName(this.searchString).subscribe(
-      users => {
-        this.userList = users;
-      });
+
   }
 
 }
