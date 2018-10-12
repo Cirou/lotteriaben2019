@@ -5,7 +5,7 @@ import { Food } from '../../../models/Food';
 import { MatSelectionList } from '@angular/material';
 import { Votation } from '../../../models/Votation';
 import { RootService } from '../../services/root.service';
-import { formatDate } from '../../../../shared/utils/DateUtils'
+import { formatDate } from '../../../../shared/utils/DateUtils';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 
@@ -18,7 +18,7 @@ export class PreferencespageComponent implements OnInit {
 
   elencoCibi: Food[];
   preferenze: Votation[] = new Array;
-  alreadyVoted: boolean = false;
+  alreadyVoted = false;
   boxHeight: number;
   buttonHeight: number;
 
@@ -49,8 +49,8 @@ export class PreferencespageComponent implements OnInit {
   }
 
   isInSelectedFood(id: number) {
-    if (this.rootService.votations.find(x => x.id == id)) {
-      return true
+    if (this.rootService.votations.find(x => x.id === id)) {
+      return true;
     }
     return false;
   }
@@ -58,7 +58,7 @@ export class PreferencespageComponent implements OnInit {
   savePreferences() {
 
     this.cibi.selectedOptions.selected.forEach(element => {
-      let preferenza: Votation = new Votation;
+      const preferenza: Votation = new Votation;
       preferenza.data = formatDate(new Date);
       preferenza.food_id = element.value.id;
       preferenza.user_id = Number(this.rootService.loggedUserId);
@@ -77,7 +77,7 @@ export class PreferencespageComponent implements OnInit {
   }
 
   cancelPreferences(): void {
-    this.router.navigate(['/app'])
+    this.router.navigate(['/app']);
   }
 
 }

@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit {
 
   sendMessage() {
 
-    let message = new Message();
+    const message = new Message();
     message.text = this.messageToSend.value;
     message.user = this.rootService.loggedUser;
     message.group = this.group;

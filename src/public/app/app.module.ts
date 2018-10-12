@@ -1,8 +1,8 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, Injector } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Injector } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,10 +21,10 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SettingspageComponent } from './pages/settingspage/settingspage.component';
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
-import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
-import { PollpageComponent } from  './pages/pollpage/pollpage.component';
-import { SearchpageComponent } from  './pages/searchpage/searchpage.component';
-import { PreferencespageComponent } from  './pages/preferencespage/preferencespage.component';
+import { GroupdetailpageComponent } from './pages/groupdetailpage/groupdetailpage.component';
+import { PollpageComponent } from './pages/pollpage/pollpage.component';
+import { SearchpageComponent , FilterPipe } from './pages/searchpage/searchpage.component';
+import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -54,6 +54,7 @@ import { SearchService } from './services/search.service';
 import { RootService } from './services/root.service';
 import { CookieService } from 'ngx-cookie-service';
 
+
 @NgModule({
   declarations: [
     // COMPONENTS
@@ -78,8 +79,9 @@ import { CookieService } from 'ngx-cookie-service';
     PollpageComponent,
     SearchpageComponent,
     ChatMessageComponent,
-    PreferencespageComponent
-    
+    PreferencespageComponent,
+    // PIPE
+    FilterPipe
   ],
   imports: [
     RoutingModule,
@@ -89,7 +91,7 @@ import { CookieService } from 'ngx-cookie-service';
     HttpModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    //ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    // ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     AngularFireAuthModule
