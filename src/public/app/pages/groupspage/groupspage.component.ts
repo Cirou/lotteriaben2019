@@ -57,7 +57,7 @@ export class GroupspageComponent implements OnInit {
     this.userService.getUserVotation(this.rootService.loggedUserId)
       .subscribe(
         votations => {
-          if (votations) {
+          if (votations.length > 0) {
             this.alreadyVoted = true;
             this.rootService.votations = votations;
           }

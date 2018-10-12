@@ -42,7 +42,6 @@ import { LocationDialogComponent } from './components/location-dialog/location-d
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
-import { AddmemberdialogComponent } from './components/addmemberdialog/addmemberdialog.component';
 
 
 // CUSTOM SERVICES
@@ -68,7 +67,6 @@ import { CookieService } from 'ngx-cookie-service';
     LocationDialogComponent,
     AlertpopupComponent,
     GroupdialogComponent,
-    AddmemberdialogComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -108,7 +106,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, AddmemberdialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent]
 })
 export class AppModule {
 

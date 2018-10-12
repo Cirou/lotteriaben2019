@@ -27,7 +27,7 @@ export class PreferencespageComponent implements OnInit {
 
   ngOnInit() {
 
-    if(this.rootService.votations){
+    if(this.rootService.votations.length > 0){
       this.alreadyVoted = true;
     }
 

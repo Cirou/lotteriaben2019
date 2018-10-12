@@ -88,7 +88,7 @@ export let postUserGroup = (req: Request, res: Response) => {
   getConnection()
     .query('INSERT INTO users_groups VALUES (:userId, :groupId)', [req.body.userId, req.body.groupId])
     .then(user => {
-      res.send('OK');
+      res.send({result: 'OK'});
     }).catch(err => { console.log(err); });
 
 };
@@ -101,7 +101,7 @@ export let deleteUserGroup = (req: Request, res: Response) => {
   getConnection()
     .query('DELETE FROM users_groups WHERE usersId = :userId AND groupsId = :groupId', [req.body.userId, req.body.groupId])
     .then(user => {
-      res.send('OK');
+      res.send({result: 'OK'});
     }).catch(err => { console.log(err); });
 
 };
