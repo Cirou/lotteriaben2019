@@ -1,5 +1,5 @@
 import { getGroup, postGroup, putGroup, getGroupByName, getAllGroups } from './server/controllers/GroupController';
-import { getUser, postUser, putUser, getUserByName } from './server/controllers/UserController';
+import { getUser, postUser, putUser, getUserByName, deleteUserGroup, postUserGroup, getAllUsers } from './server/controllers/UserController';
 import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
 import { getVotation, postVotation, putVotation } from './server/controllers/VotationController';
@@ -14,6 +14,11 @@ export const AppRoutes = [
         path: '/user/:id',
         method: 'get',
         action: getUser
+    },
+    {
+        path: '/users/',
+        method: 'get',
+        action: getAllUsers
     },
     {
         path: '/search/user/:name',
@@ -99,5 +104,15 @@ export const AppRoutes = [
         path: '/suggestion/:id',
         method: 'get',
         action: getSuggestion
+    },
+    {
+        path: '/usergroup',
+        method: 'post',
+        action: postUserGroup
+    },
+    {
+        path: '/usergroup',
+        method: 'put',
+        action: deleteUserGroup
     }
 ];

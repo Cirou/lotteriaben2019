@@ -1,6 +1,6 @@
 import { User } from '../models/User';
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getRepository, getConnection } from 'typeorm';
 
 
 /**
@@ -11,6 +11,18 @@ export let getUser = (req: Request, res: Response) => {
   getRepository(User).findByIds(req.params.id).then(user => {
     res.send(user);
   }).catch(err => { console.log(err); });
+};
+
+/**
+ * GET /users/
+ * retrieves the group using the given name
+ */
+export let getAllUsers = (req: Request, res: Response) => {
+  getRepository(User).createQueryBuilder()
+    .select()
+    .getMany().then(User => {
+      res.send(User);
+    }).catch(err => { console.log(err); });
 };
 
 /**
@@ -55,15 +67,41 @@ export let postUser = (req: Request, res: Response) => {
  * updates the user using the given model and id
  */
 export let putUser = (req: Request, res: Response) => {
-  getRepository(User)
-    .createQueryBuilder()
-    .update()
-    .set(req.body)
-    .where('id = :id', { id: req.body.id })
-    .execute()
+
+  const user: User = req.body;
+
+  getConnection()
+    .query('UPDATE users SET id = :id, name = :nome, surname = :cognome, email = :email, gender = :sesso, city = :citta, nickname = :nickname, image = :immagine WHERE id = :id',
+    [user.id, user.nome, user.cognome, user.email, user.sesso, user.citta, user.nickname, user.immagine])
     .then(updatedUser => {
       getRepository(User).findByIds(req.body.id).then(user => {
         res.send(user);
       }).catch(err => { console.log(err); });
     }).catch(err => { console.log(err); });
+};
+
+/**
+ * POST /usergroup
+ * updates the user using the given model and id
+ */
+export let postUserGroup = (req: Request, res: Response) => {
+  getConnection()
+    .query('INSERT INTO users_groups VALUES (:userId, :groupId)', [req.body.userId, req.body.groupId])
+    .then(user => {
+      res.send('OK');
+    }).catch(err => { console.log(err); });
+
+};
+
+/**
+ * DELETE /usergroup
+ * updates the user using the given model and id
+ */
+export let deleteUserGroup = (req: Request, res: Response) => {
+  getConnection()
+    .query('DELETE FROM users_groups WHERE usersId = :userId AND groupsId = :groupId', [req.body.userId, req.body.groupId])
+    .then(user => {
+      res.send('OK');
+    }).catch(err => { console.log(err); });
+
 };
