@@ -41,6 +41,9 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
+import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
+import { AddmemberdialogComponent } from './components/addmemberdialog/addmemberdialog.component';
+
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -64,6 +67,8 @@ import { CookieService } from 'ngx-cookie-service';
     LoaderComponent,
     LocationDialogComponent,
     AlertpopupComponent,
+    GroupdialogComponent,
+    AddmemberdialogComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -76,6 +81,7 @@ import { CookieService } from 'ngx-cookie-service';
     SearchpageComponent,
     ChatMessageComponent,
     PreferencespageComponent
+    
   ],
   imports: [
     RoutingModule,
@@ -102,7 +108,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, AddmemberdialogComponent]
 })
 export class AppModule {
 

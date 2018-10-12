@@ -5,6 +5,8 @@ import { Message } from '../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
 import { User } from '../../../models/User';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { GroupdialogComponent } from '../../components/groupdialog/groupdialog.component';
+import { AddmemberdialogComponent } from '../../components/addmemberdialog/addmemberdialog.component';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -73,12 +75,23 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     }, 1 * 1000);
 
   }
-
-  
-  openDialog(): void {
-    const dialogRef = this.dialog.open(GroupdetailpageComponent, {
+ 
+  openGroup() {
+    const dialogRef = this.dialog.open(GroupdialogComponent, {
+      height: '400px',
+      width: '600px',
       data: {
+        groupDetails: this.groupDetails
+      }
+    });
+  }
 
+  openAddMember() {
+    const dialogRef = this.dialog.open(AddmemberdialogComponent, {
+      height: '400px',
+      width: '600px',
+      data: {
+        groupDetails: this.groupDetails
       }
     });
   }
