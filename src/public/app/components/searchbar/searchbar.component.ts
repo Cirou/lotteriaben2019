@@ -9,7 +9,7 @@ import { FormControl, Validators } from '@angular/forms';
 export class SearchbarComponent implements OnInit {
 
   
-  public searchField: FormControl = new FormControl('', [Validators.required, Validators.minLength(3)]);
+  public searchField: FormControl = new FormControl('', [Validators.required]);
   @Output() searchString = new EventEmitter<string>();
 
   constructor() { }
