@@ -11,7 +11,7 @@ import { formatDate } from '../../shared/utils/DateUtils';
 export let getVotation = (req: Request, res: Response) => {
   getRepository(Votation).createQueryBuilder()
     .select()
-    .where('user_id = :id AND date = :date' , { name: req.params.id, date: formatDate(new Date()) })
+    .where('user_id = :id AND date = :date' , { id: req.params.id, date: formatDate(new Date()) })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });

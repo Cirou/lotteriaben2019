@@ -1,7 +1,7 @@
 <div class="container" style="height: 485px; overflow-y: scroll;">
   <div class="col-12">
     <mat-selection-list>
-      <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo'>
+      <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo' [disabled]="alreadyVoted" [selected]="isInSelectedFood(cibo.id)">
         <div class="row no-gutters align-items-center">
           <div class="col-3">
             <img src="../../../public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">

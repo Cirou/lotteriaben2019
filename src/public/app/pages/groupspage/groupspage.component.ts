@@ -61,7 +61,7 @@ export class GroupspageComponent implements OnInit {
             this.alreadyVoted = true;
             this.rootService.votations = votations;
           }
-          console.log(this.user);
+          console.log(votations);
         },
         err => {
           console.log(err);

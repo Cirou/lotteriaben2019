@@ -40,6 +40,13 @@ export class PreferencespageComponent implements OnInit {
       });
   }
 
+  isInSelectedFood(id:number){
+    if (this.rootService.votations.find(x => x.id == id)){
+      return true
+    }
+    return false;
+  }
+
   savePreferences() {
     
     this.cibi.selectedOptions.selected.forEach(element => {

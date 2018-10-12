@@ -1,3 +1,7 @@
 .mat-list-option {
     border-bottom: solid 1px lightgray !important;
  }
+
+ .mat-list-item-disabled{
+     background: none;
+ }
