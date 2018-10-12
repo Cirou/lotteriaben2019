@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild, Inject } from '@angular/core';
 import { Message } from '../../../models/Message';
 import { RootService } from '../../services/root.service';
 import { FormControl, Validators } from '@angular/forms';
 import { GroupService } from '../../services/group.service';
 import { Group } from '../../../models/Group';
 import { formatDateTime } from '../../../../shared/utils/DateUtils';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-chat',
@@ -22,13 +23,17 @@ export class ChatComponent implements OnInit {
   @Input()
   group: Group;
 
+  boxHeight: number;
   loggedUserId: number;
   public messageToSend: FormControl = new FormControl('', [Validators.required]);
 
-  constructor(private rootService: RootService, private groupService: GroupService) { }
+  constructor(private rootService: RootService,
+    private groupService: GroupService,
+    @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
     this.loggedUserId = Number(this.rootService.loggedUserId);
+    this.boxHeight = this.document.body.clientHeight * 0.55;
     this.scrollToBottom();
   }
 

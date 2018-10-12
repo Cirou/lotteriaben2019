@@ -8,7 +8,7 @@ export class RootService {
   private _loggedUserId: string;
   private _loggedUser: User;
   private _mocked: boolean = false;
-  private _votations: Votation[];
+  private _votations: Votation[] = new Array;
 
   constructor() { }
 

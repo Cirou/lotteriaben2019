@@ -10,7 +10,7 @@
 
 <div class="container">
   <div class="row align-items-center">
-    <div class="col-7">
+    <div class="col-12">
       <h6 class="margin-top-10">
         <b>{{data.groupDetails.users.length}}</b> Partecipanti
       </h6>
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div class="container" style="height: 250px; overflow-y: scroll;">
+<div class="container" style="height: 300px; overflow-y: scroll;">
   <mat-nav-list #partecipanti>
     <mat-list-item class="border-bottom-1" *ngFor="let user of data.groupDetails.users">
       <div>
