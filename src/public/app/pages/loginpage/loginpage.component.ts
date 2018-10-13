@@ -1,4 +1,4 @@
-import { Component, OnInit,  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
@@ -28,10 +28,6 @@ export class LoginpageComponent implements OnInit {
     if(Number(this.rootService.loggedUserId) > 0){
       this.goToHome();
     }
-  }
-
-  ngOnAfterContentInit(){
-
   }
 
   goToHome(){
