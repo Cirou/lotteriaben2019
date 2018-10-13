@@ -18,9 +18,10 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   private sub: any;
   groupDetails: any;
   groupMessages: Message[];
+  oldGroupMessages: Message[];
   numeroMembri: number;
   chatTimer: NodeJS.Timer;
- 
+
 
   constructor(private route: ActivatedRoute,
     private groupService: GroupService,
@@ -32,6 +33,9 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   ngOnInit() {
 
     this.loader.showLoader(true);
+
+    this.groupMessages = new Array;
+    this.oldGroupMessages = new Array;
 
     if (!this.rootService.loggedUserId) {
       this.router.navigate(['/login']);
@@ -53,15 +57,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
           console.log(err);
         });
 
-    this.groupService.getGroupMessages(this.id)
-      .subscribe(
-        groupMessages => {
-          this.groupMessages = groupMessages;
-          console.log(this.groupMessages);
-        },
-        err => {
-          console.log(err);
-        });
+    this.loadMessages();
 
   }
 
@@ -74,13 +70,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     this.loader.showLoader(false);
 
     this.chatTimer = setInterval(() => {
-      this.groupService.getGroupMessages(this.id)
-        .subscribe(
-          groupMessages => {
-            this.groupMessages = groupMessages;
-          },
-          err => {
-          });
+      this.loadMessages();
     }, 1 * 1000);
 
   }
@@ -93,6 +83,23 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
         groupDetails: this.groupDetails
       }
     });
+  }
+
+  loadMessages() {
+
+    this.groupService.getGroupMessages(this.id)
+      .subscribe(
+        loadedMessages => {
+          if (loadedMessages.length > this.groupMessages.length) {
+            console.log('nuovi messaggi');
+            this.groupMessages = loadedMessages;
+          }
+          console.log(this.groupMessages);
+        },
+        err => {
+          console.log(err);
+        });
+
   }
 
 } 

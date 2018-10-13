@@ -23,6 +23,7 @@ export class ChatComponent implements OnInit {
   @Input()
   group: Group;
 
+  isFirstScroll: boolean = false;
   boxHeight: number;
   loggedUserId: number;
   public messageToSend: FormControl = new FormControl('', [Validators.required]);
@@ -33,7 +34,10 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUserId = Number(this.rootService.loggedUserId);
-    this.boxHeight = this.document.body.clientHeight * 0.55;
+    this.boxHeight = this.document.body.clientHeight - 260;
+  }
+
+  ngAfterViewChecked() {
     this.scrollToBottom();
   }
 
@@ -59,8 +63,13 @@ export class ChatComponent implements OnInit {
 
   scrollToBottom(): void {
     try {
-      this.chatContainer.nativeElement.scrollToBottom;
-      console.log('scrolling container');
+      if(!this.isFirstScroll){
+        setTimeout(()=>{
+          this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
+          this.isFirstScroll = true;
+        }, 500);
+        console.log('scrolling container');
+      }
     } catch (err) {
       console.log(err);
     }

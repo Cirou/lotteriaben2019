@@ -1,21 +1,17 @@
 <app-searchbar (searchString)="getSearchString($event)"></app-searchbar>
 
-
-
 <div class="container" [style.height.px]="boxHeight" style="overflow-y: scroll;">
-    <mat-nav-list #contatti>
-      <mat-list-item class="border-bottom-1" *ngFor="let user of userList | filter : searchString">
-        <div>
-          <mat-icon>person</mat-icon>
-        </div> 
-        <div class="col-8">
-          <a> {{user.nome}}</a>   
-        </div>
-        <div class="col-3">
-          <!--<button mat-icon-button (click)="remove(user.id)">
-            <mat-icon>clear</mat-icon>
-          </button> -->
-        </div>
-      </mat-list-item>
-    </mat-nav-list>
-  </div>
+
+  <mat-list #partecipanti>
+    <mat-list-item *ngFor="let user of userList | filter : searchString">
+      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!user || !user.immagine" src="../../../public/assets/icons/profile-icon-9.png" />
+      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="user.immagine" src={{user.immagine}} />
+      <h3 matLine><b [style.color]="user.colore">{{user.nome}}</b></h3>
+      <button mat-icon-button (click)="addUser(user.id)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+</div>
