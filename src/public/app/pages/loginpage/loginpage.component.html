@@ -3,15 +3,16 @@
     <form (ngSubmit)="login()" class="login-form">
       <div class="col-12">
         <div class="container">
+
           <div class="row justify-content-center">
-            <div class="col-6">
-              <img class="img-fluid" src="../../../public/assets/icons/logo.png" />
+            <div class="col-10">
+              <h5 class="app-full-width-center"><b>PAUSAPPRANZO</b></h5>
             </div>
           </div>
 
           <div class="row justify-content-center">
-            <div class="col-10">
-              <h5 class="app-full-width-center">Pausappranzo</h5>
+            <div class="col-6">
+              <img class="img-fluid" src="../../../public/assets/icons/logo.png" />
             </div>
           </div>
 
@@ -21,6 +22,12 @@
                 <input matInput placeholder="User ID" name="User ID" [formControl]="email">
                 <mat-error *ngIf="email.invalid">User ID non valida</mat-error>
               </mat-form-field>
+            </div>
+          </div>
+
+          <div class="row justify-content-center stayLogged-checkbox">
+            <div class="col-10">
+              <mat-checkbox class="" name="stayLogged" [(ngModel)]="stayLogged">Rimani loggato</mat-checkbox>
             </div>
           </div>
 
@@ -34,7 +41,7 @@
             </div>
           </div -->
 
-          <div class="row justify-content-center">
+          <div class="row justify-content-center margin-top-10">
             <div class="col-6">
               <button type="submit" class="app-long-button-center" mat-raised-button color="primary">
                 Login

@@ -3,6 +3,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { User } from "../../../models/User";
 import { UserService } from "../../services/user.service";
 import { RootService } from '../../services/root.service';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-drawer',
@@ -20,15 +22,15 @@ export class DrawerComponent implements OnInit {
       "id": 1,
       "nome": "home",
       "descrizione": "I miei gruppi",
-      "routerLink" :"home",
-      "icon":"groups"
+      "routerLink": "home",
+      "icon": "groups"
     },
     {
       "id": 2,
       "nome": "profilo",
       "descrizione": "Profilo",
-      "routerLink" :"profile",
-      "icon":"person"
+      "routerLink": "profile",
+      "icon": "person"
     }
   ];
 
@@ -37,13 +39,18 @@ export class DrawerComponent implements OnInit {
       "id": 4,
       "nome": "settings",
       "descrizione": "Impostazioni",
-      "routerLink" :"settings"
+      "routerLink": "settings"
     }
   ];
 
   private _mobileQueryListener: () => void;
 
-  constructor(private userService: UserService, changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private rootService: RootService) {
+  constructor(private userService: UserService,
+      changeDetectorRef: ChangeDetectorRef,
+      media: MediaMatcher,
+      private router: Router,
+      private rootService: RootService,
+      private cookieService: CookieService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -64,6 +71,11 @@ export class DrawerComponent implements OnInit {
         err => {
           console.log(err);
         });
+  }
+
+  logout() {
+    this.cookieService.delete('pausappranzo_stay_logged_id');
+    this.router.navigate(['/logout']);
   }
 
 }

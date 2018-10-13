@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  } from '@angular/core';
 import { Router } from "@angular/router";
 import { AuthService } from '../../services/auth.service';
 import { FormControl, Validators } from '@angular/forms';
@@ -13,8 +13,9 @@ import { RootService } from '../../services/root.service';
 })
 export class LoginpageComponent implements OnInit {
 
-  public email: FormControl = new FormControl('', [Validators.required, Validators.email]);
+  public email: FormControl = new FormControl('', [Validators.required]);
   public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
+  public stayLogged = false;
   public user: User;
   public hide: boolean = true;
 
@@ -22,25 +23,30 @@ export class LoginpageComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router, private cookieService: CookieService, private rootService: RootService) { }
 
   ngOnInit() {
-    this.cookieService.delete('pausappranzo_daily_login_done');
+    this.rootService.loggedUserId = this.cookieService.get('pausappranzo_stay_logged_id');
+    console.log(this.rootService.loggedUserId);
+    if(Number(this.rootService.loggedUserId) > 0){
+      this.goToHome();
+    }
+  }
 
+  ngOnAfterContentInit(){
+
+  }
+
+  goToHome(){
+    this.router.navigate(['/app']);
   }
 
   login() {
 
     this.rootService.loggedUserId = this.email.value;
-    this.router.navigate(['/app']);
 
-    // login reale
-    // this.authService
-    //   .login(this.email.value, this.pwd.value)
-    //   .then(data => {
-    //     this.router.navigate(['/app']);
-    //     console.log('Success!', data);
-    //   }).catch(error => {
-    //     this.router.navigate(['/login']);
-    //     console.log('Something went wrong:', error.message);
-    //   });
+    if(this.stayLogged){
+      this.cookieService.set('pausappranzo_stay_logged_id', this.email.value,  10000)
+    }
+
+    this.goToHome();
   }
 
 }
