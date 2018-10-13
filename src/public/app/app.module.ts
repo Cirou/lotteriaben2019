@@ -91,7 +91,7 @@ import { CookieService } from 'ngx-cookie-service';
     HttpModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    // ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     AngularFireAuthModule
