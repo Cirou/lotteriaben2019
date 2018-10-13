@@ -13,6 +13,10 @@ body {
   background-color: #E3F2FD;
 }
 
+hr {
+  margin: 14px 0 15px 0;
+}
+
 .bg-white { 
   background-color: #FFFFFF;
 }
@@ -117,3 +121,7 @@ body {
 .border-bottom-1 {
   border-bottom: 1px solid darkgrey;
 }
+.profile-icon{
+  max-width: 55px;
+  width: 55px;
+ }

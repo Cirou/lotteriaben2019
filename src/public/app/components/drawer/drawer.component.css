@@ -32,7 +32,7 @@
 
   .app-main-content{
     background-color: #FAFAFA;
-    padding-top: 8px;
+    padding-top: 10px;
     display: block;
     min-height: 100%;
   }
@@ -40,11 +40,3 @@
   .menu-icon {
     margin-right: 5px;
   }
-
-  .profile-icon{
-    border-style: solid;
-    border-width: 1px;
-    border-color: gray;
-    max-width: 55px;
-    width: 55px;
-   }

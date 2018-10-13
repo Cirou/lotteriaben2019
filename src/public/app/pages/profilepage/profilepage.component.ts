@@ -9,6 +9,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { CibiDialogComponent } from "../../components/cibi-dialog/cibi-dialog.component";
 import { LoaderService } from "../../services/loader.service";
 import { RootService } from "../../services/root.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-profilepage",
@@ -26,17 +27,20 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
   elencoCibiUtente: Food[] = new Array;
   elencoCibiCompleto: Food[] = new Array;
 
-  constructor(private userService: UserService, 
-    private groupService: GroupService, 
-    private foodService: FoodService, 
+  constructor(
     private rootService: RootService, 
     public dialog: MatDialog, 
+    private router: Router,
     private loader: LoaderService) { }
 
   ngOnInit() {
-    // this.user = UserService.getUserProfile(userId);
+
     this.loader.showLoader(true);
-    this.foodService.getFoodList().subscribe(foodList => this.elencoCibiCompleto = foodList);
+
+    if (!this.rootService.loggedUserId) {
+      this.router.navigate(['/login']);
+      return;
+    }
 
     this.userProfile = this.rootService.loggedUser;
 

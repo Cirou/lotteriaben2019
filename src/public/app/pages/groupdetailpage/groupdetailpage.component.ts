@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GroupService } from '../../services/group.service';
 import { Message } from '../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
 import { MatDialog } from '@angular/material';
 import { GroupdialogComponent } from '../../components/groupdialog/groupdialog.component';
+import { RootService } from '../../services/root.service';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -24,11 +25,18 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   constructor(private route: ActivatedRoute,
     private groupService: GroupService,
     private loader: LoaderService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private rootService: RootService,
+    private router: Router) { }
 
   ngOnInit() {
 
     this.loader.showLoader(true);
+
+    if (!this.rootService.loggedUserId) {
+      this.router.navigate(['/login']);
+      return;
+    }
 
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];

@@ -26,6 +26,9 @@ export class User {
   @Column({ name: 'nickname', type: 'varchar', nullable: true })
   nickname: string;
 
+  @Column({ name: 'color', type: 'varchar', nullable: true })
+  colore: string;
+
   @Column({ name: 'image', type: 'varchar', nullable: true })
   immagine: string;
 

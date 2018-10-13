@@ -52,7 +52,8 @@ export class GroupspageComponent implements OnInit {
         },
         err => {
           console.log(err);
-        });
+        }
+      );
 
     this.userService.getUserVotation(this.rootService.loggedUserId)
       .subscribe(
