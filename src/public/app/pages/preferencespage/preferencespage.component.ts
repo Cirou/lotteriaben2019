@@ -35,7 +35,7 @@ export class PreferencespageComponent implements OnInit {
 
     this.rootService.checkLoggedUser(this.router, this.userService);
 
-    this.boxHeight = this.document.body.clientHeight * 0.8;
+    this.boxHeight = this.document.body.clientHeight - 160;
 
     if (this.rootService.votations.length > 0) {
       this.alreadyVoted = true;
