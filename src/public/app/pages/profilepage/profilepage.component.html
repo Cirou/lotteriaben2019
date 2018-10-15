@@ -1,15 +1,15 @@
-<div class="container app-full-height"> 
+<div class="container app-full-height">
   <div class="row align-items-center">
-      <form (ngSubmit)="onSubmit()" class="profile-form">
+    <form (ngSubmit)="onSubmit()" class="profile-form">
       <div class="col-12">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-8 text-align-center">
-              <img  class="img-fluid rounded-circle profile-icon" *ngIf="!userProfile || !userProfile.immagine" src="../../../public/assets/icons/profile-icon-9.png" /><!-- *ngIf="!userProfile || !userProfile.profilo || !userProfile.immagine"-->
+              <img class="img-fluid rounded-circle" *ngIf="!userProfile || !userProfile.immagine" src="../../../public/assets/icons/profile-icon-9.png" /><!-- *ngIf="!userProfile || !userProfile.profilo || !userProfile.immagine"-->
               <!--<div>
                   <mat-icon class="edit_icon">edit</mat-icon>
               </div>-->
-              <img  class="img-fluid rounded-circle" *ngIf="userProfile.immagine" src={{userProfile.immagine}} />
+              <img class="img-fluid rounded-circle" *ngIf="userProfile.immagine" src={{userProfile.immagine}} />
             </div>
           </div>
 
@@ -21,51 +21,49 @@
 
           <div class="row justify-content-center">
             <div class="col-10">
-              <button mat-raised-button color="primary" class="app-long-button-center" *ngIf="disabledField == 'true'" (click)="disabledField = 'false'">
-                Modifica
-                <!-- <mat-icon class="edit_icon">edit</mat-icon> -->
-              </button>
-              <button mat-raised-button color="accent" class="app-long-button-center" *ngIf="disabledField == 'false'" (click)="salvaModifiche()">
+              <button mat-raised-button color="accent" class="app-long-button-center" [disabled]="!somethingChanged" (click)="salvaModifiche()">
                 Salva
                 <!-- <mat-icon class="edit_icon">done</mat-icon> -->
               </button>
             </div>
           </div>
-         
-          <h6 class="margin-top-20">Informazioni personali:</h6>
+
+          <h6 class="margin-top-20"><b>Informazioni personali</b></h6>
 
           <div class="row justify-content-center margin-top-10">
             <div class="col-12">
               <mat-form-field class="app-full-width">
-                    <input matInput placeholder="Nickname" type="text" [(ngModel)]="userProfile.nickname" name="username" disabled="true" [disabled]="disabledField">
-                  </mat-form-field>
-              <mat-form-field class="app-full-width">
-                    <input matInput placeholder="Nome" [(ngModel)]="userProfile.nome" name="nome" disabled="true" [disabled]="disabledField">
+                <input matInput placeholder="Nickname" type="text" [(ngModel)]="userProfile.nickname" name="username" (change)="somethingChanged=true;">
               </mat-form-field>
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="Cognome" [(ngModel)]="userProfile.cognome" name="cognome" disabled="true" [disabled]="disabledField">
+                <input matInput placeholder="Nome" [(ngModel)]="userProfile.nome" name="nome" (change)="somethingChanged=true;">
               </mat-form-field>
               <mat-form-field class="app-full-width">
-                <input matInput placeholder="E-Mail" type="email" [(ngModel)]="userProfile.email" name="email" [disabled]="disabledField">
+                <input matInput placeholder="Cognome" [(ngModel)]="userProfile.cognome" name="cognome" (change)="somethingChanged=true;">
+              </mat-form-field>
+              <mat-form-field class="app-full-width">
+                <input matInput placeholder="E-Mail" type="email" [(ngModel)]="userProfile.email" name="email" (change)="somethingChanged=true;">
               </mat-form-field>
             </div>
           </div>
 
-          <h6><b>I tuoi Gruppi:</b></h6>
+          <h6><b>I tuoi gruppi</b></h6>
 
           <div class="row justify-content-left margin-top-10">
-            <mat-nav-list>
-              <a mat-list-item *ngFor="let gruppo of userProfile.groups">
-                <button class="app-long-button-left" mat-button>
-                  <mat-icon class="group-icon">group</mat-icon> 
-                  {{gruppo.nome}}
-                </button>
-              </a>
-            </mat-nav-list>
+            <mat-list class="app-full-width">
+              <mat-list-item *ngFor="let gruppo of userProfile.groups" [routerLink]="['/app', { outlets: { sub: ['groupdetail', gruppo.id] }}]">
+                <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!gruppo || !gruppo.immagine"
+                  src="../../../public/assets/icons/group-icon.png" />
+                <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="gruppo.immagine" src={{gruppo.immagine}} />
+                <h3 matLine><b>{{gruppo.nome}}</b></h3>
+                <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
+                <mat-divider></mat-divider>
+              </mat-list-item>
+            </mat-list>
           </div>
 
         </div>
       </div>
-      </form>
+    </form>
   </div>
 </div>

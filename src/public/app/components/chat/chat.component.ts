@@ -34,7 +34,7 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
     this.loggedUserId = Number(this.rootService.loggedUserId);
-    this.boxHeight = this.document.body.clientHeight - 260;
+    this.boxHeight = this.document.body.clientHeight - 300;
   }
 
   sendMessage() {
