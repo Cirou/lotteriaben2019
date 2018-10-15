@@ -10,7 +10,7 @@ export class RootService {
 
   private _loggedUserId: string;
   private _loggedUser: User;
-  private _mocked: boolean = false;
+  private _mocked: boolean = true;
   private _votations: Votation[] = new Array;
 
   constructor(private cookieService:CookieService) {

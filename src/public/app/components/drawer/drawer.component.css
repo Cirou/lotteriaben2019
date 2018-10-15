@@ -31,10 +31,13 @@
   }
 
   .app-main-content{
-    background-color: #FAFAFA;
+    background-color: #FFFFFF;
     padding-top: 10px;
     display: block;
     min-height: 100%;
+    background-image: url('/public/assets/img/bg.png');
+    background-size: contain;
+    background-repeat: repeat;
   }
 
   .menu-icon {
