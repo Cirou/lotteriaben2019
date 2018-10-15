@@ -1,5 +1,6 @@
 import * as http from 'http';
 import { Group } from '../models/Group';
+import * as tf from '@tensorflow/tfjs';
 
 export let startLTDietDaemon = (): void => {
 
