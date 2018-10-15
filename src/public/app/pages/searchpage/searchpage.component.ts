@@ -40,7 +40,7 @@ export class SearchpageComponent implements OnInit {
 
     this.userService.getAllUsers().subscribe(
       users => {
-        this.userList = users;
+        this.userList = users.filter(user => user.id != Number(this.rootService.loggedUserId));
       },
       err => {
         console.log(err);
