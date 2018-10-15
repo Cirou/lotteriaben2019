@@ -8,21 +8,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { RootService } from '../../services/root.service';
 
-@Pipe({
-  name: 'filter'
-})
-export class FilterPipe implements PipeTransform {
-  transform(items: any[], searchText: string): any[] {
-    if (!items) { return []; }
-    if (!searchText) { return items; }
-    searchText = searchText.toLowerCase();
-    return items.filter( it => {
-      return it.nome.toLowerCase().includes(searchText);
-    });
-   }
-}
-
-
 @Component({
   selector: 'app-searchpage',
   templateUrl: './searchpage.component.html',

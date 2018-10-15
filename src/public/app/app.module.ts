@@ -23,7 +23,7 @@ import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
 import { GroupdetailpageComponent } from './pages/groupdetailpage/groupdetailpage.component';
 import { PollpageComponent } from './pages/pollpage/pollpage.component';
-import { SearchpageComponent , FilterPipe } from './pages/searchpage/searchpage.component';
+import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
 import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
 
@@ -54,6 +54,8 @@ import { SearchService } from './services/search.service';
 import { RootService } from './services/root.service';
 import { CookieService } from 'ngx-cookie-service';
 
+//PIPES
+import { SearchFilterPipe } from './filters/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -82,7 +84,7 @@ import { CookieService } from 'ngx-cookie-service';
     ChatMessageComponent,
     PreferencespageComponent,
     // PIPE
-    FilterPipe
+    SearchFilterPipe
   ],
   imports: [
     RoutingModule,

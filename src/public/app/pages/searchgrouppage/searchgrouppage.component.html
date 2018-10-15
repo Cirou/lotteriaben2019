@@ -3,7 +3,7 @@
 <div class="container" [style.height.px]="boxHeight" style="overflow-y: scroll;">
 
   <mat-list #partecipanti>
-    <mat-list-item *ngFor="let group of groupList | filter : searchString">
+    <mat-list-item *ngFor="let group of groupList | searchFilter : searchString">
       <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!group || !group.immagine" src="../../../public/assets/icons/group-icon.png" />
       <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="group.immagine" src={{group.immagine}} />
       <h3 matLine><b>{{group.nome}}</b></h3>

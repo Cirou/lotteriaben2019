@@ -29,7 +29,7 @@ const routes: Routes = [
         { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'},
         { path: 'poll/:id', component: PollpageComponent, outlet: 'sub'},
         { path: 'search/:id', component: SearchpageComponent, outlet: 'sub'},
-        { path: 'searchgroup/', component: SearchgrouppageComponent, outlet: 'sub'},
+        { path: 'searchgroup', component: SearchgrouppageComponent, outlet: 'sub'},
         { path: 'preferences', component: PreferencespageComponent, outlet: 'sub' },
 
       ]
