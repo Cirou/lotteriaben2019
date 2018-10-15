@@ -37,10 +37,6 @@ export class ChatComponent implements OnInit {
     this.boxHeight = this.document.body.clientHeight - 260;
   }
 
-  ngAfterViewChecked() {
-    this.scrollToBottom();
-  }
-
   sendMessage() {
 
     const message = new Message();
@@ -59,20 +55,6 @@ export class ChatComponent implements OnInit {
       }
     );
     this.messageToSend.setValue('');
-  }
-
-  scrollToBottom(): void {
-    try {
-      if(!this.isFirstScroll){
-        setTimeout(()=>{
-          this.chatContainer.nativeElement.scrollTop = this.chatContainer.nativeElement.scrollHeight;
-          this.isFirstScroll = true;
-        }, 500);
-        console.log('scrolling container');
-      }
-    } catch (err) {
-      console.log(err);
-    }
   }
 
 }

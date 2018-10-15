@@ -6,6 +6,7 @@ import { LoaderService } from '../../services/loader.service';
 import { MatDialog } from '@angular/material';
 import { GroupdialogComponent } from '../../components/groupdialog/groupdialog.component';
 import { RootService } from '../../services/root.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -27,6 +28,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     private groupService: GroupService,
     private loader: LoaderService,
     private dialog: MatDialog,
+    private userService: UserService,
     private rootService: RootService,
     private router: Router) { }
 
@@ -37,10 +39,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     this.groupMessages = new Array;
     this.oldGroupMessages = new Array;
 
-    if (!this.rootService.loggedUserId) {
-      this.router.navigate(['/login']);
-      return;
-    }
+    this.rootService.checkLoggedUser(this.router, this.userService);
 
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];

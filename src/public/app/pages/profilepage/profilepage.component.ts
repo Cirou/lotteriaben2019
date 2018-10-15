@@ -29,6 +29,7 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
 
   constructor(
     private rootService: RootService, 
+    private userService: UserService,
     public dialog: MatDialog, 
     private router: Router,
     private loader: LoaderService) { }
@@ -37,10 +38,7 @@ export class ProfilepageComponent implements OnInit, AfterContentInit {
 
     this.loader.showLoader(true);
 
-    if (!this.rootService.loggedUserId) {
-      this.router.navigate(['/login']);
-      return;
-    }
+    this.rootService.checkLoggedUser(this.router, this.userService);
 
     this.userProfile = this.rootService.loggedUser;
 

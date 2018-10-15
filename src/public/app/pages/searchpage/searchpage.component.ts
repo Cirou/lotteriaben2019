@@ -6,6 +6,7 @@ import { UserService } from '../../services/user.service';
 import { UserGroup } from '../../../models/UserGroup';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { RootService } from '../../services/root.service';
 
 @Pipe({
   name: 'filter'
@@ -40,10 +41,14 @@ export class SearchpageComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
+    private rootService: RootService,
     @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
     this.boxHeight = this.document.body.clientHeight * 0.8;
+
+    this.rootService.checkLoggedUser(this.router, this.userService);
+
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });

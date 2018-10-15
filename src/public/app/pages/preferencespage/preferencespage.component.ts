@@ -33,6 +33,8 @@ export class PreferencespageComponent implements OnInit {
 
   ngOnInit() {
 
+    this.rootService.checkLoggedUser(this.router, this.userService);
+
     this.boxHeight = this.document.body.clientHeight * 0.8;
 
     if (this.rootService.votations.length > 0) {
