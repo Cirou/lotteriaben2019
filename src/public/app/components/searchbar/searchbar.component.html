@@ -3,7 +3,6 @@
     <mat-form-field class="app-full-width">
       <input matInput placeholder="Ricerca utente o gruppo" (input)="onUserInput()" [formControl]="searchField" name="searchField">
       <mat-icon color="primary" matSuffix>search</mat-icon>
-      <mat-error *ngIf="searchField.invalid">Inserisci almeno 3 caratteri</mat-error>
     </mat-form-field>
   </div>
 </div>

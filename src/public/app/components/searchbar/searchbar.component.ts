@@ -8,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class SearchbarComponent implements OnInit {
 
-  public searchField: FormControl = new FormControl('', [Validators.required]);
+  public searchField: FormControl = new FormControl('');
   @Output() searchString = new EventEmitter<string>();
 
   constructor() { }
@@ -17,9 +17,9 @@ export class SearchbarComponent implements OnInit {
   }
 
   onUserInput() {
-    if (!this.searchField.invalid) {
+  //  if (!this.searchField.invalid) {
       this.searchString.emit(this.searchField.value);
-    }
+  //  }
   }
 
 }
