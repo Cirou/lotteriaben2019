@@ -15,12 +15,22 @@ export class GroupService {
   private chatGruppoUrl: string = !this.rootService.mocked ? '/message/' : '/public/assets/mock/getGroupChat.json?ref=';
   private suggestionUrl: string = !this.rootService.mocked ? '/suggestion/' : '/';
   private sendMessageUrl: string = !this.rootService.mocked ? '/message' : '/';
+  private gruppoTuttiUrl: string = !this.rootService.mocked ? '/groups/' : '/public/assets/mock/getAllGroups.json?ref=';
+
 
   constructor(private http: Http, private rootService: RootService) { }
 
   getGroupDetails(idGruppo: number): Observable<Group> {
     return this.http
       .get(this.gruppoUrl + idGruppo)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  getAllGroups(): Observable<Group[]> {
+    return this.http
+      .get(this.gruppoTuttiUrl)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));

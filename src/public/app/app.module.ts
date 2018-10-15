@@ -25,6 +25,7 @@ import { GroupdetailpageComponent } from './pages/groupdetailpage/groupdetailpag
 import { PollpageComponent } from './pages/pollpage/pollpage.component';
 import { SearchpageComponent , FilterPipe } from './pages/searchpage/searchpage.component';
 import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
+import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -42,7 +43,6 @@ import { LocationDialogComponent } from './components/location-dialog/location-d
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
-
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -78,6 +78,7 @@ import { CookieService } from 'ngx-cookie-service';
     GroupdetailpageComponent,
     PollpageComponent,
     SearchpageComponent,
+    SearchgrouppageComponent,
     ChatMessageComponent,
     PreferencespageComponent,
     // PIPE

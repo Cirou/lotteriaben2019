@@ -12,6 +12,7 @@ import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpa
 import { PollpageComponent } from  './pages/pollpage/pollpage.component';
 import { SearchpageComponent } from  './pages/searchpage/searchpage.component';
 import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
+import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -28,6 +29,7 @@ const routes: Routes = [
         { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'},
         { path: 'poll/:id', component: PollpageComponent, outlet: 'sub'},
         { path: 'search/:id', component: SearchpageComponent, outlet: 'sub'},
+        { path: 'searchgroup/', component: SearchgrouppageComponent, outlet: 'sub'},
         { path: 'preferences', component: PreferencespageComponent, outlet: 'sub' },
 
       ]

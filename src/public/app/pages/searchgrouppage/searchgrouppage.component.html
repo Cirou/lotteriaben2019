@@ -1,0 +1,17 @@
+<app-searchbar (searchString)="getSearchString($event)"></app-searchbar>
+
+<div class="container" [style.height.px]="boxHeight" style="overflow-y: scroll;">
+
+  <mat-list #partecipanti>
+    <mat-list-item *ngFor="let group of groupList | filter : searchString">
+      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!group || !group.immagine" src="../../../public/assets/icons/group-icon.png" />
+      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="group.immagine" src={{group.immagine}} />
+      <h3 matLine><b>{{group.nome}}</b></h3>
+      <button mat-icon-button (click)="addUser(group.id)">
+        <mat-icon>add</mat-icon>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+</div>
