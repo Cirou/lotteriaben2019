@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { User } from '../../../models/User';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,6 +7,8 @@ import { UserGroup } from '../../../models/UserGroup';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { RootService } from '../../services/root.service';
+import { GroupService } from '../../services/group.service';
+import { Group } from '../../../models/Group';
 
 @Component({
   selector: 'app-searchpage',
@@ -18,15 +20,16 @@ export class SearchpageComponent implements OnInit {
   id: number;
   private sub: any;
   searchString = '';
-  userList: User[];
+  userList: User[] = new Array;
   boxHeight: number;
-
+  groupDetails: Group;
 
   constructor(private searchService: SearchService,
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
     private rootService: RootService,
+    private groupService: GroupService,
     @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
@@ -38,9 +41,32 @@ export class SearchpageComponent implements OnInit {
       this.id = params['id'];
     });
 
+    this.groupService.getGroupDetails(this.id)
+      .subscribe(
+        groupDetails => {
+          this.groupDetails = groupDetails[0];
+          console.log(this.groupDetails);
+        },
+        err => {
+          console.log(err);
+        });
+
+
     this.userService.getAllUsers().subscribe(
       users => {
-        this.userList = users.filter(user => user.id != Number(this.rootService.loggedUserId));
+        users.forEach(user => {
+          console.log(user);
+          let found = false;
+          user.groups.forEach(userGroup => {
+            console.log(userGroup);
+            if (userGroup.id == Number(this.id)) {
+              found = true;
+            }
+          });
+          if (!found) {
+            this.userList.push(user);
+          }
+        });
       },
       err => {
         console.log(err);

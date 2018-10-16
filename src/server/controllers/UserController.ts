@@ -18,11 +18,9 @@ export let getUser = (req: Request, res: Response) => {
  * retrieves the group using the given name
  */
 export let getAllUsers = (req: Request, res: Response) => {
-  getRepository(User).createQueryBuilder()
-    .select()
-    .getMany().then(User => {
-      res.send(User);
-    }).catch(err => { console.log(err); });
+  getRepository(User).find({ order:  { nome:  'ASC' } }).then(User => {
+    res.send(User);
+  }).catch(err => { console.log(err); });
 };
 
 /**
@@ -72,7 +70,7 @@ export let putUser = (req: Request, res: Response) => {
 
   getConnection()
     .query('UPDATE users SET id = :id, name = :nome, surname = :cognome, email = :email, gender = :sesso, city = :citta, nickname = :nickname, image = :immagine WHERE id = :id',
-    [user.id, user.nome, user.cognome, user.email, user.sesso, user.citta, user.nickname, user.immagine])
+      [user.id, user.nome, user.cognome, user.email, user.sesso, user.citta, user.nickname, user.immagine])
     .then(updatedUser => {
       getRepository(User).findByIds(req.body.id).then(user => {
         res.send(user);
@@ -88,7 +86,7 @@ export let postUserGroup = (req: Request, res: Response) => {
   getConnection()
     .query('INSERT INTO users_groups VALUES (:userId, :groupId)', [req.body.userId, req.body.groupId])
     .then(user => {
-      res.send({result: 'OK'});
+      res.send({ result: 'OK' });
     }).catch(err => { console.log(err); });
 
 };
@@ -101,7 +99,7 @@ export let deleteUserGroup = (req: Request, res: Response) => {
   getConnection()
     .query('DELETE FROM users_groups WHERE usersId = :userId AND groupsId = :groupId', [req.body.userId, req.body.groupId])
     .then(user => {
-      res.send({result: 'OK'});
+      res.send({ result: 'OK' });
     }).catch(err => { console.log(err); });
 
 };

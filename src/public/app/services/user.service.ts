@@ -15,7 +15,7 @@ export class UserService {
   constructor(private http: Http, private rootService: RootService) { }
 
   private userUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getUserProfile.json?ref=';
-  private usersUrl: string = !this.rootService.mocked ? '/users/' : '/public/assets/mock/getUserProfile.json?ref=';
+  private usersUrl: string = !this.rootService.mocked ? '/users/' : '/public/assets/mock/getAllUsers.json?ref=';
   private userTipUrl: string = !this.rootService.mocked ? '/tip/' : '/public/assets/mock/getUserTip.json?ref=';
   private userTipMaxIdUrl: string = !this.rootService.mocked ? '/tipmaxid' : '/public/assets/mock/getUserMaxTip.json?ref=';
   private sendUserVotationUrl: string = !this.rootService.mocked ? '/votation' : '/public/assets/mock/postUserVotation.json?ref=';

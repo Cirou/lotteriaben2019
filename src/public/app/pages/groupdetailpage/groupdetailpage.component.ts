@@ -79,9 +79,10 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
       height: '80%',
       width: '600px',
       data: {
-        groupDetails: this.groupDetails
+        groupDetails: this.groupDetails,
       }
     });
+    console.log(this.groupDetails);
   }
 
   loadMessages() {
