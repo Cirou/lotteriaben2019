@@ -26,6 +26,7 @@ import { PollpageComponent } from './pages/pollpage/pollpage.component';
 import { SearchpageComponent } from './pages/searchpage/searchpage.component';
 import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
 import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
+import { DashboardpageComponent } from './pages/dashboardpage/dashboardpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -83,6 +84,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
     SearchgrouppageComponent,
     ChatMessageComponent,
     PreferencespageComponent,
+    DashboardpageComponent,
     // PIPE
     SearchFilterPipe
   ],
