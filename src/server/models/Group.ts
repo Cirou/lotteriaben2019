@@ -13,8 +13,11 @@ export class Group {
   @Column({ name: 'description', type: 'varchar', nullable: true })
   descrizione: string;
 
+  @Column({ name: 'image', type: 'varchar', nullable: true })
+  immagine: string;
+
   @ManyToMany(type => User)
-  @JoinTable({name: 'users_groups'})
+  @JoinTable({ name: 'users_groups' })
   users: User[];
 
 }

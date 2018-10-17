@@ -26,7 +26,7 @@ createConnection({
   'type': 'sqlite',
   'database': '../db/pausappranzo.db',
   'synchronize': false,
-  'logging': true,
+  'logging': false,
   'entities': [
     './server/models/*.js'
   ]
