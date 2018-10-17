@@ -43,6 +43,12 @@ export class ChatComponent implements OnInit {
     message.text = this.messageToSend.value;
     message.user = this.rootService.loggedUser;
     message.group = this.group;
+
+    message.group.immagine = null;
+    message.group.users = null;
+    message.user.immagine = null;
+    message.user.groups = null;
+
     message.data = formatDateTime(new Date);
     console.log(message);
 

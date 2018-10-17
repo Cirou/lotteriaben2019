@@ -13,9 +13,9 @@ export class RootService {
   private _mocked: boolean = false;
   private _votations: Votation[] = new Array;
 
-  constructor(private cookieService:CookieService) {
+  constructor(private cookieService: CookieService) {
     this.loggedUserId = this.cookieService.get('pausappranzo_stay_logged_id');
-   }
+  }
 
   public get loggedUser(): User {
     return this._loggedUser;
@@ -45,22 +45,22 @@ export class RootService {
     this._votations = value;
   }
 
-  
-  checkLoggedUser(router:Router, userService:UserService): any {
+
+  checkLoggedUser(router: Router, userService: UserService): any {
     if (!this.loggedUserId) {
       router.navigate(['/login']);
       return;
-    } else if(this.loggedUserId && !this.loggedUser) {
+    } else if (this.loggedUserId && !this.loggedUser) {
       userService.getUserProfile(this.loggedUserId)
-      .subscribe(
-        userInfo => {
-          this.loggedUser = userInfo[0];
-          console.log(this.loggedUser);
-        },
-        err => {
-          console.log(err);
-        }
-      );
+        .subscribe(
+          userInfo => {
+            this.loggedUser = userInfo[0];
+            console.log(this.loggedUser);
+          },
+          err => {
+            console.log(err);
+          }
+        );
     }
     return;
   }
