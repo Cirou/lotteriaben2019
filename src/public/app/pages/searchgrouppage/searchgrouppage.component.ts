@@ -1,4 +1,4 @@
-import { Component, OnInit , Inject } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { SearchService } from '../../services/search.service';
 import { User } from '../../../models/User';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -20,7 +20,7 @@ export class SearchgrouppageComponent implements OnInit {
   id: number;
   private sub: any;
   searchString = '';
-  groupList: Group[];
+  groupList: Group[] = new Array;
   boxHeight: number;
 
 
@@ -43,7 +43,17 @@ export class SearchgrouppageComponent implements OnInit {
 
     this.groupService.getAllGroups().subscribe(
       groups => {
-        this.groupList = groups;
+        groups.forEach(group => {
+          let found = false;
+          this.rootService.loggedUser.groups.forEach(userGroup => {
+            if (group.id == Number(userGroup.id)) {
+              found = true;
+            }
+          });
+          if (!found) {
+            this.groupList.push(group);
+          }
+        });
       },
       err => {
         console.log(err);

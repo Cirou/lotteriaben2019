@@ -55,10 +55,8 @@ export class SearchpageComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       users => {
         users.forEach(user => {
-          console.log(user);
           let found = false;
           user.groups.forEach(userGroup => {
-            console.log(userGroup);
             if (userGroup.id == Number(this.id)) {
               found = true;
             }
