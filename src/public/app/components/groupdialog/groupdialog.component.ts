@@ -12,6 +12,7 @@ import { UserGroup } from '../../../models/UserGroup';
 })
 export class GroupdialogComponent implements OnInit {
 
+  loggedUser:User;
 
   constructor(public dialogRef: MatDialogRef<GroupdialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -24,6 +25,7 @@ export class GroupdialogComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loggedUser = this.rootService.loggedUser;
   }
 
   remove(userId: number) {
