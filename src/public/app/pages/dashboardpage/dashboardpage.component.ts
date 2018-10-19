@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Group } from '../../../models/Group';
+import { GroupService } from '../../services/group.service';
 
 @Component({
   selector: 'app-dashboardpage',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardpageComponent implements OnInit {
 
-  constructor() { }
+  groupList: Group[];
+  
+  constructor( private groupService: GroupService,) { }
 
   ngOnInit() {
+
+    this.groupService.getAllGroups().subscribe(
+      groups => {
+        this.groupList = groups;
+      },
+      err => {
+        console.log(err);
+      });
   }
 
 }
