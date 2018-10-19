@@ -44,6 +44,7 @@ import { LocationDialogComponent } from './components/location-dialog/location-d
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -71,6 +72,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
     LocationDialogComponent,
     AlertpopupComponent,
     GroupdialogComponent,
+    LoginDialogComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -113,7 +115,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, LoginDialogComponent]
 })
 export class AppModule {
 
