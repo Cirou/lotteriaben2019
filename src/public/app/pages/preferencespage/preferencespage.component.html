@@ -1,6 +1,8 @@
 <div class="container no-padding height-20">
   <div class="col-12 align-content-center text-align-center">
-    <h6><b>Cosa preferiresti mangiare oggi?</b></h6>
+    <h6>
+      <b>Cosa preferiresti mangiare oggi?</b>
+    </h6>
   </div>
 </div>
 
@@ -12,8 +14,11 @@
           <div class="col-3">
             <img src="../../../public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">
           </div>
-          <div class="col-9">
+          <div class="col-8">
             <b>{{cibo.descrizione}}</b>
+          </div>
+          <div class="col-1">
+            <mat-icon class="thumb-up-icon">thumb_up</mat-icon>
           </div>
         </div>
       </mat-list-option>
@@ -24,7 +29,7 @@
 <div *ngIf="!alreadyVoted" class="container fixed-bottom height-50">
   <div class="row justify-content-around ">
     <div class="col-5 margin-bottom-10">
-      <button class="float-left width-button" mat-button (click)="cancelPreferences()" mat-raised-button color="primary" >
+      <button class="float-left width-button" mat-button (click)="cancelPreferences()" mat-raised-button color="primary">
         Annulla
       </button>
     </div>
