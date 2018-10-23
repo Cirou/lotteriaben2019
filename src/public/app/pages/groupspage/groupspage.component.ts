@@ -38,10 +38,7 @@ export class GroupspageComponent implements OnInit {
 
     this.loader.showLoader(true);
 
-    if (!this.rootService.loggedUserId) {
-      this.router.navigate(['/login']);
-      return;
-    }
+    this.rootService.checkLoggedUser(this.router, this.userService);
 
     this.userService.getUserProfile(this.rootService.loggedUserId)
       .subscribe(
@@ -52,7 +49,8 @@ export class GroupspageComponent implements OnInit {
         },
         err => {
           console.log(err);
-        });
+        }
+      );
 
     this.userService.getUserVotation(this.rootService.loggedUserId)
       .subscribe(

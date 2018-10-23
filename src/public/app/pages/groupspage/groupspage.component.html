@@ -9,24 +9,31 @@
   <hr>
   <div class="row">
     <div class="content col-12">
-      <div>
-        <button [routerLink]="['/app', { outlets: { sub: ['preferences'] }}]" class="app-long-button-left"
-          mat-raised-button [color]="alreadyVoted ? 'secondary' : 'primary'">
-          <mat-icon class="group-icon">fastfood</mat-icon>
-          <span *ngIf="alreadyVoted">Visualizza le tue scelte di oggi</span>
-          <span *ngIf="!alreadyVoted">Esprimi le tue preferenze!</span>
-          <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>
-        </button>
+
+      <div class="container height-40">
+        <div class="row no-padding height-40 align-items-center" [routerLink]="['/app', { outlets: { sub: ['preferences'] }}]">
+          <div class="col-2">
+            <img class="img-fluid rounded-circle pref-icon" src="../../../public/assets/icons/pref.png" />
+          </div>
+          <div class="col-8">
+            <b *ngIf="alreadyVoted" class="text-small">Visualizza le tue scelte di oggi</b>
+            <b *ngIf="!alreadyVoted" class="text-small">Esprimi le tue preferenze!</b>
+          </div>
+          <div class="col-2">
+            <mat-icon class="arrow-icon align-middle">keyboard_arrow_right</mat-icon>
+          </div>
+        </div>
       </div>
+
     </div>
   </div>
   <hr>
   <div class="row">
     <div class="content col-10">
-      <h5 class="groups-title">I tuoi gruppi</h5>
+      <h5 class="groups-title"><b>I tuoi gruppi</b></h5>
     </div>
     <div class="content col-2">
-      <button mat-icon-button color="accent">
+      <button mat-icon-button color="accent" [routerLink]="['/app', { outlets: { sub: ['searchgroup'] }}]">
         <mat-icon aria-label="Aggiungi gruppo">library_add</mat-icon>
       </button>
     </div>

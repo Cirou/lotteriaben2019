@@ -1,10 +1,12 @@
 import { Component, OnInit, AfterContentInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GroupService } from '../../services/group.service';
 import { Message } from '../../../models/Message';
 import { LoaderService } from '../../services/loader.service';
 import { MatDialog } from '@angular/material';
 import { GroupdialogComponent } from '../../components/groupdialog/groupdialog.component';
+import { RootService } from '../../services/root.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-groupdetailpage',
@@ -17,18 +19,27 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
   private sub: any;
   groupDetails: any;
   groupMessages: Message[];
+  oldGroupMessages: Message[];
   numeroMembri: number;
   chatTimer: NodeJS.Timer;
- 
+
 
   constructor(private route: ActivatedRoute,
     private groupService: GroupService,
     private loader: LoaderService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private userService: UserService,
+    private rootService: RootService,
+    private router: Router) { }
 
   ngOnInit() {
 
     this.loader.showLoader(true);
+
+    this.groupMessages = new Array;
+    this.oldGroupMessages = new Array;
+
+    this.rootService.checkLoggedUser(this.router, this.userService);
 
     this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -45,15 +56,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
           console.log(err);
         });
 
-    this.groupService.getGroupMessages(this.id)
-      .subscribe(
-        groupMessages => {
-          this.groupMessages = groupMessages;
-          console.log(this.groupMessages);
-        },
-        err => {
-          console.log(err);
-        });
+    this.loadMessages();
 
   }
 
@@ -66,13 +69,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
     this.loader.showLoader(false);
 
     this.chatTimer = setInterval(() => {
-      this.groupService.getGroupMessages(this.id)
-        .subscribe(
-          groupMessages => {
-            this.groupMessages = groupMessages;
-          },
-          err => {
-          });
+      this.loadMessages();
     }, 1 * 1000);
 
   }
@@ -82,9 +79,27 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
       height: '80%',
       width: '600px',
       data: {
-        groupDetails: this.groupDetails
+        groupDetails: this.groupDetails,
       }
     });
+    console.log(this.groupDetails);
+  }
+
+  loadMessages() {
+
+    this.groupService.getGroupMessages(this.id)
+      .subscribe(
+        loadedMessages => {
+          if (loadedMessages.length > this.groupMessages.length) {
+            console.log('nuovi messaggi');
+            this.groupMessages = loadedMessages;
+          }
+          console.log(this.groupMessages);
+        },
+        err => {
+          console.log(err);
+        });
+
   }
 
 } 

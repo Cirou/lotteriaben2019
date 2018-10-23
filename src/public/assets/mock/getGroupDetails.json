@@ -12,6 +12,7 @@
                 "sesso": "M",
                 "citta": "Cardito",
                 "nickname": "Cirou85",
+                "colore": "red",
                 "immagine": ""
             },
             {
@@ -22,6 +23,7 @@
                 "sesso": "F",
                 "citta": "Napoli",
                 "nickname": "Maria",
+                "colore": "purple",
                 "immagine": ""
             },
             {
@@ -32,6 +34,7 @@
                 "sesso": "F",
                 "citta": "Napoli",
                 "nickname": "Luisa",
+                "colore": "darkblue",
                 "immagine": ""
             },
             {
@@ -42,6 +45,7 @@
                 "sesso": "M",
                 "citta": "Napoli",
                 "nickname": "Danilo",
+                "colore": "darkgoldenrod",
                 "immagine": ""
             },
             {
@@ -52,6 +56,7 @@
                 "sesso": "M",
                 "citta": "Napoli",
                 "nickname": "Antonio",
+                "colore": "darkorange",
                 "immagine": ""
             },
             {
@@ -62,6 +67,7 @@
                 "sesso": "F",
                 "citta": "Napoli",
                 "nickname": "Daniela",
+                "colore": "darkorchid",
                 "immagine": ""
             }
         ]

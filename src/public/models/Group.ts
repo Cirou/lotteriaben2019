@@ -8,6 +8,8 @@ export class Group {
 
   descrizione: string;
 
+  immagine: string;
+
   users: User[];
 
 }

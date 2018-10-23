@@ -15,7 +15,7 @@ export class UserService {
   constructor(private http: Http, private rootService: RootService) { }
 
   private userUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getUserProfile.json?ref=';
-  private usersUrl: string = !this.rootService.mocked ? '/users/' : '/public/assets/mock/getUserProfile.json?ref=';
+  private usersUrl: string = !this.rootService.mocked ? '/users/' : '/public/assets/mock/getAllUsers.json?ref=';
   private userTipUrl: string = !this.rootService.mocked ? '/tip/' : '/public/assets/mock/getUserTip.json?ref=';
   private userTipMaxIdUrl: string = !this.rootService.mocked ? '/tipmaxid' : '/public/assets/mock/getUserMaxTip.json?ref=';
   private sendUserVotationUrl: string = !this.rootService.mocked ? '/votation' : '/public/assets/mock/postUserVotation.json?ref=';
@@ -24,11 +24,21 @@ export class UserService {
 
 
 
-  postUserProfile() {
-    return '{result: "OK"}';
+  postUserProfile(user: User): Observable<User> {
+    const httpOptions = {
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      })
+    };
+
+    return this.http
+      .post(this.userUrl, user, httpOptions)
+      .pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getUserProfile(id:string): Observable<User> {
+  getUserProfile(id: string): Observable<User> {
     return this.http
       .get(this.userUrl + id)
       .pipe(
@@ -44,7 +54,7 @@ export class UserService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getUserLoginTip(id:string): Observable<Tip>{
+  getUserLoginTip(id: string): Observable<Tip> {
     return this.http
       .get(this.userTipUrl + id)
       .pipe(
@@ -52,7 +62,7 @@ export class UserService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getTipMaxId(): Observable<Tip>{
+  getTipMaxId(): Observable<Tip> {
     return this.http
       .get(this.userTipMaxIdUrl)
       .pipe(
@@ -75,7 +85,7 @@ export class UserService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getUserVotation(id:string): Observable<Votation[]>{
+  getUserVotation(id: string): Observable<Votation[]> {
     return this.http
       .get(this.getUserVotationUrl + id)
       .pipe(

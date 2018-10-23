@@ -12,12 +12,15 @@ import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpa
 import { PollpageComponent } from  './pages/pollpage/pollpage.component';
 import { SearchpageComponent } from  './pages/searchpage/searchpage.component';
 import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
+import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
+import { DashboardpageComponent } from './pages/dashboardpage/dashboardpage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
   { path: 'login', component: LoginpageComponent },
   { path: 'signin', component: LoginpageComponent },
   { path: 'logout', redirectTo: '/login', pathMatch: 'full'},
+  { path: 'dashboard', component: DashboardpageComponent },
   {
     path: 'app', component: HomepageComponent, children:
       [
@@ -28,6 +31,7 @@ const routes: Routes = [
         { path: 'groupdetail/:id', component: GroupdetailpageComponent, outlet: 'sub'},
         { path: 'poll/:id', component: PollpageComponent, outlet: 'sub'},
         { path: 'search/:id', component: SearchpageComponent, outlet: 'sub'},
+        { path: 'searchgroup', component: SearchgrouppageComponent, outlet: 'sub'},
         { path: 'preferences', component: PreferencespageComponent, outlet: 'sub' },
 
       ]

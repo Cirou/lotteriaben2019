@@ -1,4 +1,4 @@
-<div #chatcomponent [style.height.px]="boxHeight" style="overflow-y: scroll;" class="chat-component margin-top-10">
+<div #chatcomponent [style.height.px]="boxHeight" [scrollTop]="messages.length > 0 ? chatcomponent.scrollHeight : 1" style="overflow-y: scroll;" class="chat-component margin-top-10">
   <div class="container">
     <div class="col-12">
       <div *ngFor="let messaggio of messages">
@@ -7,7 +7,7 @@
     </div>
   </div>
 </div>
-<div class="container fixed-bottom">
+<div class="container fixed-bottom height-70">
   <div class="col-12">
     <mat-form-field class="app-full-width ">
       <input matInput placeholder="Inserisci il tuo messaggio" [formControl]="messageToSend" name="messageToSend">

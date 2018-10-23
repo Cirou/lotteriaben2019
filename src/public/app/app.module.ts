@@ -1,8 +1,8 @@
 import { CdkTableModule } from '@angular/cdk/table';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule, Injector } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, Injector } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -21,10 +21,12 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { SettingspageComponent } from './pages/settingspage/settingspage.component';
 import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { GroupspageComponent } from './pages/groupspage/groupspage.component';
-import { GroupdetailpageComponent } from  './pages/groupdetailpage/groupdetailpage.component';
-import { PollpageComponent } from  './pages/pollpage/pollpage.component';
-import { SearchpageComponent } from  './pages/searchpage/searchpage.component';
-import { PreferencespageComponent } from  './pages/preferencespage/preferencespage.component';
+import { GroupdetailpageComponent } from './pages/groupdetailpage/groupdetailpage.component';
+import { PollpageComponent } from './pages/pollpage/pollpage.component';
+import { SearchpageComponent } from './pages/searchpage/searchpage.component';
+import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
+import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
+import { DashboardpageComponent } from './pages/dashboardpage/dashboardpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -42,7 +44,7 @@ import { LocationDialogComponent } from './components/location-dialog/location-d
 import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
-
+import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -53,6 +55,9 @@ import { LoaderService } from './services/loader.service';
 import { SearchService } from './services/search.service';
 import { RootService } from './services/root.service';
 import { CookieService } from 'ngx-cookie-service';
+
+//PIPES
+import { SearchFilterPipe } from './filters/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -67,6 +72,7 @@ import { CookieService } from 'ngx-cookie-service';
     LocationDialogComponent,
     AlertpopupComponent,
     GroupdialogComponent,
+    LoginDialogComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -77,9 +83,12 @@ import { CookieService } from 'ngx-cookie-service';
     GroupdetailpageComponent,
     PollpageComponent,
     SearchpageComponent,
+    SearchgrouppageComponent,
     ChatMessageComponent,
-    PreferencespageComponent
-    
+    PreferencespageComponent,
+    DashboardpageComponent,
+    // PIPE
+    SearchFilterPipe
   ],
   imports: [
     RoutingModule,
@@ -89,7 +98,7 @@ import { CookieService } from 'ngx-cookie-service';
     HttpModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    //ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     AngularFireAuthModule
@@ -106,7 +115,7 @@ import { CookieService } from 'ngx-cookie-service';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, LoginDialogComponent]
 })
 export class AppModule {
 
