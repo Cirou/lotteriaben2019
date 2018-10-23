@@ -11,6 +11,7 @@
             "sesso": "M",
             "citta": "Cardito",
             "nickname": "Cirou85",
+            "colore": "red",
             "immagine": ""
         }
     },
@@ -26,6 +27,7 @@
             "sesso": "F",
             "citta": "Napoli",
             "nickname": "Maria",
+            "colore": "purple",
             "immagine": ""
         }
     },
@@ -41,6 +43,7 @@
             "sesso": "F",
             "citta": "Napoli",
             "nickname": "Luisa",
+            "colore": "darkblue",
             "immagine": ""
         }
     },
@@ -56,6 +59,7 @@
             "sesso": "M",
             "citta": "Napoli",
             "nickname": "Danilo",
+            "colore": "darkgoldenrod",
             "immagine": ""
         }
     },
@@ -71,6 +75,7 @@
             "sesso": "M",
             "citta": "Cardito",
             "nickname": "Cirou85",
+            "colore": "red",
             "immagine": ""
         }
     },
@@ -86,6 +91,7 @@
             "sesso": "F",
             "citta": "Napoli",
             "nickname": "Maria",
+            "colore": "purple",
             "immagine": ""
         }
     },
@@ -101,13 +107,14 @@
             "sesso": "F",
             "citta": "Napoli",
             "nickname": "Luisa",
+            "colore": "darkblue",
             "immagine": ""
         }
     },
     {
         "id": 9,
         "text": "andiamo",
-        "data": "2018-10-05T14:43:48.264Z",
+        "data": "2018-10-05 14:43:48",
         "user": {
             "id": 1,
             "nome": "Ciro",
@@ -116,6 +123,7 @@
             "sesso": "M",
             "citta": "Cardito",
             "nickname": "Cirou85",
+            "colore": "red",
             "immagine": ""
         }
     },
@@ -131,13 +139,14 @@
             "sesso": "F",
             "citta": "Napoli",
             "nickname": "Maria",
+            "colore": "purple",
             "immagine": ""
         }
     },
     {
         "id": 11,
         "text": "Ok",
-        "data": "2018-10-05T16:53:21.300Z",
+        "data": "2018-10-05 16:53:21",
         "user": {
             "id": 1,
             "nome": "Ciro",
@@ -146,6 +155,55 @@
             "sesso": "M",
             "citta": "Cardito",
             "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 12,
+        "text": "Scendo",
+        "data": "2018-09-19 11:50:18",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 13,
+        "text": "Test",
+        "data": "2018-10-08 14:22:05",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 14,
+        "text": "ette",
+        "data": "2018-10-08 14:29:01",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
             "immagine": ""
         }
     }

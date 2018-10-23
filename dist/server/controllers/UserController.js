@@ -16,9 +16,7 @@ exports.getUser = function (req, res) {
  * retrieves the group using the given name
  */
 exports.getAllUsers = function (req, res) {
-    typeorm_1.getRepository(User_1.User).createQueryBuilder()
-        .select()
-        .getMany().then(function (User) {
+    typeorm_1.getRepository(User_1.User).find({ order: { nome: 'ASC' } }).then(function (User) {
         res.send(User);
     }).catch(function (err) { console.log(err); });
 };

@@ -27,6 +27,10 @@ var Group = /** @class */ (function () {
         __metadata("design:type", String)
     ], Group.prototype, "descrizione", void 0);
     __decorate([
+        typeorm_1.Column({ name: 'image', type: 'varchar', nullable: true }),
+        __metadata("design:type", String)
+    ], Group.prototype, "immagine", void 0);
+    __decorate([
         typeorm_1.ManyToMany(function (type) { return User_1.User; }),
         typeorm_1.JoinTable({ name: 'users_groups' }),
         __metadata("design:type", Array)

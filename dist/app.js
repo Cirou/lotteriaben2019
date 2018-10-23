@@ -60,7 +60,7 @@ typeorm_1.createConnection({
     'type': 'sqlite',
     'database': '../db/pausappranzo.db',
     'synchronize': false,
-    'logging': true,
+    'logging': false,
     'entities': [
         './server/models/*.js'
     ]
@@ -100,8 +100,8 @@ typeorm_1.createConnection({
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
         // run app
-        app.listen(4200);
-        console.log('Express application is up and running on port 4200');
+        app.listen(8080);
+        console.log('Express application is up and running on port 8080');
         LTDiet_1.startLTDietDaemon();
         return [2 /*return*/];
     });

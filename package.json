@@ -11,7 +11,7 @@
   "scripts": {
     "exec": "npm run build && cd dist && node app.js",
     "exec-be": "npm run build-ts && npm run tslint && cd dist && node app.js",
-    "start": "npm run serve",
+    "start": "cd dist && node app.js",
     "build": "npm run build-ts && npm run tslint && npm run build-ng && npm run copy-assets",
     "serve": "cd dist && node app.js",
     "build-ng": "ng build --prod",

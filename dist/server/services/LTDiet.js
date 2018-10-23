@@ -57,7 +57,7 @@ function analyzePreferences() {
 function extractAllGroupsToAnalyze() {
     var options = {
         host: 'localhost',
-        port: '4200',
+        port: '8080',
         path: '/groups/'
     };
     http.get(options, function (response) {

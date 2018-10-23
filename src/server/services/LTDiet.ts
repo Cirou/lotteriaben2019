@@ -29,7 +29,7 @@ function extractAllGroupsToAnalyze(): Group[] {
 
     const options: http.RequestOptions = {
         host: 'localhost',
-        port: '4200',
+        port: '8080',
         path: '/groups/'
     };
 
