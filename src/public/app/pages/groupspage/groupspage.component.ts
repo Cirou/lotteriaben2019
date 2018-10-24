@@ -99,6 +99,7 @@ export class GroupspageComponent implements OnInit {
   openTipPopup() {
     this.cookieService.set('pausappranzo_daily_login_done', 'true', 1);
     const dialogRef = this.dialog.open(TipDialogComponent, {
+      autoFocus: false,
       height: "80%",
       width: "600px",
       data: {

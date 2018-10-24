@@ -78,6 +78,7 @@ export class LoginpageComponent implements OnInit {
   openLoginPopup() {
     this.cookieService.set('pausappranzo_daily_login_done', 'true', 1);
     const dialogRef = this.dialog.open(LoginDialogComponent, {
+      autoFocus: false,
       height: "80%",
       width: "600px",
       data: {

@@ -39,28 +39,34 @@ export class ChatComponent implements OnInit {
 
   sendMessage() {
 
-    const message = new Message();
-    message.text = this.messageToSend.value;
-    message.user = this.rootService.loggedUser;
-    message.group = this.group;
+    if (this.messageToSend.value) {
 
-    message.group.immagine = null;
-    message.group.users = null;
-    message.user.immagine = null;
-    message.user.groups = null;
+      const message = new Message();
+      message.text = this.messageToSend.value;
+      message.user = this.rootService.loggedUser;
+      message.group = this.group;
 
-    message.data = formatDateTime(new Date);
-    console.log(message);
+      message.group.immagine = null;
+      message.group.users = null;
+      message.user.immagine = null;
+      message.user.groups = null;
 
-    this.groupService.postGroupMessage(message).subscribe(
-      message => {
-        console.log('Messaggio inviato');
-      },
-      err => {
-        console.log('Invio messaggio KO', err);
-      }
-    );
-    this.messageToSend.setValue('');
+      message.data = formatDateTime(new Date);
+      console.log(message);
+
+      this.groupService.postGroupMessage(message).subscribe(
+        message => {
+          console.log('Messaggio inviato');
+        },
+        err => {
+          console.log('Invio messaggio KO', err);
+        }
+      );
+      this.messageToSend.setValue('');
+
+    }
   }
+
+
 
 }

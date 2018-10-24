@@ -76,6 +76,7 @@ export class GroupdetailpageComponent implements OnInit, AfterContentInit {
 
   openGroup() {
     const dialogRef = this.dialog.open(GroupdialogComponent, {
+      autoFocus: false,
       height: '80%',
       width: '600px',
       data: {
