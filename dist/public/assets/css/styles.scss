@@ -1,22 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 
 @font-face {
   font-family: Breakfast;
   src: url("/public/assets/fonts/breakfast.otf") format("opentype");
 }
 
-body, html {
+body,
+html {
   min-height: 100%;
   height: 100%;
-  color: #13293D;
+  color: #13293d;
 }
 
-body { 
+body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
-  background-color: #FFFFFF;
-  background-image: url('/public/assets/img/bg.png');
+  background-color: #ffffff;
+  background-image: url("/public/assets/img/bg.png");
   background-size: contain;
   background-repeat: repeat;
 }
@@ -25,12 +26,16 @@ hr {
   margin: 14px 0 15px 0;
 }
 
-.bg-white { 
-  background-color: #FFFFFF;
+*:focus {
+  outline: none;
+}
+
+.bg-white {
+  background-color: #ffffff;
 }
 
 .basic-container {
-  padding: 30px;  
+  padding: 30px;
 }
 
 .version-info {
@@ -48,10 +53,10 @@ hr {
   z-index: 1030;
 }
 
-
-.app-long-button-center, .app-full-width-center {
+.app-long-button-center,
+.app-full-width-center {
   width: 100%;
-  text-align:center !important;
+  text-align: center !important;
 }
 
 .app-long-button-left {
@@ -59,13 +64,13 @@ hr {
   text-align: left !important;
 }
 
-.app-long-button-left  mat-icon.group-icon {
+.app-long-button-left mat-icon.group-icon {
   margin-right: 5px;
   position: relative;
   top: -1px;
 }
 
-.app-long-button-left  mat-icon.arrow-icon {
+.app-long-button-left mat-icon.arrow-icon {
   float: right;
   position: relative;
   top: 5px;
@@ -129,52 +134,52 @@ hr {
 .border-bottom-1 {
   border-bottom: 1px solid darkgrey;
 }
-.profile-icon{
+.profile-icon {
   max-width: 55px;
   width: 55px;
- }
+}
 
- .height-20{
+.height-20 {
   height: 20px;
 }
 
-.height-40{
+.height-40 {
   height: 40px;
 }
 
- .height-50{
-   height: 50px;
- }
+.height-50 {
+  height: 50px;
+}
 
- .height-70{
+.height-70 {
   height: 70px;
 }
 
-.text-small{
+.text-small {
   font-size: 14px;
 }
 
-.dashboard-title{
+.dashboard-title {
   font-family: Breakfast, Arial, Helvetica, sans-serif;
 }
 
-.login-title{
+.login-title {
   font-size: 55px;
   font-family: Breakfast, Arial, Helvetica, sans-serif;
 }
 
-.width-button{
+.width-button {
   width: 100%;
 }
 
-.thumb-up-icon{
-    font-size: 18px !important;
-    padding-left: 10px;
-    padding-top: 5px;
-    color: green;
+.thumb-up-icon {
+  font-size: 18px !important;
+  padding-left: 10px;
+  padding-top: 5px;
+  color: green;
 }
 
-.thumb-down-icon{
+.thumb-down-icon {
   font-size: 18px !important;
   padding-left: 10px;
   padding-top: 5px;
