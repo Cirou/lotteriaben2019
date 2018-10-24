@@ -3,12 +3,12 @@
 }
 
 .chat-message-box {
-    background-color: lightgreen;
+    background-color: rgb(144, 238, 144, 0.5);
     border-radius: 10px;  
 }
 
 .chat-message-box-self {
-    background-color: lightskyblue;
+    background-color: rgb(135, 206, 250, 0.5);
 }
 
 .chat-image {
