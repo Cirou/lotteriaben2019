@@ -16,7 +16,7 @@ export class PollpageComponent implements OnInit {
   id: number;
   sub: any;
   pollOfTheDay: any;
-  groupDetails: Group;
+  groupDetails: Group = new Group;
   totaleMembri: number;
   hasSuggestion: boolean = false;
 
@@ -39,8 +39,8 @@ export class PollpageComponent implements OnInit {
     this.groupService.getGroupDetails(this.id)
       .subscribe(
         groupDetails => {
-          this.groupDetails = groupDetails;
-          this.totaleMembri = groupDetails.users.length;
+          this.groupDetails = groupDetails[0];
+          this.totaleMembri = groupDetails[0].users.length;
           console.log(this.groupDetails);
         },
         err => {

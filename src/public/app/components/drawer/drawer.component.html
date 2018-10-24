@@ -3,7 +3,7 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <h1 class="app-name">Pausappranzo</h1>
+    <h1 class="app-name" [routerLink]="['/app', { outlets: { sub: ['home'] } }]">Pausappranzo</h1>
   </mat-toolbar>
 
   <mat-sidenav-container class="app-sidenav-container">
@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row align-items-center margin-top-10">
           <div class="col-6">
-            <img class="img-fluid rounded-circle profile-icon" *ngIf="!userProfile || !userProfile.immagine" src="../../../public/assets/icons/profile-icon-9.png" />
+            <img class="img-fluid rounded-circle profile-icon" *ngIf="!userProfile || !userProfile.immagine" src="/public/assets/icons/profile-icon-9.png" />
             <img class="img-fluid rounded-circle profile-icon" *ngIf="userProfile.immagine" src={{userProfile.immagine}} />
           </div>
         </div>
