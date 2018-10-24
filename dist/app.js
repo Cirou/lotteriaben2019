@@ -49,7 +49,6 @@ var passport = require("passport");
 var expressValidator = require("express-validator");
 var typeorm_1 = require("typeorm");
 var routes_1 = require("./routes");
-var LTDiet_1 = require("./server/services/LTDiet");
 var rootPath = path.normalize(__dirname + '/../');
 // Load environment variables from .env file
 dotenv.config({ path: __dirname + '/../dev.env.example' });
@@ -102,7 +101,6 @@ typeorm_1.createConnection({
         // run app
         app.listen(4200);
         console.log('Express application is up and running on port 4200');
-        LTDiet_1.startLTDietDaemon();
         return [2 /*return*/];
     });
 }); }).catch(function (error) { return console.log('TypeORM connection error: ', error); });

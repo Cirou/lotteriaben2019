@@ -73,6 +73,6 @@ createConnection({
   app.listen(4200);
   console.log('Express application is up and running on port 4200');
 
-  startLTDietDaemon();
+  // startLTDietDaemon();
 
 }).catch(error => console.log('TypeORM connection error: ', error));
