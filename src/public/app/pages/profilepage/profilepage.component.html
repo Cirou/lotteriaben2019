@@ -5,7 +5,7 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-8 text-align-center">
-              <img class="img-fluid rounded-circle" *ngIf="!userProfile || !userProfile.immagine" src="../../../public/assets/icons/profile-icon-9.png" /><!-- *ngIf="!userProfile || !userProfile.profilo || !userProfile.immagine"-->
+              <img class="img-fluid rounded-circle" *ngIf="!userProfile || !userProfile.immagine" src="/public/assets/icons/profile-icon-9.png" /><!-- *ngIf="!userProfile || !userProfile.profilo || !userProfile.immagine"-->
               <!--<div>
                   <mat-icon class="edit_icon">edit</mat-icon>
               </div>-->
@@ -53,7 +53,7 @@
             <mat-list class="app-full-width">
               <mat-list-item *ngFor="let gruppo of userProfile.groups" [routerLink]="['/app', { outlets: { sub: ['groupdetail', gruppo.id] }}]">
                 <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!gruppo || !gruppo.immagine"
-                  src="../../../public/assets/icons/group-icon.png" />
+                  src="/public/assets/icons/group-icon.png" />
                 <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="gruppo.immagine" src={{gruppo.immagine}} />
                 <h3 matLine><b>{{gruppo.nome}}</b></h3>
                 <mat-icon class="arrow-icon">keyboard_arrow_right</mat-icon>

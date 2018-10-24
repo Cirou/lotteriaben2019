@@ -1,6 +1,6 @@
 <mat-list>
   <mat-list-item *ngFor="let gruppo of elencoGruppi" [routerLink]="['/app', { outlets: { sub: ['groupdetail', gruppo.id] }}]">
-    <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!gruppo || !gruppo.immagine" src="../../../public/assets/icons/group-icon.png" />
+    <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!gruppo || !gruppo.immagine" src="/public/assets/icons/group-icon.png" />
     <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="gruppo.immagine" src={{gruppo.immagine}} />
     <h3 matLine><b>{{gruppo.nome}}</b></h3>
     <p matLine>

@@ -20,7 +20,7 @@
               "src/public/assets",
               "src/public/assets/mock",
               "src/public/favicon.ico",
-              "src/manifest.json"            ],
+              "src/public/manifest.json"            ],
             "styles": [
               "node_modules/tether/dist/css/tether.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -95,7 +95,7 @@
             "assets": [
               "src/public/assets",
               "src/public/favicon.ico",
-              "src/manifest.json"
+              "src/public/manifest.json"
             ]
           }
         },

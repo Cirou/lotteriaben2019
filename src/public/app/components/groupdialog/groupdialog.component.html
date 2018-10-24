@@ -26,7 +26,7 @@
   <mat-list #partecipanti>
 
     <mat-list-item>
-      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!loggedUser || !loggedUser.immagine" src="../../../public/assets/icons/profile-icon-9.png"
+      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!loggedUser || !loggedUser.immagine" src="/public/assets/icons/profile-icon-9.png"
       />
       <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="loggedUser.immagine" src={{loggedUser.immagine}}
       />
@@ -38,7 +38,7 @@
 
     <div *ngFor="let user of data.groupDetails.users">
       <mat-list-item *ngIf="user.id != loggedUser.id"> 
-      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!user || !user.immagine" src="../../../public/assets/icons/profile-icon-9.png"
+      <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="!user || !user.immagine" src="/public/assets/icons/profile-icon-9.png"
       />
       <img matListAvatar class="img-fluid rounded-circle profile-icon" *ngIf="user.immagine" src={{user.immagine}}
       />

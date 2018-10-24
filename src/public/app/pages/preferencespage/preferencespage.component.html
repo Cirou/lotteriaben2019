@@ -1,7 +1,8 @@
 <div class="container no-padding height-20">
   <div class="col-12 align-content-center text-align-center">
     <h6>
-      <b>Cosa preferiresti mangiare oggi?</b>
+      <b *ngIf="!alreadyVoted">Cosa preferiresti mangiare oggi?</b>
+      <b *ngIf="alreadyVoted">Ecco le tue scelte per oggi</b>
     </h6>
   </div>
 </div>
@@ -12,7 +13,7 @@
       <mat-list-option *ngFor="let cibo of elencoCibi" [value]='cibo' [disabled]="alreadyVoted" [selected]="isInSelectedFood(cibo.id)">
         <div class="row no-gutters align-items-center">
           <div class="col-3">
-            <img src="../../../public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">
+            <img src="/public/assets/img/{{cibo.nome}}.png" class="img-fluid" style="width: 50px">
           </div>
           <div class="col-8">
             <b>{{cibo.descrizione}}</b>
