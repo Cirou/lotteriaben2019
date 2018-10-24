@@ -100,8 +100,8 @@ typeorm_1.createConnection({
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
         // run app
-        app.listen(8080);
-        console.log('Express application is up and running on port 8080');
+        app.listen(4200);
+        console.log('Express application is up and running on port 4200');
         LTDiet_1.startLTDietDaemon();
         return [2 /*return*/];
     });

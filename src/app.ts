@@ -70,8 +70,8 @@ createConnection({
   });
 
   // run app
-  app.listen(8080);
-  console.log('Express application is up and running on port 8080');
+  app.listen(4200);
+  console.log('Express application is up and running on port 4200');
 
   startLTDietDaemon();
 
