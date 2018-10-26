@@ -2,15 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { Group } from '../../../models/Group';
 import { FormControl, Validators } from '@angular/forms';
 import { GroupService } from '../../services/group.service';
+import { VotationService } from '../../services/votation.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/User';
+import { Votation } from '../../../models/Votation';
+import { Food } from '../../../models/Food';
+import { formatDate } from '../../../../shared/utils/DateUtils';
+import { MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import * as d3 from 'd3';
 
 
 @Component({
   selector: 'app-dashboardpage',
   templateUrl: './dashboardpage.component.html',
-  styleUrls: ['./dashboardpage.component.css']
+  styleUrls: ['./dashboardpage.component.css'],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue:  'it-IT' },
+  ]
 })
 export class DashboardpageComponent implements OnInit {
 
@@ -21,8 +29,10 @@ export class DashboardpageComponent implements OnInit {
   numeroMembri: number;
   dataSelezionata: Date;
   gruppoSelezionato: number;
+  votationsUserList: Votation[];
 
   constructor(private groupService: GroupService,
+    private votationService: VotationService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -42,13 +52,32 @@ export class DashboardpageComponent implements OnInit {
     this.groupDetails = this.groupService.getGroupDetails(this.gruppoSelezionato)
       .subscribe(
         groupDetails => {
+
           this.userList = groupDetails[0].users;
-          this.showGraph();
+
+          this.userList.forEach(user => {
+            this.votationService.getVotationByDate(user.id, formatDate(this.dataSelezionata)).subscribe(
+              votations => {
+
+                user.foods = new Array;
+
+                votations.forEach(element => {
+                  user.foods.push(element.food_id);
+                });
+
+                console.log(user.foods);
+              },
+              err => {
+                console.log(err);
+              });
+          });
+          //  this.showGraph();
           console.log(this.userList);
         },
         err => {
           console.log(err);
         });
+
   }
 
 
@@ -91,15 +120,15 @@ export class DashboardpageComponent implements OnInit {
 
     d3.timer(function (elapsed) {
 
-      if(elapsed == duration){
+      if (elapsed == duration) {
         return;
       }
 
       var t = 1 - Math.abs((elapsed % duration) / duration - .5) * 2;
 
       path.data(
-          pie.padAngle(t * 2 * Math.PI / data.length)(data)
-        )
+        pie.padAngle(t * 2 * Math.PI / data.length)(data)
+      )
         .style('fill', function (d, i) { return color(String(i)); })
         .attr('d', <any>arc);
 

@@ -11,7 +11,7 @@ export class Votation {
 
   @ManyToOne(type => Food, { eager: true })
   @JoinColumn({name: 'food_id'})
-  food_id: Number;
+  food_id: Food;
 
   @ManyToOne(type => User, { eager: true })
   @JoinColumn({name: 'user_id'})

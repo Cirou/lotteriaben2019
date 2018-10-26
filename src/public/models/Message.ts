@@ -11,6 +11,6 @@ export class Message {
 
   text: string;
 
-  data: Date;
+  data: string;
 
 }

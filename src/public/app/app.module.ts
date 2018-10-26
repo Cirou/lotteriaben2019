@@ -55,9 +55,11 @@ import { LoaderService } from './services/loader.service';
 import { SearchService } from './services/search.service';
 import { RootService } from './services/root.service';
 import { CookieService } from 'ngx-cookie-service';
+import { VotationService } from './services/votation.service';
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
+
 
 @NgModule({
   declarations: [
@@ -111,7 +113,8 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
     LoaderService,
     SearchService,
     CookieService,
-    RootService
+    RootService,
+    VotationService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],

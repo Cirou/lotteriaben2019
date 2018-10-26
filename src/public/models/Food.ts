@@ -1,3 +1,4 @@
+import { Location } from './Location';
 
 export class Food {
 
