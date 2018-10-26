@@ -19,4 +19,7 @@ export class Suggestion {
   @Column({ name: 'date', type: 'date', nullable: true })
   data: Date;
 
+  @Column({ name: 'rating', type: 'double', nullable: true })
+  rating: Number;
+
 }

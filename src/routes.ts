@@ -2,9 +2,9 @@ import { getGroup, postGroup, putGroup, getGroupByName, getAllGroups } from './s
 import { getUser, postUser, putUser, getUserByName, deleteUserGroup, postUserGroup, getAllUsers } from './server/controllers/UserController';
 import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
-import { getVotation, postVotation, putVotation } from './server/controllers/VotationController';
+import { getVotation, postVotation, putVotation, getVotationByDate } from './server/controllers/VotationController';
 import { getFoodAll } from './server/controllers/FoodController';
-import { getSuggestion } from './server/controllers/SuggestionController';
+import { getSuggestion, getSuggestionByDate } from './server/controllers/SuggestionController';
 
 /**
  * All application routes.
@@ -86,6 +86,11 @@ export const AppRoutes = [
         action: getVotation
     },
     {
+        path: '/votation/:id/:date',
+        method: 'get',
+        action: getVotationByDate
+    },
+    {
         path: '/votation',
         method: 'post',
         action: postVotation
@@ -104,6 +109,11 @@ export const AppRoutes = [
         path: '/suggestion/:id',
         method: 'get',
         action: getSuggestion
+    },
+    {
+        path: '/suggestion/:id/:date',
+        method: 'get',
+        action: getSuggestionByDate
     },
     {
         path: '/usergroup',

@@ -17,6 +17,19 @@ export let getSuggestion = (req: Request, res: Response) => {
 };
 
 /**
+ * GET /suggestion/:id/:date
+ * retrieves the votation using the given id
+ */
+export let getSuggestionByDate = (req: Request, res: Response) => {
+  getRepository(Suggestion).createQueryBuilder('suggestions')
+    .leftJoinAndSelect('votations.location_id', 'locations')
+    .where('group_id = :id AND date = :date' , { id: req.params.id, date: req.params.date })
+    .getMany().then(votation => {
+      res.send(votation);
+    }).catch(err => { console.log(err); });
+};
+
+/**
  * POST /suggestion
  * saves the suggestion using the given model
  */
