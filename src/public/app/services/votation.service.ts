@@ -11,7 +11,7 @@ export class VotationService {
 
   constructor(private http: Http, private rootService: RootService) { }
 
-  private votationByDateUrl: string = !this.rootService.mocked ? '/votation/' : '/';
+  private votationByDateUrl: string = !this.rootService.mocked ? '/votation/' : '/public/assets/mock/getUserVotation.json?ref=';
 
   getVotationByDate(id: number, date: string): Observable<Votation[]>{
     return this.http

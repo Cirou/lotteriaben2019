@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/User';
 import { Votation } from '../../../models/Votation';
 import { Food } from '../../../models/Food';
-import { formatDate } from '../../../../shared/utils/DateUtils';
+import { formatDateTimezone } from '../../../../shared/utils/DateUtils';
 import { MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import * as d3 from 'd3';
 
@@ -56,7 +56,7 @@ export class DashboardpageComponent implements OnInit {
           this.userList = groupDetails[0].users;
 
           this.userList.forEach(user => {
-            this.votationService.getVotationByDate(user.id, formatDate(this.dataSelezionata)).subscribe(
+            this.votationService.getVotationByDate(user.id, formatDateTimezone(this.dataSelezionata)).subscribe(
               votations => {
 
                 user.foods = new Array;
