@@ -36,17 +36,17 @@
 
 <div class="container col-12 margin-top-20">
   <div class="row col-12">
-    <div class="container col-6"> 
+    <div class="container col-4"> 
       <mat-list-item *ngFor="let user of userList">
         <div class="row no-gutters align-items-center">
-          <div class="col-3">
+          <div class="col-4">
             <h5 matLine>
               <b [style.color]="user.colore">{{user.nome}}</b>
             </h5>
           </div>
-          <div class="col-3">
+          <div class="col-4">
             <mat-list-item *ngFor="let food of user.foods">
-              <b>{{food.descrizione}}</b>
+              <h6>{{food.descrizione}}</h6>
             </mat-list-item>
           </div>
         </div>
@@ -54,7 +54,7 @@
       </mat-list-item>
 
     </div>
-    <div class="container col-6">
+    <div class="container col-8">
       <div class="graph">
 
       </div>
