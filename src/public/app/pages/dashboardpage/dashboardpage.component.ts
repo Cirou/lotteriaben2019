@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Group } from '../../../models/Group';
 import { FormControl, Validators } from '@angular/forms';
 import { GroupService } from '../../services/group.service';
@@ -17,7 +17,7 @@ import * as d3 from 'd3';
   templateUrl: './dashboardpage.component.html',
   styleUrls: ['./dashboardpage.component.css'],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue:  'it-IT' },
+    { provide: MAT_DATE_LOCALE, useValue: 'it-IT' },
   ]
 })
 export class DashboardpageComponent implements OnInit {
@@ -30,6 +30,11 @@ export class DashboardpageComponent implements OnInit {
   dataSelezionata: Date;
   gruppoSelezionato: number;
   votationsUserList: Votation[];
+
+  chart: any;
+  month_name: any;
+  user_count: any;
+
 
   constructor(private groupService: GroupService,
     private votationService: VotationService,
@@ -71,7 +76,7 @@ export class DashboardpageComponent implements OnInit {
                 console.log(err);
               });
           });
-          //  this.showGraph();
+          this.showGraph();
           console.log(this.userList);
         },
         err => {
@@ -83,56 +88,87 @@ export class DashboardpageComponent implements OnInit {
 
   showGraph() {
 
-    var data = [1, 1, 2, 3, 5, 8, 13];
+    var canvas = document.querySelector("canvas"),
+      context = canvas.getContext("2d");
 
-    var color = d3.scaleOrdinal(d3.schemeCategory10);
+    var margin = { top: 20, right: 20, bottom: 30, left: 40 },
+      width = canvas.width - margin.left - margin.right,
+      height = canvas.height - margin.top - margin.bottom;
 
-    var width = 500,
-      height = 500;
+    var x = d3.scaleBand()
+      .rangeRound([0, width])
+      .padding(0.1);
 
-    var duration = 7500;
+    var y = d3.scaleLinear()
+      .rangeRound([height, 0]);
 
-    var outerRadius = height / 2 - 30,
-      innerRadius = outerRadius / 3,
-      cornerRadius = 10;
+    context.translate(margin.left, margin.top);
 
-    var pie = d3.pie();
+    d3.tsv("/public/assets/mock/data.tsv", function (d) {
+      return d;
+    }, function (error, data) {
+      if (error) throw error;
 
-    var arc = d3.arc()
-      .innerRadius(innerRadius)
-      .outerRadius(outerRadius);
+      x.domain(data.map(function (d) { return d.letter; }));
+      y.domain([0, Number(d3.max(data, function (d) { return d.frequency; }))]);
 
-    var svg = d3.select('.graph')
-      .append('svg')
-      .attr('width', width)
-      .attr('height', height)
-      .append('g')
-      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+      var yTickCount = 10,
+        yTicks = y.ticks(yTickCount),
+        yTickFormat = y.tickFormat(yTickCount, "%");
 
-    var path = svg.selectAll('path')
-      .data(data)
-      .enter().append('path');
+      context.beginPath();
+      x.domain().forEach(function (d) {
+        context.moveTo(x(d) + x.bandwidth() / 2, height);
+        context.lineTo(x(d) + x.bandwidth() / 2, height + 6);
+      });
+      context.strokeStyle = "black";
+      context.stroke();
 
-    var ease = d3.transition()
-      .duration(duration)
-      .transition()
-      .ease(d3.easeCubic);
+      context.textAlign = "center";
+      context.textBaseline = "top";
+      x.domain().forEach(function (d) {
+        context.fillText(d, x(d) + x.bandwidth() / 2, height + 6);
+      });
 
-    d3.timer(function (elapsed) {
+      context.beginPath();
+      yTicks.forEach(function (d) {
+        context.moveTo(0, y(d) + 0.5);
+        context.lineTo(-6, y(d) + 0.5);
+      });
+      context.strokeStyle = "black";
+      context.stroke();
 
-      if (elapsed == duration) {
-        return;
-      }
+      context.textAlign = "right";
+      context.textBaseline = "middle";
+      yTicks.forEach(function (d) {
+        context.fillText(yTickFormat(d), -9, y(d));
+      });
 
-      var t = 1 - Math.abs((elapsed % duration) / duration - .5) * 2;
+      context.beginPath();
+      context.moveTo(-6.5, 0 + 0.5);
+      context.lineTo(0.5, 0 + 0.5);
+      context.lineTo(0.5, height + 0.5);
+      context.lineTo(-6.5, height + 0.5);
+      context.strokeStyle = "black";
+      context.stroke();
 
-      path.data(
-        pie.padAngle(t * 2 * Math.PI / data.length)(data)
-      )
-        .style('fill', function (d, i) { return color(String(i)); })
-        .attr('d', <any>arc);
+      context.save();
+      context.rotate(-Math.PI / 2);
+      context.textAlign = "right";
+      context.textBaseline = "top";
+      context.font = "bold 10px sans-serif";
+      context.fillText("Frequency", -10, 10);
+      context.restore();
 
+      context.fillStyle = "steelblue";
+      data.forEach(function (d) {
+        context.fillRect(x(d.letter), y(Number(d.frequency)), x.bandwidth(), height - y(Number(d.frequency)));
+      });
     });
+
+
   }
+
+
 
 }
