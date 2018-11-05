@@ -14,7 +14,7 @@ export class UserSuggestion {
 
   @ManyToOne(type => Food, { eager: true })
   @JoinColumn({ name: 'food_id' })
-  food_id: Number;
+  food_id: Food;
 
   @Column({ name: 'date', type: 'date', nullable: true })
   data: Date;

@@ -13,7 +13,7 @@ export class GroupService {
 
   private gruppoUrl: string = !this.rootService.mocked ? '/group/' : '/public/assets/mock/getGroupDetails.json?ref=';
   private chatGruppoUrl: string = !this.rootService.mocked ? '/message/' : '/public/assets/mock/getGroupChat.json?ref=';
-  private suggestionUrl: string = !this.rootService.mocked ? '/suggestion/' : '/';
+  private suggestionUrl: string = !this.rootService.mocked ? '/groupsuggestion/' : '/';
   private sendMessageUrl: string = !this.rootService.mocked ? '/message' : '/public/assets/mock/getGroupChat.json?ref=';
   private gruppoTuttiUrl: string = !this.rootService.mocked ? '/groups/' : '/public/assets/mock/getAllGroups.json?ref=';
 
