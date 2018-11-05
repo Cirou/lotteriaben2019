@@ -1,7 +1,5 @@
-import { Group } from './Group';
-import { Location } from './Location';
 
-export class Suggestion {
+export class GroupSuggestion {
 
   id: number;
 

@@ -2,8 +2,8 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 't
 import { Group } from './Group';
 import { Location } from './Location';
 
-@Entity('suggestions')
-export class Suggestion {
+@Entity('suggestions_group')
+export class GroupSuggestion {
 
   @PrimaryGeneratedColumn()
   id: number;

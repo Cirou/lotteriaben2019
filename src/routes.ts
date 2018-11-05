@@ -4,7 +4,7 @@ import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
 import { getVotation, postVotation, putVotation, getVotationByDate } from './server/controllers/VotationController';
 import { getFoodAll } from './server/controllers/FoodController';
-import { getSuggestion, getSuggestionByDate } from './server/controllers/SuggestionController';
+import { getGroupSuggestion, getGroupSuggestionByDate } from './server/controllers/SuggestionController';
 
 /**
  * All application routes.
@@ -108,12 +108,12 @@ export const AppRoutes = [
     {
         path: '/suggestion/:id',
         method: 'get',
-        action: getSuggestion
+        action: getGroupSuggestion
     },
     {
         path: '/suggestion/:id/:date',
         method: 'get',
-        action: getSuggestionByDate
+        action: getGroupSuggestionByDate
     },
     {
         path: '/usergroup',

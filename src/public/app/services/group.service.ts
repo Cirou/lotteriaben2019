@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../../models/Group';
 import { Message } from '../../models/Message';
-import { Suggestion } from '../../models/Suggestion';
+import { GroupSuggestion } from '../../models/GroupSuggestion';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -44,7 +44,7 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getSuggestion(idGruppo: number): Observable<Suggestion> {
+  getSuggestion(idGruppo: number): Observable<GroupSuggestion> {
     return this.http
       .get(this.suggestionUrl + idGruppo)
       .pipe(
