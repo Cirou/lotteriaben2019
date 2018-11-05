@@ -14,7 +14,7 @@ export class GroupSuggestion {
 
   @ManyToOne(type => Location, { eager: true })
   @JoinColumn({ name: 'location_id' })
-  location_id: Number;
+  location_id: Location;
 
   @Column({ name: 'date', type: 'date', nullable: true })
   data: Date;

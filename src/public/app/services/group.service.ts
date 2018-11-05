@@ -52,6 +52,14 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
+  getSuggestionTSV(id: number, date: string): Observable<String> {
+    return this.http
+      .get(this.suggestionUrl +  + id + '/' + date)
+      .pipe(
+        map((response: Response) => response.text()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
   postGroupMessage(messageToSend: Message): Observable<Message> {
 
     const httpOptions = {

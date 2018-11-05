@@ -11,9 +11,29 @@ import { UserSuggestion } from '../models/UserSuggestion';
 export let getGroupSuggestion = (req: Request, res: Response) => {
   getRepository(GroupSuggestion).createQueryBuilder('suggestions_group')
     .leftJoinAndSelect('suggestions_group.location_id', 'locations')
-    .where('group_id = :id' , { id: req.params.id })
+    .where('group_id = :id', { id: req.params.id })
     .getMany().then(votation => {
       res.send(votation);
+    }).catch(err => { console.log(err); });
+};
+
+/**
+ * GET /groupsuggestiontsv/:id/:date
+ * retrieves the votation using the given id
+ */
+export let getGroupSuggestionTSV = (req: Request, res: Response) => {
+  getRepository(GroupSuggestion).createQueryBuilder('suggestions_group')
+    .leftJoinAndSelect('suggestions_group.location_id', 'locations')
+    .where('group_id = :id AND date = :date', { id: req.params.id, date: req.params.date })
+    .getMany().then(votation => {
+
+      let resTSV = 'letter\tfrequency\r\n';
+
+      votation.forEach(vote => {
+        resTSV += vote.location_id.nome + '\t' + vote.rating + '\r\n';
+      });
+
+      res.send(resTSV);
     }).catch(err => { console.log(err); });
 };
 
@@ -24,7 +44,7 @@ export let getGroupSuggestion = (req: Request, res: Response) => {
 export let getGroupSuggestionByDate = (req: Request, res: Response) => {
   getRepository(GroupSuggestion).createQueryBuilder('suggestions_group')
     .leftJoinAndSelect('suggestions_group.location_id', 'locations')
-    .where('group_id = :id AND date = :date' , { id: req.params.id, date: req.params.date })
+    .where('group_id = :id AND date = :date', { id: req.params.id, date: req.params.date })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });
@@ -47,7 +67,7 @@ export let postGroupSuggestion = (req: Request, res: Response) => {
 export let getUserSuggestion = (req: Request, res: Response) => {
   getRepository(UserSuggestion).createQueryBuilder('suggestions_user')
     .leftJoinAndSelect('suggestions_user.food_id', 'foods')
-    .where('user_id = :id' , { id: req.params.id })
+    .where('user_id = :id', { id: req.params.id })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });
@@ -60,7 +80,7 @@ export let getUserSuggestion = (req: Request, res: Response) => {
 export let getUserSuggestionByDate = (req: Request, res: Response) => {
   getRepository(UserSuggestion).createQueryBuilder('suggestions_user')
     .leftJoinAndSelect('suggestions_user.food_id', 'foods')
-    .where('user_id = :id AND date = :date' , { id: req.params.id, date: req.params.date })
+    .where('user_id = :id AND date = :date', { id: req.params.id, date: req.params.date })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });
