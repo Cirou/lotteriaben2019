@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Group } from '../../models/Group';
 import { Message } from '../../models/Message';
-import { Suggestion } from '../../models/Suggestion';
+import { GroupSuggestion } from '../../models/GroupSuggestion';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs';
 
@@ -13,7 +13,7 @@ export class GroupService {
 
   private gruppoUrl: string = !this.rootService.mocked ? '/group/' : '/public/assets/mock/getGroupDetails.json?ref=';
   private chatGruppoUrl: string = !this.rootService.mocked ? '/message/' : '/public/assets/mock/getGroupChat.json?ref=';
-  private suggestionUrl: string = !this.rootService.mocked ? '/suggestion/' : '/';
+  private suggestionUrl: string = !this.rootService.mocked ? '/groupsuggestion/' : '/';
   private sendMessageUrl: string = !this.rootService.mocked ? '/message' : '/public/assets/mock/getGroupChat.json?ref=';
   private gruppoTuttiUrl: string = !this.rootService.mocked ? '/groups/' : '/public/assets/mock/getAllGroups.json?ref=';
 
@@ -44,11 +44,19 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getSuggestion(idGruppo: number): Observable<Suggestion> {
+  getSuggestion(idGruppo: number): Observable<GroupSuggestion> {
     return this.http
       .get(this.suggestionUrl + idGruppo)
       .pipe(
         map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+  }
+
+  getSuggestionTSV(id: number, date: string): Observable<String> {
+    return this.http
+      .get(this.suggestionUrl +  + id + '/' + date)
+      .pipe(
+        map((response: Response) => response.text()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 

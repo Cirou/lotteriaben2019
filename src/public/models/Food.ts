@@ -8,4 +8,6 @@ export class Food {
 
   descrizione: string;
 
+  consigliato: Boolean;
+
 }
