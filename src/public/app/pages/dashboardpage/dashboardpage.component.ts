@@ -30,6 +30,7 @@ export class DashboardpageComponent implements OnInit {
   dataSelezionata: Date;
   gruppoSelezionato: number;
   votationsUserList: Votation[];
+  firstClick: boolean = true;
 
   chart: any;
   month_name: any;
@@ -87,13 +88,12 @@ export class DashboardpageComponent implements OnInit {
 
 
   showGraph() {
+    var canvas = document.querySelector("canvas");
+    var context = canvas.getContext("2d");
 
-    var canvas = document.querySelector("canvas"),
-      context = canvas.getContext("2d");
-
-    var margin = { top: 20, right: 20, bottom: 30, left: 40 },
-      width = canvas.width - margin.left - margin.right,
-      height = canvas.height - margin.top - margin.bottom;
+    const margin = { top: 20, right: 20, bottom: 80, left: 80 };
+    const width = canvas.width - margin.left - margin.right;
+    const height = canvas.height - margin.top - margin.bottom;
 
     var x = d3.scaleBand()
       .rangeRound([0, width])
@@ -102,26 +102,36 @@ export class DashboardpageComponent implements OnInit {
     var y = d3.scaleLinear()
       .rangeRound([height, 0]);
 
-    context.translate(margin.left, margin.top);
+    var colors = ["#0F52BA", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#FFD800", "#C71585"];
 
-    d3.tsv("/public/assets/mock/data.tsv", function (d) {
+    if(!this.firstClick){
+      context.translate(-margin.left, -margin.top);
+      context.clearRect(0, 0, canvas.width, canvas.height);
+    }
+    
+    context.translate(margin.left, margin.top);
+    this.firstClick = false;
+
+    d3.tsv("/public/assets/mock/grafic.tsv", function (d) {
       return d;
     }, function (error, data) {
       if (error) throw error;
 
+
       x.domain(data.map(function (d) { return d.letter; }));
-      y.domain([0, Number(d3.max(data, function (d) { return d.frequency; }))]);
+      y.domain([0, 100]);
 
       var yTickCount = 10,
         yTicks = y.ticks(yTickCount),
-        yTickFormat = y.tickFormat(yTickCount, "%");
+        yTickFormat = y.tickFormat(yTickCount);
 
       context.beginPath();
       x.domain().forEach(function (d) {
         context.moveTo(x(d) + x.bandwidth() / 2, height);
         context.lineTo(x(d) + x.bandwidth() / 2, height + 6);
       });
-      context.strokeStyle = "black";
+      context.strokeStyle = "#000000";
+      context.font = "bold 12px sans-serif";
       context.stroke();
 
       context.textAlign = "center";
@@ -135,7 +145,6 @@ export class DashboardpageComponent implements OnInit {
         context.moveTo(0, y(d) + 0.5);
         context.lineTo(-6, y(d) + 0.5);
       });
-      context.strokeStyle = "black";
       context.stroke();
 
       context.textAlign = "right";
@@ -145,25 +154,30 @@ export class DashboardpageComponent implements OnInit {
       });
 
       context.beginPath();
-      context.moveTo(-6.5, 0 + 0.5);
+      context.moveTo(-1, 0 + 0.5);
       context.lineTo(0.5, 0 + 0.5);
       context.lineTo(0.5, height + 0.5);
-      context.lineTo(-6.5, height + 0.5);
-      context.strokeStyle = "black";
+      context.lineTo(-1, height + 0.5);
       context.stroke();
 
       context.save();
       context.rotate(-Math.PI / 2);
       context.textAlign = "right";
       context.textBaseline = "top";
-      context.font = "bold 10px sans-serif";
-      context.fillText("Frequency", -10, 10);
+      context.fillText("Compatibilità", -150, -50);
       context.restore();
 
-      context.fillStyle = "steelblue";
-      data.forEach(function (d) {
+      context.fillText("Ristoranti", 400, 450);
+
+      for (let index = 0; index < data.length; index++) {
+        const d = data[index];
+        context.fillStyle = colors[index];
         context.fillRect(x(d.letter), y(Number(d.frequency)), x.bandwidth(), height - y(Number(d.frequency)));
-      });
+        context.fillStyle = "#000000";
+        context.fill();
+
+      }
+
     });
 
 
