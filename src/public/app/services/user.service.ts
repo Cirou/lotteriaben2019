@@ -22,7 +22,7 @@ export class UserService {
   private sendUserVotationUrl: string = !this.rootService.mocked ? '/votation' : '/public/assets/mock/postUserVotation.json?ref=';
   private getUserVotationUrl: string = !this.rootService.mocked ? '/votation/' : '/public/assets/mock/getUserVotation.json?ref=';
   private sendUserGroupUrl: string = !this.rootService.mocked ? '/usergroup' : '/public/assets/mock/postUserGroup.json?ref=';
-  private suggestionUrl: string = !this.rootService.mocked ? '/usersuggestion/' : '/';
+  private suggestionUrl: string = !this.rootService.mocked ? '/usersuggestion/' : '/public/assets/mock/getUserSuggestion.json?ref=';
 
 
 
