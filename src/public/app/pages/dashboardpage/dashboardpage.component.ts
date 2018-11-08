@@ -1,16 +1,13 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Group } from '../../../models/Group';
-import { FormControl, Validators } from '@angular/forms';
 import { GroupService } from '../../services/group.service';
 import { VotationService } from '../../services/votation.service';
 import { ActivatedRoute } from '@angular/router';
 import { User } from '../../../models/User';
 import { Votation } from '../../../models/Votation';
-import { Food } from '../../../models/Food';
 import { formatDateTimezone } from '../../../../shared/utils/DateUtils';
-import { MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
+import { MAT_DATE_LOCALE } from '@angular/material';
 import * as d3 from 'd3';
-import { Suggestions } from 'aws-sdk/clients/cloudsearchdomain';
 
 
 @Component({
@@ -163,10 +160,10 @@ export class DashboardpageComponent implements OnInit {
       context.rotate(-Math.PI / 2);
       context.textAlign = "right";
       context.textBaseline = "top";
-      context.fillText("Compatibilità", -150, -50);
+      context.fillText("Compatibilità", -150, 0);
       context.restore();
 
-      context.fillText("Ristoranti", 400, 450);
+      context.fillText("Ristoranti", 450, 330);
 
       for (let index = 0; index < data.length; index++) {
         const d = data[index];

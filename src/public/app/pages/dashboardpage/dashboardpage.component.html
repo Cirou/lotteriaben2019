@@ -38,16 +38,14 @@
   <div class="row col-12">
     <div class="container col-4"> 
       <mat-list-item *ngFor="let user of userList">
-        <div class="row no-gutters align-items-center">
-          <div class="col-4">
+        <div class="row no-gutters align-items-center margin-top-20 margin-bottom-20">
+          <div class="col-3">
             <h5 matLine>
               <b [style.color]="user.colore">{{user.nome}}</b>
             </h5>
           </div>
-          <div class="col-4">
-            <mat-list-item *ngFor="let food of user.foods">
-              <h6>{{food.descrizione}}</h6>
-            </mat-list-item>
+          <div class="col-9 text-align-left">
+            <span *ngFor="let food of user.foods ; last as isLast"><b>{{food.descrizione}}<span *ngIf="!isLast">,</span> &nbsp;</b></span>
           </div>
         </div>
         <mat-divider></mat-divider>
@@ -55,7 +53,7 @@
 
     </div>
     <div class="container col-8">
-      <canvas width="960" height="500"></canvas>
+      <canvas width="960" height="400"></canvas>
     </div>
   </div>
 </div>
