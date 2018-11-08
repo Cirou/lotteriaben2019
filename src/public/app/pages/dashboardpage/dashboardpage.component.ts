@@ -10,6 +10,7 @@ import { Food } from '../../../models/Food';
 import { formatDateTimezone } from '../../../../shared/utils/DateUtils';
 import { MatInputModule, MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material';
 import * as d3 from 'd3';
+import { Suggestions } from 'aws-sdk/clients/cloudsearchdomain';
 
 
 @Component({
@@ -31,10 +32,6 @@ export class DashboardpageComponent implements OnInit {
   gruppoSelezionato: number;
   votationsUserList: Votation[];
   firstClick: boolean = true;
-
-  chart: any;
-  month_name: any;
-  user_count: any;
 
 
   constructor(private groupService: GroupService,
@@ -77,6 +74,7 @@ export class DashboardpageComponent implements OnInit {
                 console.log(err);
               });
           });
+
           this.showGraph();
           console.log(this.userList);
         },
@@ -104,15 +102,16 @@ export class DashboardpageComponent implements OnInit {
 
     var colors = ["#0F52BA", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#FFD800", "#C71585"];
 
-    if(!this.firstClick){
+    if (!this.firstClick) {
       context.translate(-margin.left, -margin.top);
       context.clearRect(0, 0, canvas.width, canvas.height);
     }
-    
+
     context.translate(margin.left, margin.top);
     this.firstClick = false;
 
-    d3.tsv("/public/assets/mock/grafic.tsv", function (d) {
+    d3.tsv('/groupsuggestiontsv/' + this.gruppoSelezionato + '/' + formatDateTimezone(this.dataSelezionata) , function (d) {
+      // d3.tsv("/public/assets/mock/grafic.tsv", function (d) {
       return d;
     }, function (error, data) {
       if (error) throw error;

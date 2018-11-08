@@ -14,6 +14,7 @@ export class GroupService {
   private gruppoUrl: string = !this.rootService.mocked ? '/group/' : '/public/assets/mock/getGroupDetails.json?ref=';
   private chatGruppoUrl: string = !this.rootService.mocked ? '/message/' : '/public/assets/mock/getGroupChat.json?ref=';
   private suggestionUrl: string = !this.rootService.mocked ? '/groupsuggestion/' : '/';
+  private suggestionTSVUrl: string = !this.rootService.mocked ? '/groupsuggestiontsv/' : '/';
   private sendMessageUrl: string = !this.rootService.mocked ? '/message' : '/public/assets/mock/getGroupChat.json?ref=';
   private gruppoTuttiUrl: string = !this.rootService.mocked ? '/groups/' : '/public/assets/mock/getAllGroups.json?ref=';
 
@@ -52,9 +53,9 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getSuggestionTSV(id: number, date: string): Observable<String> {
+  getSuggestionTSV(id: number, date: string): Observable<string> {
     return this.http
-      .get(this.suggestionUrl +  + id + '/' + date)
+      .get(this.suggestionTSVUrl + id + '/' + date)
       .pipe(
         map((response: Response) => response.text()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
