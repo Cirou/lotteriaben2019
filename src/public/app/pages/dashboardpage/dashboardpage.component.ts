@@ -8,6 +8,7 @@ import { Votation } from '../../../models/Votation';
 import { formatDateTimezone } from '../../../../shared/utils/DateUtils';
 import { MAT_DATE_LOCALE } from '@angular/material';
 import * as d3 from 'd3';
+import { any } from 'async';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class DashboardpageComponent implements OnInit {
   gruppoSelezionato: number;
   votationsUserList: Votation[];
   firstClick: boolean = true;
-
+  foodList = new Array;
+  foodListCopy = new Array;
 
   constructor(private groupService: GroupService,
     private votationService: VotationService,
@@ -49,23 +51,37 @@ export class DashboardpageComponent implements OnInit {
   }
 
   openGroup() {
+
+
     this.groupDetails = this.groupService.getGroupDetails(this.gruppoSelezionato)
       .subscribe(
         groupDetails => {
 
           this.userList = groupDetails[0].users;
+          this.foodListCopy = this.foodList;
 
           this.userList.forEach(user => {
             this.votationService.getVotationByDate(user.id, formatDateTimezone(this.dataSelezionata)).subscribe(
               votations => {
 
                 user.foods = new Array;
+                var count = 0;
 
-                votations.forEach(element => {
-                  user.foods.push(element.food_id);
+                votations.forEach(vote => {
+
+                  user.foods.push(vote.food_id);
+
+                      let found = this.foodListCopy.find(item => item.id === vote.food_id.id);
+
+                       if (found != null) {
+                        this.foodListCopy[vote.food_id.id-1].selezioni++;
+                     } else {
+                         vote.food_id.selezioni = 1;
+                         this.foodListCopy.push(vote.food_id);
+                     }
                 });
-
                 console.log(user.foods);
+                console.log(this.foodListCopy);
               },
               err => {
                 console.log(err);
@@ -78,7 +94,6 @@ export class DashboardpageComponent implements OnInit {
         err => {
           console.log(err);
         });
-
   }
 
 
@@ -107,7 +122,7 @@ export class DashboardpageComponent implements OnInit {
     context.translate(margin.left, margin.top);
     this.firstClick = false;
 
-    d3.tsv('/groupsuggestiontsv/' + this.gruppoSelezionato + '/' + formatDateTimezone(this.dataSelezionata) , function (d) {
+    d3.tsv('/groupsuggestiontsv/' + this.gruppoSelezionato + '/' + formatDateTimezone(this.dataSelezionata), function (d) {
       // d3.tsv("/public/assets/mock/grafic.tsv", function (d) {
       return d;
     }, function (error, data) {
@@ -160,7 +175,7 @@ export class DashboardpageComponent implements OnInit {
       context.rotate(-Math.PI / 2);
       context.textAlign = "right";
       context.textBaseline = "top";
-      context.fillText("Compatibilità", -150, 0);
+      context.fillText("Compatibilità", -150, -50);
       context.restore();
 
       context.fillText("Ristoranti", 450, 330);
