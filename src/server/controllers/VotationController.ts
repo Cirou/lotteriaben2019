@@ -1,6 +1,6 @@
 import { Votation } from '../models/Votation';
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getRepository, getConnection } from 'typeorm';
 import { formatDate } from '../../shared/utils/DateUtils';
 
 
@@ -11,7 +11,7 @@ import { formatDate } from '../../shared/utils/DateUtils';
 export let getVotation = (req: Request, res: Response) => {
   getRepository(Votation).createQueryBuilder('votations')
     .leftJoinAndSelect('votations.food_id', 'foods')
-    .where('user_id = :id AND date = :date' , { id: req.params.id, date: formatDate(new Date()) })
+    .where('user_id = :id AND date = :date', { id: req.params.id, date: formatDate(new Date()) })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });
@@ -24,7 +24,7 @@ export let getVotation = (req: Request, res: Response) => {
 export let getVotationByDate = (req: Request, res: Response) => {
   getRepository(Votation).createQueryBuilder('votations')
     .leftJoinAndSelect('votations.food_id', 'foods')
-    .where('user_id = :id AND date = :date' , { id: req.params.id, date: req.params.date })
+    .where('user_id = :id AND date = :date', { id: req.params.id, date: req.params.date })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });
@@ -60,4 +60,16 @@ export let putVotation = (req: Request, res: Response) => {
     }).catch(err => { console.log(err); });
 
   }).catch(err => { console.log(err); });
+};
+
+/**
+ * GET /groupvotations/:id/:date
+ * retrieves the votation using the given id
+ */
+export let getGroupVotationsByDate = (req: Request, res: Response) => {
+  getConnection()
+    .query('SELECT v.food_id, COUNT(v.food_id) FROM groups AS g JOIN users_groups AS ug ON g.id == ug.groupsId JOIN users AS u ON u.id == ug.usersId JOIN votations AS v ON v.user_id == u.id WHERE g.id = :groupid AND v.date = :date GROUP BY v.food_id')
+    .then(groupVotation => {
+      res.send(groupVotation);
+    }).catch(err => { console.log(err); });
 };
