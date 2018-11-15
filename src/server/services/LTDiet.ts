@@ -1,8 +1,7 @@
 import * as http from 'http';
-import { Group } from '../models/Group';
 import * as tf from '@tensorflow/tfjs';
-import { Tensor, Rank, Callback } from '@tensorflow/tfjs';
-// import '@tensorflow/tfjs-node-gpu';Kamehameha8
+import { Tensor, Rank } from '@tensorflow/tfjs';
+import '@tensorflow/tfjs-node';
 
 export let startLTDietDaemon = (): void => {
 
