@@ -5,6 +5,7 @@ import { getMessage, postMessage } from './server/controllers/MessageController'
 import { getVotation, postVotation, putVotation, getVotationByDate, getGroupVotationsByDate } from './server/controllers/VotationController';
 import { getFoodAll } from './server/controllers/FoodController';
 import { getGroupSuggestion, getGroupSuggestionByDate, getUserSuggestion, getUserSuggestionByDate, getGroupSuggestionTSV } from './server/controllers/SuggestionController';
+import { getLocationAll } from './server/controllers/LocationController';
 
 /**
  * All application routes.
@@ -144,5 +145,10 @@ export const AppRoutes = [
         path: '/groupvotations/:id/:date',
         method: 'get',
         action: getGroupVotationsByDate
+    },
+    {
+        path: '/locations/',
+        method: 'get',
+        action: getLocationAll
     }
 ];

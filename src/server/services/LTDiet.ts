@@ -1,33 +1,73 @@
 import * as http from 'http';
 import { Group } from '../models/Group';
 import * as tf from '@tensorflow/tfjs';
-import { Tensor, Rank } from '@tensorflow/tfjs';
+import { Tensor, Rank, Callback } from '@tensorflow/tfjs';
 // import '@tensorflow/tfjs-node-gpu';Kamehameha8
 
 export let startLTDietDaemon = (): void => {
 
-    const risto1 = 'mazzat e panell';
-    const voti1 = [1, 3, 6, 8];
-    const risto2 = 'fann e fliglij bell';
-    const voti2 = [0, 3, 2, 1];
-
-    const inputMap: Map<string, Array<Number>> = new Map;
-    inputMap.set(risto1, voti1);
-    inputMap.set(risto2, voti2);
-
-    tensorMathTest(inputMap);
-
-    // console.log('LTDiet daemon - STARTED');
+    console.log('LTDiet daemon - STARTED');
 
     // first run
-    // analyzePreferences();
+    analyzePreferences();
 
     // register thread for repeated execution
-    // setInterval(analyzePreferences, 60000);
+    setInterval(analyzePreferences, 60000);
 
 };
 
-function tensorMathTest(inputMap: Map<string, Array<Number>>): Map<string, number> {
+async function analyzePreferences() {
+
+    console.log('LTDiet daemon - Analyzing users preferences');
+
+    extractAllGroupsToAnalyze(groups => {
+
+        groups.forEach(group => {
+
+
+            extractAllGroupsVotationsToAnalyze(group.id, votations => {
+
+                extractAllResturantsToAnalyze(resturants => {
+
+                    console.log('LTDiet daemon - Analyzing group ' + group.id + ' preferences');
+
+                    const inputMap: Map<string, Array<Number>> = new Map;
+
+                    resturants.forEach(resturant => {
+
+                        const arr = Array<number>(13).fill(0);
+
+                        votations.forEach(foodvote => {
+
+                            let found = false;
+
+                            resturant.foods.forEach(cibo => {
+                                if (Number(foodvote.food_id) === Number(cibo.id)) {
+                                    found = true;
+                                }
+                            });
+
+                            if (found) {
+                                arr[Number(foodvote.food_id)] = Number(foodvote.votations);
+                            }
+
+                        });
+
+                        inputMap.set(resturant.nome, arr);
+
+                    });
+
+                    // console.log(inputMap);
+                    tensorMath(inputMap);
+                });
+
+            });
+        });
+    });
+
+}
+
+async function tensorMath(inputMap: Map<string, Array<Number>>) {
 
     const votesMap: Map<string, Tensor<Rank>> = new Map;
     const outputMap: Map<string, number> = new Map;
@@ -40,7 +80,7 @@ function tensorMathTest(inputMap: Map<string, Array<Number>>): Map<string, numbe
 
     let totalVotesSum: Tensor<Rank> = tf.tensor(0);
     votesMap.forEach((votesSum: Tensor<Rank>, restaurantId: string) => {
-        console.log('Totalsum = ' + totalVotesSum);
+        // console.log('Totalsum = ' + totalVotesSum);
         totalVotesSum = totalVotesSum.add(votesSum);
     });
 
@@ -49,34 +89,30 @@ function tensorMathTest(inputMap: Map<string, Array<Number>>): Map<string, numbe
     });
 
     outputMap.forEach((percentage: number, restaurantId: string) => {
-        console.log('Ristorante: "' + restaurantId + '" ha una percentuale di: ' + percentage.valueOf() + '%');
+        // salva a DB la previsione
+        console.log(restaurantId + ' => ' + percentage.valueOf().toFixed(2) + ' %');
     });
-    console.log();
-
-    return outputMap;
 
 }
 
 function quickMath(x: Tensor<Rank>, sum: Tensor<Rank>): number {
-    console.log('(' + x.asScalar() + ' * 100)/' + sum.asScalar());
+
     const perc: Tensor<Rank> = tf.scalar(100);
     const xpercent: Tensor<Rank> = x.mul(perc);
-    return xpercent.div(sum).asScalar().dataSync()[0];
-}
 
+    let num = (Math.random() * 2) + 1; // this will get a number between 1 and 2;
+    num *= Math.floor(Math.random() * 2) === 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
-async function analyzePreferences() {
+    if (sum.asScalar().dataSync()[0] === 0) {
+        return 0;
+    }
 
-    console.log('LTDiet daemon - Analyzing users preferences');
-
-    extractAllGroupsToAnalyze().forEach(element => {
-        console.log(element);
-    });
-
+    const result = xpercent.div(sum).asScalar().dataSync()[0];
+    return result > 0 ? result + num : result;
 
 }
 
-function extractAllGroupsToAnalyze(): Group[] {
+function extractAllGroupsToAnalyze(callback: Function): any {
 
     const options: http.RequestOptions = {
         host: 'localhost',
@@ -85,15 +121,64 @@ function extractAllGroupsToAnalyze(): Group[] {
     };
 
     http.get(options, function (response) {
+
         let body = '';
+
         response.on('data', function (d) {
             body += d;
         });
-        response.on('end', function () {
-            return JSON.parse(body);
-        });
-    });
 
-    return new Array;
+        response.on('end', function () {
+            callback(JSON.parse(body));
+        });
+
+    });
 }
+
+function extractAllResturantsToAnalyze(callback: Function): any {
+
+    const options: http.RequestOptions = {
+        host: 'localhost',
+        port: '4200',
+        path: '/locations/'
+    };
+
+    http.get(options, function (response) {
+
+        let body = '';
+
+        response.on('data', function (d) {
+            body += d;
+        });
+
+        response.on('end', function () {
+            callback(JSON.parse(body));
+        });
+
+    });
+}
+
+function extractAllGroupsVotationsToAnalyze(groupId: number, callback: Function): any {
+
+    const options: http.RequestOptions = {
+        host: 'localhost',
+        port: '4200',
+        path: '/groupvotations/' + groupId + '/2018-10-24'
+    };
+
+    http.get(options, function (response) {
+
+        let body = '';
+
+        response.on('data', function (d) {
+            body += d;
+        });
+
+        response.on('end', function () {
+            callback(JSON.parse(body));
+        });
+
+    });
+}
+
 

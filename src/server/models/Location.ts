@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinTable } from 'typeorm';
 import { Food } from './Food';
 
 @Entity('locations')
@@ -31,9 +31,8 @@ export class Location {
   @Column({ name: 'position_y', type: 'double', nullable: true })
   posizione_y: number;
 
-  @ManyToMany(type => Food, {
-    eager: true
-  })
+  @ManyToMany(type => Food, {eager: true})
+  @JoinTable({name: 'locations_foods'})
   foods: Food[];
 
 }

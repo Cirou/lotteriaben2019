@@ -68,7 +68,8 @@ export let putVotation = (req: Request, res: Response) => {
  */
 export let getGroupVotationsByDate = (req: Request, res: Response) => {
   getConnection()
-    .query('SELECT v.food_id, COUNT(v.food_id) FROM groups AS g JOIN users_groups AS ug ON g.id == ug.groupsId JOIN users AS u ON u.id == ug.usersId JOIN votations AS v ON v.user_id == u.id WHERE g.id = :groupid AND v.date = :date GROUP BY v.food_id')
+    .query('SELECT v.food_id, COUNT(v.food_id) as votations FROM groups AS g JOIN users_groups AS ug ON g.id == ug.groupsId JOIN users AS u ON u.id == ug.usersId JOIN votations AS v ON v.user_id == u.id WHERE g.id = :groupid AND v.date = :date GROUP BY v.food_id',
+      [req.params.id, req.params.date])
     .then(groupVotation => {
       res.send(groupVotation);
     }).catch(err => { console.log(err); });
