@@ -59,6 +59,7 @@ import { VotationService } from './services/votation.service';
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
+import { TipDialogPreferencesComponent } from './components/tip-dialog-preferences/tip-dialog-preferences.component';
 
 
 @NgModule({
@@ -75,6 +76,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
     AlertpopupComponent,
     GroupdialogComponent,
     LoginDialogComponent,
+    TipDialogPreferencesComponent,
     // PAGES
     MainpageComponent,
     ProfilepageComponent,
@@ -118,7 +120,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, LoginDialogComponent]
+  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, LoginDialogComponent, TipDialogPreferencesComponent]
 })
 export class AppModule {
 

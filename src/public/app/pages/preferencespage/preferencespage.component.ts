@@ -9,6 +9,10 @@ import { formatDate } from '../../../../shared/utils/DateUtils';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
 import { UserSuggestion } from '../../../models/UserSuggestion';
+import { CookieService } from 'ngx-cookie-service';
+import { Tip } from '../../../models/Tip';
+import { TipDialogPreferencesComponent } from '../../components/tip-dialog-preferences/tip-dialog-preferences.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-preferencespage',
@@ -31,7 +35,11 @@ export class PreferencespageComponent implements OnInit {
     private userService: UserService,
     private rootService: RootService,
     private router: Router,
+    private cookieService: CookieService,
+    public dialog: MatDialog,
     @Inject(DOCUMENT) private document: Document) { }
+
+    tip: Tip = new Tip;
 
   ngOnInit() {
 
@@ -41,6 +49,10 @@ export class PreferencespageComponent implements OnInit {
 
     if (this.rootService.votations.length > 0) {
       this.alreadyVoted = true;
+    }
+
+    if (this.alreadyVoted == false && this.cookieService.get('pausappranzo_daily_preferences_done') != 'true') {
+      this.openTipPopup();
     }
 
     this.foodService.getFoodList().subscribe(cibi => {
@@ -103,6 +115,18 @@ export class PreferencespageComponent implements OnInit {
 
   cancelPreferences(): void {
     this.router.navigate(['/app']);
+  }
+
+  openTipPopup() {
+    this.cookieService.set('pausappranzo_daily_preferences_done', 'true', 1);
+    const dialogRef = this.dialog.open(TipDialogPreferencesComponent, {
+      autoFocus: false,
+      height: "80%",
+      width: "600px",
+      data: {
+        tip: this.tip
+      }
+    });
   }
 
 }
