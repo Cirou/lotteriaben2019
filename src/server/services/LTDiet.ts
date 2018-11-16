@@ -1,7 +1,10 @@
 import * as http from 'http';
+import * as request from 'request';
 import * as tf from '@tensorflow/tfjs';
 import { Tensor, Rank } from '@tensorflow/tfjs';
-import '@tensorflow/tfjs-node';
+import { GroupSuggestion } from '../models/GroupSuggestion';
+import { formatDate } from '../../shared/utils/DateUtils';
+import { Location } from '../models/Location';
 
 export let startLTDietDaemon = (): void => {
 
@@ -52,12 +55,12 @@ async function analyzePreferences() {
 
                         });
 
-                        inputMap.set(resturant.nome, arr);
+                        inputMap.set(resturant.id, arr);
 
                     });
 
                     // console.log(inputMap);
-                    tensorMath(inputMap);
+                    tensorMath(group.id, inputMap);
                 });
 
             });
@@ -66,7 +69,7 @@ async function analyzePreferences() {
 
 }
 
-async function tensorMath(inputMap: Map<string, Array<Number>>) {
+async function tensorMath(groupId: Number, inputMap: Map<string, Array<Number>>) {
 
     const votesMap: Map<string, Tensor<Rank>> = new Map;
     const outputMap: Map<string, number> = new Map;
@@ -88,8 +91,21 @@ async function tensorMath(inputMap: Map<string, Array<Number>>) {
     });
 
     outputMap.forEach((percentage: number, restaurantId: string) => {
-        // salva a DB la previsione
-        console.log(restaurantId + ' => ' + percentage.valueOf().toFixed(2) + ' %');
+
+        const sugg: GroupSuggestion = new GroupSuggestion();
+        const loc: Location = new Location();
+
+        loc.id = Number(restaurantId);
+        sugg.group_id = groupId;
+        sugg.location_id = loc;
+        sugg.data = formatDate(new Date());
+        sugg.rating = Number(percentage.valueOf().toFixed(2));
+
+        saveSuggestions(sugg, resp => {
+            // console.log(resp);
+        });
+
+        // console.log(restaurantId + ' => ' + percentage.valueOf().toFixed(2) + ' %');
     });
 
 }
@@ -162,7 +178,7 @@ function extractAllGroupsVotationsToAnalyze(groupId: number, callback: Function)
     const options: http.RequestOptions = {
         host: 'localhost',
         port: '4200',
-        path: '/groupvotations/' + groupId + '/2018-10-24'
+        path: '/groupvotations/' + groupId + '/' + formatDate(new Date)
     };
 
     http.get(options, function (response) {
@@ -180,4 +196,23 @@ function extractAllGroupsVotationsToAnalyze(groupId: number, callback: Function)
     });
 }
 
+function saveSuggestions(input: GroupSuggestion, callback: Function): any {
+
+    const url = 'http://localhost:4200/groupsuggestion/';
+
+    request.post(url,
+        {
+            json: input,
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }, function (error, response, body) {
+            if (error) {
+                // callback(error, undefined);
+            } else {
+                // callback(error, response.body);
+            }
+        });
+
+}
 

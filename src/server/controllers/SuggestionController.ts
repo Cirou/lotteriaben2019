@@ -1,6 +1,6 @@
 import { GroupSuggestion } from '../models/GroupSuggestion';
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getRepository, Connection, getConnection } from 'typeorm';
 import { formatDate } from '../../shared/utils/DateUtils';
 import { UserSuggestion } from '../models/UserSuggestion';
 
@@ -55,9 +55,47 @@ export let getGroupSuggestionByDate = (req: Request, res: Response) => {
  * saves the suggestion using the given model
  */
 export let postGroupSuggestion = (req: Request, res: Response) => {
-  getRepository(GroupSuggestion).save(req.body).then(suggestion => {
-    res.send(suggestion);
-  }).catch(err => { console.log(err); });
+
+  getRepository(GroupSuggestion).query(`
+      INSERT INTO
+            suggestions_group
+        (
+            "group_id",
+            "location_id",
+            "date",
+            "rating"
+        )
+            VALUES
+        (
+            $1,
+            $2,
+            $3,
+            $4
+        )
+
+        ON CONFLICT(
+          "group_id",
+          "location_id",
+          "date" )
+          DO UPDATE
+              SET
+                "rating" = $4
+              WHERE
+                "group_id" = $1
+              AND
+                "location_id" = $2
+              AND
+                "date" = $3
+
+      `, [
+      req.body.group_id,
+      req.body.location_id.id,
+      req.body.data,
+      req.body.rating
+    ]).then(votation => {
+      res.send(votation);
+    }).catch(err => { console.log(err); });
+
 };
 
 /**

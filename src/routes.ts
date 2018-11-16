@@ -4,7 +4,7 @@ import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
 import { getVotation, postVotation, putVotation, getVotationByDate, getGroupVotationsByDate } from './server/controllers/VotationController';
 import { getFoodAll } from './server/controllers/FoodController';
-import { getGroupSuggestion, getGroupSuggestionByDate, getUserSuggestion, getUserSuggestionByDate, getGroupSuggestionTSV } from './server/controllers/SuggestionController';
+import { getGroupSuggestion, getGroupSuggestionByDate, getUserSuggestion, getUserSuggestionByDate, getGroupSuggestionTSV, postGroupSuggestion } from './server/controllers/SuggestionController';
 import { getLocationAll } from './server/controllers/LocationController';
 
 /**
@@ -150,5 +150,10 @@ export const AppRoutes = [
         path: '/locations/',
         method: 'get',
         action: getLocationAll
-    }
+    },
+    {
+        path: '/groupsuggestion/',
+        method: 'post',
+        action: postGroupSuggestion
+    },
 ];
