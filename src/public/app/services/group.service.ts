@@ -53,7 +53,7 @@ export class GroupService {
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
   }
 
-  getSuggestionByDate(idGruppo: number, date: string): Observable<GroupSuggestion> {
+  getSuggestionByDate(idGruppo: number, date: string): Observable<GroupSuggestion[]> {
     return this.http
       .get(this.suggestionUrl + idGruppo + '/' + date)
       .pipe(

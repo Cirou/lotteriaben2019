@@ -24,7 +24,7 @@ export let getGroupSuggestion = (req: Request, res: Response) => {
 export let getGroupSuggestionTSV = (req: Request, res: Response) => {
   getRepository(GroupSuggestion).createQueryBuilder('suggestions_group')
     .leftJoinAndSelect('suggestions_group.location_id', 'locations')
-    .where('group_id = :id AND date = :date', { id: req.params.id, date: req.params.date })
+    .where('group_id = :id AND date = :date AND rating > 0', { id: req.params.id, date: req.params.date })
     .getMany().then(votation => {
 
       let resTSV = 'letter\tfrequency\r\n';
@@ -44,7 +44,7 @@ export let getGroupSuggestionTSV = (req: Request, res: Response) => {
 export let getGroupSuggestionByDate = (req: Request, res: Response) => {
   getRepository(GroupSuggestion).createQueryBuilder('suggestions_group')
     .leftJoinAndSelect('suggestions_group.location_id', 'locations')
-    .where('group_id = :id AND date = :date', { id: req.params.id, date: req.params.date })
+    .where('group_id = :id AND date = :date ORDER BY rating DESC', { id: req.params.id, date: req.params.date })
     .getMany().then(votation => {
       res.send(votation);
     }).catch(err => { console.log(err); });

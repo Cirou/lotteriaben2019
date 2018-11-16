@@ -1,3 +1,4 @@
+import { Location } from "./Location";
 
 export class GroupSuggestion {
 
@@ -5,7 +6,7 @@ export class GroupSuggestion {
 
   group_id: Number;
 
-  location_id: Number;
+  location_id: Location;
 
   data: Date;
 

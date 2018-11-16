@@ -128,9 +128,18 @@ export class DashboardpageComponent implements OnInit {
     }, function (error, data) {
       if (error) throw error;
 
+      let maxValue:string = d3.max(data, function(d) { return d.frequency; });
+
+      console.log(maxValue);
+
+      try {
+        maxValue = maxValue.split(".")[0];
+      } catch (error) {
+        maxValue = "100";
+      }
 
       x.domain(data.map(function (d) { return d.letter; }));
-      y.domain([0, 100]);
+      y.domain([0, Number(maxValue)]);
 
       var yTickCount = 10,
         yTicks = y.ticks(yTickCount),

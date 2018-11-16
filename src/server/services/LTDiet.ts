@@ -115,7 +115,7 @@ function quickMath(x: Tensor<Rank>, sum: Tensor<Rank>): number {
     const perc: Tensor<Rank> = tf.scalar(100);
     const xpercent: Tensor<Rank> = x.mul(perc);
 
-    let num = (Math.random() * 2) + 1; // this will get a number between 1 and 2;
+    let num = (Math.random() * 1) + 1; // this will get a number between 1 and 2;
     num *= Math.floor(Math.random() * 2) === 1 ? 1 : -1; // this will add minus sign in 50% of cases
 
     if (sum.asScalar().dataSync()[0] === 0) {
@@ -123,7 +123,7 @@ function quickMath(x: Tensor<Rank>, sum: Tensor<Rank>): number {
     }
 
     const result = xpercent.div(sum).asScalar().dataSync()[0];
-    return result > 0 ? result + num : result;
+    return result > 0 ? result : result;
 
 }
 
