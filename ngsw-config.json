@@ -4,7 +4,13 @@
     {
       "name": "dataGroup1",
       "urls": [
-        "!/message/"
+        "!/message/**",
+        "!/votation/**",
+        "!/groupsuggestion/**",
+        "!/groupsuggestiontsv/**",
+        "!/groupvotations/**",
+        "!/usersuggestion/**",
+        "!/groupsuggestiontsv/**"   
       ],
       "cacheConfig": {
         "maxSize": 50,
@@ -25,7 +31,7 @@
           "/public/*.json"
         ],
         "urls": [
-          "/"
+          "/public/**"
         ]
       }
     },
