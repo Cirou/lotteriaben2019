@@ -10,4 +10,6 @@ export class Food {
 
   consigliato: Boolean;
 
+  selezioni: number;
+
 }
