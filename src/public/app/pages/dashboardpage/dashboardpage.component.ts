@@ -26,8 +26,8 @@ export class DashboardpageComponent implements OnInit {
   groupDetails: any;
   userList: User[];
   numeroMembri: number;
-  dataSelezionata: Date;
-  gruppoSelezionato: number;
+  dataSelezionata: Date = new Date();
+  gruppoSelezionato: number = 1;
   votationsUserList: Votation[];
   firstClick: boolean = true;
   foodList = new Array;
@@ -58,7 +58,7 @@ export class DashboardpageComponent implements OnInit {
         groupDetails => {
 
           this.userList = groupDetails[0].users;
-          this.foodListCopy = this.foodList;
+          this.foodListCopy = new Array;
 
           this.userList.forEach(user => {
             this.votationService.getVotationByDate(user.id, formatDateTimezone(this.dataSelezionata)).subscribe(
@@ -71,14 +71,14 @@ export class DashboardpageComponent implements OnInit {
 
                   user.foods.push(vote.food_id);
 
-                      let found = this.foodListCopy.find(item => item.id === vote.food_id.id);
+                  let found = this.foodListCopy.find(item => item.id === vote.food_id.id);
 
-                       if (found != null) {
-                        this.foodListCopy[vote.food_id.id-1].selezioni++;
-                     } else {
-                         vote.food_id.selezioni = 1;
-                         this.foodListCopy.push(vote.food_id);
-                     }
+                  if (found != null) {
+                    found.selezioni++;
+                  } else {
+                    vote.food_id.selezioni = 1;
+                    this.foodListCopy.push(vote.food_id);
+                  }
                 });
                 console.log(user.foods);
                 console.log(this.foodListCopy);
@@ -112,7 +112,7 @@ export class DashboardpageComponent implements OnInit {
     var y = d3.scaleLinear()
       .rangeRound([height, 0]);
 
-    var colors = ["#0F52BA", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#FFD800", "#C71585"];
+    var colors = ["#0F52BA", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#FFD800", "#C71585", "#7FFFD4", "#C0C0C0", "#800000", "#177245", "#DA70D6", "#4B0082", "#DDADAF"];
 
     if (!this.firstClick) {
       context.translate(-margin.left, -margin.top);
@@ -128,7 +128,7 @@ export class DashboardpageComponent implements OnInit {
     }, function (error, data) {
       if (error) throw error;
 
-      let maxValue:string = d3.max(data, function(d) { return d.frequency; });
+      let maxValue: string = d3.max(data, function (d) { return d.frequency; });
 
       console.log(maxValue);
 
