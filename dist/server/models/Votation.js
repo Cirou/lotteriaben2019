@@ -22,7 +22,7 @@ var Votation = /** @class */ (function () {
     __decorate([
         typeorm_1.ManyToOne(function (type) { return Food_1.Food; }, { eager: true }),
         typeorm_1.JoinColumn({ name: 'food_id' }),
-        __metadata("design:type", Number)
+        __metadata("design:type", Food_1.Food)
     ], Votation.prototype, "food_id", void 0);
     __decorate([
         typeorm_1.ManyToOne(function (type) { return User_1.User; }, { eager: true }),

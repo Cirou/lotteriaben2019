@@ -9,3 +9,7 @@ function formatDateTime(date) {
     return formattedDate.substring(0, formattedDate.length - 4);
 }
 exports.formatDateTime = formatDateTime;
+function formatDateTimezone(date) {
+    return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+}
+exports.formatDateTimezone = formatDateTimezone;

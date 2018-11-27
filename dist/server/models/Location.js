@@ -51,9 +51,8 @@ var Location = /** @class */ (function () {
         __metadata("design:type", Number)
     ], Location.prototype, "posizione_y", void 0);
     __decorate([
-        typeorm_1.ManyToMany(function (type) { return Food_1.Food; }, {
-            eager: true
-        }),
+        typeorm_1.ManyToMany(function (type) { return Food_1.Food; }, { eager: true }),
+        typeorm_1.JoinTable({ name: 'locations_foods' }),
         __metadata("design:type", Array)
     ], Location.prototype, "foods", void 0);
     Location = __decorate([

@@ -10,32 +10,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var Group_1 = require("./Group");
-var Location_1 = require("./Location");
-var Suggestion = /** @class */ (function () {
-    function Suggestion() {
+var User_1 = require("./User");
+var Food_1 = require("./Food");
+var UserSuggestion = /** @class */ (function () {
+    function UserSuggestion() {
     }
     __decorate([
         typeorm_1.PrimaryGeneratedColumn(),
         __metadata("design:type", Number)
-    ], Suggestion.prototype, "id", void 0);
+    ], UserSuggestion.prototype, "id", void 0);
     __decorate([
-        typeorm_1.ManyToOne(function (type) { return Group_1.Group; }, { eager: true }),
-        typeorm_1.JoinColumn({ name: 'group_id' }),
+        typeorm_1.ManyToOne(function (type) { return User_1.User; }, { eager: true }),
+        typeorm_1.JoinColumn({ name: 'user_id' }),
         __metadata("design:type", Number)
-    ], Suggestion.prototype, "group_id", void 0);
+    ], UserSuggestion.prototype, "user_id", void 0);
     __decorate([
-        typeorm_1.ManyToOne(function (type) { return Location_1.Location; }, { eager: true }),
-        typeorm_1.JoinColumn({ name: 'location_id' }),
-        __metadata("design:type", Number)
-    ], Suggestion.prototype, "location_id", void 0);
+        typeorm_1.ManyToOne(function (type) { return Food_1.Food; }, { eager: true }),
+        typeorm_1.JoinColumn({ name: 'food_id' }),
+        __metadata("design:type", Food_1.Food)
+    ], UserSuggestion.prototype, "food_id", void 0);
     __decorate([
         typeorm_1.Column({ name: 'date', type: 'date', nullable: true }),
         __metadata("design:type", Date)
-    ], Suggestion.prototype, "data", void 0);
-    Suggestion = __decorate([
-        typeorm_1.Entity('suggestions')
-    ], Suggestion);
-    return Suggestion;
+    ], UserSuggestion.prototype, "data", void 0);
+    __decorate([
+        typeorm_1.Column({ name: 'recommended', type: 'boolean', nullable: true }),
+        __metadata("design:type", Boolean)
+    ], UserSuggestion.prototype, "recommended", void 0);
+    UserSuggestion = __decorate([
+        typeorm_1.Entity('suggestions_user')
+    ], UserSuggestion);
+    return UserSuggestion;
 }());
-exports.Suggestion = Suggestion;
+exports.UserSuggestion = UserSuggestion;

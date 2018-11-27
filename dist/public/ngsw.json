@@ -11,7 +11,7 @@
         "/public/manifest.json"
       ],
       "patterns": [
-        "\\/"
+        "\\/public\\/.*"
       ]
     },
     {
@@ -67,14 +67,33 @@
         "/public/assets/mock/getPollOfTheDay.json",
         "/public/assets/mock/getUserMaxTip.json",
         "/public/assets/mock/getUserProfile.json",
+        "/public/assets/mock/getUserSuggestion.json",
         "/public/assets/mock/getUserTip.json",
         "/public/assets/mock/getUserVotation.json",
+        "/public/assets/mock/grafic.tsv",
         "/public/assets/mock/postUserPreferences.json"
       ],
       "patterns": []
     }
   ],
-  "dataGroups": [],
+  "dataGroups": [
+    {
+      "name": "dataGroup1",
+      "patterns": [
+        "\\/!\\/message\\/.*",
+        "\\/!\\/votation\\/.*",
+        "\\/!\\/groupsuggestion\\/.*",
+        "\\/!\\/groupsuggestiontsv\\/.*",
+        "\\/!\\/groupvotations\\/.*",
+        "\\/!\\/usersuggestion\\/.*",
+        "\\/!\\/groupsuggestiontsv\\/.*"
+      ],
+      "strategy": "performance",
+      "maxSize": 50,
+      "maxAge": 302400000,
+      "version": 1
+    }
+  ],
   "hashTable": {
     "/public/assets/css/styles.scss": "2f3bbff4faed208a282933bb7c99f55536757aff",
     "/public/assets/css/theme.scss": "0cb2cc4d047089a0d50d3646808a5d44c9bdce21",
@@ -124,8 +143,10 @@
     "/public/assets/mock/getPollOfTheDay.json": "ba38f1df21f4d962f1963046874c1082c8b085f3",
     "/public/assets/mock/getUserMaxTip.json": "fc8c8d35b8d9e881782636c3fccd2e72f7d13cdf",
     "/public/assets/mock/getUserProfile.json": "5679370de02c50e8730e792000bd70767ab1e9bd",
+    "/public/assets/mock/getUserSuggestion.json": "51ab0ee38d25ea327e043db13c127d29d4bbd009",
     "/public/assets/mock/getUserTip.json": "0be6bf27cc2e2afd727a3fe05522581b6e7bf878",
-    "/public/assets/mock/getUserVotation.json": "97d170e1550eee4afc0af065b78cda302a97674c",
+    "/public/assets/mock/getUserVotation.json": "17bf3a9b50a5b33909f2db73b24f3b1bbb86bc34",
+    "/public/assets/mock/grafic.tsv": "0953ea971831c485dc1fbc5664903068bd9a8f9a",
     "/public/assets/mock/postUserPreferences.json": "4503a8466377601b1728d927216f17f96e151d44",
     "/public/favicon.ico": "9885d90d012881fb98ff6bd48c57698891ecd423",
     "/public/manifest.json": "45b21af5e088ef48fcd9b9537461dce476495960"

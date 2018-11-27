@@ -7,6 +7,7 @@ var MessageController_1 = require("./server/controllers/MessageController");
 var VotationController_1 = require("./server/controllers/VotationController");
 var FoodController_1 = require("./server/controllers/FoodController");
 var SuggestionController_1 = require("./server/controllers/SuggestionController");
+var LocationController_1 = require("./server/controllers/LocationController");
 /**
  * All application routes.
  */
@@ -87,6 +88,11 @@ exports.AppRoutes = [
         action: VotationController_1.getVotation
     },
     {
+        path: '/votation/:id/:date',
+        method: 'get',
+        action: VotationController_1.getVotationByDate
+    },
+    {
         path: '/votation',
         method: 'post',
         action: VotationController_1.postVotation
@@ -102,9 +108,19 @@ exports.AppRoutes = [
         action: FoodController_1.getFoodAll
     },
     {
-        path: '/suggestion/:id',
+        path: '/groupsuggestion/:id',
         method: 'get',
-        action: SuggestionController_1.getSuggestion
+        action: SuggestionController_1.getGroupSuggestion
+    },
+    {
+        path: '/groupsuggestiontsv/:id/:date',
+        method: 'get',
+        action: SuggestionController_1.getGroupSuggestionTSV
+    },
+    {
+        path: '/groupsuggestion/:id/:date',
+        method: 'get',
+        action: SuggestionController_1.getGroupSuggestionByDate
     },
     {
         path: '/usergroup',
@@ -115,5 +131,30 @@ exports.AppRoutes = [
         path: '/usergroup',
         method: 'put',
         action: UserController_1.deleteUserGroup
-    }
+    },
+    {
+        path: '/usersuggestion/:id',
+        method: 'get',
+        action: SuggestionController_1.getUserSuggestion
+    },
+    {
+        path: '/usersuggestion/:id/:date',
+        method: 'get',
+        action: SuggestionController_1.getUserSuggestionByDate
+    },
+    {
+        path: '/groupvotations/:id/:date',
+        method: 'get',
+        action: VotationController_1.getGroupVotationsByDate
+    },
+    {
+        path: '/locations/',
+        method: 'get',
+        action: LocationController_1.getLocationAll
+    },
+    {
+        path: '/groupsuggestion/',
+        method: 'post',
+        action: SuggestionController_1.postGroupSuggestion
+    },
 ];

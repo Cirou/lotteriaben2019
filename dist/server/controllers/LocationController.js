@@ -16,9 +16,7 @@ exports.getLocation = function (req, res) {
  * retrieves all the locations
  */
 exports.getLocationAll = function (req, res) {
-    typeorm_1.getRepository(Location_1.Location).createQueryBuilder()
-        .select()
-        .getMany().then(function (locations) {
+    typeorm_1.getRepository(Location_1.Location).find().then(function (locations) {
         res.send(locations);
     }).catch(function (err) { console.log(err); });
 };

@@ -36,6 +36,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var http = require("http");
+var request = require("request");
+var tf = require("@tensorflow/tfjs");
+var GroupSuggestion_1 = require("../models/GroupSuggestion");
+var DateUtils_1 = require("../../shared/utils/DateUtils");
+var Location_1 = require("../models/Location");
 exports.startLTDietDaemon = function () {
     console.log('LTDiet daemon - STARTED');
     // first run
@@ -47,14 +52,85 @@ function analyzePreferences() {
     return __awaiter(this, void 0, void 0, function () {
         return __generator(this, function (_a) {
             console.log('LTDiet daemon - Analyzing users preferences');
-            extractAllGroupsToAnalyze().forEach(function (element) {
-                console.log(element);
+            extractAllGroupsToAnalyze(function (groups) {
+                groups.forEach(function (group) {
+                    extractAllGroupsVotationsToAnalyze(group.id, function (votations) {
+                        extractAllResturantsToAnalyze(function (resturants) {
+                            console.log('LTDiet daemon - Analyzing group ' + group.id + ' preferences');
+                            var inputMap = new Map;
+                            resturants.forEach(function (resturant) {
+                                var arr = Array(13).fill(0);
+                                votations.forEach(function (foodvote) {
+                                    var found = false;
+                                    resturant.foods.forEach(function (cibo) {
+                                        if (Number(foodvote.food_id) === Number(cibo.id)) {
+                                            found = true;
+                                        }
+                                    });
+                                    if (found) {
+                                        arr[Number(foodvote.food_id)] = Number(foodvote.votations);
+                                    }
+                                });
+                                inputMap.set(resturant.id, arr);
+                            });
+                            // console.log(inputMap);
+                            tensorMath(group.id, inputMap);
+                        });
+                    });
+                });
             });
             return [2 /*return*/];
         });
     });
 }
-function extractAllGroupsToAnalyze() {
+function tensorMath(groupId, inputMap) {
+    return __awaiter(this, void 0, void 0, function () {
+        var votesMap, outputMap, totalVotesSum;
+        return __generator(this, function (_a) {
+            votesMap = new Map;
+            outputMap = new Map;
+            inputMap.forEach(function (votes, restaurantId) {
+                var votesSum = 0;
+                votes.forEach(function (vote) { votesSum += vote; });
+                votesMap.set(restaurantId, tf.tensor(votesSum).asScalar());
+            });
+            totalVotesSum = tf.tensor(0);
+            votesMap.forEach(function (votesSum, restaurantId) {
+                // console.log('Totalsum = ' + totalVotesSum);
+                totalVotesSum = totalVotesSum.add(votesSum);
+            });
+            votesMap.forEach(function (votesSum, restaurantId) {
+                outputMap.set(restaurantId, quickMath(votesSum, totalVotesSum));
+            });
+            outputMap.forEach(function (percentage, restaurantId) {
+                var sugg = new GroupSuggestion_1.GroupSuggestion();
+                var loc = new Location_1.Location();
+                loc.id = Number(restaurantId);
+                sugg.group_id = groupId;
+                sugg.location_id = loc;
+                sugg.data = DateUtils_1.formatDate(new Date());
+                sugg.rating = Number(percentage.valueOf().toFixed(2));
+                saveSuggestions(sugg, function (resp) {
+                    // console.log(resp);
+                });
+                // console.log(restaurantId + ' => ' + percentage.valueOf().toFixed(2) + ' %');
+            });
+            return [2 /*return*/];
+        });
+    });
+}
+function quickMath(x, sum) {
+    var perc = tf.scalar(100);
+    var xpercent = x.mul(perc);
+    var num = (Math.random() * 1) + 1; // this will get a number between 1 and 2;
+    num *= Math.floor(Math.random() * 2) === 1 ? 1 : -1; // this will add minus sign in 50% of cases
+    if (sum.asScalar().dataSync()[0] === 0) {
+        return 0;
+    }
+    var result = xpercent.div(sum).asScalar().dataSync()[0];
+    return result > 0 ? result : result;
+}
+function extractAllGroupsToAnalyze(callback) {
     var options = {
         host: 'localhost',
         port: '4200',
@@ -66,8 +142,55 @@ function extractAllGroupsToAnalyze() {
             body += d;
         });
         response.on('end', function () {
-            return JSON.parse(body);
+            callback(JSON.parse(body));
         });
     });
-    return new Array;
+}
+function extractAllResturantsToAnalyze(callback) {
+    var options = {
+        host: 'localhost',
+        port: '4200',
+        path: '/locations/'
+    };
+    http.get(options, function (response) {
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            callback(JSON.parse(body));
+        });
+    });
+}
+function extractAllGroupsVotationsToAnalyze(groupId, callback) {
+    var options = {
+        host: 'localhost',
+        port: '4200',
+        path: '/groupvotations/' + groupId + '/' + DateUtils_1.formatDate(new Date)
+    };
+    http.get(options, function (response) {
+        var body = '';
+        response.on('data', function (d) {
+            body += d;
+        });
+        response.on('end', function () {
+            callback(JSON.parse(body));
+        });
+    });
+}
+function saveSuggestions(input, callback) {
+    var url = 'http://localhost:4200/groupsuggestion/';
+    request.post(url, {
+        json: input,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }, function (error, response, body) {
+        if (error) {
+            // callback(error, undefined);
+        }
+        else {
+            // callback(error, response.body);
+        }
+    });
 }
