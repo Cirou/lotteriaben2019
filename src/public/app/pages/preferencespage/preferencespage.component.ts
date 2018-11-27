@@ -86,7 +86,7 @@ export class PreferencespageComponent implements OnInit {
   }
 
   isInSelectedFood(id: number) {
-    if (this.rootService.votations.find(x => x.id === id)) {
+    if (this.rootService.votations.find(x => x.food_id.id === id)) {
       return true;
     }
     return false;
@@ -97,7 +97,7 @@ export class PreferencespageComponent implements OnInit {
     this.cibi.selectedOptions.selected.forEach(element => {
       const preferenza: Votation = new Votation;
       preferenza.data = formatDate(new Date);
-      preferenza.food_id = element.value.id;
+      preferenza.food_id = element.value;
       preferenza.user_id = Number(this.rootService.loggedUserId);
       this.preferenze.push(preferenza);
     });
@@ -111,6 +111,10 @@ export class PreferencespageComponent implements OnInit {
       err => {
         console.log(err);
       });
+
+    this.rootService.votations = this.preferenze;
+    this.router.navigate(['/app']);
+
   }
 
   cancelPreferences(): void {

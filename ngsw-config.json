@@ -4,6 +4,7 @@
     {
       "name": "dataGroup1",
       "urls": [
+        "!/app/**",
         "!/message/**",
         "!/votation/**",
         "!/groupsuggestion/**",

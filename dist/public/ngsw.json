@@ -80,6 +80,7 @@
     {
       "name": "dataGroup1",
       "patterns": [
+        "\\/!\\/app\\/.*",
         "\\/!\\/message\\/.*",
         "\\/!\\/votation\\/.*",
         "\\/!\\/groupsuggestion\\/.*",
