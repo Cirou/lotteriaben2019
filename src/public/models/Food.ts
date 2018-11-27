@@ -1,3 +1,4 @@
+import { Location } from './Location';
 
 export class Food {
 
@@ -6,5 +7,9 @@ export class Food {
   nome: string;
 
   descrizione: string;
+
+  consigliato: Boolean;
+
+  selezioni: number;
 
 }

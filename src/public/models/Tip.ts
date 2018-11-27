@@ -1,3 +1,4 @@
+
 export class Tip {
 
   id: number;

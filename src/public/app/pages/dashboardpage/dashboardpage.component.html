@@ -36,23 +36,43 @@
 
 <div class="container col-12 margin-top-20">
   <div class="row col-12">
-    <div class="container col-6">
+    <div class="container col-2">
       <mat-list-item *ngFor="let user of userList">
-        <div class="row no-gutters align-items-center">
-          <div class="col-3">
+        <div class="row no-gutters align-items-center margin-bottom-20">
+          <div class="col-5">
             <h5 matLine>
               <b [style.color]="user.colore">{{user.nome}}</b>
             </h5>
-          </div>        
+          </div>
+          <div class="col-7 text-align-left">
+            <span *ngFor="let food of user.foods ; last as isLast">
+              <b>{{food.descrizione}}</b>
+                <br>
+            </span>
+          </div>
         </div>
         <mat-divider></mat-divider>
       </mat-list-item>
-
     </div>
-    <div class="container col-6">
-      <div class="graph">
 
-      </div>
+    <div class="container col-2">
+      <mat-list-item *ngFor="let food of foodListCopy">
+        <div class="row no-gutters align-items-center">
+          <div class="col-3">
+            <img src="/public/assets/img/{{food.nome}}.png" class="img-fluid" style="width: 50px">
+          </div>
+          <div class="col-7">
+            <b>{{food.descrizione}}</b>
+          </div>
+          <div class="col-2">
+            <b>{{food.selezioni}}</b>
+          </div>
+        </div>
+      </mat-list-item>
+    </div>
+
+    <div class="container col-8">
+      <canvas width="960" height="400"></canvas>
     </div>
   </div>
 </div>

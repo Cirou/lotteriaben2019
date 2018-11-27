@@ -2,9 +2,10 @@ import { getGroup, postGroup, putGroup, getGroupByName, getAllGroups } from './s
 import { getUser, postUser, putUser, getUserByName, deleteUserGroup, postUserGroup, getAllUsers } from './server/controllers/UserController';
 import { getTip, getTipMaxId } from './server/controllers/TipController';
 import { getMessage, postMessage } from './server/controllers/MessageController';
-import { getVotation, postVotation, putVotation } from './server/controllers/VotationController';
+import { getVotation, postVotation, putVotation, getVotationByDate, getGroupVotationsByDate } from './server/controllers/VotationController';
 import { getFoodAll } from './server/controllers/FoodController';
-import { getSuggestion } from './server/controllers/SuggestionController';
+import { getGroupSuggestion, getGroupSuggestionByDate, getUserSuggestion, getUserSuggestionByDate, getGroupSuggestionTSV, postGroupSuggestion } from './server/controllers/SuggestionController';
+import { getLocationAll } from './server/controllers/LocationController';
 
 /**
  * All application routes.
@@ -86,6 +87,11 @@ export const AppRoutes = [
         action: getVotation
     },
     {
+        path: '/votation/:id/:date',
+        method: 'get',
+        action: getVotationByDate
+    },
+    {
         path: '/votation',
         method: 'post',
         action: postVotation
@@ -101,9 +107,19 @@ export const AppRoutes = [
         action: getFoodAll
     },
     {
-        path: '/suggestion/:id',
+        path: '/groupsuggestion/:id',
         method: 'get',
-        action: getSuggestion
+        action: getGroupSuggestion
+    },
+    {
+        path: '/groupsuggestiontsv/:id/:date',
+        method: 'get',
+        action: getGroupSuggestionTSV
+    },
+    {
+        path: '/groupsuggestion/:id/:date',
+        method: 'get',
+        action: getGroupSuggestionByDate
     },
     {
         path: '/usergroup',
@@ -114,5 +130,30 @@ export const AppRoutes = [
         path: '/usergroup',
         method: 'put',
         action: deleteUserGroup
-    }
+    },
+    {
+        path: '/usersuggestion/:id',
+        method: 'get',
+        action: getUserSuggestion
+    },
+    {
+        path: '/usersuggestion/:id/:date',
+        method: 'get',
+        action: getUserSuggestionByDate
+    },
+    {
+        path: '/groupvotations/:id/:date',
+        method: 'get',
+        action: getGroupVotationsByDate
+    },
+    {
+        path: '/locations/',
+        method: 'get',
+        action: getLocationAll
+    },
+    {
+        path: '/groupsuggestion/',
+        method: 'post',
+        action: postGroupSuggestion
+    },
 ];

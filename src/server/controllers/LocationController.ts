@@ -18,9 +18,8 @@ export let getLocation = (req: Request, res: Response) => {
  * retrieves all the locations
  */
 export let getLocationAll = (req: Request, res: Response) => {
-  getRepository(Location).createQueryBuilder()
-    .select()
-    .getMany().then(locations => {
+  getRepository(Location).find().then(locations => {
       res.send(locations);
     }).catch(err => { console.log(err); });
 };
+

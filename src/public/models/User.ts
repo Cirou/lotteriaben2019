@@ -17,9 +17,9 @@ export class User {
 
   nickname: string;
 
-  immagine: string;
-
   colore: string;
+
+  immagine: string;
 
   foods: Food[];
 

@@ -8,6 +8,11 @@ import { RootService } from '../../services/root.service';
 import { formatDate } from '../../../../shared/utils/DateUtils';
 import { Router } from '@angular/router';
 import { DOCUMENT } from '@angular/common';
+import { UserSuggestion } from '../../../models/UserSuggestion';
+import { CookieService } from 'ngx-cookie-service';
+import { Tip } from '../../../models/Tip';
+import { TipDialogPreferencesComponent } from '../../components/tip-dialog-preferences/tip-dialog-preferences.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-preferencespage',
@@ -21,6 +26,7 @@ export class PreferencespageComponent implements OnInit {
   alreadyVoted = false;
   boxHeight: number;
   buttonHeight: number;
+  elencoSuggerimenti: UserSuggestion[];
 
 
   @ViewChild(MatSelectionList) cibi: MatSelectionList;
@@ -29,7 +35,11 @@ export class PreferencespageComponent implements OnInit {
     private userService: UserService,
     private rootService: RootService,
     private router: Router,
+    private cookieService: CookieService,
+    public dialog: MatDialog,
     @Inject(DOCUMENT) private document: Document) { }
+
+    tip: Tip = new Tip;
 
   ngOnInit() {
 
@@ -41,13 +51,38 @@ export class PreferencespageComponent implements OnInit {
       this.alreadyVoted = true;
     }
 
+    if (this.alreadyVoted == false && this.cookieService.get('pausappranzo_daily_preferences_done') != 'true') {
+      this.openTipPopup();
+    }
+
     this.foodService.getFoodList().subscribe(cibi => {
       this.elencoCibi = cibi;
       console.log(this.elencoCibi);
+
+      this.userService.getUserSuggestion(Number(this.rootService.loggedUserId)).subscribe(suggerimenti => {
+        this.elencoSuggerimenti = suggerimenti;
+
+        this.elencoSuggerimenti.forEach(suggerimento => {
+          this.elencoCibi.forEach(cibo => {
+            if(cibo.id == suggerimento.food_id.id){
+              cibo.consigliato = suggerimento.recommended;
+            }
+          });
+        });
+
+        console.log(this.elencoSuggerimenti);
+      },
+        err => {
+          console.log(err);
+        });
+
+
     },
       err => {
         console.log(err);
       });
+
+
   }
 
   isInSelectedFood(id: number) {
@@ -80,6 +115,18 @@ export class PreferencespageComponent implements OnInit {
 
   cancelPreferences(): void {
     this.router.navigate(['/app']);
+  }
+
+  openTipPopup() {
+    this.cookieService.set('pausappranzo_daily_preferences_done', 'true', 1);
+    const dialogRef = this.dialog.open(TipDialogPreferencesComponent, {
+      autoFocus: false,
+      height: "80%",
+      width: "600px",
+      data: {
+        tip: this.tip
+      }
+    });
   }
 
 }
