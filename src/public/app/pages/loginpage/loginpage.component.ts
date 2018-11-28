@@ -47,9 +47,7 @@ export class LoginpageComponent implements OnInit {
   login() {
 
     this.rootService.loggedUserId = this.email.value;
-    if (this.stayLogged) {
-      this.cookieService.set('pausappranzo_stay_logged_id', this.email.value, 10000)
-    }
+    this.cookieService.set('pausappranzo_stay_logged_id', this.email.value, 10000)
 
     this.userService.getAllUsers().subscribe(
       users => {

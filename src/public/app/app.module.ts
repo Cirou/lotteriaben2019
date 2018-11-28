@@ -45,6 +45,7 @@ import { AlertpopupComponent } from './components/alertpopup/alertpopup.componen
 import { ChatMessageComponent } from './components/chat-message/chat-message.component';
 import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { TipDialogPreferencesComponent } from './components/tip-dialog-preferences/tip-dialog-preferences.component';
 
 // CUSTOM SERVICES
 import { AuthService } from './services/auth.service';
@@ -59,8 +60,7 @@ import { VotationService } from './services/votation.service';
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
-import { TipDialogPreferencesComponent } from './components/tip-dialog-preferences/tip-dialog-preferences.component';
-
+import { DataPrintPipe } from './filters/data-print.pipe';
 
 @NgModule({
   declarations: [
@@ -92,7 +92,8 @@ import { TipDialogPreferencesComponent } from './components/tip-dialog-preferenc
     PreferencespageComponent,
     DashboardpageComponent,
     // PIPE
-    SearchFilterPipe
+    SearchFilterPipe,
+    DataPrintPipe
   ],
   imports: [
     RoutingModule,

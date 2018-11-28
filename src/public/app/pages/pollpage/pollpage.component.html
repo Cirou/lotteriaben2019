@@ -14,8 +14,15 @@
         <h6>
           Il posto che il <b>Dottor L.T. Diet</b> consiglia oggi al vostro gruppo è:
         </h6>
-        <h2><b>{{firstSuggestion.location_id.nome}}</b></h2>
+        <h4><b>"{{firstSuggestion.location_id.nome}}"</b></h4>
       </div>
+      <div class="col-12 text-align-center margin-top-20" *ngIf="hasSuggestion">
+          <h6>
+            In alternativa potreste provare :
+          </h6>
+          <h5><b>"{{secondSuggestion.location_id.nome}}"</b></h5>
+          <h5><b>"{{thirdSuggestion.location_id.nome}}"</b></h5>
+        </div>
       <div class="col-12 text-align-center" *ngIf="!hasSuggestion">
           <h6>
             Il <b>Dottor L.T. Diet</b> non ha ancora un consiglio per voi purtroppo

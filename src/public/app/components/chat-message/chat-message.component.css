@@ -4,7 +4,7 @@
 
 .chat-message-box {
     background-color: rgb(144, 238, 144, 0.5);
-    border-radius: 10px;  
+    border-radius: 10px;
 }
 
 .chat-message-box-self {
@@ -18,4 +18,10 @@
 .chat-message {
     line-height: 1.2;
     padding: 5px 0 5px 0;
+}
+
+.chat-data {
+    font-size: 0.7em;
+    line-height: 0.5em;
+    color: grey;
 }
