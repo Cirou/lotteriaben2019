@@ -9,6 +9,9 @@ import * as flash from 'express-flash';
 import * as path from 'path';
 import * as passport from 'passport';
 import * as expressValidator from 'express-validator';
+import * as fs from 'fs';
+import * as http from 'http';
+import * as https from 'https';
 import { createConnection, getConnectionOptions } from 'typeorm';
 import { Request, Response } from 'express';
 import { AppRoutes } from './routes';
@@ -69,9 +72,16 @@ createConnection({
     res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
   });
 
+  const privateKey = fs.readFileSync('/etc/ssl/private/nginx-selfsigned.key', 'utf8');
+  const certificate = fs.readFileSync('/etc/ssl/certs/nginx-selfsigned.crt', 'utf8');
+  const credentials = { key: privateKey, cert: certificate };
+
   // run app
-  app.listen(4200);
-  console.log('Express application is up and running on port 4200');
+  const httpServer = http.createServer(app);
+  const httpsServer = https.createServer(credentials, app);
+  httpServer.listen(8080);
+  httpsServer.listen(8443);
+  console.log('Express application is up and running on port 443');
 
   startLTDietDaemon();
 

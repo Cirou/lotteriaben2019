@@ -47,6 +47,9 @@ var flash = require("express-flash");
 var path = require("path");
 var passport = require("passport");
 var expressValidator = require("express-validator");
+var fs = require("fs");
+var http = require("http");
+var https = require("https");
 var typeorm_1 = require("typeorm");
 var routes_1 = require("./routes");
 var LTDiet_1 = require("./server/services/LTDiet");
@@ -65,7 +68,7 @@ typeorm_1.createConnection({
         './server/models/*.js'
     ]
 }).then(function (connection) { return __awaiter(_this, void 0, void 0, function () {
-    var app;
+    var app, privateKey, certificate, credentials, httpServer, httpsServer;
     return __generator(this, function (_a) {
         app = express();
         app.use(bodyParser.json());
@@ -99,9 +102,14 @@ typeorm_1.createConnection({
         app.get('*', function (req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
-        // run app
-        app.listen(4200);
-        console.log('Express application is up and running on port 4200');
+        privateKey = fs.readFileSync('/etc/ssl/private/nginx-selfsigned.key', 'utf8');
+        certificate = fs.readFileSync('/etc/ssl/certs/nginx-selfsigned.crt', 'utf8');
+        credentials = { key: privateKey, cert: certificate };
+        httpServer = http.createServer(app);
+        httpsServer = https.createServer(credentials, app);
+        httpServer.listen(8080);
+        httpsServer.listen(8443);
+        console.log('Express application is up and running on port 443');
         LTDiet_1.startLTDietDaemon();
         return [2 /*return*/];
     });
