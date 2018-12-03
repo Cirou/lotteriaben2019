@@ -107,8 +107,8 @@ typeorm_1.createConnection({
         credentials = { key: privateKey, cert: certificate };
         httpServer = http.createServer(app);
         httpsServer = https.createServer(credentials, app);
-        httpServer.listen(80);
-        httpsServer.listen(443);
+        httpServer.listen(4200);
+        httpsServer.listen(4443);
         console.log('Express application is up and running on port 4200 and 8443');
         LTDiet_1.startLTDietDaemon();
         return [2 /*return*/];
