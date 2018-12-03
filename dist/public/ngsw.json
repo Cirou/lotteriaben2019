@@ -1,0 +1,173 @@
+{
+  "configVersion": 1,
+  "index": "/public/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "urls": [
+        "/public/favicon.ico",
+        "/public/manifest.json"
+      ],
+      "patterns": [
+        "\\/public\\/.*"
+      ]
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "urls": [
+        "/public/assets/css/styles.scss",
+        "/public/assets/css/theme.scss",
+        "/public/assets/fonts/breakfast.otf",
+        "/public/assets/icons/favicon-16x16.png",
+        "/public/assets/icons/favicon-32x32.png",
+        "/public/assets/icons/favicon-96x96.png",
+        "/public/assets/icons/group-icon.png",
+        "/public/assets/icons/icon-128x128.png",
+        "/public/assets/icons/icon-144x144.png",
+        "/public/assets/icons/icon-152x152.png",
+        "/public/assets/icons/icon-192x192.png",
+        "/public/assets/icons/icon-384x384.png",
+        "/public/assets/icons/icon-512x512.png",
+        "/public/assets/icons/icon-72x72.png",
+        "/public/assets/icons/icon-96x96.png",
+        "/public/assets/icons/icon.png",
+        "/public/assets/icons/logo.png",
+        "/public/assets/icons/manifest.json",
+        "/public/assets/icons/pref.png",
+        "/public/assets/icons/profile-icon-9.png",
+        "/public/assets/icons/profile.jpg",
+        "/public/assets/img/bg.png",
+        "/public/assets/img/carnebianca.png",
+        "/public/assets/img/carnerossa.png",
+        "/public/assets/img/doctor.png",
+        "/public/assets/img/food-full-preview.png",
+        "/public/assets/img/frutta.png",
+        "/public/assets/img/gelato.png",
+        "/public/assets/img/hotdog.png",
+        "/public/assets/img/insalata.png",
+        "/public/assets/img/panino.png",
+        "/public/assets/img/pasta.png",
+        "/public/assets/img/patatine.png",
+        "/public/assets/img/pesce.png",
+        "/public/assets/img/pizza.png",
+        "/public/assets/img/sandwich.png",
+        "/public/assets/img/zuppa.png",
+        "/public/assets/mock/getAllGroups.json",
+        "/public/assets/mock/getAllUsers.json",
+        "/public/assets/mock/getFoodDetails.json",
+        "/public/assets/mock/getFoodList.json",
+        "/public/assets/mock/getFoodPlaces.json",
+        "/public/assets/mock/getGroupChat.json",
+        "/public/assets/mock/getGroupDetails.json",
+        "/public/assets/mock/getLocationList.json",
+        "/public/assets/mock/getPollOfTheDay.json",
+        "/public/assets/mock/getUserMaxTip.json",
+        "/public/assets/mock/getUserProfile.json",
+        "/public/assets/mock/getUserSuggestion.json",
+        "/public/assets/mock/getUserTip.json",
+        "/public/assets/mock/getUserVotation.json",
+        "/public/assets/mock/grafic.tsv",
+        "/public/assets/mock/postUserPreferences.json"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "dataGroup1",
+      "patterns": [
+        "\\/!\\/app\\/.*",
+        "\\/!\\/message\\/.*",
+        "\\/!\\/votation\\/.*",
+        "\\/!\\/groupsuggestion\\/.*",
+        "\\/!\\/groupsuggestiontsv\\/.*",
+        "\\/!\\/groupvotations\\/.*",
+        "\\/!\\/usersuggestion\\/.*",
+        "\\/!\\/groupsuggestiontsv\\/.*"
+      ],
+      "strategy": "performance",
+      "maxSize": 50,
+      "maxAge": 302400000,
+      "version": 1
+    }
+  ],
+  "hashTable": {
+    "/public/assets/css/styles.scss": "ef45aea1f79ae9dba6902b7d7763a5ae49f824f2",
+    "/public/assets/css/theme.scss": "0cb2cc4d047089a0d50d3646808a5d44c9bdce21",
+    "/public/assets/fonts/breakfast.otf": "79071ad8d24320e428ab095e092d2b03c879026d",
+    "/public/assets/icons/favicon-16x16.png": "23bd9fcdf72edfcc558f44804d74fc40816726b4",
+    "/public/assets/icons/favicon-32x32.png": "17dfc8f73420496e66a55fe0aedbcdda0d409ccb",
+    "/public/assets/icons/favicon-96x96.png": "91217b489e82ef7212068b236e230229c4768dd0",
+    "/public/assets/icons/group-icon.png": "d7c00bcc4b3dcb47bc923cec5b124086ed908122",
+    "/public/assets/icons/icon-128x128.png": "e6eb711b589c49affce1ee13c736d80a574626bd",
+    "/public/assets/icons/icon-144x144.png": "f450c83365788a8697f82d3f81600a48173e45a8",
+    "/public/assets/icons/icon-152x152.png": "fd8cc9f0bec66bd596b466ef973b090e73d0ba50",
+    "/public/assets/icons/icon-192x192.png": "05ec0dde5d648377ce09523029e7b9474296a642",
+    "/public/assets/icons/icon-384x384.png": "3a7f452b5458d5af3ce6d2c21bf5ccacc70e0ed4",
+    "/public/assets/icons/icon-512x512.png": "6781b0c0792162386c5fbce3dbaba96b52f51b87",
+    "/public/assets/icons/icon-72x72.png": "a7be9d2eafc0ad894e27562a9360e0f635e9428f",
+    "/public/assets/icons/icon-96x96.png": "dc46dbaa6b6437621b77f42ce30a0d48846eede2",
+    "/public/assets/icons/icon.png": "050a2ae53c253f8a097d64a3a9431ca26d6238a8",
+    "/public/assets/icons/logo.png": "e66eb9d42549c45556244f9d4c07f0788428a9dc",
+    "/public/assets/icons/manifest.json": "97d82ae7c5e661e567eb2e5bd06d62122cce4e86",
+    "/public/assets/icons/pref.png": "015427a094c821556e4c82eb29494d670e2690d2",
+    "/public/assets/icons/profile-icon-9.png": "c142091370d9050877e6f638800666300936fe14",
+    "/public/assets/icons/profile.jpg": "d9fbd34d1de21c14e901c5eba95677f4652e983c",
+    "/public/assets/img/bg.png": "d0954b0e7450198d1a49217d763a9cb0e51725c7",
+    "/public/assets/img/carnebianca.png": "9e39bf384ddf8f7959e6aa7e0228b17a5eae2499",
+    "/public/assets/img/carnerossa.png": "24a90cef7ab7836e7734b34700501188c0f5fae5",
+    "/public/assets/img/doctor.png": "7e21899363eb0e3e7e282ba7209a8128b7e82966",
+    "/public/assets/img/food-full-preview.png": "ed45d8f4c492e034a6ab9fd2c777c14fd340140a",
+    "/public/assets/img/frutta.png": "9d08d6a90e72202c49938d1472d3b82d6e3dd1eb",
+    "/public/assets/img/gelato.png": "79c272b27c82ec7729f88c3e33a399a91172e096",
+    "/public/assets/img/hotdog.png": "aa5ec5b0171304d2510f4816dfb3b0d9d5fcc0c9",
+    "/public/assets/img/insalata.png": "e3b39d7f7a32c7a591e190f1674b6ea2844d5c1f",
+    "/public/assets/img/panino.png": "bee2034c8425b8d7d14e4d9f2b1c64ed0eb74c99",
+    "/public/assets/img/pasta.png": "05cf5e0eb1caa38509a1e23c543f3c166d5478cb",
+    "/public/assets/img/patatine.png": "5b3216040b831396c1f35745f07d3f5db1e67055",
+    "/public/assets/img/pesce.png": "2c5fbe5e53a72c3c318a0e65b362aadd7e072dc4",
+    "/public/assets/img/pizza.png": "ebaf842424fc3dfc6ab2eac7475313f3cad98270",
+    "/public/assets/img/sandwich.png": "3cd87b1c3d3cf2423809b30239e28838fdbacf20",
+    "/public/assets/img/zuppa.png": "1b244db4e4faf81e479ded99db7271e030278ace",
+    "/public/assets/mock/getAllGroups.json": "eb6d97e4af0ecf37825010900558aba6450e695c",
+    "/public/assets/mock/getAllUsers.json": "79bc13e3ad6c9269936424ea439d3ff5f187c21f",
+    "/public/assets/mock/getFoodDetails.json": "7c4754684ba06bff9a5dff95dfca06d4dea79d91",
+    "/public/assets/mock/getFoodList.json": "dab5fc2ece0184062ebb6cc1d72aa23aaee964df",
+    "/public/assets/mock/getFoodPlaces.json": "86138ac664834ee4c5f8cbd38a1532bd745e8392",
+    "/public/assets/mock/getGroupChat.json": "f62877abc6c5f1d1210f66d525fd515bf73d9d87",
+    "/public/assets/mock/getGroupDetails.json": "4470995b0f9c42c60a69a626d09edaf78888fe14",
+    "/public/assets/mock/getLocationList.json": "b630589f27273f986fe64f0c9e31a91a35ff4247",
+    "/public/assets/mock/getPollOfTheDay.json": "ba38f1df21f4d962f1963046874c1082c8b085f3",
+    "/public/assets/mock/getUserMaxTip.json": "fc8c8d35b8d9e881782636c3fccd2e72f7d13cdf",
+    "/public/assets/mock/getUserProfile.json": "5679370de02c50e8730e792000bd70767ab1e9bd",
+    "/public/assets/mock/getUserSuggestion.json": "51ab0ee38d25ea327e043db13c127d29d4bbd009",
+    "/public/assets/mock/getUserTip.json": "0be6bf27cc2e2afd727a3fe05522581b6e7bf878",
+    "/public/assets/mock/getUserVotation.json": "17bf3a9b50a5b33909f2db73b24f3b1bbb86bc34",
+    "/public/assets/mock/grafic.tsv": "0953ea971831c485dc1fbc5664903068bd9a8f9a",
+    "/public/assets/mock/postUserPreferences.json": "4503a8466377601b1728d927216f17f96e151d44",
+    "/public/favicon.ico": "9885d90d012881fb98ff6bd48c57698891ecd423",
+    "/public/manifest.json": "45b21af5e088ef48fcd9b9537461dce476495960"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*\\.[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^\\/]*__[^\\/]*\\/.*$"
+    }
+  ]
+}
