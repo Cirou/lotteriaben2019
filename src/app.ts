@@ -79,9 +79,9 @@ createConnection({
   // run app
   const httpServer = http.createServer(app);
   const httpsServer = https.createServer(credentials, app);
-  httpServer.listen(8080);
+  httpServer.listen(4200);
   httpsServer.listen(8443);
-  console.log('Express application is up and running on port 443');
+  console.log('Express application is up and running on port 4200 and 8443');
 
   startLTDietDaemon();
 
