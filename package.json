@@ -12,7 +12,7 @@
     "exec": "npm run build && cd dist && node app.js",
     "exec-be": "npm run build-ts && npm run tslint && cd dist && node app.js",
     "start": "cd dist && node app.js",
-    "start-forever": "cd dist && forever app.js",
+    "start-forever": "cd dist && forever start app.js",
     "build": "npm run build-ts && npm run tslint && npm run build-ng && npm run copy-assets",
     "serve": "cd dist && node app.js",
     "build-ng": "ng build --prod",
