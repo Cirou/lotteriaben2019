@@ -72,8 +72,8 @@ createConnection({
     res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
   });
 
-  const privateKey = fs.readFileSync('/etc/ssl/private/nginx-selfsigned.key', 'utf8');
-  const certificate = fs.readFileSync('/etc/ssl/certs/nginx-selfsigned.crt', 'utf8');
+  const privateKey = fs.readFileSync('../nginx-selfsigned.key', 'utf8');
+  const certificate = fs.readFileSync('../nginx-selfsigned.crt', 'utf8');
   const credentials = { key: privateKey, cert: certificate };
 
   // run app
