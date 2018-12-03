@@ -102,8 +102,8 @@ typeorm_1.createConnection({
         app.get('*', function (req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
-        privateKey = fs.readFileSync('/etc/ssl/private/nginx-selfsigned.key', 'utf8');
-        certificate = fs.readFileSync('/etc/ssl/certs/nginx-selfsigned.crt', 'utf8');
+        privateKey = fs.readFileSync('../nginx-selfsigned.key', 'utf8');
+        certificate = fs.readFileSync('../nginx-selfsigned.crt', 'utf8');
         credentials = { key: privateKey, cert: certificate };
         httpServer = http.createServer(app);
         httpsServer = https.createServer(credentials, app);
