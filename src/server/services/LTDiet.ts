@@ -99,7 +99,21 @@ async function tensorMath(groupId: Number, inputMap: Map<string, Array<Number>>)
         sugg.group_id = groupId;
         sugg.location_id = loc;
         sugg.data = formatDate(new Date());
-        sugg.rating = Number(percentage.valueOf().toFixed(2));
+
+        const input = String(restaurantId + ' ' + new Date().toString());
+        let output = '';
+        for (let i = 0; i < input.length; i++) {
+            output += String(input[i].charCodeAt(0).toFixed(2));
+        }
+
+        const intOutput = Number.parseInt(output) / 100;
+        let rating = percentage.valueOf();
+
+        if (rating > 0) {
+            rating += intOutput;
+        }
+
+        sugg.rating = Number(rating.toFixed(2));
 
         saveSuggestions(sugg, resp => {
             // console.log(resp);
