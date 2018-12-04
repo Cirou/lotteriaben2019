@@ -100,9 +100,9 @@ typeorm_1.createConnection({
         app.get('*', function (req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
-        privateKey = fs.readFileSync('/etc/letsencrypt/live/www.pausappranzo.it/privkey.pem', 'utf8');
-        certificate = fs.readFileSync('/etc/letsencrypt/live/www.pausappranzo.it/cert.pem', 'utf8');
-        ca = fs.readFileSync('/etc/letsencrypt/live/www.pausappranzo.it/chain.pem', 'utf8');
+        privateKey = fs.readFileSync('../privkey.pem', 'utf8');
+        certificate = fs.readFileSync('../cert.pem', 'utf8');
+        ca = fs.readFileSync('../chain.pem', 'utf8');
         credentials = {
             key: privateKey,
             cert: certificate,
