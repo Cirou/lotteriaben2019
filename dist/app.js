@@ -68,7 +68,7 @@ typeorm_1.createConnection({
         './server/models/*.js'
     ]
 }).then(function (connection) { return __awaiter(_this, void 0, void 0, function () {
-    var app, privateKey, certificate, credentials, httpServer, httpsServer;
+    var app, privateKey, certificate, ca, credentials, httpServer, httpsServer;
     return __generator(this, function (_a) {
         app = express();
         app.use(bodyParser.json());
@@ -100,9 +100,14 @@ typeorm_1.createConnection({
         app.get('*', function (req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
-        privateKey = fs.readFileSync('../selfsigned.key', 'utf8');
-        certificate = fs.readFileSync('../selfsigned.crt', 'utf8');
-        credentials = { key: privateKey, cert: certificate };
+        privateKey = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/privkey.pem', 'utf8');
+        certificate = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/cert.pem', 'utf8');
+        ca = fs.readFileSync('/etc/letsencrypt/live/yourdomain.com/chain.pem', 'utf8');
+        credentials = {
+            key: privateKey,
+            cert: certificate,
+            ca: ca
+        };
         httpServer = http.createServer(app);
         httpsServer = https.createServer(credentials, app);
         httpServer.listen(4200);
