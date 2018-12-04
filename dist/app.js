@@ -73,9 +73,6 @@ typeorm_1.createConnection({
         app = express();
         app.use(bodyParser.json());
         // Express configuration
-        app.set('port', process.env.PORT || 3000);
-        app.set('views', path.join(__dirname, '../views'));
-        app.set('view engine', 'pug');
         app.use(compression());
         app.use(logger('dev'));
         app.use(bodyParser.json());
@@ -86,6 +83,7 @@ typeorm_1.createConnection({
         app.use(flash());
         app.use(lusca.xframe('SAMEORIGIN'));
         app.use(lusca.xssProtection(true));
+        app.use(express.static(path.join(__dirname, '.well-known'), { maxAge: 31557600000 }));
         app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
         /**
          * API routes.
@@ -102,14 +100,14 @@ typeorm_1.createConnection({
         app.get('*', function (req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
-        privateKey = fs.readFileSync('../nginx-selfsigned.key', 'utf8');
-        certificate = fs.readFileSync('../nginx-selfsigned.crt', 'utf8');
+        privateKey = fs.readFileSync('../selfsigned.key', 'utf8');
+        certificate = fs.readFileSync('../selfsigned.crt', 'utf8');
         credentials = { key: privateKey, cert: certificate };
         httpServer = http.createServer(app);
         httpsServer = https.createServer(credentials, app);
         httpServer.listen(4200);
         httpsServer.listen(4443);
-        console.log('Express application is up and running on port 4200 and 8443');
+        console.log('Express application is up and running on port 4200 and 4443');
         LTDiet_1.startLTDietDaemon();
         return [2 /*return*/];
     });

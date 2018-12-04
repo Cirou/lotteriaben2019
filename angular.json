@@ -17,6 +17,7 @@
             "tsConfig": "src/public//tsconfig.app.json",
             "polyfills": "src/public//polyfills.ts",
             "assets": [
+              "src/.well-known/acme-challenge/cpIlSx5Uh-HLKEgUv_anDKwgMTWWuoGDSzWFghyPZ4c",
               "src/public/assets",
               "src/public/assets/mock",
               "src/public/favicon.ico",

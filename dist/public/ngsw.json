@@ -19,6 +19,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "urls": [
+        "/.well-known/acme-challenge/cpIlSx5Uh-HLKEgUv_anDKwgMTWWuoGDSzWFghyPZ4c",
         "/public/assets/css/styles.scss",
         "/public/assets/css/theme.scss",
         "/public/assets/fonts/breakfast.otf",
@@ -96,6 +97,7 @@
     }
   ],
   "hashTable": {
+    "/.well-known/acme-challenge/cpIlSx5Uh-HLKEgUv_anDKwgMTWWuoGDSzWFghyPZ4c": "91465906ddcfd254cc49f3f02ad3293969c9e6c9",
     "/public/assets/css/styles.scss": "ef45aea1f79ae9dba6902b7d7763a5ae49f824f2",
     "/public/assets/css/theme.scss": "0cb2cc4d047089a0d50d3646808a5d44c9bdce21",
     "/public/assets/fonts/breakfast.otf": "79071ad8d24320e428ab095e092d2b03c879026d",
