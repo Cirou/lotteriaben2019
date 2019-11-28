@@ -1,0 +1,195 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+
+@font-face {
+  font-family: Breakfast;
+  src: url("/public/assets/fonts/breakfast.otf") format("opentype");
+}
+
+body,
+html {
+  min-height: 100%;
+  height: 100%;
+  color: #13293d;
+}
+
+body {
+  font-family: Roboto, Arial, sans-serif;
+  margin: 0;
+  background-color: #ffffff;
+  background-image: url("/public/assets/img/bg.png");
+  background-size: contain;
+  background-repeat: repeat;
+}
+
+hr {
+  margin: 14px 0 15px 0;
+}
+
+*:focus {
+  outline: none;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.basic-container {
+  padding: 30px;
+}
+
+.version-info {
+  font-size: 8pt;
+  float: right;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.my-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  z-index: 1030;
+}
+
+.app-long-button-center,
+.app-full-width-center {
+  width: 100%;
+  text-align: center !important;
+}
+
+.app-long-button-left {
+  width: 100%;
+  text-align: left !important;
+}
+
+.app-long-button-left mat-icon.group-icon {
+  margin-right: 5px;
+  position: relative;
+  top: -1px;
+}
+
+.app-long-button-left mat-icon.arrow-icon {
+  float: right;
+  position: relative;
+  top: 5px;
+}
+
+.app-long-button-right {
+  width: 100%;
+  text-align: right !important;
+}
+
+.app-arrow-icon {
+  float: right;
+  position: relative;
+  top: 5px;
+}
+
+.app-full-width {
+  width: 100%;
+}
+
+.app-full-height {
+  height: 100%;
+}
+
+.app-85-height {
+  height: 85%;
+}
+
+.margin-top-50 {
+  margin-top: 50px;
+}
+
+.margin-top-10 {
+  margin-top: 10px;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.margin-right-10 {
+  margin-right: 10px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.border-bottom-1 {
+  border-bottom: 1px solid darkgrey;
+}
+.profile-icon {
+  max-width: 55px;
+  width: 55px;
+}
+
+.height-20 {
+  height: 20px;
+}
+
+.height-40 {
+  height: 40px;
+}
+
+.height-50 {
+  height: 50px;
+}
+
+.height-70 {
+  height: 70px;
+}
+
+.text-small {
+  font-size: 14px;
+}
+
+.dashboard-title {
+  font-family: Breakfast, Arial, Helvetica, sans-serif;
+}
+
+.login-title {
+  font-size: 55px;
+  font-family: Breakfast, Arial, Helvetica, sans-serif;
+}
+
+.width-button {
+  width: 100%;
+}
+
+.thumb-up-icon {
+  font-size: 18px !important;
+  padding-left: 10px;
+  padding-top: 5px;
+  color: green;
+}
+
+.thumb-down-icon {
+  font-size: 18px !important;
+  padding-left: 10px;
+  padding-top: 5px;
+  color: red;
+}
+
+.padding-right-16{
+  padding-right: 16px;
+}
+
+.padding-left-16{
+  padding-left: 16px;
+}

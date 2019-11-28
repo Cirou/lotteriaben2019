@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "nome": "Lotteria 2019",
+        "descrizione": "Gruppo della bestapp"
+    },
+    {
+        "id": 2,
+        "nome": "Fantacalcio",
+        "descrizione": "Gruppo del fantacalcio"
+    },
+    {
+        "id": 3,
+        "nome": "Solo ragazze!",
+        "descrizione": "Gruppo per sole ragazze"
+    },
+    {
+        "id": 4,
+        "nome": "Solo ragazzi!!!!",
+        "descrizione": "Gruppo per i ragazzi"
+    }
+]

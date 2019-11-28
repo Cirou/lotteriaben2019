@@ -1,0 +1,210 @@
+[
+    {
+        "id": 1,
+        "text": "Ciao!",
+        "data": "2018-09-19 11:50:18",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 2,
+        "text": "Ciao a tutti",
+        "data": "2018-09-19 11:51:18",
+        "user": {
+            "id": 2,
+            "nome": "Maria",
+            "cognome": "Aiello",
+            "email": "maria.aiello@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Maria",
+            "colore": "purple",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 3,
+        "text": "Buongiorno",
+        "data": "2018-09-19 11:52:18",
+        "user": {
+            "id": 3,
+            "nome": "Luisa",
+            "cognome": "Somma",
+            "email": "luisa.somma@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Luisa",
+            "colore": "darkblue",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 4,
+        "text": "Ciao a tutti, che si fa oggi?",
+        "data": "2018-09-19 11:53:18",
+        "user": {
+            "id": 4,
+            "nome": "Danilo",
+            "cognome": "Coppola",
+            "email": "danilo.coppola@accenture.com",
+            "sesso": "M",
+            "citta": "Napoli",
+            "nickname": "Danilo",
+            "colore": "darkgoldenrod",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 5,
+        "text": "Non so, rispondete al sondaggio e vediamo, dai!",
+        "data": "2018-09-19 11:54:18",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 6,
+        "text": "Ok!",
+        "data": "2018-10-05 14:04:38",
+        "user": {
+            "id": 2,
+            "nome": "Maria",
+            "cognome": "Aiello",
+            "email": "maria.aiello@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Maria",
+            "colore": "purple",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 7,
+        "text": "Va bene",
+        "data": "2018-10-05 14:05:25",
+        "user": {
+            "id": 3,
+            "nome": "Luisa",
+            "cognome": "Somma",
+            "email": "luisa.somma@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Luisa",
+            "colore": "darkblue",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 9,
+        "text": "andiamo",
+        "data": "2018-10-05 14:43:48",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 10,
+        "text": "Scendo",
+        "data": "2018-09-19 11:50:18",
+        "user": {
+            "id": 2,
+            "nome": "Maria",
+            "cognome": "Aiello",
+            "email": "maria.aiello@accenture.com",
+            "sesso": "F",
+            "citta": "Napoli",
+            "nickname": "Maria",
+            "colore": "purple",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 11,
+        "text": "Ok",
+        "data": "2018-10-05 16:53:21",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 12,
+        "text": "Scendo",
+        "data": "2018-09-19 11:50:18",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 13,
+        "text": "Test",
+        "data": "2018-10-08 14:22:05",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    },
+    {
+        "id": 14,
+        "text": "ette",
+        "data": "2018-10-08 14:29:01",
+        "user": {
+            "id": 1,
+            "nome": "Ciro",
+            "cognome": "Aiello",
+            "email": "ciro.aiello@accenture.com",
+            "sesso": "M",
+            "citta": "Cardito",
+            "nickname": "Cirou85",
+            "colore": "red",
+            "immagine": ""
+        }
+    }
+]

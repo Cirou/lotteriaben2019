@@ -1,0 +1,22 @@
+{
+    "id": "1",
+    "nomeGruppo": "Fuori Orario",
+    "data": "31/05/2018",
+    "location": [
+        {
+            "id": "1",
+            "nome": "ICHEF",
+            "voti": "5"
+        },
+        {
+            "id": "2",
+            "nome": "KILO",
+            "voti": "1"
+        },
+        {
+            "id": "3",
+            "nome": "AMABILE",
+            "voti": "3"
+        }
+    ]
+}
