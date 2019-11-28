@@ -1,15 +1,40 @@
+import { ImageService } from './../../services/image.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-adminpage',
-  templateUrl: './adminpage.component.html',
-  styleUrls: ['./adminpage.component.css']
+    selector: 'app-adminpage',
+    templateUrl: './adminpage.component.html',
+    styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
 
-  constructor() { }
+    constructor(private imageService: ImageService) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
+
+    selectedFile: File;
+    nome: string;
+    posizione: string;
+    descrizione: string;
+
+    onFileChanged(event) {
+        this.selectedFile = event.target.files[0]
+    }
+
+    onUpload() {
+        if (this.nome !== '' && this.posizione  !== '' && this.selectedFile && this.selectedFile.name) {
+            const uploadData = new FormData();
+            uploadData.append('nome', this.nome);
+            uploadData.append('posizione', this.posizione);
+            uploadData.append('descrizione', this.descrizione);
+            uploadData.append('file', this.selectedFile, this.selectedFile.name);
+            // this.http is the injected HttpClient
+            this.imageService.sendImage(uploadData).subscribe(
+                (res) => console.log(res),
+                (err) => console.log(err)
+            );
+        }
+    }
 
 }
