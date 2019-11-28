@@ -9,7 +9,8 @@ import { RootService } from './root.service';
 @Injectable()
 export class PremiService {
 
-  private premiUrl: string = !this.rootService.mocked ? '/premi/' : '/public/assets/mock/getGroupDetails.json?ref=';
+  private getAllPremiUrl: string = !this.rootService.mocked ? '/premi/' : '/public/assets/mock/getAllPremi.json?ref=';
+  private premiUrl: string = !this.rootService.mocked ? '/premi/' : '/public/assets/mock/getPremi.json?ref=';
 
   constructor(private http: Http, private rootService: RootService) { }
 
@@ -23,7 +24,7 @@ export class PremiService {
 
   getAllPremi(): Observable<Premi[]> {
     return this.http
-      .get(this.premiUrl)
+      .get(this.getAllPremiUrl)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
