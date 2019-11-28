@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 
 // FIREBASE
@@ -29,6 +30,7 @@ import { MaterialDesignModule } from './material-design.module';
 // CUSTOM SERVICES
 import { PremiService } from './services/premi.service';
 import { RootService } from './services/root.service';
+import { ImageService } from './services/image.service';
 
 
 //PIPES
@@ -53,16 +55,18 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     MaterialDesignModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
+    AngularFireAuthModule
   ],
   providers: [
     PremiService,
-    RootService
+    RootService,
+    ImageService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
