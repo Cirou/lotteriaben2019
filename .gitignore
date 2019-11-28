@@ -15,6 +15,7 @@ tmp
 
 # API keys and secrets
 .env
+package-lock.json
 
 # Dependency directory
 node_modules
