@@ -1,7 +1,7 @@
 [
     { "id": 1, "posizione": 1, "nomepremio": "PS4", "descrizionepremio": null, "immaginepremio": "/public/assets/img/panino.png", "numerovincitore": null, "nomevincitore": null },
     { "id": 2, "posizione": 2, "nomepremio": "Fotocamera", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pesce.png", "numerovincitore": null, "nomevincitore": null },
-    { "id": 3, "posizione": 3, "nomepremio": "XBox", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pizza.png", "numerovincitore": null, "nomevincitore": null },
-    { "id": 4, "posizione": 4, "nomepremio": "Maglia Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/zuppa.png", "numerovincitore": null, "nomevincitore": null },
-    { "id": 5, "posizione": 5, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": null, "nomevincitore": null }
+    { "id": 3, "posizione": 3, "nomepremio": "XBox", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pizza.png", "numerovincitore": 201232, "nomevincitore": "pippo" },
+    { "id": 4, "posizione": 4, "nomepremio": "Maglia Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/zuppa.png", "numerovincitore": 234656, "nomevincitore": "paperino" },
+    { "id": 5, "posizione": 5, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" }
 ]
