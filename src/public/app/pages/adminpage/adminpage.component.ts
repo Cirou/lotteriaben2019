@@ -25,7 +25,6 @@ export class AdminpageComponent implements OnInit {
 
     onUpload() {
         if (this.nome !== '' && this.posizione !== '' && this.selectedFile && this.selectedFile.name) {
-            
             let premio = new Premi();
             premio.nomepremio = this.nome;
             premio.posizione = parseInt(this.posizione);
