@@ -40,6 +40,8 @@ import { ImageService } from './services/image.service';
 import { SearchFilterPipe } from './filters/search-filter.pipe';
 import { DataPrintPipe } from './filters/data-print.pipe';
 
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+
 @NgModule({
   declarations: [
     // COMPONENTS
@@ -51,7 +53,8 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     MainpageComponent,
     // PIPE
     SearchFilterPipe,
-    DataPrintPipe
+    DataPrintPipe,
+    ScrollTopComponent
   ],
   imports: [
     RoutingModule,
