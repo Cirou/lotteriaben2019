@@ -1,0 +1,20 @@
+<p>
+  lotterypage works!
+</p>
+
+<div class="container no-padding" style="overflow-y: scroll;">
+  <div class="col-12">
+    <mat-selection-list>
+      <mat-list-option *ngFor="let premio of elencoPremi" [value]='premio'>
+        <div class="row no-gutters align-items-center">
+          <div class="col-4">
+            <img src="{{premio.immaginepremio}}" class="img-fluid" style="width: 50px">
+          </div>
+          <div class="col-8">
+            <b>{{premio.nomepremio}}</b>
+          </div>
+        </div>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+</div>

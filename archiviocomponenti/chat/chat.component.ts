@@ -2,7 +2,6 @@ import { Component, OnInit, Input, ElementRef, ViewChild, Inject } from '@angula
 import { Message } from '../../../models/Message';
 import { RootService } from '../../services/root.service';
 import { FormControl, Validators } from '@angular/forms';
-import { GroupService } from '../../services/group.service';
 import { Group } from '../../../models/Group';
 import { formatDateTime } from '../../../../shared/utils/DateUtils';
 import { DOCUMENT } from '@angular/common';
@@ -29,7 +28,6 @@ export class ChatComponent implements OnInit {
   public messageToSend: FormControl = new FormControl('', [Validators.required]);
 
   constructor(private rootService: RootService,
-    private groupService: GroupService,
     @Inject(DOCUMENT) private document: Document) { }
 
   ngOnInit() {
@@ -54,14 +52,6 @@ export class ChatComponent implements OnInit {
       message.data = formatDateTime(new Date);
       console.log(message);
 
-      this.groupService.postGroupMessage(message).subscribe(
-        message => {
-          console.log('Messaggio inviato');
-        },
-        err => {
-          console.log('Invio messaggio KO', err);
-        }
-      );
       this.messageToSend.setValue('');
 
     }

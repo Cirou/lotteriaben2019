@@ -16,46 +16,20 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // PAGES
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
-import { ProfilepageComponent } from './pages/profilepage/profilepage.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { SettingspageComponent } from './pages/settingspage/settingspage.component';
-import { LoginpageComponent } from './pages/loginpage/loginpage.component';
-import { GroupspageComponent } from './pages/groupspage/groupspage.component';
-import { GroupdetailpageComponent } from './pages/groupdetailpage/groupdetailpage.component';
-import { PollpageComponent } from './pages/pollpage/pollpage.component';
-import { SearchpageComponent } from './pages/searchpage/searchpage.component';
-import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
-import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
+import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
+import { AdminpageComponent } from './pages/adminpage/adminpage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
 import { MaterialDesignModule } from './material-design.module';
 
 // CUSTOM COMPONENTS
-import { DrawerComponent } from './components/drawer/drawer.component';
-import { ListviewComponent } from './components/listview/listview.component';
-import { ChatComponent } from './components/chat/chat.component';
-import { SearchbarComponent } from './components/searchbar/searchbar.component';
-import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
-import { TipDialogComponent } from './components/tip-dialog/tip-dialog.component';
-import { LoaderComponent } from './components/loader/loader.component';
-import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
-import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
-import { ChatMessageComponent } from './components/chat-message/chat-message.component';
-import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
-import { TipDialogPreferencesComponent } from './components/tip-dialog-preferences/tip-dialog-preferences.component';
+//nothing
 
 // CUSTOM SERVICES
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
-import { GroupService } from './services/group.service';
-import { FoodService } from './services/food.service';
-import { LoaderService } from './services/loader.service';
-import { SearchService } from './services/search.service';
+import { PremiService } from './services/premi.service';
 import { RootService } from './services/root.service';
-import { CookieService } from 'ngx-cookie-service';
-import { VotationService } from './services/votation.service';
+
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
@@ -64,31 +38,11 @@ import { DataPrintPipe } from './filters/data-print.pipe';
 @NgModule({
   declarations: [
     // COMPONENTS
-    ChatComponent,
-    SearchbarComponent,
-    DrawerComponent,
-    ListviewComponent,
-    CibiDialogComponent,
-    TipDialogComponent,
-    LoaderComponent,
-    LocationDialogComponent,
-    AlertpopupComponent,
-    GroupdialogComponent,
-    LoginDialogComponent,
-    TipDialogPreferencesComponent,
+    // nothing
     // PAGES
+    LotterypageComponent,
+    AdminpageComponent,
     MainpageComponent,
-    ProfilepageComponent,
-    HomepageComponent,
-    SettingspageComponent,
-    LoginpageComponent,
-    GroupspageComponent,
-    GroupdetailpageComponent,
-    PollpageComponent,
-    SearchpageComponent,
-    SearchgrouppageComponent,
-    ChatMessageComponent,
-    PreferencespageComponent,
     // PIPE
     SearchFilterPipe,
     DataPrintPipe
@@ -107,19 +61,12 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     AngularFireAuthModule
   ],
   providers: [
-    AuthService,
-    UserService,
-    GroupService,
-    FoodService,
-    LoaderService,
-    SearchService,
-    CookieService,
-    RootService,
-    VotationService
+    PremiService,
+    RootService
   ],
   exports: [RouterModule],
-  bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, LoginDialogComponent, TipDialogPreferencesComponent]
+  bootstrap: [LotterypageComponent],
+  entryComponents: []
 })
 export class AppModule {
 

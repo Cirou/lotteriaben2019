@@ -1,7 +1,6 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { User } from "../../../models/User";
-import { UserService } from "../../services/user.service";
 import { RootService } from '../../services/root.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
@@ -45,7 +44,7 @@ export class DrawerComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(private userService: UserService,
+  constructor(
       changeDetectorRef: ChangeDetectorRef,
       media: MediaMatcher,
       private router: Router,
@@ -61,16 +60,6 @@ export class DrawerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUserProfile(this.rootService.loggedUserId)
-      .subscribe(
-        userInfo => {
-          this.userProfile = userInfo[0];
-          this.rootService.loggedUser = userInfo[0];
-          console.log(this.userProfile);
-        },
-        err => {
-          console.log(err);
-        });
   }
 
   logout() {
