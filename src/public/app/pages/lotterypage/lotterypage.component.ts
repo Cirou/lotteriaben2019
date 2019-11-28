@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PremiService } from '../../services/premi.service';
-import { RootService } from '../../services/root.service';
-import { Router } from '@angular/router';
 import { Premi } from '../../../models/Premi';
 
 @Component({
@@ -11,10 +9,7 @@ import { Premi } from '../../../models/Premi';
 })
 export class LotterypageComponent implements OnInit {
 
-  constructor(
-    private premiService: PremiService,
-    private rootService: RootService,
-    private router: Router) { }
+  constructor(private premiService: PremiService) { }
 
   elencoPremi: Premi[];
 
@@ -29,7 +24,7 @@ export class LotterypageComponent implements OnInit {
       err => {
         console.log(err);
       });
-      this.start();
+      this.startCountDown();
   }
 
   intervalId = 0;
@@ -40,8 +35,8 @@ export class LotterypageComponent implements OnInit {
 
   ngOnDestroy() { this.clearTimer(); }
 
-  start() { this.countDown(); }
-  stop()  {
+  startCountDown() { this.countDown(); }
+  stopCountDown()  {
     this.clearTimer();
     this.message = `Holding at T-${this.seconds} seconds`;
   }
@@ -54,7 +49,7 @@ export class LotterypageComponent implements OnInit {
         this.message = 'CI SIAMO!';
       } else {
         if (this.seconds < 0) { this.seconds = 10; } // reset
-        this.message = `Mancano ${this.seconds} secondi`;
+        this.message = `${this.seconds} secondi`;
       }
       console.log(this.message);
     }, 1000);

@@ -1,4 +1,7 @@
 import { ImageService } from './../../services/image.service';
+import { PremiService } from './../../services/premi.service';
+import { Premi } from '../../../models/Premi';
+
 import { Component, OnInit } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -10,20 +13,20 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 export class AdminpageComponent implements OnInit {
 
-    constructor(
-        private imageService: ImageService,
-        private ng2ImgMax: Ng2ImgMaxService,
-        public sanitizer: DomSanitizer) { }
-
-    ngOnInit() {
-    }
-
     loading = false;
     selectedFile: File;
     nome: string;
     posizione: string;
     descrizione: string;
     imagePreview: any;
+
+    constructor(
+        private imageService: ImageService,
+        private ng2ImgMax: Ng2ImgMaxService,
+        public sanitizer: DomSanitizer,
+        private premiService: PremiService) { }
+
+    ngOnInit() { }
 
     onFileChanged(event) {
         this.selectedFile = event.target.files[0];
@@ -49,8 +52,6 @@ export class AdminpageComponent implements OnInit {
                 console.log('Resize 1 error', error);
             }
         );
-
-        
     }
 
     getImagePreview(file: File) {
@@ -64,25 +65,40 @@ export class AdminpageComponent implements OnInit {
     onUpload() {
         if (this.nome !== '' && this.posizione !== '' && this.selectedFile && this.selectedFile.name) {
             this.loading = true;
-            const uploadData = new FormData();
-            uploadData.append('nome', this.nome);
-            uploadData.append('posizione', this.posizione);
-            uploadData.append('descrizione', this.descrizione);
-            uploadData.append('file', this.selectedFile, this.selectedFile.name);
+
+            let premio = new Premi();
+            premio.nomepremio = this.nome;
+            premio.posizione = parseInt(this.posizione);
+            premio.descrizionepremio = this.descrizione;
+
+            console.log(premio);
+
+            const uploadFile = new FormData();
+            uploadFile.append('file', this.selectedFile, this.selectedFile.name);
+
             // this.http is the injected HttpClient
-            this.imageService.sendImage(uploadData).subscribe(
-                (res) => {
-                    this.loading = false;
+            this.imageService.sendImage(uploadFile).subscribe(
+                res => {
                     console.log(res);
+                    this.premiService.postPremio(premio).subscribe(
+                        res => {
+                            this.loading = false;
+                            console.log(res);
+                        }, 
+                        err => {
+                            this.loading = false;
+                            console.log(err);
+                        }
+                    );
                 },
-                (err) => {
+                err => {
                     this.loading = false;
                     console.log(err);
                 }
             );
+            
         } else {
-            console.log("verifica i campi obbligatori")
+            console.log("Verifica i campi obbligatori")
         }
     }
-
 }
