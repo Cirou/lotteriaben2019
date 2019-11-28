@@ -26,24 +26,24 @@ dotenv.config({ path: __dirname + '/../dev.env.example' });
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
 createConnection({
-  'type': 'sqlite',
-  'database': '../db/lotteriaben2019.db',
-  'synchronize': false,
-  'logging': false,
-  'entities': [
-    './server/models/*.js'
-  ]
+  type: 'mysql',
+  host: 'database-1.csum6c43lqrx.us-east-1.rds.amazonaws.com',
+  port: 3306,
+  username: 'admin',
+  password: 'lotteriabeneficenza2019',
+  database: 'lotteriaben2019',
+  synchronize: false,
+  logging: false,
+  entities: ['./server/models/*.js']
 })
     .then(async connection => {
         // create express app
         const app = express();
-        app.use(bodyParser.json());
-        app.use(bodyParser);
-        app.use(multer);
 
         // Express configuration
         app.use(compression());
         app.use(logger('dev'));
+        app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(expressValidator());
         app.use(passport.initialize());
@@ -63,7 +63,6 @@ createConnection({
             });
         });
 
-        app.use(bodyParser.json());
         const storage = multer.diskStorage({
             // multers disk storage settings
             destination: function(req, file, cb) {
@@ -94,7 +93,7 @@ createConnection({
         /**
          * Primary app routes for Angular will catch all route
          * Keep this one as the last one
-         */
+        */
         app.get('*', function(req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
