@@ -3,7 +3,6 @@ A Progressive Web App made with: MongoDB Express Angular 6 Node.js
 
 # Pre-reqs
 - Install [Node.js](https://nodejs.org/en/)
-- Install [MongoDB](https://docs.mongodb.com/manual/installation/)
 - Install [VS Code](https://code.visualstudio.com/)
 
 # Getting started
@@ -15,10 +14,6 @@ git clone --depth=1 https://github.com/Cirou/lotteriaben2019.git <project_name>
 ```
 cd <project_name>
 npm install
-```
-- Start your mongoDB server (this needs that the \bin path in mongoDB is set in the system enviroment variables)
-```
-start-mongodb.bat
 ```
 - Build and run the project
 ```
