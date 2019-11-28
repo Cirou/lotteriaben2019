@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 import * as express from 'express';
-import * as compression from 'compression';  // compresses requests
+import * as compression from 'compression'; // compresses requests
 import * as bodyParser from 'body-parser';
+import * as multer from 'multer';
 import * as logger from 'morgan';
 import * as lusca from 'lusca';
 import * as dotenv from 'dotenv';
@@ -32,59 +33,88 @@ createConnection({
   'entities': [
     './server/models/*.js'
   ]
-}).then(async connection => {
+})
+    .then(async connection => {
+        // create express app
+        const app = express();
+        app.use(bodyParser.json());
+        app.use(bodyParser);
+        app.use(multer);
 
-  // create express app
-  const app = express();
-  app.use(bodyParser.json());
+        // Express configuration
+        app.use(compression());
+        app.use(logger('dev'));
+        app.use(bodyParser.urlencoded({ extended: true }));
+        app.use(expressValidator());
+        app.use(passport.initialize());
+        app.use(passport.session());
+        app.use(flash());
+        app.use(lusca.xframe('SAMEORIGIN'));
+        app.use(lusca.xssProtection(true));
+        app.use(express.static(path.join(__dirname, '.well-known'), { maxAge: 31557600000 }));
+        app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
 
-  // Express configuration
-  app.use(compression());
-  app.use(logger('dev'));
-  app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: true }));
-  app.use(expressValidator());
-  app.use(passport.initialize());
-  app.use(passport.session());
-  app.use(flash());
-  app.use(lusca.xframe('SAMEORIGIN'));
-  app.use(lusca.xssProtection(true));
-  app.use(express.static(path.join(__dirname, '.well-known'), { maxAge: 31557600000 }));
-  app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+        /**
+         * API routes.
+         */
+        AppRoutes.forEach(route => {
+            app[route.method](route.path, (request: Request, response: Response, next: Function) => {
+                route.action(request, response);
+            });
+        });
 
-  /**
-   * API routes.
-   */
-  AppRoutes.forEach(route => {
-    app[route.method](route.path, (request: Request, response: Response, next: Function) => {
-      route.action(request, response);
-    });
-  });
+        app.use(bodyParser.json());
+        const storage = multer.diskStorage({
+            // multers disk storage settings
+            destination: function(req, file, cb) {
+                cb(undefined, './uploads/');
+            },
+            filename: function(req, file, cb) {
+                const datetimestamp = Date.now();
+                cb(undefined, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
+            }
+        });
 
-  /**
-   * Primary app routes for Angular will catch all route
-   * Keep this one as the last one
-   */
-  app.get('*', function (req, res) {
-    res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
-  });
+        const upload = multer({
+            // multer settings
+            storage: storage
+        }).single('file');
 
-  // Certificate
-  const privateKey = fs.readFileSync('../privkey.pem', 'utf8');
-  const certificate = fs.readFileSync('../cert.pem', 'utf8');
-  const ca = fs.readFileSync('../chain.pem', 'utf8');
+        // API path that will upload the files
+        app.post('/upload', function(req, res) {
+            upload(req, res, function(err) {
+                if (err) {
+                    res.json({ error_code: 1, err_desc: err });
+                    return;
+                }
+                res.json({ error_code: 0, err_desc: undefined });
+            });
+        });
 
-  const credentials = {
-    key: privateKey,
-    cert: certificate,
-    ca: ca
-  };
+        /**
+         * Primary app routes for Angular will catch all route
+         * Keep this one as the last one
+         */
+        app.get('*', function(req, res) {
+            res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
+        });
 
-  // run app
-  const httpServer = http.createServer(app);
-  const httpsServer = https.createServer(credentials, app);
-  httpServer.listen(4200);
-  httpsServer.listen(4443);
-  console.log('Express application is up and running on port 4200 and 4443');
+        // Certificate
+        const privateKey = fs.readFileSync('../privkey.pem', 'utf8');
+        const certificate = fs.readFileSync('../cert.pem', 'utf8');
+        const ca = fs.readFileSync('../chain.pem', 'utf8');
 
-}).catch(error => console.log('TypeORM connection error: ', error));
+        const credentials = {
+            key: privateKey,
+            cert: certificate,
+            ca: ca
+        };
+
+        // run app
+        const httpServer = http.createServer(app);
+        const httpsServer = https.createServer(credentials, app);
+        httpServer.listen(4200);
+        httpsServer.listen(4443);
+        console.log('Express application is up and running on port 4200 and 4443');
+    })
+    .catch(error => console.log('TypeORM connection error: ', error));
