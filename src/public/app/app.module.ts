@@ -19,6 +19,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
 import { AdminpageComponent } from './pages/adminpage/adminpage.component';
+import { CatalogopageComponent } from './pages/catalogopage/catalogopage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -44,6 +45,7 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     // PAGES
     LotterypageComponent,
     AdminpageComponent,
+    CatalogopageComponent,
     MainpageComponent,
     // PIPE
     SearchFilterPipe,
