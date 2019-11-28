@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
 
+export const IMAGE_WIDTH_UPLOAD = 500;
+export const IMAGE_WIDTH_PREVIEW = 150;
+
 @Component({
     selector: 'app-adminpage',
     templateUrl: './adminpage.component.html',
@@ -33,10 +36,13 @@ export class AdminpageComponent implements OnInit {
         this.loading = true;
         let image = event.target.files[0];
 
-        this.ng2ImgMax.resizeImage(image, 10000, 500).subscribe(
+        //limiting the resulting image to about 75Kb:
+        //this.ng2ImgMax.compressImage(image, 0.075).subscribe(...)
+
+        this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_UPLOAD).subscribe(
             result => {
                 this.selectedFile = new File([result], result.name);
-                this.ng2ImgMax.resizeImage(image, 10000, 150).subscribe(
+                this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
                     result => {
                         this.loading = false;
                         this.getImagePreview(new File([result], result.name));
@@ -63,7 +69,7 @@ export class AdminpageComponent implements OnInit {
     }
 
     onUpload() {
-        if (this.nome !== '' && this.posizione !== '' && this.selectedFile && this.selectedFile.name) {
+        if (this.nome && this.posizione && this.selectedFile && this.selectedFile.name) {
             this.loading = true;
 
             let premio = new Premi();
@@ -78,25 +84,25 @@ export class AdminpageComponent implements OnInit {
 
             // this.http is the injected HttpClient
             this.imageService.sendImage(uploadFile).subscribe(
-                res => {
+                (res) => {
                     console.log(res);
                     this.premiService.postPremio(premio).subscribe(
-                        res => {
+                        (res) => {
                             this.loading = false;
                             console.log(res);
-                        }, 
-                        err => {
+                        },
+                        (err) => {
                             this.loading = false;
                             console.log(err);
                         }
                     );
                 },
-                err => {
+                (err) => {
                     this.loading = false;
                     console.log(err);
                 }
             );
-            
+
         } else {
             console.log("Verifica i campi obbligatori")
         }
