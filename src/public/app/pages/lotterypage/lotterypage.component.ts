@@ -59,4 +59,5 @@ export class LotterypageComponent implements OnInit {
       console.log(this.message);
     }, 1000);
 
+  }
 }
