@@ -1,0 +1,75 @@
+[
+    {
+        "id": 1,
+        "nome": "Ciro",
+        "cognome": "Aiello",
+        "email": "ciro.aiello@accenture.com",
+        "sesso": "M",
+        "citta": "Cardito",
+        "nickname": "Cirou85",
+        "colore": "red",
+        "immagine": "",
+        "foods": [],
+        "groups": [
+            {
+                "id": 1,
+                "nome": "Lotteria 2019",
+                "descrizione": "Gruppo della bestapp"
+            },
+            {
+                "id": 2,
+                "nome": "Fantacalcio",
+                "descrizione": "Gruppo del fantacalcio"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "nome": "Ciro2",
+        "cognome": "Aiello",
+        "email": "ciro.aiello@accenture.com",
+        "sesso": "M",
+        "citta": "Cardito",
+        "nickname": "Cirou85",
+        "colore": "red",
+        "immagine": "",
+        "foods": [],
+        "groups": [
+        ]
+    }
+    ,
+    {
+        "id": 3,
+        "nome": "Ciro3",
+        "cognome": "Aiello",
+        "email": "ciro.aiello@accenture.com",
+        "sesso": "M",
+        "citta": "Cardito",
+        "nickname": "Cirou85",
+        "colore": "red",
+        "immagine": "",
+        "foods": [],
+        "groups": [
+            {
+                "id": 1,
+                "nome": "Lotteria 2019",
+                "descrizione": "Gruppo della bestapp"
+            }
+        ]
+    }
+    ,
+    {
+        "id": 4,
+        "nome": "Ciro4",
+        "cognome": "Aiello",
+        "email": "ciro.aiello@accenture.com",
+        "sesso": "M",
+        "citta": "Cardito",
+        "nickname": "Cirou85",
+        "colore": "red",
+        "immagine": "",
+        "foods": [],
+        "groups": [
+        ]
+    }
+]
