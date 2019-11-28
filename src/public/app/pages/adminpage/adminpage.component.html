@@ -9,9 +9,9 @@
                             Send Us a Message
                         </h4>
                         <form action="#">
-                            <input type="text" class="input-field" placeholder="Nome del prodotto *">
-                            <input type="number" class="input-field" placeholder="Posizione in classifica *">
-                            <textarea class="input-field textarea" placeholder="Descrizione"></textarea>
+                            <input type="text" class="input-field" placeholder="Nome del prodotto *" [(ngModel)]="nome" name="nome">
+                            <input type="number" class="input-field" placeholder="Posizione in classifica *" [(ngModel)]="posizione" name="posizione">
+                            <textarea class="input-field textarea" placeholder="Descrizione" [(ngModel)]="descrizione" name="descrizione"></textarea>
                             <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput
                                 accept="image/png, image/jpeg">
                             <div style="display: inline-block;width: 100%;">
