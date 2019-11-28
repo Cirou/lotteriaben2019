@@ -1,4 +1,4 @@
-import { getPremi, postPremi, putPremi, getPremiByName, getAllPremi } from './server/controllers/PremiController';
+import { getPremi, postPremi, putPremi, getAllPremi } from './server/controllers/PremiController';
 
 /**
  * All application routes.
@@ -8,11 +8,6 @@ export const AppRoutes = [
         path: '/premi/:id',
         method: 'get',
         action: getPremi
-    },
-    {
-        path: '/search/premi/:name',
-        method: 'get',
-        action: getPremiByName
     },
     {
         path: '/premi/',
