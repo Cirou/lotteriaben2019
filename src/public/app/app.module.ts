@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -24,6 +23,9 @@ import { CatalogopageComponent } from './pages/catalogopage/catalogopage.compone
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
 import { MaterialDesignModule } from './material-design.module';
+
+// IMAGE RESIZING
+import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 // CUSTOM COMPONENTS
 //nothing
@@ -63,7 +65,8 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    Ng2ImgMaxModule
   ],
   providers: [
     PremiService,
