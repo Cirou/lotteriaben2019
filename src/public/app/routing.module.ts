@@ -4,11 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
 import { AdminpageComponent } from './pages/adminpage/adminpage.component';
+import { CatalogopageComponent } from './pages/catalogopage/catalogopage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: LotterypageComponent},
   { path: 'adminpage', component: AdminpageComponent },
+  { path: 'catalogo', component: CatalogopageComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 

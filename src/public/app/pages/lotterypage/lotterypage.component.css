@@ -972,7 +972,8 @@
 /* activities Area Start */
 .activities {
   padding: 110px 0px 113px;
-  position: relative; }
+  position: relative;
+  overflow: hidden; }
   .activities .shape {
     position: absolute;
     left: 50%;
