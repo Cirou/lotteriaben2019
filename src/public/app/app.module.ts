@@ -58,14 +58,14 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   providers: [
     PremiService,
     RootService
   ],
   exports: [RouterModule],
-  bootstrap: [LotterypageComponent],
+  bootstrap: [MainpageComponent],
   entryComponents: []
 })
 export class AppModule {
