@@ -1,4 +1,7 @@
 import { ImageService } from './../../services/image.service';
+import { PremiService } from './../../services/premi.service';
+import { Premi } from '../../../models/Premi';
+
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,11 +10,9 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
+    constructor(private imageService: ImageService, private premiService: PremiService) {}
 
-    constructor(private imageService: ImageService) { }
-
-    ngOnInit() {
-    }
+    ngOnInit() {}
 
     selectedFile: File;
     nome: string;
@@ -19,22 +20,25 @@ export class AdminpageComponent implements OnInit {
     descrizione: string;
 
     onFileChanged(event) {
-        this.selectedFile = event.target.files[0]
+        this.selectedFile = event.target.files[0];
     }
 
     onUpload() {
-        if (this.nome !== '' && this.posizione  !== '' && this.selectedFile && this.selectedFile.name) {
-            const uploadData = new FormData();
-            uploadData.append('nome', this.nome);
-            uploadData.append('posizione', this.posizione);
-            uploadData.append('descrizione', this.descrizione);
-            uploadData.append('file', this.selectedFile, this.selectedFile.name);
+        if (this.nome !== '' && this.posizione !== '' && this.selectedFile && this.selectedFile.name) {
+            
+            let premio = new Premi();
+            premio.nomepremio = this.nome;
+            premio.posizione = parseInt(this.posizione);
+            premio.descrizionepremio = this.descrizione;
+
+            console.log(premio);
+
+            const uploadFile = new FormData();
+            uploadFile.append('file', this.selectedFile, this.selectedFile.name);
+
             // this.http is the injected HttpClient
-            this.imageService.sendImage(uploadData).subscribe(
-                (res) => console.log(res),
-                (err) => console.log(err)
-            );
+            this.imageService.sendImage(uploadFile).subscribe(res => console.log(res), err => console.log(err));
+            this.premiService.postPremio(premio).subscribe(res => console.log(res), err => console.log(err));
         }
     }
-
 }
