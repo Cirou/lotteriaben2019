@@ -1,10 +1,10 @@
 {
-  "name": "pausappranzo",
+  "name": "lotteriaben2019",
   "version": "0.1.0",
   "description": "A starting point for Node.js Express Angular apps with TypeScript",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Cirou/pausappranzo"
+    "url": "https://github.com/Cirou/lotteriaben2019"
   },
   "author": "Ciro Aiello",
   "license": "MIT",

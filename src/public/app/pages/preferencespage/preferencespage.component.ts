@@ -51,7 +51,7 @@ export class PreferencespageComponent implements OnInit {
       this.alreadyVoted = true;
     }
 
-    if (this.alreadyVoted == false && this.cookieService.get('pausappranzo_daily_preferences_done') != 'true') {
+    if (this.alreadyVoted == false && this.cookieService.get('lotteriaben2019_daily_preferences_done') != 'true') {
       this.openTipPopup();
     }
 
@@ -122,7 +122,7 @@ export class PreferencespageComponent implements OnInit {
   }
 
   openTipPopup() {
-    this.cookieService.set('pausappranzo_daily_preferences_done', 'true', 1);
+    this.cookieService.set('lotteriaben2019_daily_preferences_done', 'true', 1);
     const dialogRef = this.dialog.open(TipDialogPreferencesComponent, {
       autoFocus: false,
       height: "80%",

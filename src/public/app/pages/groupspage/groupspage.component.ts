@@ -79,7 +79,7 @@ export class GroupspageComponent implements OnInit {
               tip => {
                 this.tip = tip[0];
                 console.log(this.tip);
-                if (this.tip.id != null && this.cookieService.get('pausappranzo_daily_login_done') != 'true') {
+                if (this.tip.id != null && this.cookieService.get('lotteriaben2019_daily_login_done') != 'true') {
                   this.openTipPopup();
                 }
               },
@@ -97,7 +97,7 @@ export class GroupspageComponent implements OnInit {
   }
 
   openTipPopup() {
-    this.cookieService.set('pausappranzo_daily_login_done', 'true', 1);
+    this.cookieService.set('lotteriaben2019_daily_login_done', 'true', 1);
     const dialogRef = this.dialog.open(TipDialogComponent, {
       autoFocus: false,
       height: "80%",

@@ -14,7 +14,7 @@ export class RootService {
   private _votations: Votation[] = new Array;
 
   constructor(private cookieService: CookieService) {
-    this.loggedUserId = this.cookieService.get('pausappranzo_stay_logged_id');
+    this.loggedUserId = this.cookieService.get('lotteriaben2019_stay_logged_id');
   }
 
   public get loggedUser(): User {

@@ -74,7 +74,7 @@ export class DrawerComponent implements OnInit {
   }
 
   logout() {
-    this.cookieService.delete('pausappranzo_stay_logged_id');
+    this.cookieService.delete('lotteriaben2019_stay_logged_id');
     this.router.navigate(['/logout']);
   }
 

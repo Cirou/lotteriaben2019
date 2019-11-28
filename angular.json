@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pausappranzo": {
+    "lotteriaben2019": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -61,18 +61,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "pausappranzo:build"
+            "browserTarget": "lotteriaben2019:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "pausappranzo:build:production"
+              "browserTarget": "lotteriaben2019:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pausappranzo:build"
+            "browserTarget": "lotteriaben2019:build"
           }
         },
         "test": {
@@ -114,7 +114,7 @@
         }
       }
     },
-    "pausappranzo-e2e": {
+    "lotteriaben2019-e2e": {
       "root": "",
       "sourceRoot": "",
       "projectType": "application",
@@ -123,7 +123,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "pausappranzo:serve"
+            "devServerTarget": "lotteriaben2019:serve"
           }
         },
         "lint": {
@@ -140,7 +140,7 @@
       }
     }
   },
-  "defaultProject": "pausappranzo",
+  "defaultProject": "lotteriaben2019",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

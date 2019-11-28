@@ -7,10 +7,10 @@ export const environment = {
   production: false,
   config: {
     apiKey: "AIzaSyAlvRYp67ZnpRVgiPvYd8atovbIqh9ItTc",
-    authDomain: "pausappranzo.firebaseapp.com",
-    databaseURL: "https://pausappranzo.firebaseio.com",
-    projectId: "pausappranzo",
-    storageBucket: "pausappranzo.appspot.com",
+    authDomain: "lotteriaben2019.firebaseapp.com",
+    databaseURL: "https://lotteriaben2019.firebaseio.com",
+    projectId: "lotteriaben2019",
+    storageBucket: "lotteriaben2019.appspot.com",
     messagingSenderId: "223548304748"
   }
 };

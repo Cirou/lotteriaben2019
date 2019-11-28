@@ -1,4 +1,4 @@
-# pausappranzo
+# lotteriaben2019
 A Progressive Web App made with: MongoDB Express Angular 6 Node.js
 
 # Pre-reqs
@@ -9,7 +9,7 @@ A Progressive Web App made with: MongoDB Express Angular 6 Node.js
 # Getting started
 - Clone the repository
 ```
-git clone --depth=1 https://github.com/Cirou/pausappranzo.git <project_name>
+git clone --depth=1 https://github.com/Cirou/lotteriaben2019.git <project_name>
 ```
 - Install dependencies
 ```

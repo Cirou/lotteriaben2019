@@ -31,7 +31,7 @@ export class LoginpageComponent implements OnInit {
     public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.rootService.loggedUserId = this.cookieService.get('pausappranzo_stay_logged_id');
+    this.rootService.loggedUserId = this.cookieService.get('lotteriaben2019_stay_logged_id');
     console.log(this.rootService.loggedUserId);
 
     //if(Number(this.rootService.loggedUserId) > 0){
@@ -47,7 +47,7 @@ export class LoginpageComponent implements OnInit {
   login() {
 
     this.rootService.loggedUserId = this.email.value;
-    this.cookieService.set('pausappranzo_stay_logged_id', this.email.value, 10000)
+    this.cookieService.set('lotteriaben2019_stay_logged_id', this.email.value, 10000)
 
     this.userService.getAllUsers().subscribe(
       users => {
@@ -74,7 +74,7 @@ export class LoginpageComponent implements OnInit {
   }
 
   openLoginPopup() {
-    this.cookieService.set('pausappranzo_daily_login_done', 'true', 1);
+    this.cookieService.set('lotteriaben2019_daily_login_done', 'true', 1);
     const dialogRef = this.dialog.open(LoginDialogComponent, {
       autoFocus: false,
       height: "80%",

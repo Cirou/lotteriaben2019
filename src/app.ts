@@ -15,7 +15,6 @@ import * as https from 'https';
 import { createConnection, getConnectionOptions } from 'typeorm';
 import { Request, Response } from 'express';
 import { AppRoutes } from './routes';
-import { startLTDietDaemon } from './server/services/LTDiet';
 
 const rootPath = path.normalize(__dirname + '/../');
 
@@ -27,7 +26,7 @@ dotenv.config({ path: __dirname + '/../dev.env.example' });
 // TypeORM creates connection pools and uses them for your requests
 createConnection({
   'type': 'sqlite',
-  'database': '../db/pausappranzo.db',
+  'database': '../db/lotteriaben2019.db',
   'synchronize': false,
   'logging': false,
   'entities': [
@@ -87,7 +86,5 @@ createConnection({
   httpServer.listen(4200);
   httpsServer.listen(4443);
   console.log('Express application is up and running on port 4200 and 4443');
-
-  startLTDietDaemon();
 
 }).catch(error => console.log('TypeORM connection error: ', error));
