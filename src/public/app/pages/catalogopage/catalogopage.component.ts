@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PremiService } from '../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 
@@ -12,6 +12,8 @@ export class CatalogopageComponent implements OnInit {
   constructor(private premiService: PremiService) { }
 
   
+  @Input()
+  isAdminPage: boolean;
   elencoPremi: Premi[];
 
   ngOnInit() {
