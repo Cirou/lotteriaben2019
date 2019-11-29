@@ -9,13 +9,13 @@ import { RootService } from './root.service';
 @Injectable()
 export class UserService {
 
-  private getAllUsersUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getAllUsers.json?ref=';
-  
+  private getValidUserUrl: string = !this.rootService.mocked ? '/user/' : '/public/assets/mock/getValidUserUrl.json?ref=';
+
   constructor(private http: Http, private rootService: RootService) { }
 
-  getAllUsers(): Observable<User[]> {
+  getValidUser(): Observable<User[]> {
     return this.http
-      .get(this.getAllUsersUrl)
+      .get(this.getValidUserUrl)
       .pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error || 'Server error')));

@@ -159,12 +159,12 @@ export class AdminpageComponent implements OnInit {
         this.errorMessage = '';
         this.rootService.loggedUserId = this.id.value;
         this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
-        this.userService.getAllUsers().subscribe(
+        this.userService.getValidUser().subscribe(
           users => {
             let found = false;
             users.forEach(user => {
-              if (user.id === this.rootService.loggedUserId
-                && user.pwd === this.pwd.value ) {
+              if (user.id === this.rootService.loggedUserId &&
+                user.isValid) {
                 found = true;
                 return;
               }
