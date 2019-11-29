@@ -28,7 +28,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     posizione: string;
     descrizione: string;
     imagePreview: any;
-    isLogged = false;
+    isLogged = this.rootService.logged;
     errorMessage = '';
     public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
@@ -197,7 +197,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         this.userService.postUser(this.pwd.value).subscribe(
             user => {
                 if (user.isValid) {
-                    this.isLogged = true;
+                    this.rootService.logged = true;
                 } else {
                     this.errorMessage = 'Invalid User';
                     console.log('Invalid User');

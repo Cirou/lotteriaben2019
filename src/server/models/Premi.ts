@@ -18,6 +18,9 @@ export class Premi {
   @Column({ name: 'immaginepremio', type: 'varchar' })
   immaginepremio: string;
 
+  @Column({ name: 'immaginebase64', type: 'blob' })
+  immaginebase64: string;
+
   @Column({ name: 'numerovincitore', type: 'varchar', nullable: true })
   numerovincitore: string;
 
