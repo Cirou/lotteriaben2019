@@ -30,7 +30,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     imagePreview: any;
     isLogged = false;
     errorMessage = '';
-    public id: FormControl = new FormControl('', [Validators.required]);
     public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
     //validation
@@ -195,8 +194,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     login() {
         this.errorMessage = '';
-        this.rootService.loggedUserId = this.id.value;
-        this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
         this.userService.postUser(this.pwd.value).subscribe(
             user => {
                 if (user.isValid) {
