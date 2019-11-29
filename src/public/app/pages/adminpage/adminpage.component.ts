@@ -36,14 +36,15 @@ export class AdminpageComponent implements OnInit {
     isPosizioneValida = true;
     isImmagineValida = true;
 
-    constructor(private imageService: ImageService,
+    constructor(
+        private imageService: ImageService,
         private ng2ImgMax: Ng2ImgMaxService,
-         public sanitizer: DomSanitizer,
-         private premiService: PremiService,
-         private cookieService: CookieService,
-         private rootService: RootService,
-         private userService: UserService,
-         ) { }
+        public sanitizer: DomSanitizer,
+        private premiService: PremiService,
+        private cookieService: CookieService,
+        private rootService: RootService,
+        private userService: UserService
+    ) {}
 
     ngOnInit() {}
 
@@ -87,7 +88,7 @@ export class AdminpageComponent implements OnInit {
         };
     }
 
-  changeName(form) {
+    changeName(form) {
         if (form.nome === undefined || form.nome === '') {
             this.isNomeValido = false;
         } else {
@@ -106,7 +107,7 @@ export class AdminpageComponent implements OnInit {
     changeFields(form) {
         this.changeName(form);
         this.changePosizione(form);
-        if(this.selectedFile && this.selectedFile.name) {
+        if (this.selectedFile && this.selectedFile.name) {
             this.isImmagineValida = true;
         } else {
             this.isImmagineValida = false;
@@ -154,31 +155,22 @@ export class AdminpageComponent implements OnInit {
         }
     }
 
-
     login() {
         this.errorMessage = '';
         this.rootService.loggedUserId = this.id.value;
         this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
-        this.userService.getValidUser().subscribe(
-          users => {
-            let found = false;
-            users.forEach(user => {
-              if (user.id === this.rootService.loggedUserId &&
-                user.isValid) {
-                found = true;
-                return;
-              }
-            });
-            if (found) {
-            //   this.goToHome();
-                this.isLogged = true;
-            } else {
-              this.errorMessage = 'Invalid User';
-              console.log('Invalid User');
+        this.userService.postUser(this.pwd.value).subscribe(
+            user => {
+                if (user.isValid) {
+                    this.isLogged = true;
+                } else {
+                    this.errorMessage = 'Invalid User';
+                    console.log('Invalid User');
+                }
+            },
+            err => {
+                console.log(err);
             }
-          },
-          err => {
-            console.log(err);
-          });
-      }
+        );
+    }
 }
