@@ -15,6 +15,18 @@ exports.getPremi = function (req, res) {
     }).catch(function (err) { console.log(err); });
 };
 /**
+ * GET /premi/posizione/:id
+ * retrieves the premi using the given id
+ */
+exports.getPremiByPosizione = function (req, res) {
+    typeorm_1.getRepository(Premi_1.Premi)
+        .createQueryBuilder('premi')
+        .where('premi.posizione = :id', { id: req.params.id })
+        .getMany().then(function (premi) {
+        res.send(premi);
+    }).catch(function (err) { console.log(err); });
+};
+/**
  * GET /premi/
  * retrieves the premi using the given name
  */
@@ -43,5 +55,19 @@ exports.putPremi = function (req, res) {
         typeorm_1.getRepository(Premi_1.Premi).findByIds(req.body.id).then(function (premi) {
             res.send(premi);
         }).catch(function (err) { console.log(err); });
+    }).catch(function (err) { console.log(err); });
+};
+/**
+ * DELETE /premi/:id
+ * retrieves the premi using the given id
+ */
+exports.deletePremioById = function (req, res) {
+    typeorm_1.getRepository(Premi_1.Premi).
+        createQueryBuilder('premi')
+        .delete()
+        .where('premi.id = :id', { id: req.params.id })
+        .execute()
+        .then(function (premi) {
+        res.send(premi);
     }).catch(function (err) { console.log(err); });
 };

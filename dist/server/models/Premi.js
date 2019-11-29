@@ -34,6 +34,10 @@ var Premi = /** @class */ (function () {
         __metadata("design:type", String)
     ], Premi.prototype, "immaginepremio", void 0);
     __decorate([
+        typeorm_1.Column({ name: 'immaginebase64', type: 'blob' }),
+        __metadata("design:type", String)
+    ], Premi.prototype, "immaginebase64", void 0);
+    __decorate([
         typeorm_1.Column({ name: 'numerovincitore', type: 'varchar', nullable: true }),
         __metadata("design:type", String)
     ], Premi.prototype, "numerovincitore", void 0);
