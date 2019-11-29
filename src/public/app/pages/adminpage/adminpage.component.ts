@@ -49,29 +49,29 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         private route: ActivatedRoute,
         private cookieService: CookieService,
         private rootService: RootService,
-        private userService: UserService,) { }
+        private userService: UserService, ) { }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            this.id = params['id']; // (+) converts string 'id' to a number
+            this.idPremio = params['id']; // (+) converts string 'id' to a number
 
-            if(this.id) {
+            if (this.idPremio) {
                 this.premiService.getPremioById(this.idPremio).subscribe(
                     res => {
                         console.log(res);
                         res = res[0];
                         this.nome = res.nomepremio;
-                        this.posizione = res.posizione+'';
+                        this.posizione = res.posizione + '';
                         this.descrizione = res.descrizionepremio;
                         fetch(res.immaginepremio)
-                            .then(res => 
+                            .then(res =>
                                 res.blob()
                             ) // Gets the response and returns it as a blob
                             .then(blob => {
                                 this.selectedFile = new File([blob], res.immaginepremio);
                                 this.getImagePreview(this.selectedFile);
                             });
-                        
+
                     },
                     err => {
                         console.log(err);
@@ -126,7 +126,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         };
     }
 
-  changeName(form) {
+    changeName(form) {
         if (form.nome === undefined || form.nome === '') {
             this.isNomeValido = false;
         } else {
@@ -199,25 +199,25 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         this.rootService.loggedUserId = this.id.value;
         this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
         this.userService.getValidUser().subscribe(
-          users => {
-            let found = false;
-            users.forEach(user => {
-              if (user.id === this.rootService.loggedUserId &&
-                user.isValid) {
-                found = true;
-                return;
-              }
+            users => {
+                let found = false;
+                users.forEach(user => {
+                    if (user.id === this.rootService.loggedUserId &&
+                        user.isValid) {
+                        found = true;
+                        return;
+                    }
+                });
+                if (found) {
+                    //   this.goToHome();
+                    this.isLogged = true;
+                } else {
+                    this.errorMessage = 'Invalid User';
+                    console.log('Invalid User');
+                }
+            },
+            err => {
+                console.log(err);
             });
-            if (found) {
-            //   this.goToHome();
-                this.isLogged = true;
-            } else {
-              this.errorMessage = 'Invalid User';
-              console.log('Invalid User');
-            }
-          },
-          err => {
-            console.log(err);
-          });
-      }
+    }
 }
