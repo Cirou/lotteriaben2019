@@ -32,6 +32,10 @@ export class AdminpageComponent implements OnInit {
     public id: FormControl = new FormControl('', [Validators.required]);
     public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
+    isNomeValido = true;
+    isPosizioneValida = true;
+    isImmagineValida = true;
+
     constructor(private imageService: ImageService,
         private ng2ImgMax: Ng2ImgMaxService,
          public sanitizer: DomSanitizer,
@@ -56,16 +60,19 @@ export class AdminpageComponent implements OnInit {
                 this.selectedFile = new File([result], result.name);
                 this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
                     result => {
+                        this.isImmagineValida = true;
                         this.loading = false;
                         this.getImagePreview(new File([result], result.name));
                     },
                     error => {
+                        this.isImmagineValida = false;
                         this.loading = false;
                         console.log('Resize 2 error', error);
                     }
                 );
             },
             error => {
+                this.isImmagineValida = false;
                 this.loading = false;
                 console.log('Resize 1 error', error);
             }
@@ -80,8 +87,35 @@ export class AdminpageComponent implements OnInit {
         };
     }
 
-    onUpload() {
-        if (this.nome && this.posizione && this.selectedFile && this.selectedFile.name) {
+  changeName(form) {
+        if (form.nome === undefined || form.nome === '') {
+            this.isNomeValido = false;
+        } else {
+            this.isNomeValido = true;
+        }
+    }
+
+    changePosizione(form) {
+        if (form.posizione === undefined || form.posizione === null) {
+            this.isPosizioneValida = false;
+        } else {
+            this.isPosizioneValida = true;
+        }
+    }
+
+    changeFields(form) {
+        this.changeName(form);
+        this.changePosizione(form);
+        if(this.selectedFile && this.selectedFile.name) {
+            this.isImmagineValida = true;
+        } else {
+            this.isImmagineValida = false;
+        }
+    }
+
+    onUpload(form) {
+        this.changeFields(form);
+        if (this.isNomeValido && this.isPosizioneValida && this.isImmagineValida) {
             this.loading = true;
 
             const premio = new Premi();
