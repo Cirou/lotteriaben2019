@@ -1,3 +1,7 @@
+::ng-deep .mat-form-field-label {
+  /*change color of label*/
+  color: white !important;
+ }
   ::ng-deep .mat-focused .mat-form-field {
     /*change color of text*/
     color: #a1aed4 !important;

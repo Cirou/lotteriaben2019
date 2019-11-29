@@ -25,7 +25,7 @@
                                 L'estrazione inizierà tra:
                         </h5>
                         <div class="draw-counter">
-                                <div data-countdown="2021/12/15">{{this.message}}</div>
+                                <div data-countdown="2021/12/15"><span>{{this.message}}</span></div>
                         </div>
                         <p class="text">
                                 Rimanete sintonizzati
@@ -117,7 +117,7 @@
 
 
 <!-- Recent Winners Area Start -->
-<section class="recent-winners">
+<section *ngIf="elencoUltimiPremi" class="recent-winners">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -163,7 +163,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12 text-xl-center">
+            <div class="col-lg-12 text-center">
                 <a class="mybtn2" (click)="scrollToElement(listapremi)">Vedi tutti</a>
             </div>
         </div>
@@ -198,7 +198,7 @@
                 <div class="tab-menu-area">
                     <a href="/catalogo">
                         <div class="mybtn1">
-                            Vai al catalogo completo dei premi
+                            Vai al catalogo dettagliato dei premi
                         </div>
                     </a>
                 </div>
