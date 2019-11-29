@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { PremiService } from '../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 import { Lightbox } from 'ngx-lightbox';
+import { RootService } from '../../services/root.service';
 
 @Component({
   selector: 'app-catalogopage',
@@ -10,16 +11,16 @@ import { Lightbox } from 'ngx-lightbox';
 })
 export class CatalogopageComponent implements OnInit {
 
-  constructor(private premiService: PremiService, private _lightbox: Lightbox) { }
-
-  
-  @Input()
-  isAdminPage: boolean;
+  constructor(private premiService: PremiService, private _lightbox: Lightbox, private rootService: RootService) { }
   elencoPremi: Premi[];
+
+  isAdminPage: boolean;
 
   ngOnInit() {
       
     console.log("Catalogo page");
+
+    this.isAdminPage = this.rootService.logged;
 
     this.premiService.getAllPremi().subscribe(premi => {
         this.elencoPremi = premi;
