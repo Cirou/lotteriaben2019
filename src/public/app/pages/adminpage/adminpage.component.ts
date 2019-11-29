@@ -15,7 +15,6 @@ export const IMAGE_WIDTH_PREVIEW = 150;
     styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
-
     loading = false;
     selectedFile: File;
     nome: string;
@@ -23,13 +22,9 @@ export class AdminpageComponent implements OnInit {
     descrizione: string;
     imagePreview: any;
 
-    constructor(
-        private imageService: ImageService,
-        private ng2ImgMax: Ng2ImgMaxService,
-        public sanitizer: DomSanitizer,
-        private premiService: PremiService) { }
+    constructor(private imageService: ImageService, private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private premiService: PremiService) {}
 
-    ngOnInit() { }
+    ngOnInit() {}
 
     onFileChanged(event) {
         this.selectedFile = event.target.files[0];
@@ -84,27 +79,27 @@ export class AdminpageComponent implements OnInit {
 
             // this.http is the injected HttpClient
             this.imageService.sendImage(uploadFile).subscribe(
-                (res) => {
+                res => {
                     console.log(res);
+                    premio.immaginepremio = res.file_path;
                     this.premiService.postPremio(premio).subscribe(
-                        (res) => {
+                        res => {
                             this.loading = false;
                             console.log(res);
                         },
-                        (err) => {
+                        err => {
                             this.loading = false;
                             console.log(err);
                         }
                     );
                 },
-                (err) => {
+                err => {
                     this.loading = false;
                     console.log(err);
                 }
             );
-
         } else {
-            console.log("Verifica i campi obbligatori")
+            console.log('Verifica i campi obbligatori');
         }
     }
 }

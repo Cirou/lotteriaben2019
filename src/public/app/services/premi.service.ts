@@ -33,7 +33,7 @@ export class PremiService {
   postPremio(premio: Premi): Observable<Premi> {
     const httpOptions = {
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       })
     };
 
@@ -48,7 +48,7 @@ export class PremiService {
 
     const httpOptions = {
       headers: new Headers({
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       })
     };
 

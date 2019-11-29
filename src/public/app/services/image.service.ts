@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { RootService } from './root.service';
 
 import { map, catchError } from 'rxjs/operators';
+import { any } from 'bluebird';
 
 @Injectable()
 export class ImageService {
@@ -12,10 +13,7 @@ export class ImageService {
 
     constructor(private http: HttpClient, private rootService: RootService) {}
 
-    sendImage(uploadData: FormData) {
-        return this.http.post(this.uploadUrl, uploadData).pipe(
-            map((response: any) => response.json()),
-            catchError((error: any) => Observable.throw(error || 'Server error'))
-        );
+    sendImage(uploadData: FormData):any {
+        return this.http.post(this.uploadUrl, uploadData);
     }
 }

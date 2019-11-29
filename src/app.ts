@@ -83,7 +83,7 @@ createConnection({
         app.post('/upload', function(req, res) {
             upload(req, res, function(err) {
                 if (err) {
-                    res.status(400).send({ error_code: 1, err_desc: err });
+                    res.json({ error_code: 1, err_desc: err });
                     return;
                 }
                 res.json({ error_code: 0, file_path: '/uploads/' + req.file.filename, err_desc: undefined });
