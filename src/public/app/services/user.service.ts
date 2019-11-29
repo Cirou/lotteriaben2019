@@ -21,4 +21,17 @@ export class UserService {
         catchError((error: any) => Observable.throw(error || 'Server error')));
   }
 
+  postUser(pwd: string): Observable<User> {
+    const httpOptions = {
+        headers: new Headers({
+            'Content-Type': 'application/json'
+        })
+    };
+
+    return this.http.post(this.getValidUserUrl, {'pwd': pwd}, httpOptions).pipe(
+        map((response: Response) => response.json()),
+        catchError((error: any) => Observable.throw(error || 'Server error'))
+    );
+}
+
 }

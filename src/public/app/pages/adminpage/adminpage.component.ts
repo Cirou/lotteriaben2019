@@ -193,23 +193,13 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         }
     }
 
-
     login() {
         this.errorMessage = '';
         this.rootService.loggedUserId = this.id.value;
         this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
-        this.userService.getValidUser().subscribe(
-            users => {
-                let found = false;
-                users.forEach(user => {
-                    if (user.id === this.rootService.loggedUserId &&
-                        user.isValid) {
-                        found = true;
-                        return;
-                    }
-                });
-                if (found) {
-                    //   this.goToHome();
+        this.userService.postUser(this.pwd.value).subscribe(
+            user => {
+                if (user.isValid) {
                     this.isLogged = true;
                 } else {
                     this.errorMessage = 'Invalid User';
@@ -218,6 +208,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             },
             err => {
                 console.log(err);
-            });
+            }
+        );
     }
 }

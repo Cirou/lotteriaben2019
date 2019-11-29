@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 export class RootService {
 
   private _loggedUserId: string;
-  private _mocked: boolean = true;
+  private _mocked: boolean = false;
 
   constructor() {
   }
