@@ -48,3 +48,27 @@
           margin-top: 11px; }
   
   /* Contact Area End */
+
+
+  ::ng-deep .mat-focused .mat-form-field {
+    /*change color of text*/
+    color: #a1aed4 !important;
+   }
+  ::ng-deep .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: #a1aed4 !important;
+   }
+
+   ::ng-deep .mat-form-field-infix {
+    /*change color of label*/
+    color: #a1aed4 !important;
+   }
+
+   ::ng-deep .mat-error {
+    /*change color of label*/
+    color: #a1aed4 !important;
+   }
+  
+  
+  
+  
