@@ -26,6 +26,10 @@ var Premi = /** @class */ (function () {
         __metadata("design:type", String)
     ], Premi.prototype, "nomepremio", void 0);
     __decorate([
+        typeorm_1.Column({ name: 'descrizionepremio', type: 'varchar' }),
+        __metadata("design:type", String)
+    ], Premi.prototype, "descrizionepremio", void 0);
+    __decorate([
         typeorm_1.Column({ name: 'immaginepremio', type: 'varchar' }),
         __metadata("design:type", String)
     ], Premi.prototype, "immaginepremio", void 0);

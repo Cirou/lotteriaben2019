@@ -11,7 +11,7 @@ exports.AppRoutes = [
         action: PremiController_1.getPremi
     },
     {
-        path: '/premi/',
+        path: '/premi',
         method: 'get',
         action: PremiController_1.getAllPremi
     },

@@ -40,6 +40,7 @@ require("reflect-metadata");
 var express = require("express");
 var compression = require("compression"); // compresses requests
 var bodyParser = require("body-parser");
+var multer = require("multer");
 var logger = require("morgan");
 var lusca = require("lusca");
 var dotenv = require("dotenv");
@@ -59,18 +60,20 @@ dotenv.config({ path: __dirname + '/../dev.env.example' });
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
 typeorm_1.createConnection({
-    'type': 'sqlite',
-    'database': '../db/lotteriaben2019.db',
-    'synchronize': false,
-    'logging': false,
-    'entities': [
-        './server/models/*.js'
-    ]
-}).then(function (connection) { return __awaiter(_this, void 0, void 0, function () {
-    var app, privateKey, certificate, ca, credentials, httpServer, httpsServer;
+    type: 'mysql',
+    host: 'database-1.csum6c43lqrx.us-east-1.rds.amazonaws.com',
+    port: 3306,
+    username: 'admin',
+    password: 'lotteriabeneficenza2019',
+    database: 'lotteriaben2019',
+    synchronize: false,
+    logging: false,
+    entities: ['./server/models/*.js']
+})
+    .then(function (connection) { return __awaiter(_this, void 0, void 0, function () {
+    var app, storage, upload, privateKey, certificate, ca, credentials, httpServer, httpsServer;
     return __generator(this, function (_a) {
         app = express();
-        app.use(bodyParser.json());
         // Express configuration
         app.use(compression());
         app.use(logger('dev'));
@@ -84,12 +87,37 @@ typeorm_1.createConnection({
         app.use(lusca.xssProtection(true));
         app.use(express.static(path.join(__dirname, '.well-known'), { maxAge: 31557600000 }));
         app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+        app.use(express.static(path.join(path.normalize(__dirname + '../'), 'uploads'), { maxAge: 31557600000 }));
         /**
          * API routes.
          */
         routes_1.AppRoutes.forEach(function (route) {
             app[route.method](route.path, function (request, response, next) {
                 route.action(request, response);
+            });
+        });
+        storage = multer.diskStorage({
+            // multers disk storage settings
+            destination: function (req, file, cb) {
+                cb(undefined, './public/uploads/');
+            },
+            filename: function (req, file, cb) {
+                var datetimestamp = Date.now();
+                cb(undefined, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
+            }
+        });
+        upload = multer({
+            // multer settings
+            storage: storage
+        }).single('file');
+        // API path that will upload the files
+        app.post('/upload', function (req, res) {
+            upload(req, res, function (err) {
+                if (err) {
+                    res.json({ error_code: 1, err_desc: err });
+                    return;
+                }
+                res.json({ error_code: 0, file_path: '/uploads/' + req.file.filename, err_desc: undefined });
             });
         });
         /**
@@ -109,9 +137,10 @@ typeorm_1.createConnection({
         };
         httpServer = http.createServer(app);
         httpsServer = https.createServer(credentials, app);
-        httpServer.listen(4200);
-        httpsServer.listen(4443);
-        console.log('Express application is up and running on port 4200 and 4443');
+        httpServer.listen(80);
+        httpsServer.listen(443);
+        console.log('Express application is up and running on port 80 and 443');
         return [2 /*return*/];
     });
-}); }).catch(function (error) { return console.log('TypeORM connection error: ', error); });
+}); })
+    .catch(function (error) { return console.log('TypeORM connection error: ', error); });

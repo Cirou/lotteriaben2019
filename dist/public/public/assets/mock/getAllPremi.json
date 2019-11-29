@@ -1,0 +1,18 @@
+[
+    { "id": 1, "posizione": 1, "nomepremio": "PS4", "descrizionepremio": "ps4 bellissima", "immaginepremio": "/public/assets/img/panino.png", "numerovincitore": null, "nomevincitore": null },
+    { "id": 2, "posizione": 2, "nomepremio": "Fotocamera", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pesce.png", "numerovincitore": null, "nomevincitore": null },
+    { "id": 3, "posizione": 3, "nomepremio": "XBox", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pizza.png", "numerovincitore": 201232, "nomevincitore": "pippo" },
+    { "id": 4, "posizione": 4, "nomepremio": "Maglia Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/zuppa.png", "numerovincitore": 234656, "nomevincitore": "paperino" },
+    { "id": 5, "posizione": 5, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 6, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 7, "nomepremio": "Cappello Napoli", "descrizionepremio": "cappellino autografato", "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 8, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 9, "nomepremio": "Cappello Napoli", "descrizionepremio": "scritta molto lungaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 10, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 11, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 12, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 13, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 14, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 15, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" },
+    { "id": 5, "posizione": 16, "nomepremio": "Cappello Napoli", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "topolino" }
+]
