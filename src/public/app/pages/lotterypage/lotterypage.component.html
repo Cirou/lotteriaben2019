@@ -1,3 +1,4 @@
+
 <!-- Cuntdown Area Start -->
 <section class="lottery-area">
     <div class="daily-lottery">
@@ -35,8 +36,137 @@
         </div>
     </div>
 </section>
-
 <!-- Countdown Area End -->
+
+
+<!-- Lottery Staticstics Area Start -->
+<section class="breadcrumb-area bc-lottery">
+    <img class="bc-img" src="/public/assets/img/lottery_new.png" alt="">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="title">
+                    i numeri
+                </h4>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="lottery-area">
+    <div class="lottery-staticstics">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="single-staticstics">
+                        <div class="left">
+                            <div class="icon">
+                                <img src="/public/assets/img/st1.png" alt="">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <h4 class="title">Totale Ricavi</h4>
+                            <div class="count">
+                                <span>0.416250</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-staticstics">
+                        <div class="left">
+                            <div class="icon">
+                                <img src="/public/assets/img/st2_L.png" alt="">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <h4 class="title">Biglietti acquistati</h4>
+                            <div class="count">
+                                <img src="/public/assets/img/tikit-icon.png" alt="">
+                                <span>120</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-staticstics">
+                        <div class="left">
+                            <div class="icon">
+                                <img src="/public/assets/img/st2_empty.png" alt="">
+                            </div>
+                        </div>
+                        <div class="right">
+                            <h4 class="title">I miei biglietti</h4>
+                            <div class="count">
+                                <img src="/public/assets/img/tikit-icon.png" alt="">
+                                <span>02</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--  Lottery Staticstics Area Start -->
+
+
+
+<!-- Recent Winners Area Start -->
+<section class="recent-winners">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10">
+                <div class="section-heading">
+                    <h5 class="subtitle">
+                        Try to Check out our
+                    </h5>
+                    <h2 class="title">
+                            Recent Winners
+                    </h2>
+                    <p class="text">
+                        We update our site regularly; more and more winners are added every day! To locate the most recent winner's information
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div  *ngFor="let premio of elencoUltimiPremi" class="col-lg-4">
+                <div class="single-winer">
+                    <div class="top-area">
+                        <div class="left">
+                            <h4 class="position">
+                                    #{{premio.posizione}}
+                            </h4>
+                            <h4 class="name">
+                                    {{premio.nomepremio}}
+                            </h4>
+                            <p class="date">
+                                    {{premio.descrizione}}
+                            </p>
+                        </div>
+                        <div class="right">
+                            <p class="id">#{{premio.numerovincitore}}</p>
+                        </div>
+                    </div>
+                    <div class="bottom-area">
+                        <div class="left">{{premio.nomevincitore}}</div>
+                        <div class="right">
+                                <img src="{{premio.immaginepremio}}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-xl-center">
+                <a class="mybtn2" (click)="scrollToElement(listapremi)">Vedi tutti</a>
+            </div>
+        </div>
+    </div>
+</section> 
+<!-- Recent Winners Area End -->
+
+
 <!-- Lista Premi Area Start -->
 <section class="activities">
     <img class="shape shape1" src="/public/assets/img/shape1.png" alt="">
@@ -72,10 +202,10 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all-bets" role="tabpanel" aria-labelledby="pills-all-bets-tab">
                         <div class="responsive-table">
-                            <table class="table">
+                            <table class="table" #listapremi>
                             <thead>
                                 <tr>
-                                <th scope="col">POSIZIONE</th>
+                                <th scope="col">POS.</th>
                                 <th scope="col">PREMIO</th>
                                 <th scope="col">VINCITORE</th>
                                 </tr>

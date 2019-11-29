@@ -1146,6 +1146,9 @@
     -ms-flex-pack: justify;
     justify-content: space-between;
     margin-bottom: 6px; }
+    .single-winer .top-area .left .position {
+        color: #ff344d;
+    }
     .single-winer .top-area .left .name {
       font-size: 24px;
       line-height: 34px;
