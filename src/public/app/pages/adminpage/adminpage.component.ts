@@ -1,4 +1,3 @@
-import { ImageService } from './../../services/image.service';
 import { PremiService } from './../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 
@@ -22,12 +21,12 @@ export const IMAGE_WIDTH_PREVIEW = 150;
 })
 export class AdminpageComponent implements OnInit, OnDestroy {
     loading = false;
-    selectedFile: File;
     nome: string;
     posizione: string;
     descrizione: string;
     imagePreview: any;
-    isLogged = this.rootService.logged;
+    imageToUpload: any;
+    isLogged: boolean;
     errorMessage = '';
     public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
@@ -35,23 +34,23 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     isNomeValido = true;
     isPosizioneValida = true;
     isImmagineValida = true;
-    isImmagineModificata = false;
 
     private idPremio = null;
     private sub: any;
 
     constructor(
-        private imageService: ImageService,
         private ng2ImgMax: Ng2ImgMaxService,
         public sanitizer: DomSanitizer,
         private premiService: PremiService,
         private route: ActivatedRoute,
         private rootService: RootService,
-        private userService: UserService, ) { }
+        private userService: UserService) { }
 
     ngOnInit() {
+        this.isLogged = this.rootService.logged;
+
         this.sub = this.route.params.subscribe(params => {
-            this.idPremio = params['id']; // (+) converts string 'id' to a number
+            this.idPremio = params['id'];
 
             if (this.idPremio) {
                 this.premiService.getPremioById(this.idPremio).subscribe(
@@ -61,13 +60,24 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                         this.nome = res.nomepremio;
                         this.posizione = res.posizione + '';
                         this.descrizione = res.descrizionepremio;
-                        fetch(res.immaginepremio)
+                        this.imageToUpload = res.immaginebase64;
+                        fetch(res.immaginebase64)
                             .then(res =>
                                 res.blob()
                             ) // Gets the response and returns it as a blob
                             .then(blob => {
-                                this.selectedFile = new File([blob], res.immaginepremio);
-                                this.getImagePreview(this.selectedFile);
+                                const image = new File([blob], res.immaginebase64, blob);
+
+                                this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
+                                    result => {
+                                        this.loading = false;
+                                        this.imagePreview = URL.createObjectURL(result);
+                                    },
+                                    error => {
+                                        this.loading = false;
+                                        console.log('Resize preview', error);
+                                    }
+                                );
                             });
 
                     },
@@ -76,7 +86,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     }
                 );
             }
-            // In a real app: dispatch action to load the details here.
         });
     }
 
@@ -85,7 +94,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     }
 
     onFileChanged(event) {
-        this.selectedFile = event.target.files[0];
         this.loading = true;
         let image = event.target.files[0];
 
@@ -94,13 +102,12 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
         this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_UPLOAD).subscribe(
             result => {
-                this.selectedFile = new File([result], result.name);
-                this.isImmagineModificata = true;
+                this.getImageToUpload(new File([result], result.name, result));
                 this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
                     result => {
                         this.isImmagineValida = true;
                         this.loading = false;
-                        this.getImagePreview(new File([result], result.name));
+                        this.imagePreview = URL.createObjectURL(result);
                     },
                     error => {
                         this.isImmagineValida = false;
@@ -117,11 +124,12 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         );
     }
 
-    getImagePreview(file: File) {
+    getImageToUpload(file: File) {
         const reader: FileReader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-            this.imagePreview = reader.result;
+            console.log("Converted Base64 version is " + reader.result);
+            this.imageToUpload = reader.result;
         };
     }
 
@@ -144,7 +152,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     changeFields(form) {
         this.changeName(form);
         this.changePosizione(form);
-        if (this.selectedFile && this.selectedFile.name) {
+        if (this.imagePreview) {
             this.isImmagineValida = true;
         } else {
             this.isImmagineValida = false;
@@ -160,28 +168,15 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             premio.nomepremio = this.nome;
             premio.posizione = parseInt(this.posizione);
             premio.descrizionepremio = this.descrizione;
+            premio.immaginebase64 = this.imageToUpload;
 
             console.log(premio);
 
             if (!this.idPremio) {
-                const uploadFile = new FormData();
-                uploadFile.append('file', this.selectedFile, this.selectedFile.name);
-
-                // this.http is the injected HttpClient
-                this.imageService.sendImage(uploadFile).subscribe(
+                this.premiService.postPremio(premio).subscribe(
                     res => {
+                        this.loading = false;
                         console.log(res);
-                        premio.immaginepremio = res.file_path;
-                        this.premiService.postPremio(premio).subscribe(
-                            res => {
-                                this.loading = false;
-                                console.log(res);
-                            },
-                            err => {
-                                this.loading = false;
-                                console.log(err);
-                            }
-                        );
                     },
                     err => {
                         this.loading = false;
@@ -189,42 +184,17 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     }
                 );
             } else {
-                if (this.isImmagineModificata) {
-                    const uploadFile = new FormData();
-                    uploadFile.append('file', this.selectedFile, this.selectedFile.name);
-
-                    this.imageService.sendImage(uploadFile).subscribe(
-                        res => {
-                            console.log(res);
-                            premio.immaginepremio = res.file_path;
-                            this.premiService.putPremio(premio).subscribe(
-                                res => {
-                                    this.loading = false;
-                                    console.log(res);
-                                },
-                                err => {
-                                    this.loading = false;
-                                    console.log(err);
-                                }
-                            );
-                        },
-                        err => {
-                            this.loading = false;
-                            console.log(err);
-                        }
-                    );
-                } else {
-                    this.premiService.putPremio(premio).subscribe(
-                        res => {
-                            this.loading = false;
-                            console.log(res);
-                        },
-                        err => {
-                            this.loading = false;
-                            console.log(err);
-                        }
-                    );
-                }
+                premio.id = this.idPremio;
+                this.premiService.putPremio(premio).subscribe(
+                    res => {
+                        this.loading = false;
+                        console.log(res);
+                    },
+                    err => {
+                        this.loading = false;
+                        console.log(err);
+                    }
+                );
             }
         } else {
             console.log('Verifica i campi obbligatori');
@@ -237,6 +207,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             user => {
                 if (user.isValid) {
                     this.rootService.logged = true;
+                    this.isLogged = this.rootService.logged;
                 } else {
                     this.errorMessage = 'Invalid User';
                     console.log('Invalid User');

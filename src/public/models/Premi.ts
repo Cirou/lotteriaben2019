@@ -11,7 +11,7 @@ export class Premi {
 
   immaginepremio: string;
 
-  immaginebase64: string;
+  immaginebase64: any;
 
   numerovincitore: string;
 

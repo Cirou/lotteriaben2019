@@ -28,7 +28,7 @@
 
 
 <!-- Login Area Start -->
-<section *ngIf="!(rootService.logged)" class="contact">
+<section *ngIf="!isLogged" class="contact">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-12">
@@ -73,7 +73,7 @@
 
 
 <!-- Contact Area Start -->
-<section *ngIf="(rootService.logged)" class="contact">
+<section *ngIf="isLogged" class="contact">
     <div class="container">
         <div class="row justify-content-end">
             <div class="col-lg-12">
@@ -83,14 +83,14 @@
                             Inserimento di un premio
                         </h4>
                           <form action="#">
-                            <span style="font-size: 0.6em; color:red" *ngIf="!isNomeValido">Campo obbligatorio</span>
+                            <span style="font-size: 0.6em; color: #ff344d" *ngIf="!isNomeValido">Campo obbligatorio</span>
                             <input type="text" class="input-field" placeholder="Nome del prodotto *" [(ngModel)]="nome" name="nome" (change)="changeName(this)">
 
-                            <span style="font-size: 0.6em; color:red" *ngIf="!isPosizioneValida">Campo obbligatorio</span>
+                            <span style="font-size: 0.6em; color:#ff344d" *ngIf="!isPosizioneValida">Campo obbligatorio</span>
                             <input type="number" class="input-field" placeholder="Posizione in classifica *" [(ngModel)]="posizione" name="posizione" (change)="changePosizione(this)">
                             <textarea class="input-field textarea" placeholder="Descrizione" [(ngModel)]="descrizione" name="descrizione"></textarea>
 
-                            <span style="font-size: 0.6em; color:red" *ngIf="!isImmagineValida">Campo obbligatorio</span>
+                            <span style="font-size: 0.6em; color:#ff344d" *ngIf="!isImmagineValida">Campo obbligatorio</span>
                             <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput
                                 accept="image/png, image/jpeg">
 
@@ -100,6 +100,7 @@
                                 </div>
                                 <div style="float: right;">
                                     <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
+                                    <div id="imgTest" style="display:none"></div>
                                 </div>
                             </div>
                             <div style="display: inline-block;width: 100%;">
