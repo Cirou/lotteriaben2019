@@ -1,7 +1,7 @@
 /* Contact Area Start */
 .contact {
     padding: 112px 0px 150px;
-    background: #EA4033;
+    background: #0b122e;
     position: relative; }
     .contact .left-img {
       position: absolute;
@@ -29,18 +29,18 @@
           width: 100%;
           border: 0px;
           height: 50px;
-          color: #8fe762;
+          color: #a1aed4;
           background: none;
           border-bottom: 1px solid rgba(255, 255, 255, 0.2);
           margin-bottom: 22px; }
           .contact .contact-form-wrapper .contact-box .input-field::-webkit-input-placeholder {
-            color: #8fe762; }
+            color: #a1aed4; }
           .contact .contact-form-wrapper .contact-box .input-field:-moz-placeholder {
-            color: #8fe762; }
+            color: #a1aed4; }
           .contact .contact-form-wrapper .contact-box .input-field::-moz-placeholder {
-            color: #8fe762; }
+            color: #a1aed4; }
           .contact .contact-form-wrapper .contact-box .input-field:-ms-input-placeholder {
-            color: #8fe762; }
+            color: #a1aed4; }
           .contact .contact-form-wrapper .contact-box .input-field.textarea {
             height: 120px;
             resize: none; }
