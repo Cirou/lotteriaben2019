@@ -7,7 +7,6 @@ import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 
-import { CookieService } from 'ngx-cookie-service';
 import { RootService } from '../../services/root.service';
 import { UserService } from '../../services/user.service';
 
@@ -30,13 +29,13 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     imagePreview: any;
     isLogged = false;
     errorMessage = '';
-    public id: FormControl = new FormControl('', [Validators.required]);
     public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
     //validation
     isNomeValido = true;
     isPosizioneValida = true;
     isImmagineValida = true;
+    isImmagineModificata = false;
 
     private idPremio = null;
     private sub: any;
@@ -47,7 +46,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         public sanitizer: DomSanitizer,
         private premiService: PremiService,
         private route: ActivatedRoute,
-        private cookieService: CookieService,
         private rootService: RootService,
         private userService: UserService, ) { }
 
@@ -97,6 +95,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_UPLOAD).subscribe(
             result => {
                 this.selectedFile = new File([result], result.name);
+                this.isImmagineModificata = true;
                 this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
                     result => {
                         this.isImmagineValida = true;
@@ -164,15 +163,58 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
             console.log(premio);
 
-            const uploadFile = new FormData();
-            uploadFile.append('file', this.selectedFile, this.selectedFile.name);
+            if (!this.idPremio) {
+                const uploadFile = new FormData();
+                uploadFile.append('file', this.selectedFile, this.selectedFile.name);
 
-            // this.http is the injected HttpClient
-            this.imageService.sendImage(uploadFile).subscribe(
-                res => {
-                    console.log(res);
-                    premio.immaginepremio = res.file_path;
-                    this.premiService.postPremio(premio).subscribe(
+                // this.http is the injected HttpClient
+                this.imageService.sendImage(uploadFile).subscribe(
+                    res => {
+                        console.log(res);
+                        premio.immaginepremio = res.file_path;
+                        this.premiService.postPremio(premio).subscribe(
+                            res => {
+                                this.loading = false;
+                                console.log(res);
+                            },
+                            err => {
+                                this.loading = false;
+                                console.log(err);
+                            }
+                        );
+                    },
+                    err => {
+                        this.loading = false;
+                        console.log(err);
+                    }
+                );
+            } else {
+                if (this.isImmagineModificata) {
+                    const uploadFile = new FormData();
+                    uploadFile.append('file', this.selectedFile, this.selectedFile.name);
+
+                    this.imageService.sendImage(uploadFile).subscribe(
+                        res => {
+                            console.log(res);
+                            premio.immaginepremio = res.file_path;
+                            this.premiService.putPremio(premio).subscribe(
+                                res => {
+                                    this.loading = false;
+                                    console.log(res);
+                                },
+                                err => {
+                                    this.loading = false;
+                                    console.log(err);
+                                }
+                            );
+                        },
+                        err => {
+                            this.loading = false;
+                            console.log(err);
+                        }
+                    );
+                } else {
+                    this.premiService.putPremio(premio).subscribe(
                         res => {
                             this.loading = false;
                             console.log(res);
@@ -182,12 +224,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                             console.log(err);
                         }
                     );
-                },
-                err => {
-                    this.loading = false;
-                    console.log(err);
                 }
-            );
+            }
         } else {
             console.log('Verifica i campi obbligatori');
         }
@@ -195,8 +233,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     login() {
         this.errorMessage = '';
-        this.rootService.loggedUserId = this.id.value;
-        this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
         this.userService.postUser(this.pwd.value).subscribe(
             user => {
                 if (user.isValid) {
