@@ -18,6 +18,21 @@ export let getPremi = (req: Request, res: Response) => {
 };
 
 /**
+ * GET /premi/posizione/:id
+ * retrieves the premi using the given id
+ */
+export let getPremiByPosizione = (req: Request, res: Response) => {
+
+  getRepository(Premi)
+  .createQueryBuilder('premi')
+  .where('premi.posizione = :id', { id: req.params.id })
+  .getMany().then(premi => {
+    res.send(premi);
+  }).catch(err => { console.log(err); });
+
+};
+
+/**
  * GET /premi/
  * retrieves the premi using the given name
  */
@@ -51,5 +66,21 @@ export let putPremi = (req: Request, res: Response) => {
       res.send(premi);
     }).catch(err => { console.log(err); });
 
+  }).catch(err => { console.log(err); });
+};
+
+/**
+ * DELETE /premi/:id
+ * retrieves the premi using the given id
+ */
+export let deletePremioById = (req: Request, res: Response) => {
+
+  getRepository(Premi).
+  createQueryBuilder('premi')
+  .delete()
+  .where('premi.id = :id', { id: req.params.id })
+  .execute()
+  .then(premi => {
+    res.send(premi);
   }).catch(err => { console.log(err); });
 };

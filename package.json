@@ -80,6 +80,7 @@
     "mysql": "^2.17.1",
     "ng2-img-max": "^2.1.18",
     "ngx-cookie-service": "^1.0.10",
+    "ngx-lightbox": "^2.1.1",
     "nodemailer": "^4.6.2",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
