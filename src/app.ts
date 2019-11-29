@@ -113,8 +113,8 @@ createConnection({
         // run app
         const httpServer = http.createServer(app);
         const httpsServer = https.createServer(credentials, app);
-        httpServer.listen(80);
-        httpsServer.listen(443);
+        httpServer.listen(4200);
+        httpsServer.listen(4443);
         console.log('Express application is up and running on port 80 and 443');
     })
     .catch(error => console.log('TypeORM connection error: ', error));
