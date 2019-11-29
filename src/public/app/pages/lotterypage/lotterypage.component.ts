@@ -101,7 +101,7 @@ export class LotterypageComponent implements OnInit {
                 this.message = 'CI SIAMO!';
                 clearInterval(this.intervalId);
             } else {
-                this.message = `${this.daysToPrint} D : `.concat(`${this.hoursToPrint} H : `).concat(`${this.minutesToPrint} M : `).concat(`${this.secondsToPrint} S`);
+                this.message = `${this.daysToPrint} G : `.concat(`${this.hoursToPrint} H : `).concat(`${this.minutesToPrint} M : `).concat(`${this.secondsToPrint} S`);
             }
         }, 1000);
 

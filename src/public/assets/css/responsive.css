@@ -124,6 +124,56 @@
           color: #f1f1f1; }
   
         
+/* Contact Area Start */
+.contact {
+    padding: 112px 0px 150px;
+    background: #0b122e;
+    position: relative; }
+    .contact .left-img {
+      position: absolute;
+      top: 375px;
+      left: 100px;
+      max-width: 520px; }
+    .contact .section-heading {
+      margin-bottom: 90px; }
+    .contact .contact-form-wrapper {
+      padding-right: 65px; }
+      .contact .contact-form-wrapper .contact-box {
+        position: relative;
+        z-index: 9;
+        background: #19254d;
+        padding: 32px 30px 40px;
+        -webkit-box-shadow: 0px 0px 0px 10px rgba(25, 37, 77, 0.2), 0px 0px 0px 20px rgba(25, 37, 77, 0.2), 0px 0px 0px 30px rgba(25, 37, 77, 0.2);
+        box-shadow: 0px 0px 0px 10px rgba(25, 37, 77, 0.2), 0px 0px 0px 20px rgba(25, 37, 77, 0.2), 0px 0px 0px 30px rgba(25, 37, 77, 0.2); }
+        .contact .contact-form-wrapper .contact-box .title {
+          font-size: 24px;
+          font-weight: 700;
+          line-height: 34px;
+          color: #fff;
+          margin-bottom: 16px; }
+        .contact .contact-form-wrapper .contact-box .input-field {
+          width: 100%;
+          border: 0px;
+          height: 50px;
+          color: #a1aed4;
+          background: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          margin-bottom: 22px; }
+          .contact .contact-form-wrapper .contact-box .input-field::-webkit-input-placeholder {
+            color: #a1aed4; }
+          .contact .contact-form-wrapper .contact-box .input-field:-moz-placeholder {
+            color: #a1aed4; }
+          .contact .contact-form-wrapper .contact-box .input-field::-moz-placeholder {
+            color: #a1aed4; }
+          .contact .contact-form-wrapper .contact-box .input-field:-ms-input-placeholder {
+            color: #a1aed4; }
+          .contact .contact-form-wrapper .contact-box .input-field.textarea {
+            height: 120px;
+            resize: none; }
+        .contact .contact-form-wrapper .contact-box .mybtn1 {
+          margin-top: 11px; }
+  
+  /* Contact Area End */
 
 
           /* Awards Area Start */
