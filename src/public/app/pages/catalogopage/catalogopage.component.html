@@ -49,9 +49,6 @@
                             <h4 class="title" title="{{premio.nomepremio}}">                            
                                 {{premio.nomepremio}}
                             </h4>
-                            <h5 class="description" title="{{premio.descrizionepremio}}">                            
-                                {{premio.descrizionepremio}}
-                            </h5>
                             <img src="{{premio.immaginepremio}}" (click)="open(i)">
                             <!-- <img src="{{premio.immaginepremio}}" alt=""> -->
 							<a [hidden]="!isAdminPage" [routerLink]="['/adminpage', premio.id]" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
