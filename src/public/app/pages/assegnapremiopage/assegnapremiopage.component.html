@@ -1,0 +1,80 @@
+<!-- Breadcrumb Area Start -->
+<section *ngIf="isAdminPage" class="breadcrumb-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4 class="title">
+                    Admin
+                </h4>
+                <ul class="breadcrumb-list">
+                    <li>
+                        <a href="/home">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li>
+                        <span><i class="fas fa-chevron-right"></i> </span>
+                    </li>
+                    <li>
+                        <a href="/adminpage">
+                            Admin
+                        </a>
+                    </li>
+                    <li>
+                        <span><i class="fas fa-chevron-right"></i> </span>
+                    </li>
+                    <li>
+                        Assegnazione Premi
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Area End -->
+
+
+<!-- Lista Premi Area Start -->
+<section *ngIf="isAdminPage" class="activities">
+      <div class="container">
+        <div class="row">            
+            <div class="col-lg-12">
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-all-bets" role="tabpanel" aria-labelledby="pills-all-bets-tab">
+                        <div class="responsive-table">
+                            <table class="table" #listapremi>
+                            <thead>
+                                <tr>
+                                <th scope="col">POS.</th>
+                                <th scope="col">PREMIO</th>
+                                <th scope="col">NUMERO TICKET</th>
+                                <th scope="col">NOME VINCITORE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let premio of elencoPremi">
+                                    <td>
+                                        #{{premio.posizione}}
+                                    </td>
+                                    <td>
+                                        <img src="{{premio.immaginepremio}}" alt="">
+                                        {{premio.nomepremio}}
+                                    </td>
+                                    <td>
+                                        <input type="text" class="input-field" placeholder="Numero ticket" [(ngModel)]="premio.numerovincitore" name="numerovincitore">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="input-field" placeholder="Nome vincitore" [(ngModel)]="premio.nomevincitore" name="numerovincitore">
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+<!-- Lista Premi Area End -->
