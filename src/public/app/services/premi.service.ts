@@ -19,7 +19,7 @@ export class PremiService {
       .get(this.premiUrl + idPremio)
       .pipe(
         map((response: Response) => response.json()),
-        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+        catchError((error: any) => Observable.throw(error || 'Server error')));
   }
 
   getAllPremi(): Observable<Premi[]> {
@@ -27,7 +27,7 @@ export class PremiService {
       .get(this.getAllPremiUrl)
       .pipe(
         map((response: Response) => response.json()),
-        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+        catchError((error: any) => Observable.throw(error || 'Server error')));
   }
 
   postPremio(premio: Premi): Observable<Premi> {
@@ -41,7 +41,7 @@ export class PremiService {
       .post(this.premiUrl, premio, httpOptions)
       .pipe(
         map((response: Response) => response.json()),
-        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+        catchError((error: any) => Observable.throw(error || 'Server error')));
   }
 
   deletePremio(premio: Premi): Observable<Premi> {
@@ -56,7 +56,7 @@ export class PremiService {
       .put(this.premiUrl, premio, httpOptions)
       .pipe(
         map((response: Response) => response.json()),
-        catchError((error: any) => Observable.throw(error.json().error || 'Server error')));
+        catchError((error: any) => Observable.throw(error || 'Server error')));
   }
 
 }

@@ -26,15 +26,15 @@ dotenv.config({ path: __dirname + '/../dev.env.example' });
 // note that it's not active database connection
 // TypeORM creates connection pools and uses them for your requests
 createConnection({
-  type: 'mysql',
-  host: 'database-1.csum6c43lqrx.us-east-1.rds.amazonaws.com',
-  port: 3306,
-  username: 'admin',
-  password: 'lotteriabeneficenza2019',
-  database: 'lotteriaben2019',
-  synchronize: false,
-  logging: false,
-  entities: ['./server/models/*.js']
+    type: 'mysql',
+    host: 'database-1.csum6c43lqrx.us-east-1.rds.amazonaws.com',
+    port: 3306,
+    username: 'admin',
+    password: 'lotteriabeneficenza2019',
+    database: 'lotteriaben2019',
+    synchronize: false,
+    logging: false,
+    entities: ['./server/models/*.js']
 })
     .then(async connection => {
         // create express app
@@ -83,17 +83,17 @@ createConnection({
         app.post('/upload', function(req, res) {
             upload(req, res, function(err) {
                 if (err) {
-                    res.json({ error_code: 1, err_desc: err });
+                    res.status(400).send({ error_code: 1, err_desc: err });
                     return;
                 }
-                res.json({ error_code: 0, err_desc: undefined });
+                res.json({ error_code: 0, file_path: '/uploads/' + req.file.filename, err_desc: undefined });
             });
         });
 
         /**
          * Primary app routes for Angular will catch all route
          * Keep this one as the last one
-        */
+         */
         app.get('*', function(req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });

@@ -14,8 +14,8 @@ export class ImageService {
 
     sendImage(uploadData: FormData) {
         return this.http.post(this.uploadUrl, uploadData).pipe(
-            map((response: Response) => response.json()),
-            catchError((error: any) => Observable.throw(error.json().error || 'Server error'))
+            map((response: any) => response.json()),
+            catchError((error: any) => Observable.throw(error || 'Server error'))
         );
     }
 }
