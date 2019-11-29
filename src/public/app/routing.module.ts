@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full'},
   { path: 'home', component: LotterypageComponent},
   { path: 'adminpage', component: AdminpageComponent },
+  { path: 'adminpage/:id', component: AdminpageComponent },
   { path: 'catalogo', component: CatalogopageComponent },
   { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];

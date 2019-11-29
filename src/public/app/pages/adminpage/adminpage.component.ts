@@ -2,9 +2,16 @@ import { ImageService } from './../../services/image.service';
 import { PremiService } from './../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
+
+import { CookieService } from 'ngx-cookie-service';
+import { RootService } from '../../services/root.service';
+import { UserService } from '../../services/user.service';
+
+import { FormControl, Validators } from '@angular/forms';
 
 export const IMAGE_WIDTH_UPLOAD = 500;
 export const IMAGE_WIDTH_PREVIEW = 150;
@@ -14,17 +21,69 @@ export const IMAGE_WIDTH_PREVIEW = 150;
     templateUrl: './adminpage.component.html',
     styleUrls: ['./adminpage.component.css']
 })
-export class AdminpageComponent implements OnInit {
+export class AdminpageComponent implements OnInit, OnDestroy {
     loading = false;
     selectedFile: File;
     nome: string;
     posizione: string;
     descrizione: string;
     imagePreview: any;
+    isLogged = this.rootService.logged;
+    errorMessage = '';
+    public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
-    constructor(private imageService: ImageService, private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private premiService: PremiService) {}
+    //validation
+    isNomeValido = true;
+    isPosizioneValida = true;
+    isImmagineValida = true;
 
-    ngOnInit() {}
+    private idPremio = null;
+    private sub: any;
+
+    constructor(
+        private imageService: ImageService,
+        private ng2ImgMax: Ng2ImgMaxService,
+        public sanitizer: DomSanitizer,
+        private premiService: PremiService,
+        private route: ActivatedRoute,
+        private cookieService: CookieService,
+        private rootService: RootService,
+        private userService: UserService, ) { }
+
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.idPremio = params['id']; // (+) converts string 'id' to a number
+
+            if (this.idPremio) {
+                this.premiService.getPremioById(this.idPremio).subscribe(
+                    res => {
+                        console.log(res);
+                        res = res[0];
+                        this.nome = res.nomepremio;
+                        this.posizione = res.posizione + '';
+                        this.descrizione = res.descrizionepremio;
+                        fetch(res.immaginepremio)
+                            .then(res =>
+                                res.blob()
+                            ) // Gets the response and returns it as a blob
+                            .then(blob => {
+                                this.selectedFile = new File([blob], res.immaginepremio);
+                                this.getImagePreview(this.selectedFile);
+                            });
+
+                    },
+                    err => {
+                        console.log(err);
+                    }
+                );
+            }
+            // In a real app: dispatch action to load the details here.
+        });
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
 
     onFileChanged(event) {
         this.selectedFile = event.target.files[0];
@@ -39,16 +98,19 @@ export class AdminpageComponent implements OnInit {
                 this.selectedFile = new File([result], result.name);
                 this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
                     result => {
+                        this.isImmagineValida = true;
                         this.loading = false;
                         this.getImagePreview(new File([result], result.name));
                     },
                     error => {
+                        this.isImmagineValida = false;
                         this.loading = false;
                         console.log('Resize 2 error', error);
                     }
                 );
             },
             error => {
+                this.isImmagineValida = false;
                 this.loading = false;
                 console.log('Resize 1 error', error);
             }
@@ -63,11 +125,38 @@ export class AdminpageComponent implements OnInit {
         };
     }
 
-    onUpload() {
-        if (this.nome && this.posizione && this.selectedFile && this.selectedFile.name) {
+    changeName(form) {
+        if (form.nome === undefined || form.nome === '') {
+            this.isNomeValido = false;
+        } else {
+            this.isNomeValido = true;
+        }
+    }
+
+    changePosizione(form) {
+        if (form.posizione === undefined || form.posizione === null) {
+            this.isPosizioneValida = false;
+        } else {
+            this.isPosizioneValida = true;
+        }
+    }
+
+    changeFields(form) {
+        this.changeName(form);
+        this.changePosizione(form);
+        if (this.selectedFile && this.selectedFile.name) {
+            this.isImmagineValida = true;
+        } else {
+            this.isImmagineValida = false;
+        }
+    }
+
+    onUpload(form) {
+        this.changeFields(form);
+        if (this.isNomeValido && this.isPosizioneValida && this.isImmagineValida) {
             this.loading = true;
 
-            let premio = new Premi();
+            const premio = new Premi();
             premio.nomepremio = this.nome;
             premio.posizione = parseInt(this.posizione);
             premio.descrizionepremio = this.descrizione;
@@ -101,5 +190,22 @@ export class AdminpageComponent implements OnInit {
         } else {
             console.log('Verifica i campi obbligatori');
         }
+    }
+
+    login() {
+        this.errorMessage = '';
+        this.userService.postUser(this.pwd.value).subscribe(
+            user => {
+                if (user.isValid) {
+                    this.rootService.logged = true;
+                } else {
+                    this.errorMessage = 'Invalid User';
+                    console.log('Invalid User');
+                }
+            },
+            err => {
+                console.log(err);
+            }
+        );
     }
 }

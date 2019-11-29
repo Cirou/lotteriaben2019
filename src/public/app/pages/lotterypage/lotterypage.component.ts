@@ -12,6 +12,7 @@ export class LotterypageComponent implements OnInit {
     constructor(private premiService: PremiService) { }
 
     elencoPremi: Premi[];
+    elencoUltimiPremi: Premi[];
 
     ngOnInit() {
 
@@ -20,6 +21,12 @@ export class LotterypageComponent implements OnInit {
         this.premiService.getAllPremi().subscribe(premi => {
             this.elencoPremi = premi;
             console.log(this.elencoPremi);
+            this.elencoUltimiPremi = this.elencoPremi.filter(function (el) {
+                return el.numerovincitore != null;
+            });
+            if(this.elencoUltimiPremi.length > 2) {
+                this.elencoUltimiPremi = this.elencoUltimiPremi.slice(0, 3);
+            }
         },
             err => {
                 console.log(err);
@@ -94,9 +101,14 @@ export class LotterypageComponent implements OnInit {
                 this.message = 'CI SIAMO!';
                 clearInterval(this.intervalId);
             } else {
-                this.message = `${this.daysToPrint} D : `.concat(`${this.hoursToPrint} H : `).concat(`${this.minutesToPrint} M : `).concat(`${this.secondsToPrint} S`);
+                this.message = `${this.daysToPrint} G : `.concat(`${this.hoursToPrint} H : `).concat(`${this.minutesToPrint} M : `).concat(`${this.secondsToPrint} S`);
             }
         }, 1000);
 
     }
+    
+    scrollToElement($element): void {
+        console.log($element);
+        $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+      }
 }

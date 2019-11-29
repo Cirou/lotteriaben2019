@@ -1,4 +1,5 @@
-import { getPremi, postPremi, putPremi, getAllPremi } from './server/controllers/PremiController';
+import { getPremi, getPremiByPosizione, postPremi, putPremi, deletePremioById, getAllPremi } from './server/controllers/PremiController';
+import { postUser } from './server/controllers/UserController';
 
 /**
  * All application routes.
@@ -8,6 +9,11 @@ export const AppRoutes = [
         path: '/premi/:id',
         method: 'get',
         action: getPremi
+    },
+    {
+        path: '/premi/posizione/:id',
+        method: 'get',
+        action: getPremiByPosizione
     },
     {
         path: '/premi',
@@ -23,6 +29,15 @@ export const AppRoutes = [
         path: '/premi',
         method: 'put',
         action: putPremi
+    },
+    {
+        path: '/premi/:id',
+        method: 'delete',
+        action: deletePremioById
+    },
+    {
+        path: '/user',
+        method: 'post',
+        action: postUser
     }
-
 ];

@@ -34,13 +34,15 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { PremiService } from './services/premi.service';
 import { RootService } from './services/root.service';
 import { ImageService } from './services/image.service';
-
+import { UserService } from './services/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
 import { DataPrintPipe } from './filters/data-print.pipe';
 
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { LightboxModule } from 'ngx-lightbox';
 
 @NgModule({
   declarations: [
@@ -69,12 +71,15 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    Ng2ImgMaxModule
+    Ng2ImgMaxModule,
+    LightboxModule
   ],
   providers: [
     PremiService,
     RootService,
-    ImageService
+    ImageService,
+    UserService,
+    CookieService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
