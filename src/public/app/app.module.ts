@@ -42,6 +42,7 @@ import { SearchFilterPipe } from './filters/search-filter.pipe';
 import { DataPrintPipe } from './filters/data-print.pipe';
 
 import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+import { LightboxModule } from 'ngx-lightbox';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    Ng2ImgMaxModule
+    Ng2ImgMaxModule,
+    LightboxModule
   ],
   providers: [
     PremiService,

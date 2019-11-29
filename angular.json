@@ -21,14 +21,16 @@
               "src/public/assets",
               "src/public/assets/mock",
               "src/public/favicon.ico",
-              "src/public/manifest.json"            ],
+              "src/public/manifest.json"
+            ],
             "styles": [
               "node_modules/tether/dist/css/tether.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/public/assets/css/responsive.css",
               "src/public/assets/css/styles.scss",
               "src/public/assets/css/theme.scss",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/ngx-lightbox/lightbox.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.js",
