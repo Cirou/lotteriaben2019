@@ -137,8 +137,8 @@ typeorm_1.createConnection({
         };
         httpServer = http.createServer(app);
         httpsServer = https.createServer(credentials, app);
-        httpServer.listen(80);
-        httpsServer.listen(443);
+        httpServer.listen(4200);
+        httpsServer.listen(4443);
         console.log('Express application is up and running on port 80 and 443');
         return [2 /*return*/];
     });
