@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class RootService {
 
-  private _logged: boolean = false;
+  private _logged: boolean;
   private _mocked: boolean = true;
 
   constructor() {
