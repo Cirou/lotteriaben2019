@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 // PAGES
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
+import { AssegnapremiopageComponent } from './pages/assegnapremiopage/assegnapremiopage.component';
 import { AdminpageComponent } from './pages/adminpage/adminpage.component';
 import { CatalogopageComponent } from './pages/catalogopage/catalogopage.component';
 
@@ -49,6 +50,7 @@ import { LightboxModule } from 'ngx-lightbox';
     // COMPONENTS
     // nothing
     // PAGES
+    AssegnapremiopageComponent,
     LotterypageComponent,
     AdminpageComponent,
     CatalogopageComponent,

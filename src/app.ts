@@ -99,22 +99,9 @@ createConnection({
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
 
-        // Certificate
-        const privateKey = fs.readFileSync('../privkey.pem', 'utf8');
-        const certificate = fs.readFileSync('../cert.pem', 'utf8');
-        const ca = fs.readFileSync('../chain.pem', 'utf8');
-
-        const credentials = {
-            key: privateKey,
-            cert: certificate,
-            ca: ca
-        };
-
         // run app
         const httpServer = http.createServer(app);
-        const httpsServer = https.createServer(credentials, app);
         httpServer.listen(4200);
-        httpsServer.listen(4443);
-        console.log('Express application is up and running on port 4200 and 4443');
+        console.log('Express application is up and running on port 4200');
     })
     .catch(error => console.log('TypeORM connection error: ', error));

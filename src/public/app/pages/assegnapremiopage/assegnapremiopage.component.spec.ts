@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CibiDialogComponent } from './cibi-dialog.component';
+import { AssegnapremiopageComponent } from './lotterypage.component';
 
-describe('CibiDialogComponent', () => {
-  let component: CibiDialogComponent;
-  let fixture: ComponentFixture<CibiDialogComponent>;
+describe('AssegnapremiopageComponent', () => {
+  let component: AssegnapremiopageComponent;
+  let fixture: ComponentFixture<AssegnapremiopageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CibiDialogComponent ]
+      declarations: [ AssegnapremiopageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CibiDialogComponent);
+    fixture = TestBed.createComponent(AssegnapremiopageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
