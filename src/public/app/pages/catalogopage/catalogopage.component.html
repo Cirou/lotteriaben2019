@@ -8,17 +8,12 @@
                 </h4>
                 <ul class="breadcrumb-list">
                     <li>
-                        <a href="/home">
-                                <i class="fas fa-home"></i>
-                                Home
-                        </a>
+                        <a href="/home"><i class="fas fa-home"></i>Home</a>
                     </li>
                     <li>
                         <span><i class="fas fa-chevron-right"></i> </span>
                     </li>
-                    <li>
-                        Catalogo
-                    </li>
+                    <li>Catalogo</li>
                 </ul>
             </div>
         </div>
@@ -50,14 +45,15 @@
                             <p>
                                 #{{premio.posizione}}
                             </p>
-                            <h4 class="title">                            
+                            <h4 class="title" title="{{premio.nomepremio}}">                            
                                 {{premio.nomepremio}}
                             </h4>
-                            <h5 class="description">                            
+                            <h5 class="description" title="{{premio.descrizionepremio}}">                            
                                 {{premio.descrizionepremio}}
                             </h5>
                             <img src="{{premio.immaginepremio}}" alt="">
-							<a [style.display]="isAdminPage?'none':'inherit'" href="#" class="mybtn2"><i class="fa fa-trash"></i></a>
+							<a [hidden]="!isAdminPage" href="#" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
+							<a [hidden]="!isAdminPage" href="#" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
                         </div>
                     </div>
                 </div>
