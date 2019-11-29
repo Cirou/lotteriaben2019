@@ -47,7 +47,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         private premiService: PremiService,
         private route: ActivatedRoute,
         private cookieService: CookieService,
-        private rootService: RootService,
+        public rootService: RootService,
         private userService: UserService, ) { }
 
     ngOnInit() {

@@ -20,7 +20,6 @@ package-lock.json
 # Dependency directory
 node_modules
 bower_components
-dist
 
 # Editors
 .idea
