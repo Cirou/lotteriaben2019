@@ -28,6 +28,11 @@ export class UserService {
         })
     };
 
+    if(this.rootService.mocked) {
+        return this.http.get(this.getValidUserUrl).pipe(
+            map((response: Response) => response.json()),
+            catchError((error: any) => Observable.throw(error || 'Server error'))
+    }
     return this.http.post(this.getValidUserUrl, {'pwd': pwd}, httpOptions).pipe(
         map((response: Response) => response.json()),
         catchError((error: any) => Observable.throw(error || 'Server error'))
