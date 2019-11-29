@@ -53,6 +53,7 @@ createConnection({
         app.use(lusca.xssProtection(true));
         app.use(express.static(path.join(__dirname, '.well-known'), { maxAge: 31557600000 }));
         app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+        app.use(express.static(path.join(path.normalize(__dirname + '../'), 'uploads'), { maxAge: 31557600000 }));
 
         /**
          * API routes.
@@ -66,7 +67,7 @@ createConnection({
         const storage = multer.diskStorage({
             // multers disk storage settings
             destination: function(req, file, cb) {
-                cb(undefined, './uploads/');
+                cb(undefined, './public/uploads/');
             },
             filename: function(req, file, cb) {
                 const datetimestamp = Date.now();
