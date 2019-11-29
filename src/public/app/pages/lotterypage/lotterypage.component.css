@@ -863,7 +863,7 @@
 /* Featured Game Area Start */
 .featured-game {
   padding: 0px 0px 120px;
-  /* background: url(../images/featuredgame-bg.jpg); */
+  background: url(../../../assets/img/featuredgame-bg.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }
@@ -1120,7 +1120,7 @@
 /* Get Start Area End */
 /*  Recent Winners Area Start */
 .recent-winners {
-  background: #070B28;
+  background: #0b122e;
   padding: 112px 0px 0px; }
   .recent-winners .section-heading {
     margin-bottom: 58px; }
