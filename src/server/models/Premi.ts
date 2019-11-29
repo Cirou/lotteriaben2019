@@ -12,6 +12,9 @@ export class Premi {
   @Column({ name: 'nomepremio', type: 'varchar' })
   nomepremio: string;
 
+  @Column({ name: 'descrizionepremio', type: 'varchar' })
+  descrizionepremio: string;
+
   @Column({ name: 'immaginepremio', type: 'varchar' })
   immaginepremio: string;
 

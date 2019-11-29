@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { HttpClientModule } from '@angular/common/http';
 
 // FIREBASE
 import { AngularFireModule } from 'angularfire2';
@@ -16,82 +16,45 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // PAGES
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
-import { ProfilepageComponent } from './pages/profilepage/profilepage.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { SettingspageComponent } from './pages/settingspage/settingspage.component';
-import { LoginpageComponent } from './pages/loginpage/loginpage.component';
-import { GroupspageComponent } from './pages/groupspage/groupspage.component';
-import { GroupdetailpageComponent } from './pages/groupdetailpage/groupdetailpage.component';
-import { PollpageComponent } from './pages/pollpage/pollpage.component';
-import { SearchpageComponent } from './pages/searchpage/searchpage.component';
-import { PreferencespageComponent } from './pages/preferencespage/preferencespage.component';
-import { SearchgrouppageComponent } from './pages/searchgrouppage/searchgrouppage.component';
+import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
+import { AdminpageComponent } from './pages/adminpage/adminpage.component';
+import { CatalogopageComponent } from './pages/catalogopage/catalogopage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
 import { MaterialDesignModule } from './material-design.module';
 
+// IMAGE RESIZING
+import { Ng2ImgMaxModule } from 'ng2-img-max';
+
 // CUSTOM COMPONENTS
-import { DrawerComponent } from './components/drawer/drawer.component';
-import { ListviewComponent } from './components/listview/listview.component';
-import { ChatComponent } from './components/chat/chat.component';
-import { SearchbarComponent } from './components/searchbar/searchbar.component';
-import { CibiDialogComponent } from './components/cibi-dialog/cibi-dialog.component';
-import { TipDialogComponent } from './components/tip-dialog/tip-dialog.component';
-import { LoaderComponent } from './components/loader/loader.component';
-import { LocationDialogComponent } from './components/location-dialog/location-dialog.component';
-import { AlertpopupComponent } from './components/alertpopup/alertpopup.component';
-import { ChatMessageComponent } from './components/chat-message/chat-message.component';
-import { GroupdialogComponent } from './components/groupdialog/groupdialog.component';
-import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
-import { TipDialogPreferencesComponent } from './components/tip-dialog-preferences/tip-dialog-preferences.component';
+//nothing
 
 // CUSTOM SERVICES
-import { AuthService } from './services/auth.service';
-import { UserService } from './services/user.service';
-import { GroupService } from './services/group.service';
-import { FoodService } from './services/food.service';
-import { LoaderService } from './services/loader.service';
-import { SearchService } from './services/search.service';
+import { PremiService } from './services/premi.service';
 import { RootService } from './services/root.service';
-import { CookieService } from 'ngx-cookie-service';
-import { VotationService } from './services/votation.service';
+import { ImageService } from './services/image.service';
+
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
 import { DataPrintPipe } from './filters/data-print.pipe';
 
+import { ScrollTopComponent } from './components/scroll-top/scroll-top.component';
+
 @NgModule({
   declarations: [
     // COMPONENTS
-    ChatComponent,
-    SearchbarComponent,
-    DrawerComponent,
-    ListviewComponent,
-    CibiDialogComponent,
-    TipDialogComponent,
-    LoaderComponent,
-    LocationDialogComponent,
-    AlertpopupComponent,
-    GroupdialogComponent,
-    LoginDialogComponent,
-    TipDialogPreferencesComponent,
+    // nothing
     // PAGES
+    LotterypageComponent,
+    AdminpageComponent,
+    CatalogopageComponent,
     MainpageComponent,
-    ProfilepageComponent,
-    HomepageComponent,
-    SettingspageComponent,
-    LoginpageComponent,
-    GroupspageComponent,
-    GroupdetailpageComponent,
-    PollpageComponent,
-    SearchpageComponent,
-    SearchgrouppageComponent,
-    ChatMessageComponent,
-    PreferencespageComponent,
     // PIPE
     SearchFilterPipe,
-    DataPrintPipe
+    DataPrintPipe,
+    ScrollTopComponent
   ],
   imports: [
     RoutingModule,
@@ -99,27 +62,23 @@ import { DataPrintPipe } from './filters/data-print.pipe';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    HttpClientModule,
     MaterialDesignModule,
     ReactiveFormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    Ng2ImgMaxModule
   ],
   providers: [
-    AuthService,
-    UserService,
-    GroupService,
-    FoodService,
-    LoaderService,
-    SearchService,
-    CookieService,
+    PremiService,
     RootService,
-    VotationService
+    ImageService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
-  entryComponents: [CibiDialogComponent, LocationDialogComponent, TipDialogComponent, GroupdialogComponent, LoginDialogComponent, TipDialogPreferencesComponent]
+  entryComponents: []
 })
 export class AppModule {
 

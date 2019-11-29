@@ -10,7 +10,7 @@ export const AppRoutes = [
         action: getPremi
     },
     {
-        path: '/premi/',
+        path: '/premi',
         method: 'get',
         action: getAllPremi
     },

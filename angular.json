@@ -25,8 +25,10 @@
             "styles": [
               "node_modules/tether/dist/css/tether.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/public/assets/css/responsive.css",
               "src/public/assets/css/styles.scss",
-              "src/public/assets/css/theme.scss"
+              "src/public/assets/css/theme.scss",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.js",
@@ -85,7 +87,8 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.slim.js",
               "node_modules/tether/dist/js/tether.js",
-              "node_modules/bootstrap/dist/js/bootstrap.bundle.js"
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.js",
+              "node_modules/blueimp-canvas-to-blob/js/canvas-to-blob.min.js"
             ],
             "styles": [
               "node_modules/tether/dist/css/tether.css",
