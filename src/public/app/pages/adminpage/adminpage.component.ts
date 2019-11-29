@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
 
+import { CookieService } from 'ngx-cookie-service';
+import { RootService } from '../../services/root.service';
+import { UserService } from '../../services/user.service';
+
+import { FormControl, Validators } from '@angular/forms';
+
 export const IMAGE_WIDTH_UPLOAD = 500;
 export const IMAGE_WIDTH_PREVIEW = 150;
 
@@ -21,8 +27,19 @@ export class AdminpageComponent implements OnInit {
     posizione: string;
     descrizione: string;
     imagePreview: any;
+    isLogged = false;
+    errorMessage = '';
+    public id: FormControl = new FormControl('', [Validators.required]);
+    public pwd: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
-    constructor(private imageService: ImageService, private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer, private premiService: PremiService) {}
+    constructor(private imageService: ImageService,
+        private ng2ImgMax: Ng2ImgMaxService,
+         public sanitizer: DomSanitizer,
+         private premiService: PremiService,
+         private cookieService: CookieService,
+         private rootService: RootService,
+         private userService: UserService,
+         ) { }
 
     ngOnInit() {}
 
@@ -67,7 +84,7 @@ export class AdminpageComponent implements OnInit {
         if (this.nome && this.posizione && this.selectedFile && this.selectedFile.name) {
             this.loading = true;
 
-            let premio = new Premi();
+            const premio = new Premi();
             premio.nomepremio = this.nome;
             premio.posizione = parseInt(this.posizione);
             premio.descrizionepremio = this.descrizione;
@@ -102,4 +119,32 @@ export class AdminpageComponent implements OnInit {
             console.log('Verifica i campi obbligatori');
         }
     }
+
+
+    login() {
+        this.errorMessage = '';
+        this.rootService.loggedUserId = this.id.value;
+        this.cookieService.set('lotteriaben2019_stay_logged_id', this.id.value, 10000);
+        this.userService.getAllUsers().subscribe(
+          users => {
+            let found = false;
+            users.forEach(user => {
+              if (user.id === this.rootService.loggedUserId
+                && user.pwd === this.pwd.value ) {
+                found = true;
+                return;
+              }
+            });
+            if (found) {
+            //   this.goToHome();
+                this.isLogged = true;
+            } else {
+              this.errorMessage = 'Invalid User';
+              console.log('Invalid User');
+            }
+          },
+          err => {
+            console.log(err);
+          });
+      }
 }

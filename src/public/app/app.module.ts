@@ -34,7 +34,8 @@ import { Ng2ImgMaxModule } from 'ng2-img-max';
 import { PremiService } from './services/premi.service';
 import { RootService } from './services/root.service';
 import { ImageService } from './services/image.service';
-
+import { UserService } from './services/user.service';
+import { CookieService } from 'ngx-cookie-service';
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
@@ -74,7 +75,9 @@ import { ScrollTopComponent } from './components/scroll-top/scroll-top.component
   providers: [
     PremiService,
     RootService,
-    ImageService
+    ImageService,
+    UserService,
+    CookieService
   ],
   exports: [RouterModule],
   bootstrap: [MainpageComponent],
