@@ -33,6 +33,21 @@ export class AssegnapremiopageComponent implements OnInit {
             console.log(this.rootService.logged);
     }
 
+    assegna(premio) {
+        if (premio.numerovincitore && premio.nomevincitore) {
+            this.premiService.putPremio(premio).subscribe(
+                res => {
+                    console.log(res);
+                },
+                err => {
+                    console.log(err);
+                }
+            );
+        } else {
+            console.log('Verifica i campi obbligatori');
+        }
+    }
+
     ngOnDestroy() {  }
 }
 

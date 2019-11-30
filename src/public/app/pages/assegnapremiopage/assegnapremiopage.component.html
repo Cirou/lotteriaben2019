@@ -48,8 +48,9 @@
                                 <tr>
                                 <th scope="col">POS.</th>
                                 <th scope="col">PREMIO</th>
-                                <th scope="col">NUMERO TICKET <i class="fas fa-pen"></i></th>
-                                <th scope="col">NOME VINCITORE  <i class="fas fa-pen"></i></th>
+                                <th scope="col">NUMERO TICKET <i class="fas fa-edit"></i></th>
+                                <th scope="col">NOME VINCITORE  <i class="fas fa-edit"></i></th>
+                                <th scope="col"> </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,6 +67,9 @@
                                     </td>
                                     <td>
                                         <input type="text" class="input-field" placeholder="Nome vincitore" [(ngModel)]="premio.nomevincitore" name="numerovincitore">
+                                    </td>
+                                    <td>
+                                        <a (click)="assegna(premio)" class="mybtn2 text-center"><i class="fa fa-user-edit"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
