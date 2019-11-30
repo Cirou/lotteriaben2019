@@ -863,7 +863,7 @@
 /* Featured Game Area Start */
 .featured-game {
   padding: 0px 0px 120px;
-  /* background: url(../images/featuredgame-bg.jpg); */
+  background: url(../../../assets/img/featuredgame-bg.jpg);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat; }
@@ -971,9 +971,19 @@
 /* Whay Choose us Area End */
 /* activities Area Start */
 .activities {
+  background: #0b122e;
   padding: 110px 0px 113px;
   position: relative;
   overflow: hidden; }
+  .activities input {
+    overflow: visible;
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+color:white}
+   .activities input:hover, .activities input:focus {
+       background: #070B28;   }
   .activities .shape {
     position: absolute;
     left: 50%;

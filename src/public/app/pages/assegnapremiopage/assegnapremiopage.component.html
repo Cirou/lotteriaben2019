@@ -8,7 +8,7 @@
                 </h4>
                 <ul class="breadcrumb-list">
                     <li>
-                        <a href="/home">
+                        <a [routerLink]="['/home']">
                             <i class="fas fa-home"></i>
                             Home
                         </a>
@@ -17,7 +17,7 @@
                         <span><i class="fas fa-chevron-right"></i> </span>
                     </li>
                     <li>
-                        <a href="/adminpage">
+                        <a  [routerLink]="['/adminpage']">
                             Admin
                         </a>
                     </li>
@@ -48,8 +48,8 @@
                                 <tr>
                                 <th scope="col">POS.</th>
                                 <th scope="col">PREMIO</th>
-                                <th scope="col">NUMERO TICKET</th>
-                                <th scope="col">NOME VINCITORE</th>
+                                <th scope="col">NUMERO TICKET <i class="fas fa-pen"></i></th>
+                                <th scope="col">NOME VINCITORE  <i class="fas fa-pen"></i></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -58,7 +58,7 @@
                                         #{{premio.posizione}}
                                     </td>
                                     <td>
-                                        <img src="{{premio.immaginepremio}}" alt="">
+                                        <img src="{{premio.immaginebase64}}" alt="">
                                         {{premio.nomepremio}}
                                     </td>
                                     <td>
