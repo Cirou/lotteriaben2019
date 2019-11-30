@@ -12,13 +12,13 @@ export class RisultativenditepageComponent implements OnInit {
     constructor(private raccoltaService: RaccoltaService, private rootService: RootService) {}
 
     raccolta: Raccolta;
-    isAdminPage: boolean;
+    isLogged: boolean;
     loading = false;
 
     ngOnInit() {
         console.log('Risultativendite page');
 
-        this.isAdminPage = this.rootService.logged;
+        this.isLogged = this.rootService.logged;
         this.loading = true;
 
         this.raccoltaService.getRaccolta().subscribe(
