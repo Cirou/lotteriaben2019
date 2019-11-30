@@ -53,6 +53,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             this.idPremio = params['id'];
 
             if (this.idPremio) {
+                this.loading = true;
                 this.premiService.getPremioById(this.idPremio).subscribe(
                     res => {
                         console.log(res);
@@ -82,6 +83,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
                     },
                     err => {
+                        this.loading = false;
                         console.log(err);
                     }
                 );
@@ -177,6 +179,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     res => {
                         this.loading = false;
                         console.log(res);
+                        this.reset();
                     },
                     err => {
                         this.loading = false;
@@ -189,6 +192,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     res => {
                         this.loading = false;
                         console.log(res);
+                        this.reset();
                     },
                     err => {
                         this.loading = false;
@@ -199,6 +203,15 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         } else {
             console.log('Verifica i campi obbligatori');
         }
+    }
+
+    reset() {
+        this.idPremio = null;
+        this.nome = '';
+        this.posizione = '';
+        this.descrizione = '';
+        this.imageToUpload = null;
+        this.imagePreview = null;
     }
 
     login() {

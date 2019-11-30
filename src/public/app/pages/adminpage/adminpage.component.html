@@ -8,7 +8,7 @@
                 </h4>
                 <ul class="breadcrumb-list">
                     <li>
-                        <a href="/home">
+                        <a [routerLink]="['/home']">
                             <i class="fas fa-home"></i>
                             Home
                         </a>
@@ -77,36 +77,47 @@
             <div class="col-lg-12">
                 <div class="contact-form-wrapper">
                     <div class="contact-box">
-                        <h4 class="title">
+                        <h4 class="title" *ngIf="!idPremio">
                             Inserimento di un premio
                         </h4>
-                          <form action="#">
-                            <span style="font-size: 0.6em; color: #ff344d" *ngIf="!isNomeValido">Campo obbligatorio</span>
+                        <h4 class="title" *ngIf="idPremio">
+                            Aggiornamento di un premio
+                        </h4>
+                        <form action="#">
+                            <span class="field-error" *ngIf="!isNomeValido">Campo obbligatorio</span>
                             <input type="text" class="input-field" placeholder="Nome del prodotto *" [(ngModel)]="nome" name="nome" (change)="changeName(this)">
 
-                            <span style="font-size: 0.6em; color:#ff344d" *ngIf="!isPosizioneValida">Campo obbligatorio</span>
-                            <input type="number" class="input-field" placeholder="Posizione in classifica *" [(ngModel)]="posizione" name="posizione" (change)="changePosizione(this)">
+                            <span class="field-error" *ngIf="!isPosizioneValida">Campo obbligatorio</span>
+                            <input type="number" class="input-field" placeholder="Posizione in classifica *" [(ngModel)]="posizione" name="posizione" (change)="changePosizione(this)" min="1" max="90">
                             <textarea class="input-field textarea" placeholder="Descrizione" [(ngModel)]="descrizione" name="descrizione"></textarea>
 
-                            <span style="font-size: 0.6em; color:#ff344d" *ngIf="!isImmagineValida">Campo obbligatorio</span>
+                            <span class="field-error" *ngIf="!isImmagineValida">Campo obbligatorio</span>
                             <input style="display: none" type="file" (change)="onFileChanged($event)" #fileInput
                                 accept="image/png, image/jpeg">
 
-                            <div style="display: inline-block;width: 100%;">
-                                <div style="float: left;">
-                                    <button (click)="fileInput.click()" class="mybtn2">Sfoglia immagine*</button>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 text-center" *ngIf="!imagePreview">
+                                        <button (click)="fileInput.click()" class="mybtn2">Sfoglia immagine*</button>
+                                    </div>
+                                    <div class="col-lg-6 text-center" *ngIf="imagePreview">
+                                        <button (click)="fileInput.click()" class="mybtn2">Cambia immagine*</button>
+                                    </div>
+                                    <div class="col-lg-6 text-center" *ngIf="imagePreview">
+                                        <img [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
+                                    </div>
                                 </div>
-                                <div style="float: right;">
-                                    <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
-                                    <div id="imgTest" style="display:none"></div>
-                                </div>
-                            </div>
-                            <div style="display: inline-block;width: 100%;">
-                                <div style="float: left;">
-                                    <img *ngIf="loading" src="/public/assets/img/loader.gif" style="width: 70px;" />
-                                </div>
-                                <div style="float: right;padding-top: 3em;">
-                                    <button (click)="onUpload(this)" class="mybtn1">Inserisci il premio</button>
+                                <div class="row mt-5">
+                                    <div class="col-lg-12 text-center" *ngIf="loading">
+                                        <div  class="loader loader-1">
+                                            <div class="loader-outter"></div>
+                                            <div class="loader-inner"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 text-center" *ngIf="!loading">
+                                        <button (click)="onUpload(this)" class="mybtn1" *ngIf="!idPremio">Inserisci</button>
+                                        <button (click)="onUpload(this)" class="mybtn1" *ngIf="idPremio">Aggiorna</button>
+                                    </div>
                                 </div>
                             </div>
                         </form>
@@ -118,14 +129,14 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6 text-center mt-5">
-                <a href="/catalogo">
+                <a [routerLink]="['/catalogo']">
                     <div class="mybtn1">
                         Vai al catalogo dei premi
                     </div>
                 </a>
             </div>
             <div class="col-lg-6 text-center mt-5">
-                <a href="/adminpage/assegnapremio">
+                <a [routerLink]="['/adminpage/assegnapremio']">
                     <div class="mybtn1">
                         Assegnazione premi
                     </div>

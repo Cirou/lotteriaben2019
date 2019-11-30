@@ -1,6 +1,6 @@
 
 <!-- Cuntdown Area Start -->
-<section class="lottery-area">
+<section class="lottery-area featured-game">
     <div class="daily-lottery">
         <div class="container">
             <div class="row justify-content-center">
@@ -25,7 +25,7 @@
                                 L'estrazione inizierà tra:
                         </h5>
                         <div class="draw-counter">
-                                <div data-countdown="2021/12/15"><span>{{this.message}}</span></div>
+                                <div><span>{{this.message}}</span></div>
                         </div>
                         <p class="text">
                                 Rimanete sintonizzati
@@ -115,9 +115,7 @@
 <!--  Lottery Staticstics Area Start -->
 
 
-
-<!-- Recent Winners Area Start -->
-<section *ngIf="elencoUltimiPremi" class="recent-winners">
+<section *ngIf="elencoUltimiPremi" class="recent-winners pb-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -156,7 +154,7 @@
                     <div class="bottom-area">
                         <div class="left">{{premio.nomevincitore}}</div>
                         <div class="right">
-                                <img src="{{premio.immaginepremio}}" alt="">
+                                <img src="{{premio.immaginebase64}}" alt="">
                         </div>
                     </div>
                 </div>
@@ -196,7 +194,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="tab-menu-area">
-                    <a href="/catalogo">
+                    <a [routerLink]="['/catalogo']">
                         <div class="mybtn1">
                             Vai al catalogo dettagliato dei premi
                         </div>
@@ -221,7 +219,7 @@
                                         #{{premio.posizione}}
                                     </td>
                                     <td>
-                                        <img src="{{premio.immaginepremio}}" alt="">
+                                        <img src="{{premio.immaginebase64}}" alt="">
                                         {{premio.nomepremio}}
                                     </td>
                                     <td>
