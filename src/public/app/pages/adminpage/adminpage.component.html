@@ -85,7 +85,7 @@
                             <input type="text" class="input-field" placeholder="Nome del prodotto *" [(ngModel)]="nome" name="nome" (change)="changeName(this)">
 
                             <span style="font-size: 0.6em; color:#ff344d" *ngIf="!isPosizioneValida">Campo obbligatorio</span>
-                            <input type="number" class="input-field" placeholder="Posizione in classifica *" [(ngModel)]="posizione" name="posizione" (change)="changePosizione(this)">
+                            <input type="number" class="input-field" placeholder="Posizione in classifica *" [(ngModel)]="posizione" name="posizione" (change)="changePosizione(this)" min="1" max="90">
                             <textarea class="input-field textarea" placeholder="Descrizione" [(ngModel)]="descrizione" name="descrizione"></textarea>
 
                             <span style="font-size: 0.6em; color:#ff344d" *ngIf="!isImmagineValida">Campo obbligatorio</span>

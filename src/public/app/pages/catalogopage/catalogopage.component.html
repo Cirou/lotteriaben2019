@@ -62,7 +62,7 @@
                         </h4>
                         <img src="{{premio.immaginebase64}}" (click)="open(i)">
                         <a *ngIf="isAdminPage" [routerLink]="['/adminpage', premio.id]" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
-                        <a *ngIf="isAdminPage" href="#" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
+                        <a *ngIf="isAdminPage" (click)="deletePremioById(premio.id)" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
