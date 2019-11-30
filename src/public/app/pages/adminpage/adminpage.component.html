@@ -98,7 +98,7 @@
                                         <button (click)="fileInput.click()" class="mybtn2">Sfoglia immagine*</button>
                                     </div>
                                     <div class="col-lg-6 text-center" *ngIf="imagePreview">
-                                        <button (click)="fileInput.click()" class="mybtn2">Sfoglia immagine*</button>
+                                        <button (click)="fileInput.click()" class="mybtn2">Cambia immagine*</button>
                                     </div>
                                     <div class="col-lg-6 text-center" *ngIf="imagePreview">
                                         <img *ngIf="imagePreview" [src]="sanitizer.bypassSecurityTrustUrl(imagePreview)">
