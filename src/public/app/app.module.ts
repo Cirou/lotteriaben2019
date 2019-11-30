@@ -20,6 +20,7 @@ import { LotterypageComponent } from './pages/lotterypage/lotterypage.component'
 import { AssegnapremiopageComponent } from './pages/assegnapremiopage/assegnapremiopage.component';
 import { AdminpageComponent } from './pages/adminpage/adminpage.component';
 import { CatalogopageComponent } from './pages/catalogopage/catalogopage.component';
+import { RisultativenditepageComponent } from './pages/risultativenditepage/risultativenditepage.component';
 
 // CUSTOM MODULES
 import { RoutingModule } from './routing.module';
@@ -37,6 +38,7 @@ import { RootService } from './services/root.service';
 import { ImageService } from './services/image.service';
 import { UserService } from './services/user.service';
 import { CookieService } from 'ngx-cookie-service';
+import { RaccoltaService } from './services/raccolta.service';
 
 //PIPES
 import { SearchFilterPipe } from './filters/search-filter.pipe';
@@ -55,6 +57,7 @@ import { LightboxModule } from 'ngx-lightbox';
     AdminpageComponent,
     CatalogopageComponent,
     MainpageComponent,
+    RisultativenditepageComponent,
     // PIPE
     SearchFilterPipe,
     DataPrintPipe,
@@ -77,6 +80,7 @@ import { LightboxModule } from 'ngx-lightbox';
     LightboxModule
   ],
   providers: [
+    RaccoltaService,
     PremiService,
     RootService,
     ImageService,

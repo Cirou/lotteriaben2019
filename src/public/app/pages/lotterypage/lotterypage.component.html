@@ -115,7 +115,7 @@
 <!--  Lottery Staticstics Area Start -->
 
 
-<section *ngIf="elencoUltimiPremi" class="recent-winners pb-5">
+<section *ngIf="elencoUltimiPremi?.length > 2" class="recent-winners pb-5">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
@@ -160,11 +160,11 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-12 text-center">
                 <a class="mybtn2" (click)="scrollToElement(listapremi)">Vedi tutti</a>
             </div>
-        </div>
+        </div> -->
     </div>
 </section> 
 <!-- Recent Winners Area End -->
@@ -219,7 +219,7 @@
                                         #{{premio.posizione}}
                                     </td>
                                     <td>
-                                        <img src="{{premio.immaginebase64}}" alt="">
+                                        <img src="{{premio.immaginebase64}}" alt="" class="mr-2">
                                         {{premio.nomepremio}}
                                     </td>
                                     <td>
