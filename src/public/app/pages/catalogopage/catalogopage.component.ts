@@ -71,4 +71,8 @@ export class CatalogopageComponent implements OnInit {
         );
     }
 
+    idToDelete: number = null;
+    setDeleteId(id) {
+        this.idToDelete = id;
+    }
 }
