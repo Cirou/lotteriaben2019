@@ -21,8 +21,9 @@ export const IMAGE_WIDTH_PREVIEW = 150;
 })
 export class AdminpageComponent implements OnInit, OnDestroy {
     loading = false;
+    loadingForm = false;
     nome: string;
-    posizione: string;
+    posizione = 0;
     descrizione: string;
     imagePreview: any;
     imageToUpload: any;
@@ -37,6 +38,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     private idPremio = null;
     private sub: any;
+    posizioniList = new Array();
 
     constructor(
         private ng2ImgMax: Ng2ImgMaxService,
@@ -53,50 +55,80 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             this.idPremio = params['id'];
 
             if (this.idPremio) {
-                this.loading = true;
-                this.premiService.getPremioById(this.idPremio).subscribe(
-                    res => {
-                        console.log(res);
-                        res = res[0];
-                        this.nome = res.nomepremio;
-                        this.posizione = res.posizione + '';
-                        this.descrizione = res.descrizionepremio;
-                        this.imageToUpload = res.immaginebase64;
-                        fetch(res.immaginebase64)
-                            .then(res =>
-                                res.blob()
-                            ) // Gets the response and returns it as a blob
-                            .then(blob => {
-                                const image = new File([blob], res.immaginebase64, blob);
-
-                                this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
-                                    result => {
-                                        this.loading = false;
-                                        this.imagePreview = URL.createObjectURL(result);
-                                    },
-                                    error => {
-                                        this.loading = false;
-                                        console.log('Resize preview', error);
-                                    }
-                                );
-                            });
-
-                    },
-                    err => {
-                        this.loading = false;
-                        console.log(err);
-                    }
-                );
+                this.loadPremio();
+            } else {
+                this.loadPosizioniList();
             }
         });
     }
+
+    loadPosizioniList() {
+        this.loading = true;
+        for (let i = 0; i < 90; i++) {
+            this.posizioniList.push(i + 1);
+        }
+        this.premiService.getAllPremi().subscribe(
+            premi => {
+                const posizioniDaCancellare = new Array();
+                premi.forEach(element => {
+                    if (this.posizione === 0 || element.posizione !== this.posizione) {
+                        posizioniDaCancellare.push(element.posizione)
+                    }
+                });
+
+                this.posizioniList = this.posizioniList.filter(x => !posizioniDaCancellare.includes(x));
+                this.loading = false;
+            },
+            err => {
+                this.loading = false;
+                console.log(err);
+            }
+        );
+    }
+
+    loadPremio() {
+        this.loading = true;
+        this.premiService.getPremioById(this.idPremio).subscribe(
+            res => {
+                console.log(res);
+                res = res[0];
+                this.nome = res.nomepremio;
+                this.posizione = res.posizione;
+                this.descrizione = res.descrizionepremio;
+                this.imageToUpload = res.immaginebase64;
+                this.loadPosizioniList();
+                fetch(res.immaginebase64)
+                    .then(res =>
+                        res.blob()
+                    ) // Gets the response and returns it as a blob
+                    .then(blob => {
+                        const image = new File([blob], res.immaginebase64, blob);
+
+                        this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
+                            result => {
+                                this.imagePreview = URL.createObjectURL(result);
+                            },
+                            error => {
+                                console.log('Resize preview', error);
+                            }
+                        );
+                    });
+
+            },
+            err => {
+                this.loading = false;
+                console.log(err);
+            }
+        );
+    }
+
 
     ngOnDestroy() {
         this.sub.unsubscribe();
     }
 
     onFileChanged(event) {
-        this.loading = true;
+        this.loadingForm = true;
         let image = event.target.files[0];
 
         //limiting the resulting image to about 75Kb:
@@ -108,19 +140,19 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                 this.ng2ImgMax.resizeImage(image, 10000, IMAGE_WIDTH_PREVIEW).subscribe(
                     result => {
                         this.isImmagineValida = true;
-                        this.loading = false;
+                        this.loadingForm = false;
                         this.imagePreview = URL.createObjectURL(result);
                     },
                     error => {
                         this.isImmagineValida = false;
-                        this.loading = false;
+                        this.loadingForm = false;
                         console.log('Resize 2 error', error);
                     }
                 );
             },
             error => {
                 this.isImmagineValida = false;
-                this.loading = false;
+                this.loadingForm = false;
                 console.log('Resize 1 error', error);
             }
         );
@@ -144,7 +176,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     }
 
     changePosizione(form) {
-        if (form.posizione === undefined || form.posizione === null) {
+        if (form.posizione === '0') {
             this.isPosizioneValida = false;
         } else {
             this.isPosizioneValida = true;
@@ -164,11 +196,11 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     onUpload(form) {
         this.changeFields(form);
         if (this.isNomeValido && this.isPosizioneValida && this.isImmagineValida) {
-            this.loading = true;
+            this.loadingForm = true;
 
             const premio = new Premi();
             premio.nomepremio = this.nome;
-            premio.posizione = parseInt(this.posizione);
+            premio.posizione = this.posizione;
             premio.descrizionepremio = this.descrizione;
             premio.immaginebase64 = this.imageToUpload;
 
@@ -177,12 +209,12 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             if (!this.idPremio) {
                 this.premiService.postPremio(premio).subscribe(
                     res => {
-                        this.loading = false;
+                        this.loadingForm = false;
                         console.log(res);
                         this.reset();
                     },
                     err => {
-                        this.loading = false;
+                        this.loadingForm = false;
                         console.log(err);
                     }
                 );
@@ -190,12 +222,12 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                 premio.id = this.idPremio;
                 this.premiService.putPremio(premio).subscribe(
                     res => {
-                        this.loading = false;
+                        this.loadingForm = false;
                         console.log(res);
                         this.reset();
                     },
                     err => {
-                        this.loading = false;
+                        this.loadingForm = false;
                         console.log(err);
                     }
                 );
@@ -208,7 +240,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     reset() {
         this.idPremio = null;
         this.nome = '';
-        this.posizione = '';
+        this.posizione = 0;
         this.descrizione = '';
         this.imageToUpload = null;
         this.imagePreview = null;
