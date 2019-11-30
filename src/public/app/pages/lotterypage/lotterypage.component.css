@@ -1062,6 +1062,7 @@
         font-weight: 700;
         color: #a1aed4; }
         .activities .table tr td img {
+          object-fit: cover;
           width: 40px;
           height: 40px;
           border-radius: 50%;

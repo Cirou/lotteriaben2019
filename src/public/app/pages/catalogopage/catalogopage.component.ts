@@ -25,24 +25,26 @@ export class CatalogopageComponent implements OnInit {
     this.premiService.getAllPremi().subscribe(premi => {
         this.elencoPremi = premi;
         console.log(this.elencoPremi);
+
+        // update lightbox album
+        this.elencoPremi.forEach( premio => {
+            const src = premio.immaginebase64;
+            const album = {
+              src: src,
+              caption: premio.nomepremio + ' - ' + premio.descrizionepremio
+            };
+            this.albums.push(album);
+        });
       },
         err => {
           console.log(err);
         });
   }
   
-  
   private albums: any = [];
 
   open(index: number): void {
-    // open lightbox
-    const src = this.elencoPremi[index].immaginepremio;
-    const album = {
-      src: src,
-      caption: this.elencoPremi[index].nomepremio
-    };
-
-    this.albums.push(album);
+      // open lightbox
     this._lightbox.open(this.albums, index);
   }
  
