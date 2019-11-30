@@ -1,3 +1,116 @@
+/* activities Area Start */
+.activities {
+    padding: 110px 0px 113px;
+    position: relative;
+    overflow: hidden; }
+    .activities .shape {
+      position: absolute;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%); }
+      .activities .shape.shape1 {
+        z-index: -5;
+        top: 320px;
+        -webkit-animation: upDownAnimation 7s linear infinite;
+        animation: upDownAnimation 7s linear infinite; }
+      .activities .shape.shape2 {
+        z-index: -6;
+        top: 260px;
+        -webkit-animation: upDownAnimation 6s linear infinite;
+        animation: upDownAnimation 6s linear infinite; }
+      .activities .shape.shape3 {
+        z-index: -7;
+        top: 220px;
+        -webkit-animation: upDownAnimation 5s linear infinite;
+        animation: upDownAnimation 5s linear infinite; }
+    .activities:after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #070B28;
+      z-index: -99; }
+    .activities .section-heading {
+      margin-bottom: 58px; }
+    .activities .tab-menu-area {
+      display: block;
+      text-align: center;
+      margin-bottom: 25px; }
+      .activities .tab-menu-area .nav-lend {
+        display: inline-block;
+        border-radius: 50px;
+        padding: 20px 15px;
+        -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.2);
+        border: 1px solid rgba(255, 255, 255, 0.2); }
+        .activities .tab-menu-area .nav-lend .nav-item {
+          display: inline-block; }
+          .activities .tab-menu-area .nav-lend .nav-item .nav-link {
+            line-height: 50px;
+            padding: 0px;
+            padding: 0px 50px;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: #FFF;
+            background: #252f5a;
+            margin: 0px 5px; }
+            .activities .tab-menu-area .nav-lend .nav-item .nav-link.active {
+              background: #f9314b;
+              color: #fff; }
+    .activities .table {
+      -webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.4);
+      box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.4);
+      position: relative; }
+      .activities .table tr {
+        -webkit-transition: all 0.3s ease-in;
+        -o-transition: all 0.3s ease-in;
+        transition: all 0.3s ease-in; }
+        .activities .table tr td,
+        .activities .table tr th {
+          border-top: 1px solid rgba(255, 255, 255, 0.09); }
+        .activities .table tr th {
+          font-size: 18px;
+          font-weight: 600;
+          text-transform: uppercase;
+          border-top: 0px;
+          border-bottom: 0px;
+          padding: 20px 15px;
+          background: #0b122e;
+          color: #fff; }
+        .activities .table tr td {
+          vertical-align: middle;
+          padding: 20px 15px;
+          font-weight: 600;
+          font-size: 18px;
+          text-transform: uppercase;
+          font-weight: 700;
+          color: #a1aed4; }
+          .activities .table tr td img {
+            object-fit: cover;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: inline-block; }
+          .activities .table tr td:nth-child(1) img, .activities .table tr td:nth-child(3) img, .activities .table tr td:nth-child(6) img {
+            margin-right: 5px; }
+          .activities .table tr td:nth-child(1) {
+            color: #fff; }
+          .activities .table tr td:nth-child(3) {
+            color: #045cf0; }
+          .activities .table tr td:nth-child(5), .activities .table tr td:nth-child(6) {
+            color: #f0ad4e; }
+          .activities .table tr td:last-child {
+            color: #f0ad4e; }
+        .activities .table tr:hover {
+          background: #192246; }
+  
+  /* activities Area Start */
+
 
 /* Breadcrumb Area Start */
 .breadcrumb-area {
@@ -233,7 +346,7 @@
       .lottery-area .daily-lottery .section-heading {
         margin-bottom: 57px; }
       .lottery-area .daily-lottery .draw-time {
-        background: url(/public/assets/img/draw-time-bg.jpg);
+        /* background: url(/public/assets/img/draw-time-bg.jpg); */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -272,7 +385,8 @@
           .lottery-area .daily-lottery .draw-time .draw-counter span {
             display: inline-block;
             font-weight: 700;
-            font-size: 60px;
+            /* font-size: 60px; */
+            font-size: 70px; 
             line-height: 70px;
             color: #fff; }
             .lottery-area .daily-lottery .draw-time .draw-counter span:last-child {
@@ -358,12 +472,151 @@
           margin-top: 60px;
           display: inline-block; }
   
-
+/* login modal Area Start */
+.login-modal .modal-dialog .modal-content {
+    background: #252f5a;
+    border-radius: 10px; }
+    .login-modal .modal-dialog .modal-content .modal-body {
+      padding: 0px; }
+      .login-modal .modal-dialog .modal-content .modal-body .logo-area {
+        display: block;
+        text-align: center;
+        position: relative; }
+        .login-modal .modal-dialog .modal-content .modal-body .logo-area::after {
+          position: absolute;
+          content: "";
+          width: 135px;
+          height: 135px;
+          border-radius: 50%;
+          background: #252f5a;
+          top: -65px;
+          left: 050%;
+          -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%); }
+        .login-modal .modal-dialog .modal-content .modal-body .logo-area img {
+          display: inline-block;
+          max-width: 100px;
+          position: relative;
+          z-index: 9;
+          top: -4px; }
+      .login-modal .modal-dialog .modal-content .modal-body .header-area {
+        padding: 0px 30px 10px;
+        margin-top: 47px;
+        position: relative;
+        z-index: 9;
+        text-align: center; }
+        .login-modal .modal-dialog .modal-content .modal-body .header-area .title {
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 700;
+          color: #fff;
+          text-transform: uppercase;
+          margin-bottom: 2px; }
+        .login-modal .modal-dialog .modal-content .modal-body .header-area .sub-title {
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 300; }
+      .login-modal .modal-dialog .modal-content .modal-body .form-area {
+        padding: 0px 30px 10px; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group {
+          margin-bottom: 10px; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between; }
+            .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box label {
+              font-size: 16px;
+              font-weight: 400;
+              color: #a1aed4;
+              text-transform: capitalize; }
+            .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box a {
+              font-size: 16px;
+              font-weight: 400;
+              color: #a1aed4;
+              text-transform: capitalize; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .check-group label {
+            font-size: 14px;
+            font-weight: 400;
+            color: #a1aed4;
+            text-transform: capitalize; }
+            .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .check-group label a {
+              color: #f9314b; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area label {
+          font-size: 18px;
+          line-height: 28px;
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 4px; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field {
+          width: 100%;
+          border: 0px;
+          height: 50px;
+          font-size: 14px;
+          color: #a1aed4;
+          background: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          margin-bottom: 12px; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field::-webkit-input-placeholder {
+            color: #a1aed4; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field:-moz-placeholder {
+            color: #a1aed4; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field::-moz-placeholder {
+            color: #a1aed4; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field:-ms-input-placeholder {
+            color: #a1aed4; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area select {
+          margin-top: 8px;
+          width: 100%;
+          height: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 50px;
+          background: #273261;
+          padding: 0px 30px;
+          color: #fff;
+          text-transform: uppercase; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area .mybtn1 {
+          margin-top: 22px;
+          display: block;
+          width: 100%; }
+      .login-modal .modal-dialog .modal-content .modal-body .form-footer {
+        text-align: center;
+        padding: 0px 30px 6px; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-footer a {
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+          color: #fff; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-footer a i {
+            font-size: 14px; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-footer a:hover {
+            color: #f9314b; }
+  
+  .login-modal.sign-in .modal-body .form-area {
+    padding-bottom: 18px !important; }
+  
+  .modal-dialog .modal-content {
+    position: relative; }
+  
+  .modal-dialog .modal-content .close {
+    position: absolute;
+    right: 9px;
+    z-index: 9; 
+    cursor: pointer;}
+  
+  .modal-dialog .modal-content .close span {
+    color: #fff;
+    font-size: 20px; }
+  
+  /* login modal Area End */
 
           /* Awards Area Start */
 .awards-area {
     padding: 112px 0px 90px;
-    background: #070B28; }
+    background: #0b122e; }
     .awards-area .section-heading {
       margin-bottom: 58px; }
   
@@ -389,6 +642,7 @@
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: #0b122e;
+      object-fit: cover;
    }
     .single-awards .content .title {
       font-size: 24px;
@@ -714,7 +968,7 @@
   .activities .table tr th ,
   .activities .table tr td
   {
-    font-size: 16px;
+    font-size: 0.8em;
     line-height: 26px;
   }
   .funfact .single-fun .count-area {
@@ -816,7 +1070,7 @@
     padding: 83px 0px 120px;
   }
   .lottery-area .daily-lottery .draw-time .draw-counter span {
-    font-size: 30px;
+    font-size: 40px;
     line-height: 40px;
   }
   .activities .tab-menu-area .nav-lend .nav-item .nav-link {
@@ -1244,7 +1498,9 @@
   {
     display: none;
   }
-  
+  .lottery-area .daily-lottery .draw-time .draw-counter span {
+    font-size: 30px;
+  }
   
   
   }
@@ -1381,7 +1637,8 @@
     padding-top: 30px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .header-area {
-    padding: 16px 30px 10px;
+    padding: 0px 30px 10px;
+    margin-top: 16px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .header-area .sub-title {
     font-size: 20px;
@@ -1397,7 +1654,8 @@
     padding: 0px 20px 10px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .header-area {
-    padding: 16px 20px 10px;
+    padding: 0px 20px 10px;
+    margin-top: 16px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .form-footer {
     padding: 0px 20px 6px;

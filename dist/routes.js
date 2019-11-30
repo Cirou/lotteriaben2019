@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var PremiController_1 = require("./server/controllers/PremiController");
 var UserController_1 = require("./server/controllers/UserController");
+var RaccoltaController_1 = require("./server/controllers/RaccoltaController");
 /**
  * All application routes.
  */
@@ -40,5 +41,15 @@ exports.AppRoutes = [
         path: '/user',
         method: 'post',
         action: UserController_1.postUser
+    },
+    {
+        path: '/raccolta',
+        method: 'get',
+        action: RaccoltaController_1.getAllRaccolta
+    },
+    {
+        path: '/raccolta',
+        method: 'post',
+        action: RaccoltaController_1.postRaccolta
     }
 ];
