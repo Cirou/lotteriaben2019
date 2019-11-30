@@ -233,7 +233,7 @@
       .lottery-area .daily-lottery .section-heading {
         margin-bottom: 57px; }
       .lottery-area .daily-lottery .draw-time {
-        background: url(/public/assets/img/draw-time-bg.jpg);
+        /* background: url(/public/assets/img/draw-time-bg.jpg); */
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
@@ -272,7 +272,8 @@
           .lottery-area .daily-lottery .draw-time .draw-counter span {
             display: inline-block;
             font-weight: 700;
-            font-size: 60px;
+            /* font-size: 60px; */
+            font-size: 70px; 
             line-height: 70px;
             color: #fff; }
             .lottery-area .daily-lottery .draw-time .draw-counter span:last-child {
