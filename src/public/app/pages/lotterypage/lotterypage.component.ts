@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PremiService } from '../../services/premi.service';
 import { Premi } from '../../../models/Premi';
+import { RaccoltaService } from '../../services/raccolta.service';
+import { Raccolta } from '../../../models/Raccolta';
 
 @Component({
     selector: 'app-lotterypage',
@@ -8,29 +10,40 @@ import { Premi } from '../../../models/Premi';
     styleUrls: ['./lotterypage.component.css']
 })
 export class LotterypageComponent implements OnInit {
-
-    constructor(private premiService: PremiService) { }
+    constructor(private premiService: PremiService, private raccoltaService: RaccoltaService) {}
 
     elencoPremi: Premi[];
     elencoUltimiPremi: Premi[];
+    raccolta: Raccolta;
 
     ngOnInit() {
+        console.log('Lottery page');
 
-        console.log("Lottery page");
-
-        this.premiService.getAllPremi().subscribe(premi => {
-            this.elencoPremi = premi;
-            console.log(this.elencoPremi);
-            this.elencoUltimiPremi = this.elencoPremi.filter(function (el) {
-                return el.numerovincitore != null;
-            });
-            if(this.elencoUltimiPremi.length > 2) {
-                this.elencoUltimiPremi = this.elencoUltimiPremi.slice(0, 3);
-            }
-        },
+        this.premiService.getAllPremi().subscribe(
+            premi => {
+                this.elencoPremi = premi;
+                console.log(this.elencoPremi);
+                this.elencoUltimiPremi = this.elencoPremi.filter(function(el) {
+                    return el.numerovincitore != null;
+                });
+                if (this.elencoUltimiPremi.length > 2) {
+                    this.elencoUltimiPremi = this.elencoUltimiPremi.slice(0, 3);
+                }
+            },
             err => {
                 console.log(err);
-            });
+            }
+        );
+
+        this.raccoltaService.getRaccolta().subscribe(
+            raccolta => {
+                this.raccolta = raccolta;
+                console.log(this.raccolta);
+            },
+            err => {
+                console.log(err);
+            }
+        );
         this.startCountDown();
     }
 
@@ -47,12 +60,17 @@ export class LotterypageComponent implements OnInit {
     minutesToPrint: String = '';
     secondsToPrint: String = '';
 
+    clearTimer() {
+        clearInterval(this.intervalId);
+    }
 
-    clearTimer() { clearInterval(this.intervalId); }
+    ngOnDestroy() {
+        this.clearTimer();
+    }
 
-    ngOnDestroy() { this.clearTimer(); }
-
-    startCountDown() { this.countDown(); }
+    startCountDown() {
+        this.countDown();
+    }
     stopCountDown() {
         this.clearTimer();
         this.message = `Holding at T-${this.seconds} seconds`;
@@ -64,7 +82,6 @@ export class LotterypageComponent implements OnInit {
         const countDownDate = new Date('Dec 23, 2019 12:00:00').getTime();
 
         this.intervalId = window.setInterval(() => {
-
             // Get todays date and time
             const now = new Date().getTime();
 
@@ -82,33 +99,43 @@ export class LotterypageComponent implements OnInit {
             this.hours = Math.floor(this.minutes / 60);
             this.days = Math.floor(this.hours / 24);
 
-            this.hours = this.hours - (this.days * 24);
-            this.minutes = this.minutes - (this.days * 24 * 60) - (this.hours * 60);
-            this.seconds = this.seconds - (this.days * 24 * 60 * 60) - (this.hours * 60 * 60) - (this.minutes * 60);
+            this.hours = this.hours - this.days * 24;
+            this.minutes = this.minutes - this.days * 24 * 60 - this.hours * 60;
+            this.seconds = this.seconds - this.days * 24 * 60 * 60 - this.hours * 60 * 60 - this.minutes * 60;
 
             this.daysToPrint = this.days.toString();
             this.hoursToPrint = this.hours.toString();
             this.minutesToPrint = this.minutes.toString();
             this.secondsToPrint = this.seconds.toString();
 
-            if (this.days < 10) { this.daysToPrint = '0' + this.days; }
-            if (this.hours < 10) { this.hoursToPrint = '0' + this.hours; }
-            if (this.minutes < 10) { this.minutesToPrint = '0' + this.minutes; }
-            if (this.seconds < 10) { this.secondsToPrint = '0' + this.seconds; }
+            if (this.days < 10) {
+                this.daysToPrint = '0' + this.days;
+            }
+            if (this.hours < 10) {
+                this.hoursToPrint = '0' + this.hours;
+            }
+            if (this.minutes < 10) {
+                this.minutesToPrint = '0' + this.minutes;
+            }
+            if (this.seconds < 10) {
+                this.secondsToPrint = '0' + this.seconds;
+            }
 
             // If the count down is finished, write some text
             if (distance < 0) {
                 this.message = 'CI SIAMO!';
                 clearInterval(this.intervalId);
             } else {
-                this.message = `${this.daysToPrint} G : `.concat(`${this.hoursToPrint} H : `).concat(`${this.minutesToPrint} M : `).concat(`${this.secondsToPrint} S`);
+                this.message = `${this.daysToPrint} G : `
+                    .concat(`${this.hoursToPrint} H : `)
+                    .concat(`${this.minutesToPrint} M : `)
+                    .concat(`${this.secondsToPrint} S`);
             }
         }, 1000);
-
     }
-    
+
     scrollToElement($element): void {
         console.log($element);
-        $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
-      }
+        $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    }
 }
