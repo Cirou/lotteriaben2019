@@ -15,7 +15,7 @@ export class CatalogopageComponent implements OnInit {
     elencoPremi: Premi[];
 
     isAdminPage: boolean;
-    idToDelete: number;
+    loading = false;
 
     ngOnInit() {
         console.log('Catalogo page');
@@ -37,11 +37,13 @@ export class CatalogopageComponent implements OnInit {
     }
 
     loadPremi() {
+        this.loading = true;
         this.premiService.getAllPremi().subscribe(
             premi => {
                 this.elencoPremi = premi;
                 console.log(this.elencoPremi);
 
+                this.loading = false;
                 // update lightbox album
                 this.albums = [];
                 this.elencoPremi.forEach(premio => {
@@ -54,6 +56,7 @@ export class CatalogopageComponent implements OnInit {
                 });
             },
             err => {
+                this.loading = false;
                 console.log(err);
             }
         );
@@ -65,14 +68,22 @@ export class CatalogopageComponent implements OnInit {
 
     deletePremioById(id) {
         this.idToDelete = null;
+        this.loading = true;
         this.premiService.deletePremio(id).subscribe(
             res => {
+                this.loading = false;
                 console.log(res);
                 this.loadPremi();
             },
             err => {
+                this.loading = false;
                 console.log(err);
             }
         );
+    }
+
+    idToDelete: number = null;
+    setDeleteId(id) {
+        this.idToDelete = id;
     }
 }

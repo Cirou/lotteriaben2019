@@ -21,6 +21,15 @@
 </section>
 <!-- Breadcrumb Area End -->
 
+<!-- preloader area start -->
+<div class="preloader" id="preloader" *ngIf="loading">
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
+<!-- preloader area end -->
+
 <!-- Catalogo Area Start -->
 <section class="awards-area">
     <div *ngIf="isAdminPage" class="container">
@@ -62,7 +71,8 @@
                         </h4>
                         <img src="{{premio.immaginebase64}}" (click)="open(i)">
                         <a *ngIf="isAdminPage" [routerLink]="['/adminpage', premio.id]" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
-                        <a *ngIf="isAdminPage" (click)="setIdToDelete(premio.id)" href="#" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
+                        <!--a *ngIf="isAdminPage" (click)="deletePremioById(premio.id)" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a-->
+                        <a *ngIf="isAdminPage" (click)="setDeleteId(premio.id)" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +93,7 @@
                 </div>
                 <div class="form-area text-center">
                     <button class="mybtn2 w-100" data-dismiss="modal" aria-label="Close">Annulla</button>
-                    <button (click)="deletePremioById(idToDelete)" data-dismiss="modal" class="mybtn1">Elimina</button>
+                    <button (click)="deletePremioById(idToDelete)" class="mybtn1" data-dismiss="modal">Elimina</button>
                 </div>
             </div>
         </div>
