@@ -62,7 +62,7 @@
                         </h4>
                         <img src="{{premio.immaginebase64}}" (click)="open(i)">
                         <a *ngIf="isAdminPage" [routerLink]="['/adminpage', premio.id]" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
-                        <a *ngIf="isAdminPage" (click)="deletePremioById(premio.id)" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
+                        <a *ngIf="isAdminPage" href="#" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -70,3 +70,23 @@
     </div>
 </section>
 <!-- Catalogo Area End -->
+
+
+<!-- SignIn Area Start -->
+<div class="modal fade login-modal sign-in" id="delete" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="header-area">
+                    <h4 class="title">Confermare l'eliminazione del premio?</h4>
+                </div>
+                <div class="form-area text-center">
+                    <button class="mybtn2 w-100" data-dismiss="modal" aria-label="Close">Annulla</button>
+                    <button (click)="deletePremioById(premio.id)" class="mybtn1">Elimina</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- SignIn Area End -->

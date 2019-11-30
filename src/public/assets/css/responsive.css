@@ -359,7 +359,146 @@
           margin-top: 60px;
           display: inline-block; }
   
-
+/* login modal Area Start */
+.login-modal .modal-dialog .modal-content {
+    background: #252f5a;
+    border-radius: 10px; }
+    .login-modal .modal-dialog .modal-content .modal-body {
+      padding: 0px; }
+      .login-modal .modal-dialog .modal-content .modal-body .logo-area {
+        display: block;
+        text-align: center;
+        position: relative; }
+        .login-modal .modal-dialog .modal-content .modal-body .logo-area::after {
+          position: absolute;
+          content: "";
+          width: 135px;
+          height: 135px;
+          border-radius: 50%;
+          background: #252f5a;
+          top: -65px;
+          left: 050%;
+          -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          transform: translateX(-50%); }
+        .login-modal .modal-dialog .modal-content .modal-body .logo-area img {
+          display: inline-block;
+          max-width: 100px;
+          position: relative;
+          z-index: 9;
+          top: -4px; }
+      .login-modal .modal-dialog .modal-content .modal-body .header-area {
+        padding: 0px 30px 10px;
+        margin-top: 47px;
+        position: relative;
+        z-index: 9;
+        text-align: center; }
+        .login-modal .modal-dialog .modal-content .modal-body .header-area .title {
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 700;
+          color: #fff;
+          text-transform: uppercase;
+          margin-bottom: 2px; }
+        .login-modal .modal-dialog .modal-content .modal-body .header-area .sub-title {
+          font-size: 24px;
+          line-height: 34px;
+          font-weight: 300; }
+      .login-modal .modal-dialog .modal-content .modal-body .form-area {
+        padding: 0px 30px 10px; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group {
+          margin-bottom: 10px; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between; }
+            .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box label {
+              font-size: 16px;
+              font-weight: 400;
+              color: #a1aed4;
+              text-transform: capitalize; }
+            .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box a {
+              font-size: 16px;
+              font-weight: 400;
+              color: #a1aed4;
+              text-transform: capitalize; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .check-group label {
+            font-size: 14px;
+            font-weight: 400;
+            color: #a1aed4;
+            text-transform: capitalize; }
+            .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .check-group label a {
+              color: #f9314b; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area label {
+          font-size: 18px;
+          line-height: 28px;
+          color: #fff;
+          font-weight: 600;
+          margin-bottom: 4px; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field {
+          width: 100%;
+          border: 0px;
+          height: 50px;
+          font-size: 14px;
+          color: #a1aed4;
+          background: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+          margin-bottom: 12px; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field::-webkit-input-placeholder {
+            color: #a1aed4; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field:-moz-placeholder {
+            color: #a1aed4; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field::-moz-placeholder {
+            color: #a1aed4; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field:-ms-input-placeholder {
+            color: #a1aed4; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area select {
+          margin-top: 8px;
+          width: 100%;
+          height: 50px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 50px;
+          background: #273261;
+          padding: 0px 30px;
+          color: #fff;
+          text-transform: uppercase; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-area .mybtn1 {
+          margin-top: 22px;
+          display: block;
+          width: 100%; }
+      .login-modal .modal-dialog .modal-content .modal-body .form-footer {
+        text-align: center;
+        padding: 0px 30px 6px; }
+        .login-modal .modal-dialog .modal-content .modal-body .form-footer a {
+          -webkit-transition: all 0.3s ease-in;
+          -o-transition: all 0.3s ease-in;
+          transition: all 0.3s ease-in;
+          color: #fff; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-footer a i {
+            font-size: 14px; }
+          .login-modal .modal-dialog .modal-content .modal-body .form-footer a:hover {
+            color: #f9314b; }
+  
+  .login-modal.sign-in .modal-body .form-area {
+    padding-bottom: 18px !important; }
+  
+  .modal-dialog .modal-content {
+    position: relative; }
+  
+  .modal-dialog .modal-content .close {
+    position: absolute;
+    right: 9px;
+    z-index: 9; 
+    cursor: pointer;}
+  
+  .modal-dialog .modal-content .close span {
+    color: #fff;
+    font-size: 20px; }
+  
+  /* login modal Area End */
 
           /* Awards Area Start */
 .awards-area {
@@ -1383,7 +1522,8 @@
     padding-top: 30px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .header-area {
-    padding: 16px 30px 10px;
+    padding: 0px 30px 10px;
+    margin-top: 16px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .header-area .sub-title {
     font-size: 20px;
@@ -1399,7 +1539,8 @@
     padding: 0px 20px 10px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .header-area {
-    padding: 16px 20px 10px;
+    padding: 0px 20px 10px;
+    margin-top: 16px;
   }
   .login-modal .modal-dialog .modal-content .modal-body .form-footer {
     padding: 0px 20px 6px;
