@@ -62,7 +62,7 @@
                         </h4>
                         <img src="{{premio.immaginebase64}}" (click)="open(i)">
                         <a *ngIf="isAdminPage" [routerLink]="['/adminpage', premio.id]" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
-                        <a *ngIf="isAdminPage" href="#" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
+                        <a *ngIf="isAdminPage" (click)="setIdToDelete(premio.id)" href="#" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
                     </div>
                 </div>
             </div>
@@ -83,7 +83,7 @@
                 </div>
                 <div class="form-area text-center">
                     <button class="mybtn2 w-100" data-dismiss="modal" aria-label="Close">Annulla</button>
-                    <button (click)="deletePremioById(premio.id)" class="mybtn1">Elimina</button>
+                    <button (click)="deletePremioById(idToDelete)" data-dismiss="modal" class="mybtn1">Elimina</button>
                 </div>
             </div>
         </div>

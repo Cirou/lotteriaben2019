@@ -11,14 +11,14 @@ import { RootService } from '../../services/root.service';
     styleUrls: ['./catalogopage.component.css']
 })
 export class CatalogopageComponent implements OnInit {
-
-    constructor(private premiService: PremiService, private _lightbox: Lightbox, private rootService: RootService) { }
+    constructor(private premiService: PremiService, private _lightbox: Lightbox, private rootService: RootService) {}
     elencoPremi: Premi[];
 
     isAdminPage: boolean;
+    idToDelete: number;
 
     ngOnInit() {
-        console.log("Catalogo page");
+        console.log('Catalogo page');
 
         this.isAdminPage = this.rootService.logged;
         this.loadPremi();
@@ -59,7 +59,12 @@ export class CatalogopageComponent implements OnInit {
         );
     }
 
+    setIdToDelete(id: number): void {
+        this.idToDelete = id;
+    }
+
     deletePremioById(id) {
+        this.idToDelete = null;
         this.premiService.deletePremio(id).subscribe(
             res => {
                 console.log(res);
@@ -70,5 +75,4 @@ export class CatalogopageComponent implements OnInit {
             }
         );
     }
-
 }
