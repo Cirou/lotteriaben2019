@@ -53,6 +53,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
             this.idPremio = params['id'];
 
             if (this.idPremio) {
+                this.loading = true;
                 this.premiService.getPremioById(this.idPremio).subscribe(
                     res => {
                         console.log(res);
@@ -82,6 +83,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
                     },
                     err => {
+                        this.loading = false;
                         console.log(err);
                     }
                 );

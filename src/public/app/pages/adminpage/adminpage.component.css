@@ -21,6 +21,9 @@
     color: #a1aed4 !important;
    }
   
-  
+  .field-error {
+    font-size: 0.6em; 
+    color: #ff344d;
+  }
   
   
