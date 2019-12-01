@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'adminpage/risultativendite', component: RisultativenditepageComponent },
   { path: 'adminpage/:id', component: AdminpageComponent },
   { path: 'catalogo', component: CatalogopageComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+  { path: '**', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
