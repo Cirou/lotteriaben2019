@@ -9,7 +9,8 @@ import { AssegnapremiopageComponent } from './pages/assegnapremiopage/assegnapre
 import { RisultativenditepageComponent } from './pages/risultativenditepage/risultativenditepage.component';
 
 const routes: Routes = [
-  { path: '', component: LotterypageComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
+  { path: 'home', component: LotterypageComponent},
   { path: 'adminpage', component: AdminpageComponent },
   { path: 'adminpage/assegnapremio', component: AssegnapremiopageComponent },
   { path: 'adminpage/risultativendite', component: RisultativenditepageComponent },
