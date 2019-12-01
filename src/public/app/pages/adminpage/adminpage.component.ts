@@ -37,8 +37,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     isPosizioneValida = true;
     isImmagineValida = true;
 
-    private idPremio = null;
-    private sub: any;
+    idPremio = null;
+    sub: any;
     posizioniList = new Array();
 
     constructor(
