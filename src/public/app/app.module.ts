@@ -72,7 +72,7 @@ import { LightboxModule } from 'ngx-lightbox';
     HttpClientModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
     AngularFireModule.initializeApp(environment.config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
