@@ -48,9 +48,13 @@ export class CatalogopageComponent implements OnInit {
                 this.albums = [];
                 this.elencoPremi.forEach(premio => {
                     const src = premio.immaginebase64;
+                    let caption = premio.posizione + ' - ' + premio.nomepremio;
+                    if(premio.descrizionepremio) {
+                        caption = caption + ' - ' + premio.descrizionepremio;
+                    }
                     const album = {
                         src: src,
-                        caption: premio.nomepremio + ' - ' + premio.descrizionepremio
+                        caption: caption
                     };
                     this.albums.push(album);
                 });

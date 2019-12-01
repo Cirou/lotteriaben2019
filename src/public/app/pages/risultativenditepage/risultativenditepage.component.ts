@@ -11,9 +11,10 @@ import { RootService } from '../../services/root.service';
 export class RisultativenditepageComponent implements OnInit {
     constructor(private raccoltaService: RaccoltaService, private rootService: RootService) {}
 
-    raccolta: Raccolta;
+    raccolta = new Raccolta();
     isLogged: boolean;
     loading = false;
+    loadingForm = false;
 
     ngOnInit() {
         console.log('Risultativendite page');
@@ -32,23 +33,20 @@ export class RisultativenditepageComponent implements OnInit {
                 this.loading = false;
             }
         );
-
-        this.loading = false;
     }
 
     salva() {
-        this.loading = true;
+        this.loadingForm = true;
         this.raccoltaService.saveRaccolta(this.raccolta).subscribe(
             raccolta => {
                 this.raccolta = raccolta;
                 console.log(this.raccolta);
-                this.loading = false;
+                this.loadingForm = false;
             },
             err => {
                 console.log(err);
-                this.loading = false;
+                this.loadingForm = false;
             }
         );
-        this.loading = false;
     }
 }
