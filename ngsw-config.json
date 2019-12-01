@@ -4,14 +4,9 @@
     {
       "name": "dataGroup1",
       "urls": [
-        "!/app/**",
-        "!/message/**",
-        "!/votation/**",
-        "!/groupsuggestion/**",
-        "!/groupsuggestiontsv/**",
-        "!/groupvotations/**",
-        "!/usersuggestion/**",
-        "!/groupsuggestiontsv/**"   
+        "!/premi/**",
+        "!/raccolta/**",
+        "!/user/**"
       ],
       "cacheConfig": {
         "maxSize": 50,
