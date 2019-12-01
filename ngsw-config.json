@@ -1,12 +1,17 @@
 {
-  "index": "/index.html",
+  "index": "/public/index.html",
   "dataGroups": [
     {
       "name": "dataGroup1",
       "urls": [
-        "!/premi/**",
-        "!/raccolta/**",
-        "!/user/**"
+        "!/app/**",
+        "!/message/**",
+        "!/votation/**",
+        "!/groupsuggestion/**",
+        "!/groupsuggestiontsv/**",
+        "!/groupvotations/**",
+        "!/usersuggestion/**",
+        "!/groupsuggestiontsv/**"   
       ],
       "cacheConfig": {
         "maxSize": 50,
