@@ -34,8 +34,16 @@
 </section>
 <!-- Breadcrumb Area End -->
 
-<!-- Lista Premi Area Start -->
+<!-- preloader area start -->
+<div class="preloader" id="preloader" *ngIf="loading">
+    <div class="loader loader-1">
+        <div class="loader-outter"></div>
+        <div class="loader-inner"></div>
+    </div>
+</div>
+<!-- preloader area end -->
 
+<!-- Lista Premi Area Start -->
 <section *ngIf="isLogged" class="contact">
     <div class="container">
         <div class="row justify-content-end">
@@ -48,26 +56,24 @@
                         <form (ngSubmit)="salva()">
                             <div class="row">
                                 <div class="col-10">
-                                    <mat-form-field>
-                                        <input matInput placeholder="Totale raccolta" type="number" [(ngModel)]="raccolta.totaleraccolta" name="raccolta.totaleraccolta" />
-                                    </mat-form-field>
+                                    <input type="text" class="input-field" placeholder="Totale raccolta" type="number" [(ngModel)]="raccolta.totaleraccolta" name="raccolta.totaleraccolta" />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-10">
-                                    <mat-form-field>
-                                        <input matInput placeholder="Totale Biglietti" type="number" [(ngModel)]="raccolta.totalebiglietti" name="raccolta.totalebiglietti" />
-                                    </mat-form-field>
+                                    <input type="text" class="input-field" placeholder="Totale biglietti" type="number" [(ngModel)]="raccolta.totalebiglietti" name="raccolta.totalebiglietti" />
                                 </div>
                             </div>
 
-                            <div style="display: inline-block;width: 100%;">
-                                <div style="float: left;">
-                                    <img *ngIf="loading" src="/public/assets/img/loader.gif" style="width: 70px;" />
-                                    <span *ngIf="errorMessage != ''">{{ this.errorMessage }}</span>
+                            <div class="row">
+                                <div class="col-lg-12 text-center" *ngIf="loadingForm">
+                                    <div  class="loader loader-1">
+                                        <div class="loader-outter"></div>
+                                        <div class="loader-inner"></div>
+                                    </div>
                                 </div>
-                                <div style="float: right;padding-top: 3em;">
+                                <div class="col-lg-12 text-center" *ngIf="!loadingForm">
                                     <button type="submit" class="mybtn1">
                                         Salva
                                     </button>

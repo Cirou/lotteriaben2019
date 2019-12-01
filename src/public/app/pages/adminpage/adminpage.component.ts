@@ -1,7 +1,7 @@
 import { PremiService } from './../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { Ng2ImgMaxService } from 'ng2-img-max';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
@@ -10,6 +10,7 @@ import { RootService } from '../../services/root.service';
 import { UserService } from '../../services/user.service';
 
 import { FormControl, Validators } from '@angular/forms';
+declare var $: any;
 
 export const IMAGE_WIDTH_UPLOAD = 500;
 export const IMAGE_WIDTH_PREVIEW = 150;
@@ -176,7 +177,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     }
 
     changePosizione(form) {
-        if (form.posizione === '0') {
+        if (form.posizione === 0) {
             this.isPosizioneValida = false;
         } else {
             this.isPosizioneValida = true;
@@ -211,7 +212,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     res => {
                         this.loadingForm = false;
                         console.log(res);
-                        this.reset();
+                        $('#confirmModal').modal('show');
+                        //this.reset();
                     },
                     err => {
                         this.loadingForm = false;
@@ -224,7 +226,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     res => {
                         this.loadingForm = false;
                         console.log(res);
-                        this.reset();
+                        $('#confirmModal').modal('show');
+                        //this.reset();
                     },
                     err => {
                         this.loadingForm = false;

@@ -78,7 +78,7 @@
 </div>
 <!-- preloader area end -->
 
-<!-- Contact Area Start -->
+<!-- Edit Award Start -->
 <section *ngIf="isLogged" class="contact">
     <div class="container">
         <div class="row justify-content-end">
@@ -165,4 +165,23 @@
         </div>
     </div>
 </section>
-<!-- Contact Area End -->
+
+<!-- Confirm Modal Start -->
+<div class="modal fade login-modal sign-in" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="reset()"><span aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="header-area">
+                    <h4 class="title" *ngIf="!idPremio">Premio inserito correttamente</h4>
+                    <h4 class="title" *ngIf="idPremio">Premio aggiornato correttamente</h4>
+                </div>
+                <div class="form-area text-center">
+                    <button class="mybtn2 w-100" data-dismiss="modal" aria-label="ok" (click)="reset()">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Confirm Modal End -->
+<!-- Edit Award End -->
