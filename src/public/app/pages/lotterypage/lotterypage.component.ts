@@ -14,7 +14,7 @@ export class LotterypageComponent implements OnInit {
 
     elencoPremi: Premi[];
     elencoUltimiPremi: Premi[];
-    raccolta: Raccolta;
+    raccolta: Raccolta = new Raccolta();
 
     ngOnInit() {
         console.log('Lottery page');
