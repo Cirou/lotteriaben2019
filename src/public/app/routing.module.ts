@@ -9,14 +9,13 @@ import { AssegnapremiopageComponent } from './pages/assegnapremiopage/assegnapre
 import { RisultativenditepageComponent } from './pages/risultativenditepage/risultativenditepage.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full'},
-  { path: 'home', component: LotterypageComponent},
+  { path: '', component: LotterypageComponent},
   { path: 'adminpage', component: AdminpageComponent },
   { path: 'adminpage/assegnapremio', component: AssegnapremiopageComponent },
   { path: 'adminpage/risultativendite', component: RisultativenditepageComponent },
   { path: 'adminpage/:id', component: AdminpageComponent },
   { path: 'catalogo', component: CatalogopageComponent },
-  { path: '**', redirectTo: 'home', pathMatch: 'full'}
+  { path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
