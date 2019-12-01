@@ -15,7 +15,6 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // PAGES
-import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
 import { AssegnapremiopageComponent } from './pages/assegnapremiopage/assegnapremiopage.component';
 import { AdminpageComponent } from './pages/adminpage/adminpage.component';
@@ -56,7 +55,6 @@ import { LightboxModule } from 'ngx-lightbox';
     LotterypageComponent,
     AdminpageComponent,
     CatalogopageComponent,
-    MainpageComponent,
     RisultativenditepageComponent,
     // PIPE
     SearchFilterPipe,
@@ -88,7 +86,7 @@ import { LightboxModule } from 'ngx-lightbox';
     CookieService
   ],
   exports: [RouterModule],
-  bootstrap: [MainpageComponent],
+  bootstrap: [LotterypageComponent],
   entryComponents: []
 })
 export class AppModule {
