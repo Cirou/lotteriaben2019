@@ -1,12 +1,15 @@
 {
   "configVersion": 1,
-  "index": "/index.html",
+  "index": "/public/index.html",
   "assetGroups": [
     {
       "name": "app",
       "installMode": "prefetch",
       "updateMode": "prefetch",
-      "urls": [],
+      "urls": [
+        "/public/favicon.ico",
+        "/public/manifest.json"
+      ],
       "patterns": [
         "\\/public\\/.*"
       ]
@@ -74,9 +77,14 @@
     {
       "name": "dataGroup1",
       "patterns": [
-        "\\/!\\/premi\\/.*",
-        "\\/!\\/raccolta\\/.*",
-        "\\/!\\/user\\/.*"
+        "\\/!\\/app\\/.*",
+        "\\/!\\/message\\/.*",
+        "\\/!\\/votation\\/.*",
+        "\\/!\\/groupsuggestion\\/.*",
+        "\\/!\\/groupsuggestiontsv\\/.*",
+        "\\/!\\/groupvotations\\/.*",
+        "\\/!\\/usersuggestion\\/.*",
+        "\\/!\\/groupsuggestiontsv\\/.*"
       ],
       "strategy": "performance",
       "maxSize": 50,
@@ -134,7 +142,9 @@
     "/public/assets/img/zuppa.png": "1b244db4e4faf81e479ded99db7271e030278ace",
     "/public/assets/mock/getAllPremi.json": "b6c2ceb957f27b1cbb57e640905dc41004db9590",
     "/public/assets/mock/getValidUserUrl.json": "1697a298a7709cfb319fb6193851e2a95cb95dd7",
-    "/public/assets/mock/upload.json": "09e70f7c0b1b2d08c444c4c427788b8af7690f01"
+    "/public/assets/mock/upload.json": "09e70f7c0b1b2d08c444c4c427788b8af7690f01",
+    "/public/favicon.ico": "5dd78bb0c047cc1894f0462d6a0862af97f59da7",
+    "/public/manifest.json": "36668fcc06aea8f1428baa7eb658a2c6413e458c"
   },
   "navigationUrls": [
     {
