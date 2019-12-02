@@ -396,6 +396,8 @@
           line-height: 34px;
           color: #fff;
           margin-bottom: 16px; }
+        .contact .contact-form-wrapper option {
+          color: black; }
         .contact .contact-form-wrapper .contact-box .input-field {
           width: 100%;
           border: 0px;
