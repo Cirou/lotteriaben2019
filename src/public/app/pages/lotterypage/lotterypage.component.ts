@@ -149,8 +149,7 @@ export class LotterypageComponent implements OnInit {
             return premio.posizione === index
           })
 
-        // const src = premio.immaginebase64;
-        const src = premio.immaginepremio;
+        const src = premio.immaginebase64;
         let caption = '<span>'+premio.nomepremio+'</span>';
         if(premio.descrizionepremio) {
             caption = caption + '<br><span>' + premio.descrizionepremio+'</span>';
