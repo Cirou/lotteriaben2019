@@ -230,6 +230,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                         //this.reset();
                     },
                     err => {
+                        $('#errorModal').modal('show');
                         this.loadingForm = false;
                         console.log(err);
                     }
@@ -244,6 +245,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                         //this.reset();
                     },
                     err => {
+                        $('#errorModal').modal('show');
                         this.loadingForm = false;
                         console.log(err);
                     }
@@ -261,6 +263,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         this.descrizione = '';
         this.imageToUpload = null;
         this.imagePreview = null;
+        this.loadPosizioniList();
     }
 
     login() {
