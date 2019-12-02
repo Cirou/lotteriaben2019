@@ -1,3 +1,4 @@
+import { RaccoltaService } from './../../services/raccolta.service';
 import { PremiService } from './../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 
@@ -37,6 +38,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     isPosizioneValida = true;
     isImmagineValida = true;
 
+    hide = true;
+
     idPremio = null;
     sub: any;
     posizioniList = new Array();
@@ -47,7 +50,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         private premiService: PremiService,
         private route: ActivatedRoute,
         private rootService: RootService,
-        private userService: UserService) { }
+        private userService: UserService,
+        private raccoltaService: RaccoltaService) { }
 
     ngOnInit() {
         this.isLogged = this.rootService.logged;
@@ -65,9 +69,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     loadPosizioniList() {
         this.loading = true;
-        for (let i = 0; i < 90; i++) {
-            this.posizioniList.push(i + 1);
-        }
         this.premiService.getAllPremi().subscribe(
             premi => {
                 const posizioniDaCancellare = new Array();
@@ -77,8 +78,21 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     }
                 });
 
-                this.posizioniList = this.posizioniList.filter(x => !posizioniDaCancellare.includes(x));
-                this.loading = false;
+                this.raccoltaService.getRaccolta().subscribe(
+                    raccolta => {
+                        console.log(raccolta);
+
+                        for (let i = 0; i < raccolta.totalepremi; i++) {
+                            this.posizioniList.push(i + 1);
+                        }
+                        this.posizioniList = this.posizioniList.filter(x => !posizioniDaCancellare.includes(x));
+                        this.loading = false;
+                    },
+                    err => {
+                        console.log(err);
+                        this.loading = false;
+                    }
+                );
             },
             err => {
                 this.loading = false;
@@ -216,6 +230,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                         //this.reset();
                     },
                     err => {
+                        $('#errorModal').modal('show');
                         this.loadingForm = false;
                         console.log(err);
                     }
@@ -230,6 +245,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                         //this.reset();
                     },
                     err => {
+                        $('#errorModal').modal('show');
                         this.loadingForm = false;
                         console.log(err);
                     }
@@ -247,6 +263,7 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         this.descrizione = '';
         this.imageToUpload = null;
         this.imagePreview = null;
+        this.loadPosizioniList();
     }
 
     login() {
@@ -257,8 +274,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     this.rootService.logged = true;
                     this.isLogged = this.rootService.logged;
                 } else {
-                    this.errorMessage = 'Invalid User';
-                    console.log('Invalid User');
+                    this.errorMessage = 'Invalid Password';
+                    console.log('Invalid Password');
                 }
             },
             err => {

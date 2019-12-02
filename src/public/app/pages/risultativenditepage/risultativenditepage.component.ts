@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Raccolta } from '../../../models/Raccolta';
 import { RaccoltaService } from '../../services/raccolta.service';
 import { RootService } from '../../services/root.service';
+declare var $: any;
 
 @Component({
     selector: 'app-risultativenditepage',
@@ -42,6 +43,7 @@ export class RisultativenditepageComponent implements OnInit {
                 this.raccolta = raccolta;
                 console.log(this.raccolta);
                 this.loadingForm = false;
+                $('#confirmModal').modal('show');
             },
             err => {
                 console.log(err);

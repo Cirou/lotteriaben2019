@@ -981,7 +981,9 @@
     outline: none;
     background: transparent;
     width: 100%;
-color:white}
+    color:white;
+    padding: 5px;
+}
    .activities input:hover, .activities input:focus {
        background: #070B28;   }
   .activities .shape {
@@ -1113,21 +1115,7 @@ color:white}
       margin-top: 9px; }
 
 /* Fun fact Area End */
-/* Get Start Area Start */
-.get-start {
-  padding: 120px 0px 120px;
-  background: #0b122e; }
-  .get-start .left-area .section-heading {
-    text-align: left;
-    margin-bottom: 0px; }
-    .get-start .left-area .section-heading .mybtn1 {
-      margin-top: 36px; }
-  .get-start .right-image {
-    text-align: center; }
-    .get-start .right-image img {
-      display: inline-block; }
 
-/* Get Start Area End */
 /*  Recent Winners Area Start */
 .recent-winners {
   background: #070B28;
@@ -1160,7 +1148,7 @@ color:white}
         color: #ff344d;
     }
     .single-winer .top-area .left .name {
-      font-size: 24px;
+      font-size: 1.2em;
       line-height: 34px;
       color: #fff;
       font-weight: 600;

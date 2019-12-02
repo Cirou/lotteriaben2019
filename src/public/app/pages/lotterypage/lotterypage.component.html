@@ -1,43 +1,18 @@
-
-<!-- Cuntdown Area Start -
-<section class="lottery-area featured-game">
-    <div class="daily-lottery">
-        <div class="container">
-            <div class="row justify-content-center mb-5">
-                <div class="col-lg-8 col-md-10">
-                    <div class="section-heading">
-                        <h5 class="subtitle">
-                            Benvenuti alla
-                        </h5>
-                        <h2 class="title">
-                            Lotteria di Natale 2019
-                        </h2>
-                        <p class="text">
-                            In attesa delle meritate ferie natalizie, viviamo insieme un momento di spensieratezza con l'estrazione dei numeri vincenti della lotteria di beneficienza
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="draw-time">
-                        <h5 class="subtitle">
-                                L'estrazione inizierà tra:
-                        </h5>
-                        <div class="draw-counter">
-                                <div><span>{{this.message}}</span></div>
-                        </div>
-                        <p class="text">
-                                Stay tuned
-                        </p>
+<section class="top-header" style="padding:10px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="content">
+                    <div class="text-left">
+                        <a [routerLink]="['/adminpage']" class="sign-in" data-toggle="modal">
+                        <i class="fas fa-user"></i> Admin
+                        </a>                                   
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-Countdown Area End -->
-
 
 <!-- Get Start Area Start -->
 <section class="get-start lottery-area featured-game">
@@ -115,14 +90,14 @@ Countdown Area End -->
                     <div class="single-staticstics">
                         <div class="left">
                             <div class="icon">
-                                <img src="/public/assets/img/money_bag_star.png" style="width: 50px; height: 50px;" alt="">
+                                <img src="/public/assets/img/ic2.png" style="width: 70px;" alt="">
                             </div>
                         </div>
                         <div class="right">
                             <h4 class="title">Totale Ricavi</h4>
                             <div class="count">
                                 <!-- <i class="fa fa-euro-sign"></i> -->
-                                <span>3000{{raccolta.totaleraccolta}}&euro;</span>
+                                <span>{{raccolta.totaleraccolta}}&euro;</span>
                             </div>
                         </div>
                     </div>
@@ -131,14 +106,14 @@ Countdown Area End -->
                     <div class="single-staticstics">
                         <div class="left">
                             <div class="icon">
-                                <img src="/public/assets/img/st2_gift_other.png" alt="">
+                                <img src="/public/assets/img/ic6.png"  alt="">
                             </div>
                         </div>
                         <div class="right">
                             <h4 class="title">venduti</h4>
                             <div class="count">
                                 <img src="/public/assets/img/tikit-icon.png" alt="">
-                                <span>500{{raccolta.totalebiglietti}}</span>
+                                <span>{{raccolta.totalebiglietti}}</span>
                             </div>
                         </div>
                     </div>
@@ -147,7 +122,7 @@ Countdown Area End -->
                     <div class="single-staticstics">
                         <div class="left">
                             <div class="icon">
-                                <img src="/public/assets/img/st2_user.png" alt="">
+                                <img src="/public/assets/img/ic3.png" alt="">
                             </div>
                         </div>
                         <div class="right">
@@ -185,7 +160,7 @@ Countdown Area End -->
             </div>
         </div>
         <div class="row">
-            <div  *ngFor="let premio of elencoUltimiPremi" class="col-lg-4">
+            <div *ngFor="let premio of elencoUltimiPremi" (click)="open(premio.posizione)" style="cursor:pointer" class="col-lg-4">
                 <div class="single-winer">
                     <div class="top-area">
                         <div class="left">
@@ -298,12 +273,13 @@ Countdown Area End -->
                                     <td>
                                         #{{premio.posizione}}
                                     </td>
-                                    <td>
-                                        <span>{{premio.nomepremio}}</span>
-                                        <br>
-                                        <span style="color:#f0ad4e">{{premio.nomevincitore}}</span>
-                                        <br>
-                                        <span style="color: #a1aed4">{{premio.numerovincitore}}</span>
+                                    <td class="numero-vincitore-container">
+                                        <div>
+                                            <span style="color:white">{{premio.nomepremio}}</span>
+                                            <br>
+                                            <span style="color:#f0ad4e">{{premio.nomevincitore}}</span>
+                                        </div>
+                                        <p *ngIf="premio.numerovincitore" class="numero-vincitore text-center">#{{premio.numerovincitore}}</p>
                                     </td>
                                 </tr>
                             </tbody>

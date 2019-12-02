@@ -55,20 +55,38 @@
                         </h4>
                         <form (ngSubmit)="salva()">
                             <div class="row">
-                                <div class="col-10">
-                                    <input type="text" class="input-field" placeholder="Totale raccolta" type="number" [(ngModel)]="raccolta.totaleraccolta" name="raccolta.totaleraccolta" />
+                                <div class="col-4" style="color:white">
+                                    Valore biglietti venduti
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="input-field" placeholder="Valore biglietti venduti" type="number"
+                                        [(ngModel)]="raccolta.totaleraccolta" name="raccolta.totaleraccolta" />
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-10">
-                                    <input type="text" class="input-field" placeholder="Totale biglietti" type="number" [(ngModel)]="raccolta.totalebiglietti" name="raccolta.totalebiglietti" />
+                                <div class="col-4" style="color:white">
+                                    Totale biglietti venduti
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="input-field" placeholder="Totale biglietti venduti" type="number"
+                                        [(ngModel)]="raccolta.totalebiglietti" name="raccolta.totalebiglietti" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-4" style="color:white">
+                                    Totale premi in palio
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="input-field" placeholder="Totale premi in palio" type="number"
+                                        [(ngModel)]="raccolta.totalepremi" name="raccolta.totalepremi" />
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-lg-12 text-center" *ngIf="loadingForm">
-                                    <div  class="loader loader-1">
+                                    <div class="loader loader-1">
                                         <div class="loader-outter"></div>
                                         <div class="loader-inner"></div>
                                     </div>
@@ -86,3 +104,23 @@
         </div>
     </div>
 </section>
+
+<!-- Confirm Modal Start -->
+<div class="modal fade login-modal sign-in" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirm"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered " role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            <div class="modal-body">
+                <div class="header-area">
+                    <h4 class="title">Dati aggiornati correttamente</h4>
+                </div>
+                <div class="form-area text-center">
+                    <button class="mybtn2 w-100" data-dismiss="modal" aria-label="ok">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Confirm Modal End -->

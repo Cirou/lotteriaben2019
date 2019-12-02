@@ -2,6 +2,6 @@
     { "id": 1, "posizione": 1, "nomepremio": "PS4", "descrizionepremio": "ps4 bellissima", "immaginepremio": "/public/assets/img/panino.png", "numerovincitore": null, "nomevincitore": null },
     { "id": 2, "posizione": 2, "nomepremio": "Fotocamera", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pesce.png", "numerovincitore": null, "nomevincitore": null },
     { "id": 3, "posizione": 3, "nomepremio": "XBox", "descrizionepremio": null, "immaginepremio": "/public/assets/img/pizza.png", "numerovincitore": 201232, "nomevincitore": "Giuseppe Di Gennaro" },
-    { "id": 5, "posizione": 9, "nomepremio": "Cappello Napoli", "descrizionepremio": "scritta molto lunga", "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 1234, "nomevincitore": "luigi marchitto" },
+    { "id": 5, "posizione": 9, "nomepremio": "Cappello Napoli", "descrizionepremio": "scritta molto lunga", "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 1234, "nomevincitore": "luigi Marianni" },
     { "id": 5, "posizione": 16, "nomepremio": "Premio con un nome molto lungo", "descrizionepremio": null, "immaginepremio": "/public/assets/img/frutta.png", "numerovincitore": 547834, "nomevincitore": "alessandro rossi" }
 ]

@@ -22,8 +22,10 @@
    }
   
   .field-error {
-    font-size: 0.6em; 
+    font-size: 0.8em; 
     color: #ff344d;
   }
   
-  
+  .contact {
+    padding: 20px 0px 150px;
+  }

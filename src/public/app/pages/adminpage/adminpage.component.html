@@ -35,7 +35,7 @@
                 <div class="contact-form-wrapper">
                     <div class="contact-box">
                         <h4 class="title">
-                            Login Area
+                            Login
                         </h4>
                         <form (ngSubmit)="login()">
 
@@ -44,7 +44,7 @@
                                     <mat-form-field>
                                       <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="pwd" name="pwd">
                                       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-                                      <mat-error *ngIf="pwd.invalid">Password non valida</mat-error>
+                                      <!-- <mat-error *ngIf="pwd.invalid">Invalid Password</mat-error> -->
                                     </mat-form-field>
                                   </div>
                                 </div> 
@@ -52,7 +52,7 @@
                                 <div style="display: inline-block;width: 100%;">
                                         <div style="float: left;">
                                             <img *ngIf="loading" src="/public/assets/img/loader.gif" style="width: 70px;" />
-                                            <span *ngIf="(errorMessage!='')">{{this.errorMessage}}</span>
+                                            <span style="color:red" *ngIf="(errorMessage!='')">{{this.errorMessage}}</span>
                                         </div>
                                         <div style="float: right;padding-top: 3em;">
                                             <button type="submit" class="mybtn1">
@@ -184,4 +184,23 @@
     </div>
 </div>
 <!-- Confirm Modal End -->
+
+<!-- Confirm Modal Start -->
+<div class="modal fade login-modal sign-in" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-body">
+                    <div class="header-area">
+                        <h4 class="title" *ngIf="!idPremio">Impossibile inserire il premio</h4>
+                        <h4 class="title" *ngIf="idPremio">Impossibile aggiornare il premio</h4>
+                    </div>
+                    <div class="form-area text-center">
+                        <button class="mybtn2 w-100" data-dismiss="modal" aria-label="ok">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Confirm Modal End -->
 <!-- Edit Award End -->
