@@ -55,32 +55,32 @@
                         </h4>
                         <form (ngSubmit)="salva()">
                             <div class="row">
-                                <div class="col-4" style="color:white">
+                                <div class="col-lg-6" style="color:white">
                                     Valore biglietti venduti
                                 </div>
-                                <div class="col-8">
-                                    <input type="text" class="input-field" placeholder="Valore biglietti venduti" type="number"
-                                        [(ngModel)]="raccolta.totaleraccolta" name="raccolta.totaleraccolta" />
+                                <div class="col-lg-6">
+                                    <input type="text" class="input-field" placeholder="Inserire valore" type="number"
+                                        [(ngModel)]="raccolta.totaleraccolta" name="raccolta.totaleraccolta" maxlength="5" />
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-4" style="color:white">
+                                <div class="col-lg-6" style="color:white">
                                     Totale biglietti venduti
                                 </div>
-                                <div class="col-8">
-                                    <input type="text" class="input-field" placeholder="Totale biglietti venduti" type="number"
-                                        [(ngModel)]="raccolta.totalebiglietti" name="raccolta.totalebiglietti" />
+                                <div class="col-lg-6">
+                                    <input type="text" class="input-field" placeholder="Inserire valore" type="number"
+                                        [(ngModel)]="raccolta.totalebiglietti" name="raccolta.totalebiglietti" maxlength="4" />
                                 </div>
                             </div>
 
                             <div class="row">
-                                <div class="col-4" style="color:white">
+                                <div class="col-lg-6" style="color:white">
                                     Totale premi in palio
                                 </div>
-                                <div class="col-8">
-                                    <input type="text" class="input-field" placeholder="Totale premi in palio" type="number"
-                                        [(ngModel)]="raccolta.totalepremi" name="raccolta.totalepremi" />
+                                <div class="col-lg-6">
+                                    <input type="text" class="input-field" placeholder="Inserire valore" type="number"
+                                        [(ngModel)]="raccolta.totalepremi" name="raccolta.totalepremi" maxlength="3"/>
                                 </div>
                             </div>
 
