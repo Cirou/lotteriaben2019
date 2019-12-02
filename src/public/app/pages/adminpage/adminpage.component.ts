@@ -1,3 +1,4 @@
+import { RaccoltaService } from './../../services/raccolta.service';
 import { PremiService } from './../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 
@@ -49,7 +50,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
         private premiService: PremiService,
         private route: ActivatedRoute,
         private rootService: RootService,
-        private userService: UserService) { }
+        private userService: UserService,
+        private raccoltaService: RaccoltaService) { }
 
     ngOnInit() {
         this.isLogged = this.rootService.logged;
@@ -67,9 +69,6 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     loadPosizioniList() {
         this.loading = true;
-        for (let i = 0; i < 90; i++) {
-            this.posizioniList.push(i + 1);
-        }
         this.premiService.getAllPremi().subscribe(
             premi => {
                 const posizioniDaCancellare = new Array();
@@ -79,8 +78,21 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     }
                 });
 
-                this.posizioniList = this.posizioniList.filter(x => !posizioniDaCancellare.includes(x));
-                this.loading = false;
+                this.raccoltaService.getRaccolta().subscribe(
+                    raccolta => {
+                        console.log(raccolta);
+
+                        for (let i = 0; i < raccolta.totalepremi; i++) {
+                            this.posizioniList.push(i + 1);
+                        }
+                        this.posizioniList = this.posizioniList.filter(x => !posizioniDaCancellare.includes(x));
+                        this.loading = false;
+                    },
+                    err => {
+                        console.log(err);
+                        this.loading = false;
+                    }
+                );
             },
             err => {
                 this.loading = false;
