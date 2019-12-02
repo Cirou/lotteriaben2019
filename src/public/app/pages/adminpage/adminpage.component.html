@@ -35,7 +35,7 @@
                 <div class="contact-form-wrapper">
                     <div class="contact-box">
                         <h4 class="title">
-                            Login Area
+                            Login
                         </h4>
                         <form (ngSubmit)="login()">
 
@@ -44,7 +44,7 @@
                                     <mat-form-field>
                                       <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" [formControl]="pwd" name="pwd">
                                       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-                                      <mat-error *ngIf="pwd.invalid">Password non valida</mat-error>
+                                      <!-- <mat-error *ngIf="pwd.invalid">Invalid Password</mat-error> -->
                                     </mat-form-field>
                                   </div>
                                 </div> 
@@ -52,7 +52,7 @@
                                 <div style="display: inline-block;width: 100%;">
                                         <div style="float: left;">
                                             <img *ngIf="loading" src="/public/assets/img/loader.gif" style="width: 70px;" />
-                                            <span *ngIf="(errorMessage!='')">{{this.errorMessage}}</span>
+                                            <span style="color:red" *ngIf="(errorMessage!='')">{{this.errorMessage}}</span>
                                         </div>
                                         <div style="float: right;padding-top: 3em;">
                                             <button type="submit" class="mybtn1">
