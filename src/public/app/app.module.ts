@@ -9,11 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-// FIREBASE
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireAuthModule } from 'angularfire2/auth';
-
 // PAGES
 import { MainpageComponent } from './pages/mainpage/mainpage.component';
 import { LotterypageComponent } from './pages/lotterypage/lotterypage.component';
@@ -72,10 +67,6 @@ import { LightboxModule } from 'ngx-lightbox';
     HttpClientModule,
     MaterialDesignModule,
     ReactiveFormsModule,
-    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment.config),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     Ng2ImgMaxModule,
     LightboxModule
   ],

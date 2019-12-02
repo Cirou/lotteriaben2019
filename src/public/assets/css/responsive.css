@@ -62,6 +62,12 @@
             .activities .tab-menu-area .nav-lend .nav-item .nav-link.active {
               background: #f9314b;
               color: #fff; }
+    .activities #table-mobile {
+        display: none;
+    }
+    .activities #table-desktop {
+        display: table;
+    }
     .activities .table {
       -webkit-box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.4);
       box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.4);
@@ -89,7 +95,11 @@
           font-size: 18px;
           text-transform: uppercase;
           font-weight: 700;
-          color: #a1aed4; }
+          color: #fff; }
+          .activities .table tr td .t-premio {
+            display: inline-flex;
+            align-items:center;
+          }
           .activities .table tr td img {
             object-fit: cover;
             width: 40px;
@@ -101,11 +111,11 @@
           .activities .table tr td:nth-child(1) {
             color: #fff; }
           .activities .table tr td:nth-child(3) {
-            color: #045cf0; }
+            color: #f0ad4e; }
           .activities .table tr td:nth-child(5), .activities .table tr td:nth-child(6) {
             color: #f0ad4e; }
           .activities .table tr td:last-child {
-            color: #f0ad4e; }
+            color: #a1aed4; }
         .activities .table tr:hover {
           background: #192246; }
   
@@ -236,7 +246,21 @@
         .breadcrumb-area .breadcrumb-list li a.active {
           color: #f1f1f1; }
   
-        
+        /* Get Start Area Start */
+.get-start {
+    padding: 50px 0px 0px; }
+    .get-start .left-area .section-heading {
+      text-align: left;
+      margin-bottom: 0px; }
+      .get-start .left-area .section-heading .mybtn1 {
+        margin-top: 36px; }
+    .get-start .right-image {
+      text-align: center;
+      margin-bottom: 50px; }
+      .get-start .right-image img {
+        display: inline-block; }
+  
+  /* Get Start Area End */
 /* Contact Area Start */
 .contact {
     padding: 112px 0px 150px;
@@ -293,7 +317,7 @@
 /* Lottery Staticstics Area Start */
 .lottery-area {
     background: #0b122e;
-    padding-bottom: 120px; }
+    padding-bottom: 80px; }
     .lottery-area .lottery-staticstics {
       margin-top: -55px; }
       .lottery-area .lottery-staticstics .single-staticstics {
@@ -323,7 +347,7 @@
           flex: 1; }
           .lottery-area .lottery-staticstics .single-staticstics .right .title {
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 700;
             text-transform: uppercase;
             line-height: 26px; }
           .lottery-area .lottery-staticstics .single-staticstics .right .count img {
@@ -342,18 +366,19 @@
           -ms-transform: translateY(-10px);
           transform: translateY(-10px); }
     .lottery-area .daily-lottery {
-      padding: 113px 0px 120px; }
+      padding: 60px 0px 120px; }
       .lottery-area .daily-lottery .section-heading {
         margin-bottom: 57px; }
       .lottery-area .daily-lottery .draw-time {
-        /* background: url(/public/assets/img/draw-time-bg.jpg); */
+        border-radius: 10px;
+        background: url(/public/assets/img/draw-time-bg.jpg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        padding: 53px 0px 53px;
+        padding: 40px 0px;
         text-align: center; }
         .lottery-area .daily-lottery .draw-time .subtitle {
-          font-size: 24px;
+          font-size: 30px;
           line-height: 34px;
           font-weight: 600;
           text-transform: uppercase;
@@ -615,7 +640,7 @@
 
           /* Awards Area Start */
 .awards-area {
-    padding: 112px 0px 90px;
+    padding: 60px 0px 90px;
     background: #0b122e; }
     .awards-area .section-heading {
       margin-bottom: 58px; }
@@ -645,13 +670,12 @@
       object-fit: cover;
    }
     .single-awards .content .title {
-      font-size: 24px;
-      line-height: 34px;
-      font-weight: 700;
-      text-transform: uppercase;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+        font-size: 1.2em;
+        line-height: 34px;
+        font-weight: 700;
+        text-transform: uppercase;
+        height: 60px;
+        margin-top: 10px;
   }
   .single-awards .content .description {
       font-size: 14px;
@@ -706,7 +730,7 @@
 .section-heading {
     text-align: center; }
     .section-heading .subtitle {
-      font-size: 24px;
+      font-size: 30px;
       line-height: 34px;
       font-weight: 600;
       text-transform: uppercase;
@@ -962,6 +986,12 @@
     font-size: 20px;
     line-height: 30px;
   }
+  .activities #table-mobile {
+    display: table;
+}
+.activities #table-desktop {
+    display: none;
+}
   /* .activities .table {
     width: 800px;
   } */
@@ -969,7 +999,7 @@
   .activities .table tr td
   {
     font-size: 0.8em;
-    line-height: 26px;
+    line-height: 1.3em;
   }
   .funfact .single-fun .count-area {
     font-size: 40px;
@@ -979,7 +1009,7 @@
     margin-bottom: 22px;
   }
   .activities {
-    padding: 110px 0px 88px;
+    padding: 80px 0px 88px;
   }
   .get-start {
     padding: 111px 0px 120px;
@@ -987,6 +1017,7 @@
   .get-start .right-image {
     text-align: center;
     margin-top: 60px;
+    margin-bottom: 60px;
   }
   .single-winer .bottom-area .left {
     font-size: 24px;
@@ -1061,13 +1092,13 @@
     transform: translateY(-50%)!important;
   }
   .breadcrumb-area.bc-lottery {
-    padding: 100px 0px;
+    padding: 80px 0px;
   }
   .lottery-area .lottery-staticstics .single-staticstics{
     margin-bottom: 30px;
   }
   .lottery-area .daily-lottery {
-    padding: 83px 0px 120px;
+    padding: 50px 0px 80px;
   }
   .lottery-area .daily-lottery .draw-time .draw-counter span {
     font-size: 40px;
@@ -1396,7 +1427,7 @@
     padding: 230px 0px 218px;
   }
   .breadcrumb-area.bc-lottery {
-    padding: 100px 0px;
+    padding: 80px 0px;
   }
   .breadcrumb-area.bc-tournaments {
     padding: 230px 0px 94px;
@@ -1661,7 +1692,7 @@
     padding: 0px 20px 6px;
   }
   .section-heading .subtitle {
-    font-size: 18px;
+    font-size: 20px;
     line-height: 28px;
   }
   .single-winer .top-area .left .name,
@@ -1961,7 +1992,7 @@
     padding: 232px 0px 94px;
   }
   .breadcrumb-area.bc-lottery {
-    padding: 100px 0px;
+    padding: 40px 0px 80px;
   }
   .breadcrumb-area.about {
     padding: 232px 0px 94px;

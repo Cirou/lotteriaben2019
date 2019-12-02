@@ -1,9 +1,9 @@
 
-<!-- Cuntdown Area Start -->
+<!-- Cuntdown Area Start -
 <section class="lottery-area featured-game">
     <div class="daily-lottery">
         <div class="container">
-            <div class="row justify-content-center">
+            <div class="row justify-content-center mb-5">
                 <div class="col-lg-8 col-md-10">
                     <div class="section-heading">
                         <h5 class="subtitle">
@@ -13,12 +13,12 @@
                             Lotteria di Natale 2019
                         </h2>
                         <p class="text">
-                            In attesa di congedarci per le meritate ferie natalizie, viviamo insieme un momento di spensieratezza con l'estrazione dei numeri vincenti dei biglietti della lotteria di beneficienza
+                            In attesa delle meritate ferie natalizie, viviamo insieme un momento di spensieratezza con l'estrazione dei numeri vincenti della lotteria di beneficienza
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-5">
                 <div class="col-lg-12">
                     <div class="draw-time">
                         <h5 class="subtitle">
@@ -28,7 +28,7 @@
                                 <div><span>{{this.message}}</span></div>
                         </div>
                         <p class="text">
-                                Rimanete sintonizzati
+                                Stay tuned
                         </p>
                     </div>
                 </div>
@@ -36,7 +36,57 @@
         </div>
     </div>
 </section>
-<!-- Countdown Area End -->
+Countdown Area End -->
+
+
+<!-- Get Start Area Start -->
+<section class="get-start lottery-area featured-game">
+    
+        <div class="daily-lottery">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 d-flex align-self-center">
+                    <div class="left-area">
+                        <div class="section-heading">
+                            <h5 class="subtitle">
+                                Benvenuti alla
+                            </h5>
+                            <h2 class="title ">
+                                Lotteria di Natale 2019
+                            </h2>
+                            <p class="text">
+                                In attesa delle meritate ferie natalizie, viviamo insieme un momento di spensieratezza con l'estrazione dei numeri vincenti della lotteria di beneficienza 
+                            </p>
+                            <!-- <a href="#" class="mybtn1">Play  Now!</a> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="right-image">
+                        <img src="/public/assets/img/get-start.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-lg-12">
+                        <div class="draw-time">
+                            <h5 class="subtitle">
+                                    L'estrazione inizierà tra:
+                            </h5>
+                            <div class="draw-counter">
+                                    <div><span>{{this.message}}</span></div>
+                            </div>
+                            <p class="text">
+                                    Stay tuned
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </section> 
+    <!-- Get Start Area End -->
+    
 
 
 <!-- Lottery Staticstics Area Start -->
@@ -46,7 +96,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h4 class="title">
-                    i numeri
+                    i biglietti
                 </h4>
             </div>
             <!-- <div class="col-lg-6 hidden-md">
@@ -65,13 +115,14 @@
                     <div class="single-staticstics">
                         <div class="left">
                             <div class="icon">
-                                <img src="/public/assets/img/st1.png" alt="">
+                                <img src="/public/assets/img/money_bag_star.png" style="width: 50px; height: 50px;" alt="">
                             </div>
                         </div>
                         <div class="right">
                             <h4 class="title">Totale Ricavi</h4>
                             <div class="count">
-                                <span>{{raccolta.totaleraccolta}}</span>
+                                <!-- <i class="fa fa-euro-sign"></i> -->
+                                <span>3000{{raccolta.totaleraccolta}}&euro;</span>
                             </div>
                         </div>
                     </div>
@@ -84,10 +135,10 @@
                             </div>
                         </div>
                         <div class="right">
-                            <h4 class="title">Biglietti acquistati</h4>
+                            <h4 class="title">venduti</h4>
                             <div class="count">
                                 <img src="/public/assets/img/tikit-icon.png" alt="">
-                                <span>{{raccolta.totalebiglietti}}</span>
+                                <span>500{{raccolta.totalebiglietti}}</span>
                             </div>
                         </div>
                     </div>
@@ -96,14 +147,15 @@
                     <div class="single-staticstics">
                         <div class="left">
                             <div class="icon">
-                                <img src="/public/assets/img/st2_gift_other.png" alt="">
+                                <img src="/public/assets/img/st2_user.png" alt="">
                             </div>
                         </div>
                         <div class="right">
-                            <h4 class="title">I miei biglietti</h4>
+                            <h4 class="title">I tuoi biglietti</h4>
                             <div class="count">
                                 <img src="/public/assets/img/tikit-icon.png" alt="">
                                 <span>2</span>
+                                <i class="fa fa-plus ml-2" style="color: #f0ad4e"></i>
                             </div>
                         </div>
                     </div>
@@ -120,14 +172,14 @@
         <div class="row justify-content-center">
             <div class="col-lg-8 col-md-10">
                 <div class="section-heading">
-                    <h5 class="subtitle">
+                    <!-- <h5 class="subtitle">
                         qui potete trovare
-                    </h5>
+                    </h5> -->
                     <h2 class="title">
                         gli ultimi 3 premi estratti
                     </h2>
                     <p class="text">
-                        complimenti ai fortunati!
+                        complimenti ai fortunati vincitori!
                     </p>
                 </div>
             </div>
@@ -185,9 +237,9 @@
                     <h2 class="title">
                         Elenco premi
                     </h2>
-                    <p class="text">
+                    <!-- <p class="text">
                         La lista dei premi si aggiornerà automaticamente senza dover ricaricare
-                    </p>
+                    </p> -->
                 </div>
             </div>
         </div>
@@ -205,12 +257,13 @@
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-all-bets" role="tabpanel" aria-labelledby="pills-all-bets-tab">
                         <div class="responsive-table">
-                            <table class="table" #listapremi>
+                            <table class="table" id="table-desktop" #listapremi>
                             <thead>
                                 <tr>
                                 <th scope="col">POS.</th>
                                 <th scope="col">PREMIO</th>
                                 <th scope="col">VINCITORE</th>
+                                <th scope="col">BIGLIETTO</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -219,11 +272,38 @@
                                         #{{premio.posizione}}
                                     </td>
                                     <td>
-                                        <img src="{{premio.immaginebase64}}" alt="" class="mr-2">
-                                        {{premio.nomepremio}}
+                                        <div class="t-premio">
+                                            <!-- <img src="{{premio.immaginebase64}}" alt="" class="mr-2"> -->
+                                            {{premio.nomepremio}}
+                                        </div>
                                     </td>
                                     <td>
-                                    {{premio.numerovincitore}} - {{premio.nomevincitore}}
+                                        {{premio.nomevincitore}}
+                                    </td>
+                                    <td>
+                                        {{premio.numerovincitore}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            <table class="table" id="table-mobile" #listapremi>
+                            <thead>
+                                <tr>
+                                <th scope="col">POS.</th>
+                                <th scope="col">PREMIO</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let premio of elencoPremi">
+                                    <td>
+                                        #{{premio.posizione}}
+                                    </td>
+                                    <td>
+                                        <span>{{premio.nomepremio}}</span>
+                                        <br>
+                                        <span style="color:#f0ad4e">{{premio.nomevincitore}}</span>
+                                        <br>
+                                        <span style="color: #a1aed4">{{premio.numerovincitore}}</span>
                                     </td>
                                 </tr>
                             </tbody>
