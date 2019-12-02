@@ -6,5 +6,5 @@ export class Raccolta {
     totalebiglietti: number;
 
     totalepremi: number;
-    
+
 }
