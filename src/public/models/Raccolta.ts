@@ -4,4 +4,7 @@ export class Raccolta {
     totaleraccolta: number;
 
     totalebiglietti: number;
+
+    totalepremi: number;
+    
 }
