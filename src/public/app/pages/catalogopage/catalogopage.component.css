@@ -1,0 +1,7 @@
+.lb-caption span:nth-child(1) {
+    font-size:1.5em;color: #f0ad4e;
+}
+
+.lb-caption span:last-child {
+    font-size:1.2em;color: #ffffff;
+}
