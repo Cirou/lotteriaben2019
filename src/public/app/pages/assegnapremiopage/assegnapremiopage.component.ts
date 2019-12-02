@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PremiService } from '../../services/premi.service';
 import { RootService } from '../../services/root.service';
 import { Premi } from '../../../models/Premi';
+declare var $: any;
 
 @Component({
     selector: 'app-assegnapremiopage',
@@ -38,9 +39,11 @@ export class AssegnapremiopageComponent implements OnInit {
             this.premiService.putPremio(premio).subscribe(
                 res => {
                     console.log(res);
+                    $('#confirmModal').modal('show');
                 },
                 err => {
                     console.log(err);
+                    $('#errorModal').modal('show');
                 }
             );
         } else {

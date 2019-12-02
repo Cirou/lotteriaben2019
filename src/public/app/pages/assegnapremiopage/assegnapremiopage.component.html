@@ -63,7 +63,7 @@
                                         {{premio.nomepremio}}
                                     </td>
                                     <td>
-                                        <input type="text" class="input-field" placeholder="Numero ticket" [(ngModel)]="premio.numerovincitore" name="numerovincitore">
+                                        <input type="text" class="input-field" placeholder="Numero ticket" [(ngModel)]="premio.numerovincitore" name="numerovincitore" maxlength="6">
                                     </td>
                                     <td>
                                         <input type="text" class="input-field" placeholder="Nome vincitore" [(ngModel)]="premio.nomevincitore" name="numerovincitore" maxlength="30">
@@ -82,3 +82,22 @@
     </div>
 </section> 
 <!-- Lista Premi Area End -->
+
+<!-- Confirm Modal Start -->
+<div class="modal fade login-modal sign-in" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirm" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered " role="document">
+            <div class="modal-content">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-body">
+                    <div class="header-area">
+                        <h4 class="title">Premio assegnato correttamente</h4>
+                    </div>
+                    <div class="form-area text-center">
+                        <button class="mybtn2 w-100" data-dismiss="modal" aria-label="ok">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Confirm Modal End -->
+    
