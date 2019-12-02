@@ -862,7 +862,7 @@
 /* Features Area End */
 /* Featured Game Area Start */
 .featured-game {
-  padding: 0px 0px 120px;
+  padding: 0px ;
   background: url(../../../assets/img/featuredgame-bg.jpg);
   background-position: center;
   background-size: cover;
@@ -992,25 +992,11 @@
       margin-top: 9px; }
 
 /* Fun fact Area End */
-/* Get Start Area Start */
-.get-start {
-  padding: 120px 0px 120px;
-  background: #0b122e; }
-  .get-start .left-area .section-heading {
-    text-align: left;
-    margin-bottom: 0px; }
-    .get-start .left-area .section-heading .mybtn1 {
-      margin-top: 36px; }
-  .get-start .right-image {
-    text-align: center; }
-    .get-start .right-image img {
-      display: inline-block; }
 
-/* Get Start Area End */
 /*  Recent Winners Area Start */
 .recent-winners {
   background: #0b122e;
-  padding: 112px 0px 0px; }
+  padding: 0px; }
   .recent-winners .section-heading {
     margin-bottom: 58px; }
   .recent-winners .mybtn2 {
@@ -1039,9 +1025,11 @@
         color: #ff344d;
     }
     .single-winer .top-area .left .name {
-      font-size: 24px;
+      font-size: 1.2em;
       line-height: 34px;
       color: #fff;
+      height: 60px;
+      text-transform: uppercase;
       font-weight: 600;
       margin-bottom: 3px; }
     .single-winer .top-area .left .date {
@@ -1065,6 +1053,8 @@
     .single-winer .bottom-area .left {
       font-size: 28px;
       color: #f0ad4e;
+      
+      height: 70px;
       font-family: "Ubuntu", sans-serif; }
     .single-winer .bottom-area .right {
       text-align: right; }
