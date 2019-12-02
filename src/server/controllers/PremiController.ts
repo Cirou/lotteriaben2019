@@ -38,7 +38,7 @@ export let getPremiByPosizione = (req: Request, res: Response) => {
  */
 export let getAllPremi = (req: Request, res: Response) => {
   getRepository(Premi).createQueryBuilder('premi')
-    .select().orderBy('premi.posizione', 'DESC')
+    .select().orderBy('premi.posizione', 'ASC')
     .getMany().then(premi => {
       res.send(premi);
     }).catch(err => { console.log(err); });
