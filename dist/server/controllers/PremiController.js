@@ -32,7 +32,7 @@ exports.getPremiByPosizione = function (req, res) {
  */
 exports.getAllPremi = function (req, res) {
     typeorm_1.getRepository(Premi_1.Premi).createQueryBuilder('premi')
-        .select().orderBy('premi.posizione', 'DESC')
+        .select().orderBy('premi.posizione', 'ASC')
         .getMany().then(function (premi) {
         res.send(premi);
     }).catch(function (err) { console.log(err); });

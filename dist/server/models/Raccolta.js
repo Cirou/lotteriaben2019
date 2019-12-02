@@ -25,6 +25,10 @@ var Raccolta = /** @class */ (function () {
         typeorm_1.Column({ name: 'totalebiglietti', type: 'integer' }),
         __metadata("design:type", Number)
     ], Raccolta.prototype, "totalebiglietti", void 0);
+    __decorate([
+        typeorm_1.Column({ name: 'totalepremi', type: 'integer' }),
+        __metadata("design:type", Number)
+    ], Raccolta.prototype, "totalepremi", void 0);
     Raccolta = __decorate([
         typeorm_1.Entity('raccolta')
     ], Raccolta);

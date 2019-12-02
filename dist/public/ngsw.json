@@ -49,6 +49,9 @@
         "/public/assets/img/gelato.png",
         "/public/assets/img/get-start.png",
         "/public/assets/img/hotdog.png",
+        "/public/assets/img/ic2.png",
+        "/public/assets/img/ic3.png",
+        "/public/assets/img/ic6.png",
         "/public/assets/img/insalata.png",
         "/public/assets/img/loader.gif",
         "/public/assets/img/lottery_new.png",
@@ -97,7 +100,7 @@
   ],
   "hashTable": {
     "/.well-known/acme-challenge/cpIlSx5Uh-HLKEgUv_anDKwgMTWWuoGDSzWFghyPZ4c": "91465906ddcfd254cc49f3f02ad3293969c9e6c9",
-    "/public/assets/css/responsive.css": "7e14cecd9a2ab2e13639f893c481c525c9ef6376",
+    "/public/assets/css/responsive.css": "6166f08dfd20d18966e6676f182f3762c2f8473b",
     "/public/assets/css/styles.scss": "272bb7fe1c48a5dbc7526cc2eb6def5f3fe81fc0",
     "/public/assets/css/theme.scss": "fcb168a18d8c4c208c406dedbf152d73fa79a13d",
     "/public/assets/fonts/breakfast.otf": "79071ad8d24320e428ab095e092d2b03c879026d",
@@ -126,6 +129,9 @@
     "/public/assets/img/gelato.png": "79c272b27c82ec7729f88c3e33a399a91172e096",
     "/public/assets/img/get-start.png": "50cb100959eac4a1eac983f4db4267e1830989b5",
     "/public/assets/img/hotdog.png": "aa5ec5b0171304d2510f4816dfb3b0d9d5fcc0c9",
+    "/public/assets/img/ic2.png": "3549d55b12ba3176a4272859f14feab8ab3daec6",
+    "/public/assets/img/ic3.png": "a55d798eb401cd7b545be09c2358f5244c08d558",
+    "/public/assets/img/ic6.png": "39b6f7346cbf21cb689082a1037d520f2e1054b0",
     "/public/assets/img/insalata.png": "e3b39d7f7a32c7a591e190f1674b6ea2844d5c1f",
     "/public/assets/img/loader.gif": "41b4b01409b3de2e37db78df794471f691593c16",
     "/public/assets/img/lottery_new.png": "29274c138f4ced7f7ea2623faedf6ef89eb76f90",
@@ -146,11 +152,11 @@
     "/public/assets/img/st2_user.png": "8f33b7e7cf98dd64ac07e59b1434a410dec7ac37",
     "/public/assets/img/tikit-icon.png": "f7effa6f3bbd2357510ffc78ab7ae0df9c1f5245",
     "/public/assets/img/zuppa.png": "1b244db4e4faf81e479ded99db7271e030278ace",
-    "/public/assets/mock/getAllPremi.json": "8c24905d6ee28e8ccc8a179cec11c03da8d50073",
+    "/public/assets/mock/getAllPremi.json": "b958708f86e1d434f4afddb3020bfa11ba10d498",
     "/public/assets/mock/getValidUserUrl.json": "1697a298a7709cfb319fb6193851e2a95cb95dd7",
     "/public/assets/mock/upload.json": "09e70f7c0b1b2d08c444c4c427788b8af7690f01",
     "/public/favicon.ico": "5dd78bb0c047cc1894f0462d6a0862af97f59da7",
-    "/public/manifest.json": "36668fcc06aea8f1428baa7eb658a2c6413e458c"
+    "/public/manifest.json": "3cadf7a0049f40c5fa1800dbbda84b5e37135336"
   },
   "navigationUrls": [
     {
