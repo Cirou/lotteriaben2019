@@ -37,6 +37,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
     isPosizioneValida = true;
     isImmagineValida = true;
 
+    hide = true;
+
     idPremio = null;
     sub: any;
     posizioniList = new Array();
@@ -257,8 +259,8 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                     this.rootService.logged = true;
                     this.isLogged = this.rootService.logged;
                 } else {
-                    this.errorMessage = 'Invalid User';
-                    console.log('Invalid User');
+                    this.errorMessage = 'Invalid Password';
+                    console.log('Invalid Password');
                 }
             },
             err => {
