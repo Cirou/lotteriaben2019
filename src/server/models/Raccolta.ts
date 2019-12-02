@@ -12,4 +12,7 @@ export class Raccolta {
   @Column({ name: 'totalebiglietti', type: 'integer' })
   totalebiglietti: number;
 
+  @Column({ name: 'totalepremi', type: 'integer' })
+  totalepremi: number;
+
 }
