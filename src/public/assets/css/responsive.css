@@ -1,3 +1,109 @@
+.lb-caption span:nth-child(1) {
+    font-size:1.5em;color: #f0ad4e;
+}
+ 
+.lb-caption span:nth-child(2) {
+    font-size:1.2em;color: #ffffff;
+}
+
+.numero-vincitore {
+    background: #0d1535;
+    border: 1px solid #1a1e39;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 50px;
+    padding: 4px 15px;
+    margin-bottom: 0px;
+    color: #a1aed4;
+    width: 90px;
+    height: fit-content;
+}
+
+ .numero-vincitore-container {
+    display: flex;
+    justify-content: space-between;
+ }
+
+
+/*  Recent Winners Area Start */
+.recent-winners {
+    background: #0b122e;
+    padding: 0px; }
+    .recent-winners .section-heading {
+      margin-bottom: 58px; }
+    .recent-winners .mybtn2 {
+      text-align: center;
+      padding: 0px;
+      margin-top: 60px; }
+  
+  .single-winer {
+    border: 1px solid #273b71;
+    border-radius: 10px;
+    padding: 15px 15px 10px;
+    -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
+    -webkit-transition: all 0.3s ease-in;
+    -o-transition: all 0.3s ease-in;
+    transition: all 0.3s ease-in; }
+    .single-winer .top-area {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+      margin-bottom: 6px; }
+      .single-winer .top-area .left .position {
+          color: #ff344d;
+      }
+      .single-winer .top-area .left .name {
+        font-size: 1.2em;
+        line-height: 34px;
+        color: #fff;
+        height: 60px;
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 3px; }
+      .single-winer .top-area .left .date {
+        font-size: 18px;
+        line-height: 28px; }
+      .single-winer .top-area .right .id {
+        background: #0d1535;
+        border: 1px solid #1a1e39;
+        font-size: 14px;
+        line-height: 24px;
+        border-radius: 50px;
+        padding: 4px 15px;
+        margin-bottom: 0px; }
+    .single-winer .bottom-area {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      justify-content: space-between; }
+      .single-winer .bottom-area .left {
+        font-size: 1.3em;
+        color: #f0ad4e;
+        
+        height: 70px;
+        font-family: "Ubuntu", sans-serif; }
+      .single-winer .bottom-area .right {
+        text-align: right; }
+    .single-winer:hover {
+      border-color: #273b71;
+      -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+      transform: translateY(-10px); }
+      .single-winer img {
+          object-fit: cover;
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+      }
+  
+  /*  Recent Winners Area End */
+
 /* activities Area Start */
 .activities {
     padding: 110px 0px 113px;
@@ -294,18 +400,18 @@
           width: 100%;
           border: 0px;
           height: 50px;
-          color: #a1aed4;
+          color: #fff;
           background: none;
           border-bottom: 1px solid rgba(255, 255, 255, 0.2);
           margin-bottom: 22px; }
           .contact .contact-form-wrapper .contact-box .input-field::-webkit-input-placeholder {
-            color: #a1aed4; }
+            color: #fff; }
           .contact .contact-form-wrapper .contact-box .input-field:-moz-placeholder {
-            color: #a1aed4; }
+            color: #fff; }
           .contact .contact-form-wrapper .contact-box .input-field::-moz-placeholder {
-            color: #a1aed4; }
+            color: #fff; }
           .contact .contact-form-wrapper .contact-box .input-field:-ms-input-placeholder {
-            color: #a1aed4; }
+            color: #fff; }
           .contact .contact-form-wrapper .contact-box .input-field.textarea {
             height: 120px;
             resize: none; }
@@ -1016,7 +1122,7 @@
   }
   .get-start .right-image {
     text-align: center;
-    margin-top: 60px;
+    /* margin-top: 60px; */
     margin-bottom: 60px;
   }
   .single-winer .bottom-area .left {
@@ -1768,7 +1874,7 @@
   .lottery-area .lottery-staticstics .single-staticstics {
     padding: 30px 30px 30px;
     border-radius: 10px;
-    background-color: rgba(29, 40, 80, 0.6);
+    background-color: rgba(29, 40, 80, 1);
   }
   .question-area .section-heading .title {
     margin-bottom: 18px;

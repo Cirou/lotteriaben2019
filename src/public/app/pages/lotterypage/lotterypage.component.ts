@@ -3,6 +3,7 @@ import { PremiService } from '../../services/premi.service';
 import { Premi } from '../../../models/Premi';
 import { RaccoltaService } from '../../services/raccolta.service';
 import { Raccolta } from '../../../models/Raccolta';
+import { Lightbox } from 'ngx-lightbox';
 
 @Component({
     selector: 'app-lotterypage',
@@ -10,7 +11,7 @@ import { Raccolta } from '../../../models/Raccolta';
     styleUrls: ['./lotterypage.component.css']
 })
 export class LotterypageComponent implements OnInit {
-    constructor(private premiService: PremiService, private raccoltaService: RaccoltaService) {}
+    constructor(private premiService: PremiService, private _lightbox: Lightbox, private raccoltaService: RaccoltaService) {}
 
     elencoPremi: Premi[];
     elencoUltimiPremi: Premi[];
@@ -138,4 +139,35 @@ export class LotterypageComponent implements OnInit {
         console.log($element);
         $element.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     }
+
+    // private albums: any = [];
+
+    open(index: number): void {
+        // open lightbox
+
+        const premio = this.elencoPremi.find(premio => {
+            return premio.posizione === index
+          })
+
+        // const src = premio.immaginebase64;
+        const src = premio.immaginepremio;
+        let caption = '<span>'+premio.nomepremio+'</span>';
+        if(premio.descrizionepremio) {
+            caption = caption + '<br><span>' + premio.descrizionepremio+'</span>';
+        }
+
+        const albums = [];
+        const album = {
+            src: src,
+            caption: caption
+        };
+        albums.push(album);
+        this._lightbox.open(albums, 0);
+    }
+
+    close(): void {
+        // close lightbox programmatically
+        this._lightbox.close();
+    }
+
 }
