@@ -43,8 +43,8 @@ createConnection({
         // Express configuration
         app.use(compression());
         app.use(logger('dev'));
-        app.use(bodyParser.json());
-        app.use(bodyParser.urlencoded({ extended: true }));
+        app.use(bodyParser.json({ limit: '10mb' }));
+        app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
         app.use(expressValidator());
         app.use(passport.initialize());
         app.use(passport.session());
@@ -66,10 +66,10 @@ createConnection({
 
         const storage = multer.diskStorage({
             // multers disk storage settings
-            destination: function(req, file, cb) {
+            destination: function (req, file, cb) {
                 cb(undefined, './public/uploads/');
             },
-            filename: function(req, file, cb) {
+            filename: function (req, file, cb) {
                 const datetimestamp = Date.now();
                 cb(undefined, file.fieldname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length - 1]);
             }
@@ -81,8 +81,8 @@ createConnection({
         }).single('file');
 
         // API path that will upload the files
-        app.post('/upload', function(req, res) {
-            upload(req, res, function(err) {
+        app.post('/upload', function (req, res) {
+            upload(req, res, function (err) {
                 if (err) {
                     res.json({ error_code: 1, err_desc: err });
                     return;
@@ -95,7 +95,7 @@ createConnection({
          * Primary app routes for Angular will catch all route
          * Keep this one as the last one
          */
-        app.get('*', function(req, res) {
+        app.get('*', function (req, res) {
             res.sendFile(rootPath + 'dist/public/index.html', { user: req.user });
         });
 
