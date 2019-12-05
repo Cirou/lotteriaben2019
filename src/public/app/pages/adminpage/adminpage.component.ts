@@ -268,6 +268,10 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     login() {
         this.errorMessage = '';
+        if(this.isIE()) {
+            $('#ieModal').modal('show');
+            return;
+        }
         this.userService.postUser(this.pwd.value).subscribe(
             user => {
                 if (user.isValid) {
@@ -282,5 +286,15 @@ export class AdminpageComponent implements OnInit, OnDestroy {
                 console.log(err);
             }
         );
+    }
+
+    isIE() {
+        const match = navigator.userAgent.search(/(?:Edge|MSIE|Trident\/.*; rv:)/);
+        let isIE = false;
+    
+        if (match !== -1) {
+            isIE = true;
+        }
+        return isIE;
     }
 }

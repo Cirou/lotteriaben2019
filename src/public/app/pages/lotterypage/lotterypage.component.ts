@@ -13,6 +13,7 @@ import { Lightbox } from 'ngx-lightbox';
 export class LotterypageComponent implements OnInit {
     constructor(private premiService: PremiService, private _lightbox: Lightbox, private raccoltaService: RaccoltaService) {}
 
+    loadingTable = false;
     elencoPremi: Premi[];
     elencoUltimiPremi: Premi[];
     raccolta: Raccolta = new Raccolta();
@@ -20,6 +21,7 @@ export class LotterypageComponent implements OnInit {
     ngOnInit() {
         console.log('Lottery page');
 
+        this.loadingTable = true;
         this.premiService.getAllPremi().subscribe(
             premi => {
                 this.elencoPremi = premi;
@@ -30,8 +32,10 @@ export class LotterypageComponent implements OnInit {
                 if (this.elencoUltimiPremi.length > 2) {
                     this.elencoUltimiPremi = this.elencoUltimiPremi.slice(0, 3);
                 }
+                this.loadingTable = false;
             },
             err => {
+                this.loadingTable = false;
                 console.log(err);
             }
         );
@@ -60,6 +64,7 @@ export class LotterypageComponent implements OnInit {
     hoursToPrint: String = '';
     minutesToPrint: String = '';
     secondsToPrint: String = '';
+    distance = 0;
 
     clearTimer() {
         clearInterval(this.intervalId);
@@ -87,7 +92,7 @@ export class LotterypageComponent implements OnInit {
             const now = new Date().getTime();
 
             // Find the distance between now and the count down date
-            const distance = countDownDate - now;
+            this.distance = countDownDate - now;
 
             // Time calculations for days, hours, minutes and seconds
             // this.days = Math.floor(distance / (1000 * 3600 * 24));
@@ -95,7 +100,7 @@ export class LotterypageComponent implements OnInit {
             // this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             // this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            this.seconds = Math.floor(distance / 1000);
+            this.seconds = Math.floor(this.distance / 1000);
             this.minutes = Math.floor(this.seconds / 60);
             this.hours = Math.floor(this.minutes / 60);
             this.days = Math.floor(this.hours / 24);
@@ -123,7 +128,7 @@ export class LotterypageComponent implements OnInit {
             }
 
             // If the count down is finished, write some text
-            if (distance < 0) {
+            if (this.distance <= 0) {
                 this.message = 'CI SIAMO!';
                 clearInterval(this.intervalId);
             } else {

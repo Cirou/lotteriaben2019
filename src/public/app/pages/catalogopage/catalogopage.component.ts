@@ -43,7 +43,6 @@ export class CatalogopageComponent implements OnInit {
                 this.elencoPremi = premi;
                 console.log(this.elencoPremi);
 
-                this.loading = false;
                 // update lightbox album
                 this.albums = [];
                 this.elencoPremi.forEach(premio => {
@@ -58,6 +57,7 @@ export class CatalogopageComponent implements OnInit {
                     };
                     this.albums.push(album);
                 });
+                this.loading = false;
             },
             err => {
                 this.loading = false;

@@ -621,7 +621,7 @@
       font-weight: 600;
       margin-bottom: 10px;
       text-transform: uppercase;
-      background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
+      /*background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
       background: -moz-linear-gradient(to left, #ff344d, #d2273c);
       background: -ms-linear-gradient(to left, #ff344d, #d2273c);
       background: -o-linear-gradient(to left, #ff344d, #d2273c);
@@ -630,7 +630,9 @@
       background: -o-linear-gradient(right, #ff344d, #d2273c);
       background: linear-gradient(to left, #ff344d, #d2273c);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; }
+      -webkit-text-fill-color: transparent; */
+      color: #ff344d;
+    }
     .hero-area .left-content .content .text {
       font-size: 28px;
       line-height: 38px;
