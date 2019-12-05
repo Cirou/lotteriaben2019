@@ -491,7 +491,7 @@
           font-weight: 600;
           text-transform: uppercase;
           margin-bottom: 0px;
-          background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
+          /*background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
           background: -moz-linear-gradient(to left, #ff344d, #d2273c);
           background: -ms-linear-gradient(to left, #ff344d, #d2273c);
           background: -o-linear-gradient(to left, #ff344d, #d2273c);
@@ -500,7 +500,9 @@
           background: -o-linear-gradient(right, #ff344d, #d2273c);
           background: linear-gradient(to left, #ff344d, #d2273c);
           -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent; }
+          -webkit-text-fill-color: transparent; */
+          color: #ff344d;
+        }
         .lottery-area .daily-lottery .draw-time .text {
           font-size: 18px;
           line-height: 28px;
@@ -843,7 +845,7 @@
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 8px;
-      background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
+      /*background: -webkit-linear-gradient(to left, #ff344d, #d2273c);
       background: -moz-linear-gradient(to left, #ff344d, #d2273c);
       background: -ms-linear-gradient(to left, #ff344d, #d2273c);
       background: -o-linear-gradient(to left, #ff344d, #d2273c);
@@ -852,7 +854,9 @@
       background: -o-linear-gradient(right, #ff344d, #d2273c);
       background: linear-gradient(to left, #ff344d, #d2273c);
       -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; }
+      -webkit-text-fill-color: transparent; */
+      color: #ff344d;
+    }
       .section-heading .subtitle.extra-padding {
         margin-bottom: 17px; }
     .section-heading .title {
