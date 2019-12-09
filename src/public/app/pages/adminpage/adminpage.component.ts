@@ -69,8 +69,9 @@ export class AdminpageComponent implements OnInit, OnDestroy {
 
     loadPosizioniList() {
         this.loading = true;
-        this.premiService.getAllPremi().subscribe(
+        this.premiService.getAllPremiNoImages().subscribe(
             premi => {
+                this.posizioniList = new Array();
                 const posizioniDaCancellare = new Array();
                 premi.forEach(element => {
                     if (this.posizione === 0 || element.posizione !== this.posizione) {

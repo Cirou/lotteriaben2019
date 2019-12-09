@@ -11,17 +11,18 @@ import { RootService } from '../../services/root.service';
     styleUrls: ['./catalogopage.component.css']
 })
 export class CatalogopageComponent implements OnInit {
-    constructor(private premiService: PremiService, private _lightbox: Lightbox, private rootService: RootService) {}
+    constructor(private premiService: PremiService, private _lightbox: Lightbox, private rootService: RootService) { }
     elencoPremi: Premi[];
 
     isAdminPage: boolean;
     loading = false;
+    offset = 0;
 
     ngOnInit() {
         console.log('Catalogo page');
 
         this.isAdminPage = this.rootService.logged;
-        this.loadPremi();
+        this.initPremi();
     }
 
     private albums: any = [];
@@ -36,28 +37,39 @@ export class CatalogopageComponent implements OnInit {
         this._lightbox.close();
     }
 
+    initPremi() {
+        this.offset = 0;
+        this.albums = [];
+        this.elencoPremi = [];
+        this.loadPremi();
+    }
+
     loadPremi() {
         this.loading = true;
-        this.premiService.getAllPremi().subscribe(
+        this.premiService.getPartialPremi(this.offset).subscribe(
             premi => {
-                this.elencoPremi = premi;
                 console.log(this.elencoPremi);
 
                 // update lightbox album
-                this.albums = [];
-                this.elencoPremi.forEach(premio => {
+                premi.forEach(premio => {
                     const src = premio.immaginebase64;
-                    let caption = '<span>'+premio.nomepremio+'</span>';
-                    if(premio.descrizionepremio) {
-                        caption = caption + '<br><span>' + premio.descrizionepremio+'</span>';
+                    let caption = '<span>#' + premio.posizione + ' - ' + premio.nomepremio + '</span>';
+                    if (premio.descrizionepremio) {
+                        caption = caption + '<br><span>' + premio.descrizionepremio + '</span>';
                     }
                     const album = {
                         src: src,
                         caption: caption
                     };
+                    this.elencoPremi.push(premio);
                     this.albums.push(album);
                 });
                 this.loading = false;
+
+                if (premi.length === 10) {
+                    this.offset += 10;
+                    this.loadPremi();
+                }
             },
             err => {
                 this.loading = false;
@@ -77,7 +89,7 @@ export class CatalogopageComponent implements OnInit {
             res => {
                 this.loading = false;
                 console.log(res);
-                this.loadPremi();
+                this.initPremi();
             },
             err => {
                 this.loading = false;
