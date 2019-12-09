@@ -73,6 +73,25 @@ export let getAllPremiNoImages = (req: Request, res: Response) => {
 };
 
 /**
+ * GET /premipartial/:start
+ * retrieves the premi using the given name
+ */
+export let getPartialPremi = (req: Request, res: Response) => {
+    getRepository(Premi)
+        .createQueryBuilder('premi')
+        .limit(10).offset(req.params.start || 0)
+        .select()
+        .orderBy('premi.posizione', 'ASC')
+        .getMany()
+        .then(premi => {
+            res.send(premi);
+        })
+        .catch(err => {
+            console.log(err);
+        });
+};
+
+/**
  * GET /premilast
  * retrieves the premi using the given name
  */

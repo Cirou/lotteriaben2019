@@ -1,4 +1,4 @@
-import { getPremi, getPremiByPosizione, postPremi, putPremi, deletePremioById, getAllPremi, getAllPremiNoImages, getLastPremi } from './server/controllers/PremiController';
+import { getPremi, getPremiByPosizione, postPremi, putPremi, deletePremioById, getAllPremi, getAllPremiNoImages, getLastPremi, getPartialPremi } from './server/controllers/PremiController';
 import { postUser } from './server/controllers/UserController';
 import { getAllRaccolta, postRaccolta } from './server/controllers/RaccoltaController';
 
@@ -35,6 +35,11 @@ export const AppRoutes = [
         path: '/premi/:id',
         method: 'delete',
         action: deletePremioById
+    },
+    {
+        path: '/premipartial/:start',
+        method: 'get',
+        action: getPartialPremi
     },
     {
         path: '/preminoimages',

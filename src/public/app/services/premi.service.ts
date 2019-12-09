@@ -13,6 +13,7 @@ export class PremiService {
     private premiPosizioneUrl: string = !this.rootService.mocked ? '/premi/posizione/' : '/public/assets/mock/getPremi.json?ref=';
     private getAllPremiNoImagesUrl: string = !this.rootService.mocked ? '/preminoimages' : '/public/assets/mock/getPremi.json?ref=';
     private getLastPremiUrl: string = !this.rootService.mocked ? '/premilast' : '/public/assets/mock/getAllPremi.json?ref=';
+    private getPartialPremiUrl: string = !this.rootService.mocked ? '/premipartial/' : '/public/assets/mock/getAllPremi.json?ref=';
 
     constructor(private http: Http, private rootService: RootService) {}
 
@@ -25,6 +26,13 @@ export class PremiService {
 
     getPremioByPosizione(idPosizione: number): Observable<Premi> {
         return this.http.get(this.premiPosizioneUrl + idPosizione).pipe(
+            map((response: Response) => response.json()),
+            catchError((error: any) => Observable.throw(error || 'Server error'))
+        );
+    }
+
+    getPartialPremi(startFrom: number): Observable<Premi[]> {
+        return this.http.get(this.getPartialPremiUrl + startFrom).pipe(
             map((response: Response) => response.json()),
             catchError((error: any) => Observable.throw(error || 'Server error'))
         );
