@@ -38,6 +38,21 @@ exports.AppRoutes = [
         action: PremiController_1.deletePremioById
     },
     {
+        path: '/premipartial/:start',
+        method: 'get',
+        action: PremiController_1.getPartialPremi
+    },
+    {
+        path: '/preminoimages',
+        method: 'get',
+        action: PremiController_1.getAllPremiNoImages
+    },
+    {
+        path: '/premilast',
+        method: 'get',
+        action: PremiController_1.getLastPremi
+    },
+    {
         path: '/user',
         method: 'post',
         action: UserController_1.postUser
