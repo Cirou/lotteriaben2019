@@ -22,16 +22,22 @@ export class LotterypageComponent implements OnInit {
         console.log('Lottery page');
 
         this.loadingTable = true;
-        this.premiService.getAllPremi().subscribe(
+        this.premiService.getAllPremiNoImages().subscribe(
             premi => {
                 this.elencoPremi = premi;
                 console.log(this.elencoPremi);
-                this.elencoUltimiPremi = this.elencoPremi.filter(function(el) {
-                    return el.numerovincitore != null;
-                });
-                if (this.elencoUltimiPremi.length > 2) {
-                    this.elencoUltimiPremi = this.elencoUltimiPremi.slice(0, 3);
-                }
+                this.loadingTable = false;
+            },
+            err => {
+                this.loadingTable = false;
+                console.log(err);
+            }
+        );
+
+        this.premiService.getLastPremi().subscribe(
+            premi => {
+                this.elencoUltimiPremi = premi;
+                console.log(this.elencoUltimiPremi);
                 this.loadingTable = false;
             },
             err => {

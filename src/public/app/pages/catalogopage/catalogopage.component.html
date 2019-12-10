@@ -22,12 +22,12 @@
 <!-- Breadcrumb Area End -->
 
 <!-- preloader area start -->
-<div class="preloader" id="preloader" *ngIf="loading">
+<!--div class="preloader" id="preloader" *ngIf="loading">
     <div class="loader loader-1">
         <div class="loader-outter"></div>
         <div class="loader-inner"></div>
     </div>
-</div>
+</div-->
 <!-- preloader area end -->
 
 <!-- Catalogo Area Start -->
@@ -74,6 +74,14 @@
                         <!--a *ngIf="isAdminPage" (click)="deletePremioById(premio.id)" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a-->
                         <a *ngIf="isAdminPage" (click)="setDeleteId(premio.id)" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="loading">
+            <div class="col-lg-12 text-center">
+                <div class="loader loader-1">
+                    <div class="loader-outter"></div>
+                    <div class="loader-inner"></div>
                 </div>
             </div>
         </div>
