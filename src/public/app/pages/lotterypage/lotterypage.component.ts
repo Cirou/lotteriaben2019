@@ -156,7 +156,7 @@ export class LotterypageComponent implements OnInit {
     open(index: number): void {
         // open lightbox
 
-        const premio = this.elencoPremi.find(premio => {
+        const premio = this.elencoUltimiPremi.find(premio => {
             return premio.posizione === index
           })
 
