@@ -91,7 +91,7 @@ export class LotterypageComponent implements OnInit {
     private countDown() {
         this.clearTimer();
 
-        const countDownDate = new Date('Dec 23, 2019 12:00:00').getTime();
+        const countDownDate = new Date('Dec 23, 2019 11:00:00').getTime();
 
         this.intervalId = window.setInterval(() => {
             // Get todays date and time
