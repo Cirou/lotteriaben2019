@@ -31,7 +31,7 @@ createConnection({
     port: 3306,
     username: 'admin',
     password: 'lotteriabeneficenza2019',
-    database: 'lotteriaben2019',
+    database: 'lotteriaben2020',
     synchronize: false,
     logging: false,
     entities: ['./server/models/*.js']
