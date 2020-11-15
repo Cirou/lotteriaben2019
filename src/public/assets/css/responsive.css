@@ -7,14 +7,14 @@
 }
 
 .numero-vincitore {
-    background: #0d1535;
-    border: 1px solid #1a1e39;
+    background: #fff;
+    /*border: 1px solid #1a1e39;*/
     font-size: 14px;
     line-height: 24px;
     border-radius: 50px;
     padding: 4px 15px;
     margin-bottom: 0px;
-    color: #a1aed4;
+    color: #85BA9E;
     width: 90px;
     height: fit-content;
 }
@@ -27,7 +27,7 @@
 
 /*  Recent Winners Area Start */
 .recent-winners {
-    background: #0b122e;
+    background: #ffffff;
     padding: 0px; }
     .recent-winners .section-heading {
       margin-bottom: 58px; }
@@ -54,7 +54,7 @@
       justify-content: space-between;
       margin-bottom: 6px; }
       .single-winer .top-area .left .position {
-          color: #ff344d;
+          color: #327E55;
       }
       .single-winer .top-area .left .name {
         font-size: 1.2em;
@@ -137,7 +137,7 @@
       height: 100%;
       top: 0;
       left: 0;
-      background: #070B28;
+      background: #CF0034;
       z-index: -99; }
     .activities .section-heading {
       margin-bottom: 58px; }
@@ -163,7 +163,7 @@
             font-weight: 600;
             text-transform: uppercase;
             color: #FFF;
-            background: #252f5a;
+            background: #327e55;
             margin: 0px 5px; }
             .activities .tab-menu-area .nav-lend .nav-item .nav-link.active {
               background: #f9314b;
@@ -181,7 +181,8 @@
       .activities .table tr {
         -webkit-transition: all 0.3s ease-in;
         -o-transition: all 0.3s ease-in;
-        transition: all 0.3s ease-in; }
+        transition: all 0.3s ease-in; 
+        background: #569B76;}
         .activities .table tr td,
         .activities .table tr th {
           border-top: 1px solid rgba(255, 255, 255, 0.09); }
@@ -192,7 +193,7 @@
           border-top: 0px;
           border-bottom: 0px;
           padding: 20px 15px;
-          background: #0b122e;
+          background: #327e55;
           color: #fff; }
         .activities .table tr td {
           vertical-align: middle;
@@ -221,9 +222,9 @@
           .activities .table tr td:nth-child(5), .activities .table tr td:nth-child(6) {
             color: #f0ad4e; }
           .activities .table tr td:last-child {
-            color: #a1aed4; }
+            color: #f0ad4e; }
         .activities .table tr:hover {
-          background: #192246; }
+          background: #327e55; }
   
   /* activities Area Start */
 
@@ -231,7 +232,7 @@
 /* Breadcrumb Area Start */
 .breadcrumb-area {
     padding: 50px 0px;
-    background: #070B28;
+    background: #CF0034;
     position: relative;
     overflow: hidden;
     border-bottom: 3px solid rgba(255, 255, 255, 0.04); }
@@ -370,7 +371,7 @@
 /* Contact Area Start */
 .contact {
     padding: 112px 0px 150px;
-    background: #0b122e;
+    background: #ffffff;
     position: relative; }
     .contact .left-img {
       position: absolute;
@@ -384,7 +385,7 @@
       .contact .contact-form-wrapper .contact-box {
         position: relative;
         z-index: 9;
-        background: #252f5a;
+        background: #CF0034;
         border-radius: 10px;
         padding: 32px 30px 40px;
         /* -webkit-box-shadow: 0px 0px 0px 10px rgba(25, 37, 77, 0.2), 0px 0px 0px 20px rgba(25, 37, 77, 0.2), 0px 0px 0px 30px rgba(25, 37, 77, 0.2);
@@ -424,14 +425,14 @@
 
 /* Lottery Staticstics Area Start */
 .lottery-area {
-    background: #0b122e;
+    background: #ff3d55;
     padding-bottom: 80px; }
     .lottery-area .lottery-staticstics {
       margin-top: -55px; }
       .lottery-area .lottery-staticstics .single-staticstics {
         padding: 30px 30px 30px;
         border-radius: 10px;
-        background-color: rgba(29, 40, 80, 0.302);
+        background-color: rgba(50, 126, 85, 0.302);
         -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
         box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
         display: -webkit-box;
@@ -448,7 +449,7 @@
           text-align: center;
           border-radius: 50%;
           border: 1px solid rgba(255, 255, 255, 0.1);
-          background: #0b122e; }
+          background: #ffffff; }
         .lottery-area .lottery-staticstics .single-staticstics .right {
           -webkit-box-flex: 1;
           -ms-flex: 1;
@@ -479,14 +480,14 @@
         margin-bottom: 57px; }
       .lottery-area .daily-lottery .draw-time {
         border-radius: 10px;
-        background: url(/public/assets/img/draw-time-bg.jpg);
+        background: url(/public/assets/img/draw-time-bg2.jpg);
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
         padding: 40px 0px;
         text-align: center; }
         .lottery-area .daily-lottery .draw-time .subtitle {
-          font-size: 30px;
+          font-size: 25px;
           line-height: 34px;
           font-weight: 600;
           text-transform: uppercase;
@@ -501,7 +502,7 @@
           background: linear-gradient(to left, #ff344d, #d2273c);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent; */
-          color: #ff344d;
+          color: #fec800;
         }
         .lottery-area .daily-lottery .draw-time .text {
           font-size: 18px;
@@ -521,7 +522,7 @@
             display: inline-block;
             font-weight: 700;
             /* font-size: 60px; */
-            font-size: 70px; 
+            font-size: 60px; 
             line-height: 70px;
             color: #fff; }
             .lottery-area .daily-lottery .draw-time .draw-counter span:last-child {
@@ -609,7 +610,7 @@
   
 /* login modal Area Start */
 .login-modal .modal-dialog .modal-content {
-    background: #252f5a;
+    background: #327e55;
     border-radius: 10px; }
     .login-modal .modal-dialog .modal-content .modal-body {
       padding: 0px; }
@@ -623,7 +624,7 @@
           width: 135px;
           height: 135px;
           border-radius: 50%;
-          background: #252f5a;
+          background: #327e55;
           top: -65px;
           left: 050%;
           -webkit-transform: translateX(-50%);
@@ -666,17 +667,17 @@
             .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box label {
               font-size: 16px;
               font-weight: 400;
-              color: #a1aed4;
+              color: #85BA9E;
               text-transform: capitalize; }
             .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .box a {
               font-size: 16px;
               font-weight: 400;
-              color: #a1aed4;
+              color: #85BA9E;
               text-transform: capitalize; }
           .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .check-group label {
             font-size: 14px;
             font-weight: 400;
-            color: #a1aed4;
+            color: #85BA9E;
             text-transform: capitalize; }
             .login-modal .modal-dialog .modal-content .modal-body .form-area .form-group .check-group label a {
               color: #f9314b; }
@@ -691,18 +692,18 @@
           border: 0px;
           height: 50px;
           font-size: 14px;
-          color: #a1aed4;
+          color: #85BA9E;
           background: none;
           border-bottom: 1px solid rgba(255, 255, 255, 0.2);
           margin-bottom: 12px; }
           .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field::-webkit-input-placeholder {
-            color: #a1aed4; }
+            color: #85BA9E; }
           .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field:-moz-placeholder {
-            color: #a1aed4; }
+            color: #85BA9E; }
           .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field::-moz-placeholder {
-            color: #a1aed4; }
+            color: #85BA9E; }
           .login-modal .modal-dialog .modal-content .modal-body .form-area .input-field:-ms-input-placeholder {
-            color: #a1aed4; }
+            color: #85BA9E; }
         .login-modal .modal-dialog .modal-content .modal-body .form-area select {
           margin-top: 8px;
           width: 100%;
@@ -751,7 +752,7 @@
           /* Awards Area Start */
 .awards-area {
     padding: 60px 0px 90px;
-    background: #0b122e; }
+    background: url(../img/sfondo.jpg); }
     .awards-area .section-heading {
       margin-bottom: 58px; }
   
@@ -760,7 +761,8 @@
     position: relative;
     display: block;
     text-align: center;
-    border: 1px solid #273b71;
+    background: #327e55;
+    border: 1px solid #327e55;
     border-radius: 10px;
     padding: 5px 40px;
     -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
@@ -776,7 +778,7 @@
       cursor: pointer;
       border-radius: 50%;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      background: #0b122e;
+      background: #ffffff;
       object-fit: cover;
    }
     .single-awards .content .title {
@@ -799,8 +801,8 @@
       font-size: 18px;
       line-height: 26px;
       font-weight: 700;
-      border: 2px solid #A67227;
-      color: #A67227;
+      border: 2px solid #fec800;
+      color: #fec800;
       border-radius: 50px;
       margin-bottom: 0px;
       display: inline-block;
@@ -820,16 +822,27 @@
         -webkit-box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4);
         box-shadow: 0px 10px 15px 0px rgba(0, 0, 0, 0.4); }
         .single-awards:hover {
-            border-color: #681f40;
+            /*border-color: #681f40;*/
             -webkit-transform: translateY(-10px);
             -ms-transform: translateY(-10px);
             transform: translateY(-10px); }
       .single-awards .content .mybtn30 {
+          color: #fff;
           left: 30%;
+          background: #85BA9E;
+      }
+      .single-awards .content .mybtn30:hover {
+        color:#85BA9E;
+        background: #fff;
       }
       .single-awards .content .mybtn70 {
+          background: #f9314b;
+          color: #fff;
           left: 70%;
       }
+      .single-awards .content .mybtn70:hover {
+        background: #fff;
+    }
   
   /* Awards Area End */
   
@@ -855,17 +868,26 @@
       background: linear-gradient(to left, #ff344d, #d2273c);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent; */
-      color: #ff344d;
+      color: #85BA9E;
     }
       .section-heading .subtitle.extra-padding {
         margin-bottom: 17px; }
     .section-heading .title {
-      font-size: 60px;
+      font-size: 50px;
       line-height: 70px;
       font-weight: 700;
       text-transform: uppercase;
       color: #FFF;
       margin-bottom: 10px; }
+      .daily-lottery .section-heading .title {
+        color: #327e55;
+      }
+      .awards-area .section-heading .title {
+        color: #327e55;
+      }
+      .awards-area p {
+        color: #7C99A9;
+      }
       .section-heading .title.extra-padding {
         margin-bottom: 20px; }
     .section-heading .text {
@@ -1406,7 +1428,7 @@
     padding-right: 0px;
   }
   .index2 .header .mainmenu-area {
-    background: #252f5a;
+    background: #327e55;
   }
   .index2 .hero-area {
     padding: 238px 0px 341px;
@@ -1502,6 +1524,9 @@
   }
   .header .top-header .content{
     display: flow-root;
+  }
+  .top-header .content a:hover{
+    color: #f42358;
   }
   .header .top-header .content .left-content {
     text-align: center;
@@ -1880,7 +1905,7 @@
   .lottery-area .lottery-staticstics .single-staticstics {
     padding: 30px 30px 30px;
     border-radius: 10px;
-    background-color: rgba(29, 40, 80, 1);
+    background-color: rgba(50, 126, 85, 1);
   }
   .question-area .section-heading .title {
     margin-bottom: 18px;

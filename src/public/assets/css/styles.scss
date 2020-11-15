@@ -31,7 +31,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 18px;
   margin: 0;
-  color: #a1aed4;
+  color: #85BA9E;
   overflow-x: hidden; }
 
 body.modal-open {
@@ -64,7 +64,7 @@ h6 {
 
 p {
   font-size: 18px;
-  color: #a1aed4;
+  color: #fff;
   line-height: 1.625;
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
@@ -288,15 +288,15 @@ select:focus {
   -webkit-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-  background-image: -webkit-gradient(linear, right top, left top, from(#ff344d), to(#d2273c));
-  background-image: -webkit-linear-gradient(right, #ff344d, #d2273c);
-  background-image: -o-linear-gradient(right, #ff344d, #d2273c);
-  background-image: linear-gradient(to left, #ff344d, #d2273c); }
+  background-image: -webkit-gradient(linear, right top, left top, from(#85BA9E), to(#327E55));
+  background-image: -webkit-linear-gradient(right, #85BA9E, #327E55);
+  background-image: -o-linear-gradient(right, #85BA9E, #327E55);
+  background-image: linear-gradient(to left, #85BA9E, #327E55); }
   .mybtn1:hover {
-    background-image: -webkit-gradient(linear, left top, right top, from(#ff344d), to(#d2273c));
-    background-image: -webkit-linear-gradient(left, #ff344d, #d2273c);
-    background-image: -o-linear-gradient(left, #ff344d, #d2273c);
-    background-image: linear-gradient(to right, #ff344d, #d2273c);
+    background-image: -webkit-gradient(linear, left top, right top, from(#85BA9E), to(#327E55));
+    background-image: -webkit-linear-gradient(left, #85BA9E, #327E55);
+    background-image: -o-linear-gradient(left, #85BA9E, #327E55);
+    background-image: linear-gradient(to right, #85BA9E, #327E55);
     color: #fff;
     -webkit-transform: translateY(-2px);
     -ms-transform: translateY(-2px);
@@ -317,15 +317,15 @@ select:focus {
   -webkit-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
-  background: -webkit-gradient(linear, right top, left top, from(#1c294e), to(#1c294e));
-  background: -webkit-linear-gradient(right, #1c294e, #1c294e);
-  background: -o-linear-gradient(right, #1c294e, #1c294e);
-  background: linear-gradient(to left, #1c294e, #1c294e); }
+  background: -webkit-gradient(linear, right top, left top, from(#327E55), to(#85BA9E));
+  background: -webkit-linear-gradient(right, #327E55, #85BA9E);
+  background: -o-linear-gradient(right, #327E55, #85BA9E);
+  background: linear-gradient(to left, #327E55, #85BA9E); }
   .mybtn2:hover {
-    background: -webkit-gradient(linear, left top, right top, from(#ff344d), to(#d2273c));
-    background: -webkit-linear-gradient(left, #ff344d, #d2273c);
-    background: -o-linear-gradient(left, #ff344d, #d2273c);
-    background: linear-gradient(to right, #ff344d, #d2273c);
+    background: -webkit-gradient(linear, left top, right top, from(#85BA9E), to(#327E55));
+    background: -webkit-linear-gradient(left, #85BA9E, #327E55);
+    background: -o-linear-gradient(left, #85BA9E, #327E55);
+    background: linear-gradient(to right, #85BA9E, #327E55);
     color: #fff;
     -webkit-transform: translateY(-2px);
     -ms-transform: translateY(-2px);
@@ -349,7 +349,7 @@ select:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #0b122e;
+  background-color: url(../img/sfondo.jpg);
   z-index: 9999999;
   -webkit-transition: all 0.3s ease-in;
   -o-transition: all 0.3s ease-in;
