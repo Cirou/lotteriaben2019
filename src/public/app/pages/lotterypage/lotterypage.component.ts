@@ -88,10 +88,22 @@ export class LotterypageComponent implements OnInit {
         this.message = `Holding at T-${this.seconds} seconds`;
     }
 
+    private getNextDayOfTheWeek(dayName, excludeToday = true, refDate = new Date()) {
+        const dayOfWeek = ["sun","mon","tue","wed","thu","fri","sat"]
+                          .indexOf(dayName.slice(0,3).toLowerCase());
+        if (dayOfWeek < 0) return;
+        refDate.setHours(18,0,0,0);
+        refDate.setDate(refDate.getDate() + +!!excludeToday + 
+                        (dayOfWeek + 7 - refDate.getDay() - +!!excludeToday) % 7);
+        return refDate;
+    }
+
     private countDown() {
+        
         this.clearTimer();
 
-        const countDownDate = new Date('Dec 23, 2020 11:00:00').getTime();
+        //const countDownDate = new Date('Dec 23, 2020 11:00:00').getTime();
+        const countDownDate = this.getNextDayOfTheWeek("Friday", false).getTime();
 
         this.intervalId = window.setInterval(() => {
             // Get todays date and time
