@@ -5,3 +5,8 @@
 .lb-caption span:last-child {
     font-size:1.2em;color: #ffffff;
 }
+
+.premio-assegnato {
+    background: #cf0034;
+    border-color: #cf0034;
+}

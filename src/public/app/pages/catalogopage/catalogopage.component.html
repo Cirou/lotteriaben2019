@@ -61,7 +61,7 @@
         </div>
         <div class="row">
             <div *ngFor="let premio of elencoPremi; let i = index" class="col-lg-4 col-md-6">
-                <div class="single-awards">
+                <div class="single-awards" [ngClass]="{'premio-assegnato':premio.nomevincitore}">
                     <div class="content">
                         <p>
                             #{{premio.posizione}}
@@ -73,6 +73,7 @@
                         <a *ngIf="isAdminPage" [routerLink]="['/adminpage', premio.id]" class="mybtn2 mybtn30"><i class="fa fa-pen"></i></a>
                         <!--a *ngIf="isAdminPage" (click)="deletePremioById(premio.id)" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a-->
                         <a *ngIf="isAdminPage" (click)="setDeleteId(premio.id)" data-toggle="modal" data-target="#delete" class="mybtn2 mybtn70"><i class="fa fa-trash"></i></a>
+                        <div *ngIf="!isAdminPage" style="height:1.5em; color: #fec800"><span *ngIf="premio.nomevincitore">{{premio.nomevincitore}}</span></div>
                     </div>
                 </div>
             </div>
