@@ -102,8 +102,8 @@ export class LotterypageComponent implements OnInit {
         
         this.clearTimer();
 
-        //const countDownDate = new Date('Dec 23, 2020 11:00:00').getTime();
-        const countDownDate = this.getNextDayOfTheWeek("Thursday", true).getTime();
+        const countDownDate = new Date('Dec 23, 2020 9:00:00').getTime();
+        //const countDownDate = this.getNextDayOfTheWeek("Thursday", true).getTime();
 
         this.intervalId = window.setInterval(() => {
             // Get todays date and time
